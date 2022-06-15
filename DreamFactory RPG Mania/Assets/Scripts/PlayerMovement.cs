@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float _movementSpeed;
 
-    private Player playerInput;
-    private Rigidbody playerRigidBody;
+    private Player _playerInput;
+    private Rigidbody _playerRigidBody;
 
-    private Vector3 currentInputValue;
+    private Vector3 _currentInputValue;
 
     private void Awake()
     {
@@ -27,24 +27,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void InitializeMovement()
     {
-        playerInput = new Player();
-        playerInput.Movement.Walk.performed += OnWalkPerformed;
+        _playerInput = new Player();
+        _playerInput.Movement.Walk.performed += OnWalkPerformed;
 
-        playerInput.Enable();
+        _playerInput.Enable();
     }
 
     private void InitializeState()
     {
-        currentInputValue = Vector2.zero;
-        playerRigidBody = GetComponent<Rigidbody>();
+        _currentInputValue = Vector2.zero;
+        _playerRigidBody = GetComponent<Rigidbody>();
     }
 
     private void ApplyInputMovement()
     {
-        if (currentInputValue != Vector3.zero)
+        if (_currentInputValue != Vector3.zero)
         {
-            playerRigidBody.MovePosition(
-                transform.position + (currentInputValue * movementSpeed * Time.deltaTime)
+            _playerRigidBody.MovePosition(
+                transform.position + (_currentInputValue * _movementSpeed * Time.deltaTime)
             );
         }
     }
@@ -54,10 +54,10 @@ public class PlayerMovement : MonoBehaviour
         Vector2 rawInputValue = ctx.ReadValue<Vector2>();
         if (rawInputValue == Vector2.zero)
         {
-            currentInputValue = Vector3.zero;
+            _currentInputValue = Vector3.zero;
             return;
         }
 
-        currentInputValue = new Vector3(rawInputValue.x, 0f, rawInputValue.y);
+        _currentInputValue = new Vector3(rawInputValue.x, 0f, rawInputValue.y);
     }
 }

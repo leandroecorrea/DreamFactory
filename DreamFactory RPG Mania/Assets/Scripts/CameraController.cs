@@ -5,41 +5,41 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [Header("Follow Settings")]
-    [SerializeField] private Transform defaultFollowTarget;
-    [SerializeField] private float followDelay;
+    [SerializeField] private Transform _defaultFollowTarget;
+    [SerializeField] private float _followDelay;
 
     [Header("Follow Control")]
-    [SerializeField] private bool isFollowEnabled = true;
+    [SerializeField] private bool _isFollowEnabled = true;
 
-    private Transform currentFollowTarget;
-    private Vector3 followOffset;
-    private Vector3 followVelocity;
+    private Transform _currentFollowTarget;
+    private Vector3 _followOffset;
+    private Vector3 _followVelocity;
 
     private void Awake()
     {
-        if (defaultFollowTarget != null)
+        if (_defaultFollowTarget != null)
         {
-            UpdateCameraFollowTarget(defaultFollowTarget);
+            UpdateCameraFollowTarget(_defaultFollowTarget);
         }
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        if (currentFollowTarget != null && isFollowEnabled)
+        if (_currentFollowTarget != null && _isFollowEnabled)
         {
-            Vector3 targetPosition = currentFollowTarget.position + followOffset;
+            Vector3 targetPosition = _currentFollowTarget.position + _followOffset;
             transform.position = Vector3.SmoothDamp(
                 transform.position,
                 targetPosition,
-                ref followVelocity,
-                followDelay
+                ref _followVelocity,
+                _followDelay
             );
         }
     }
 
     public void UpdateCameraFollowTarget(Transform newFollowTarget)
     {
-        currentFollowTarget = newFollowTarget;
-        followOffset = transform.position - currentFollowTarget.position;
+        _currentFollowTarget = newFollowTarget;
+        _followOffset = transform.position - _currentFollowTarget.position;
     }
 }
