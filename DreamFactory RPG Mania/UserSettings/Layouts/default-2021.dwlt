@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 37
+  controlID: 58
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 38
+  controlID: 59
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 39
+  controlID: 60
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,13 +318,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Fonts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Fonts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\leand\OneDrive\Documentos\Jams\DreamFactory\DreamFactory
     RPG Mania
@@ -332,8 +332,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 86700000
-    m_LastClickedID: 28806
+    m_SelectedIDs: d46e0000
+    m_LastClickedID: 28372
     m_ExpandedIDs: 00000000c46e0000c66e0000c86e0000ca6e0000cc6e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -389,8 +389,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000f8b80000
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000f8b80000a0d4000000000000966e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -454,7 +454,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 54
+  m_LastVerticalScrollValue: 276
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -492,9 +492,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ae6b0000
-      m_LastClickedID: 27566
-      m_ExpandedIDs: 32fbffff5e6a00003e6b0000ae6b0000406c00009e6c00001a6d0000406d0000f66d0000
+      m_SelectedIDs: 406d0000
+      m_LastClickedID: 27968
+      m_ExpandedIDs: 361bf9ffe020f9ffb24ff9ff7a50f9ffb491f9ff0092f9ff4c92f9ffe897f9ffeed4f9ffa858fbff7e8dfbff642cfdfff6aafdfff4dffdff80f6fdfffa33feffe44dfeff4286feffce98feff32fbffff5e6a0000ea6a0000ae6b0000406c00001a6d0000406d0000f66d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -737,16 +737,16 @@ MonoBehaviour:
   m_WindowGUID: cc27987af1a868c49b0894db9c0f5429
   m_Gizmos: 1
   m_OverrideSceneCullingMask: 6917529027641081856
-  m_SceneIsLit: 1
+  m_SceneIsLit: 0
   m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 921.3389, y: 365.0377, z: 1.4681214}
+    m_Target: {x: 850.2414, y: 540.5772, z: 7.797902}
     speed: 2
-    m_Value: {x: 921.3389, y: 365.0377, z: 1.4681214}
+    m_Value: {x: 850.2414, y: 540.5772, z: 7.797902}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -797,9 +797,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 412.72092
+    m_Target: 504.30667
     speed: 2
-    m_Value: 412.72092
+    m_Value: 504.30667
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -817,7 +817,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+  m_LastSceneViewRotation: {x: -0.06950411, y: 0.8438195, z: -0.5200382, w: -0.1128023}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
