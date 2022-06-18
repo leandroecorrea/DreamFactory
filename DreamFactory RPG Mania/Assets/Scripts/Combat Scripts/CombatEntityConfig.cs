@@ -12,5 +12,6 @@ public class CombatEntityConfig : ScriptableObject
     public int baseSpeed;
 
     [Header("Combat Action References")]
+    public GameObject combatEntityPrefab;
     public List<CombatActionConfig> actions;
 }
