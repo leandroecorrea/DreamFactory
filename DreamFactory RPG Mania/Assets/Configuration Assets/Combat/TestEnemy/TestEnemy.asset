@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
   m_Name: TestEnemy
   m_EditorClassIdentifier: 
+  Name: AnEnemy
   baseHP: 100
   baseMP: 25
   baseAttack: 5
