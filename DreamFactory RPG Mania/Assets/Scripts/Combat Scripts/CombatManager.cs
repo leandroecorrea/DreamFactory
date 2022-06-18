@@ -8,6 +8,8 @@ public class CombatManager : MonoBehaviour
     public Queue<CombatEntity> combatEntities;
     [HideInInspector] public CombatEntity currentTurnEntity;
 
+    public int etstestuhsetuih;
+
     public void InitializeTurns(List<CombatEntity> entities)
     {
         combatEntities = new Queue<CombatEntity>(entities.OrderByDescending(x => x.entityConfig.baseSpeed));
