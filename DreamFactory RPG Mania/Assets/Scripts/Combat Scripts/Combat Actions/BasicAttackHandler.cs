@@ -53,7 +53,7 @@ public class BasicAttackHandler : ICombatAction
 
         combatRouter.BeginRouting(initialPosition);
         //TODO uncomment when merging CombatEventSystem
-        //CombatEventSystem.instance.OnActionPerformed(this, new ActionPerformedArgs { TargetedUnits = targets, ActionPerformed = this });
+        CombatEventSystem.instance.OnActionPerformed(this, new ActionPerformedArgs { TargetedUnits = targets, ActionPerformed = this });
     }
     private void HandleReturnToPositionComplete(object sender, EventArgs e)
     {
