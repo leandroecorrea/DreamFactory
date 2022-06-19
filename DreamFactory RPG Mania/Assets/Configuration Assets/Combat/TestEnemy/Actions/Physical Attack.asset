@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Physical Attack
   description: Do a physical attack against an enemy
-  actionHandlerClassName: 
+  actionHandlerClassName: BasicAttackHandler

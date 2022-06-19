@@ -368,14 +368,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96235587}
-  m_LocalRotation: {x: -0, y: 0.96460086, z: -0.26371413, w: 0}
-  m_LocalPosition: {x: 0, y: 8.78, z: 8.95}
+  m_LocalRotation: {x: 0.16904217, y: -0, z: -0, w: 0.9856088}
+  m_LocalPosition: {x: -0.06, y: 4.52, z: -10.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30.581, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 19.464, y: 0, z: 0}
 --- !u!1 &154219846
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 1179871489}
   - component: {fileID: 1179871493}
   m_Layer: 0
-  m_Name: TargetDiana
+  m_Name: TargetIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,6 +906,7 @@ GameObject:
   - component: {fileID: 1188401470}
   - component: {fileID: 1188401471}
   - component: {fileID: 1188401472}
+  - component: {fileID: 1188401473}
   m_Layer: 0
   m_Name: CombatManager
   m_TagString: Untagged
@@ -940,15 +941,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dbf930e0d00db648803f5f2ae5587f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatSpawner: {fileID: 1188401473}
   testEnemies:
   - {fileID: 11400000, guid: 4825c01bc7249564cbae960014b92890, type: 2}
   - {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
   - {fileID: 11400000, guid: aa0b06ba21a0c9841910b74a927790e5, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296, type: 2}
-  playerControllableArena: {x: 0, y: 1.5, z: 0}
-  enemyArena: {x: 0, y: 1.5, z: -10.83}
-  arenaSize: {x: 10, y: 3, z: 3}
   currentTurnEntity: {fileID: 0}
 --- !u!114 &1188401472
 MonoBehaviour:
@@ -969,7 +968,23 @@ MonoBehaviour:
   optionsPanel: {fileID: 1434273452}
   combatOptionPrefab: {fileID: 8001084468119128338, guid: dbfa2fb5dcd98774593cd1f2b71d80b6,
     type: 3}
-  targetDiana: {fileID: 1179871488}
+  targetIndicator: {fileID: 1179871488}
+--- !u!114 &1188401473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188401469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597dea18cef2d144d8ed252ddc2d5772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rowCapacity: 3
+  rowSize: {x: 10, y: 1, z: 2}
+  playerTeamArenaOrigin: {x: 0, y: 0.5, z: -5}
+  enemyTeamArenaOrigin: {x: 0, y: 0.5, z: 5}
 --- !u!1 &1225500697
 GameObject:
   m_ObjectHideFlags: 0

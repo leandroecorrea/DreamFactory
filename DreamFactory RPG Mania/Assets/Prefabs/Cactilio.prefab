@@ -112,3 +112,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityConfig: {fileID: 11400000, guid: 4825c01bc7249564cbae960014b92890, type: 2}
+  combatAction: {fileID: 11400000, guid: c65458008a14be841848f66837d5566c, type: 2}

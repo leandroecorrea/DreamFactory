@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +8,19 @@ public class CombatEntity : MonoBehaviour
     public CombatEntityConfig entityConfig;
 
     private List<IEffectHandler> effectsCaused;
-    private int currentHP;
+    public int CurrentHP { get; private set; }    
     private int currentMaxHP;
     private int currentMP;
     private int currentMaxMP;
     private int currentAttack;
     private int currentSpeed;
 
+    public event EventHandler<OnTurnCompleteEventArgs> onTurnComplete;
+
     public void Awake()
     {
         currentMaxHP = entityConfig.baseHP;
-        currentHP = currentMaxHP;
+        CurrentHP = currentMaxHP;
 
         currentMaxMP = entityConfig.baseMP;
         currentMP = currentMaxMP;
@@ -26,7 +29,21 @@ public class CombatEntity : MonoBehaviour
         currentSpeed = entityConfig.baseSpeed;
     }
 
-    public virtual void StartTurn()
+    public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
+    {
+        Type combatActionType = Type.GetType(action.actionHandlerClassName);
+        ICombatAction combatActionInstance = (ICombatAction)Activator.CreateInstance(combatActionType);
+
+        combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;
+        combatActionInstance.ExecuteAction(target);
+    }
+
+    private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)
+    {
+        onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this }); 
+    }
+
+    public virtual void StartTurn(CombatContext turnContext)
     {
         Debug.LogError("StartTurn Not Implemented");
         return;
@@ -34,8 +51,13 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        Debug.LogError("TakeDamage Not Implemented");
-        return;
+        CurrentHP -= damage;
+
+        if (CurrentHP <= 0)
+        {
+            // TODO: Remove this once hooked up to animation event
+            HandleEntityDeath();
+        }
     }
 
     public virtual void ApplyEffects(List<IEffectHandler> affectsToApply)
@@ -43,4 +65,15 @@ public class CombatEntity : MonoBehaviour
         Debug.LogError("ApplyEffects Not Implemented");
         return;
     }
+
+    // TODO: Hook this up via an animation event to death animation
+    public void HandleEntityDeath()
+    {
+        GameObject.Destroy(gameObject);
+    }
 }
+
+public class OnTurnCompleteEventArgs : EventArgs
+{
+    public CombatEntity targetEntity { get; set; }
+} 
