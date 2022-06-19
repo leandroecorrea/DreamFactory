@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAttackHandler : ICombatAction
+public class FeverAttackHandler : ICombatAction
 {
     public event EventHandler<ActionPerformedArgs> onCombatActionComplete;
 
@@ -35,10 +35,7 @@ public class BasicAttackHandler : ICombatAction
     private void HandleMoveToAttackTargetComplete(object sender, EventArgs e)
     {
         // Damage the current target
-        targets[currentTargetIndex].TakeDamage(fixedDamage);
-        Debug.Log($"Target {targets[currentTargetIndex].gameObject.name} took {fixedDamage} damage, its current HP is {targets[currentTargetIndex].CurrentHP}");
-
-        currentTargetIndex++;
+        targets[currentTargetIndex++].ApplyEffects(new List<IEffectHandler> { new FeverDebuffHandler() });
 
         // Check for more targets, if any exist then move to those
         if (currentTargetIndex < targets.Length)
@@ -52,9 +49,8 @@ public class BasicAttackHandler : ICombatAction
         combatRouter.onRoutingComplete += HandleReturnToPositionComplete;
 
         combatRouter.BeginRouting(initialPosition);
-        //TODO uncomment when merging CombatEventSystem
-        //CombatEventSystem.instance.OnActionPerformed(this, new ActionPerformedArgs { TargetedUnits = targets, ActionPerformed = this });
     }
+
     private void HandleReturnToPositionComplete(object sender, EventArgs e)
     {
         combatRouter.onRoutingComplete -= HandleReturnToPositionComplete;
