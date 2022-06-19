@@ -16,8 +16,7 @@ public class CombatManager : MonoBehaviour
     public Queue<CombatEntity> combatEntities;
     [HideInInspector] public CombatEntity currentTurnEntity;
     public delegate void OnCombatTurnStart(CombatContext ctx);
-    public event OnCombatTurnStart onCombatTurnStart;
-    
+    public event OnCombatTurnStart onCombatTurnStart;   
 
     private void Awake()
     {

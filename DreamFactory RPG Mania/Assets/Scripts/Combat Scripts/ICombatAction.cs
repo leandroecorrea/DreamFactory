@@ -13,5 +13,5 @@ public interface ICombatAction
 public class ActionPerformedArgs : EventArgs
 {
     public CombatEntity[] TargetedUnits { get; set; }
-    public string Message { get; set; }
+    public ICombatAction ActionPerformed { get; set; }
 }

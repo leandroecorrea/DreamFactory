@@ -17,6 +17,7 @@ public class BasicAttackHandler : ICombatAction
             Debug.Log($"Target {targets[i].gameObject.name} took {fixedDamage} damage, its current HP is {targets[i].CurrentHP}");
         }
 
-        onCombatActionComplete?.Invoke(this, new ActionPerformedArgs { TargetedUnits = targets, Message ="Action performed"});
+        onCombatActionComplete?.Invoke(this, new ActionPerformedArgs { TargetedUnits = targets});
+        CombatEventSystem.instance.OnActionPerformed(this, new ActionPerformedArgs { TargetedUnits = targets, ActionPerformed = this });
     }
 }

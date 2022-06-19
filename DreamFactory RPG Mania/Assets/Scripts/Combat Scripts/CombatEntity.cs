@@ -10,7 +10,7 @@ public class CombatEntity : MonoBehaviour
     private List<IEffectHandler> effectsCaused;
     public int CurrentHP { get; private set; }    
     private int currentMaxHP;
-    private int currentMP;
+    public int CurrentMP { get; private set; }
     private int currentMaxMP;
     private int currentAttack;
     private int currentSpeed;
@@ -23,7 +23,7 @@ public class CombatEntity : MonoBehaviour
         CurrentHP = currentMaxHP;
 
         currentMaxMP = entityConfig.baseMP;
-        currentMP = currentMaxMP;
+        CurrentMP = currentMaxMP;
 
         currentAttack = entityConfig.baseAttack;
         currentSpeed = entityConfig.baseSpeed;
@@ -33,14 +33,13 @@ public class CombatEntity : MonoBehaviour
     {
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction combatActionInstance = (ICombatAction)Activator.CreateInstance(combatActionType);
-
         combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;
         combatActionInstance.ExecuteAction(target);
     }
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)
     {
-        onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this }); 
+        onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this });         
     }
 
     public virtual void StartTurn(CombatContext turnContext)
