@@ -12,10 +12,20 @@ public class CombatEventSystem : MonoBehaviour
     }
 
     public event EventHandler<ActionPerformedArgs> onActionPerformed;
+    public event EventHandler<CombatEntityKilledArgs> onCombatEntityKilled;
 
     public void OnActionPerformed(object sender, ActionPerformedArgs args)
     {
         onActionPerformed?.Invoke(sender, args);
     }
-    
+
+    public void OnCombatEntityKilled(object sender, CombatEntityKilledArgs args)
+    {
+        onCombatEntityKilled?.Invoke(sender, args);
+    }
+}
+
+public class CombatEntityKilledArgs : EventArgs
+{
+    public CombatEntity entityKilled;
 }

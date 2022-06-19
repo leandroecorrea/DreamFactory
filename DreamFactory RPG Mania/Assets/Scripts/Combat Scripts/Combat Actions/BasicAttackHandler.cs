@@ -36,7 +36,6 @@ public class BasicAttackHandler : ICombatAction
     {
         // Damage the current target
         targets[currentTargetIndex].TakeDamage(fixedDamage);
-        Debug.Log($"Target {targets[currentTargetIndex].gameObject.name} took {fixedDamage} damage, its current HP is {targets[currentTargetIndex].CurrentHP}");
 
         currentTargetIndex++;
 

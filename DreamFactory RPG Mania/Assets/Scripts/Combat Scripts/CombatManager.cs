@@ -13,10 +13,13 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private List<CombatEntityConfig> testEnemies;
     [SerializeField] private List<CombatEntityConfig> testPlayers;
 
+    public CombatContext currentTurnContext;
+
     public Queue<CombatEntity> combatEntities;
     [HideInInspector] public CombatEntity currentTurnEntity;
+
     public delegate void OnCombatTurnStart(CombatContext ctx);
-    public event OnCombatTurnStart onCombatTurnStart;   
+    public event OnCombatTurnStart onCombatTurnStart;
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class CombatManager : MonoBehaviour
     {
         var spawnedEntities = combatSpawner.SpawnParties(combatRequest);
         combatEntities = new Queue<CombatEntity>(spawnedEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
+
+        CombatEventSystem.instance.onCombatEntityKilled += HandleCombatEntityDeath;
         
         InitializeTurns();        
     }
@@ -34,6 +39,8 @@ public class CombatManager : MonoBehaviour
     public void InitializeTurns()
     {
         currentTurnEntity = combatEntities.Peek();
+
+        // Remove any entities that died last turn
         while(currentTurnEntity == null || currentTurnEntity.gameObject == null)
         {
             combatEntities.Dequeue();
@@ -42,12 +49,12 @@ public class CombatManager : MonoBehaviour
 
         currentTurnEntity.onTurnComplete += HandleCurrentTurnComplete;
 
-        var combatContext = new CombatContext();
-        combatContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
-        combatContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
-        combatContext.currentTurnEntity = currentTurnEntity;
+        currentTurnContext = new CombatContext();
+        currentTurnContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
+        currentTurnContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
+        currentTurnContext.currentTurnEntity = currentTurnEntity;
 
-        onCombatTurnStart?.Invoke(combatContext);
+        onCombatTurnStart?.Invoke(currentTurnContext);
     }
 
     private void HandleCurrentTurnComplete(object sender, OnTurnCompleteEventArgs e)
@@ -59,6 +66,46 @@ public class CombatManager : MonoBehaviour
         combatEntities.Enqueue(currentTurnEntity);
 
         InitializeTurns();
+    }
+
+    private void HandleCombatEntityDeath(object sender, CombatEntityKilledArgs e)
+    {
+        // Check for Player Victory
+        if ((e.entityKilled as EnemyCombatEntity) != null && IsCombatTeamKilled(currentTurnContext.enemyParty))
+        {
+            HandlePlayerVictory();
+        }
+        else if ((e.entityKilled as PlayerControllableEntity) != null && IsCombatTeamKilled(currentTurnContext.playerParty))
+        {
+            HandlePlayerLose();
+        }
+    }
+
+    private bool IsCombatTeamKilled(List<CombatEntity> team)
+    {
+        bool allEntitiesKilled = true;
+        foreach (CombatEntity combatEntity in team)
+        {
+            if (combatEntity != null && combatEntity.gameObject != null && !combatEntity.IsDead())
+            {
+                Debug.Log($"{combatEntity.gameObject.name} is still alive");
+
+                allEntitiesKilled = false;
+                break;
+            }
+        }
+
+        return allEntitiesKilled;
+    }
+    
+    private void HandlePlayerVictory()
+    {
+        Debug.Log("Player(s) Win!!!");
+    }
+
+    private void HandlePlayerLose()
+    {
+        Debug.Log("Players Lose...");
     }
 }
 

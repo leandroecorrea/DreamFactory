@@ -31,6 +31,11 @@ public class CombatEntity : MonoBehaviour
         currentSpeed = entityConfig.baseSpeed;
     }
 
+    private void OnDestroy()
+    {
+        CombatEventSystem.instance.OnCombatEntityKilled(this, new CombatEntityKilledArgs { entityKilled = this });
+    }
+
     public virtual void StartTurn(CombatContext turnContext)
     {
         currentTurnCtx = turnContext;
@@ -76,7 +81,7 @@ public class CombatEntity : MonoBehaviour
     {
         CurrentHP -= damage;
 
-        if (CurrentHP <= 0)
+        if (IsDead())
         {
             // TODO: Remove this once hooked up to animation event
             HandleEntityDeath();
@@ -97,6 +102,11 @@ public class CombatEntity : MonoBehaviour
 
         effectsCaused.AddRange(affectsToApply);
         return;
+    }
+
+    public bool IsDead()
+    {
+        return (CurrentHP <= 0);
     }
 
     // TODO: Hook this up via an animation event to death animation
