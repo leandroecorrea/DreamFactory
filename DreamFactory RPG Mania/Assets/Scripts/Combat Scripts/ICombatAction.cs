@@ -7,7 +7,7 @@ public interface ICombatAction
 {
     event EventHandler<ActionPerformedArgs> onCombatActionComplete;
 
-    void ExecuteAction(params CombatEntity[] targets);
+    void ExecuteAction(CombatEntity executor, params CombatEntity[] targets);
 }
 
 public class ActionPerformedArgs : EventArgs

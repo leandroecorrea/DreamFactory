@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 383984641823725567}
   - component: {fileID: 5802998010149161121}
   - component: {fileID: -8079155034710072525}
+  - component: {fileID: 9069068881486300277}
   m_Layer: 0
   m_Name: PlayerCombat
   m_TagString: Untagged
@@ -129,3 +130,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityConfig: {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296, type: 2}
+--- !u!114 &9069068881486300277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383984641823725566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476d272f095e79749a7fc6f3a2f19213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  routingSpeed: 5
+  targetDistance: 1

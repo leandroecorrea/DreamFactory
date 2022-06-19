@@ -35,7 +35,7 @@ public class CombatEntity : MonoBehaviour
         ICombatAction combatActionInstance = (ICombatAction)Activator.CreateInstance(combatActionType);
 
         combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;
-        combatActionInstance.ExecuteAction(target);
+        combatActionInstance.ExecuteAction(this, target);
     }
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)
