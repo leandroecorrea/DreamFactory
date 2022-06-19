@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
+  Name: 
   baseHP: 100
   baseMP: 25
   baseAttack: 5
@@ -20,5 +21,4 @@ MonoBehaviour:
     type: 3}
   actions:
   - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
-  - {fileID: 11400000, guid: 7f894c22648ebab4c995d08b4f360d5f, type: 2}
-  - {fileID: 11400000, guid: 444d3f7a802121f4eafd587ff9ef3bb1, type: 2}
+  - {fileID: 11400000, guid: a16aee58aa97cfa47b2b7bfd837d7eaa, type: 2}

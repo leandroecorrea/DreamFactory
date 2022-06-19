@@ -8,6 +8,8 @@ public class CombatEntity : MonoBehaviour
     public CombatEntityConfig entityConfig;
 
     private List<IEffectHandler> effectsCaused;
+    private CombatContext currentTurnCtx;
+
     public int CurrentHP { get; private set; }    
     private int currentMaxHP;
     private int currentMP;
@@ -29,6 +31,34 @@ public class CombatEntity : MonoBehaviour
         currentSpeed = entityConfig.baseSpeed;
     }
 
+    public virtual void StartTurn(CombatContext turnContext)
+    {
+        currentTurnCtx = turnContext;
+
+        foreach (IEffectHandler effectHandler in effectsCaused)
+        {
+            effectHandler.HandleTurnStart(this, currentTurnCtx);
+        }
+
+        return;
+    }
+
+    public virtual void EndTurn(CombatContext turnContext)
+    {
+        if (effectsCaused != null && effectsCaused.Count > 0)
+        {
+            foreach (IEffectHandler effectHandler in effectsCaused)
+            {
+                effectHandler.HandleTurnEnd(this, currentTurnCtx);
+            }
+        }
+
+        currentTurnCtx = null;
+        onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this });
+
+        return;
+    }
+
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
     {
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
@@ -40,13 +70,7 @@ public class CombatEntity : MonoBehaviour
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)
     {
-        onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this }); 
-    }
-
-    public virtual void StartTurn(CombatContext turnContext)
-    {
-        Debug.LogError("StartTurn Not Implemented");
-        return;
+        EndTurn(currentTurnCtx);
     }
 
     public virtual void TakeDamage(int damage)
@@ -62,7 +86,17 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void ApplyEffects(List<IEffectHandler> affectsToApply)
     {
-        Debug.LogError("ApplyEffects Not Implemented");
+        foreach(IEffectHandler effectHandler in affectsToApply)
+        {
+            effectHandler.HandleOnApply(this, currentTurnCtx);
+        }
+
+        if (effectsCaused == null)
+        {
+            effectsCaused = new List<IEffectHandler>();
+        }
+
+        effectsCaused.AddRange(affectsToApply);
         return;
     }
 
