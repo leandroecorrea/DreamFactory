@@ -34,6 +34,12 @@ public class CombatManager : MonoBehaviour
     public void InitializeTurns()
     {
         currentTurnEntity = combatEntities.Peek();
+        while(currentTurnEntity == null || currentTurnEntity.gameObject == null)
+        {
+            combatEntities.Dequeue();
+            currentTurnEntity = combatEntities.Peek();
+        }
+
         currentTurnEntity.onTurnComplete += HandleCurrentTurnComplete;
 
         var combatContext = new CombatContext();
@@ -48,16 +54,11 @@ public class CombatManager : MonoBehaviour
     {
         currentTurnEntity.onTurnComplete -= HandleCurrentTurnComplete;
 
+        // Removing the last combat entity from the queue
         combatEntities.Dequeue();
         combatEntities.Enqueue(currentTurnEntity);
 
         InitializeTurns();
-    }
-
-    public void EndTurn()
-    {
-        combatEntities.Enqueue(currentTurnEntity);
-        currentTurnEntity = combatEntities.Dequeue();
     }
 }
 

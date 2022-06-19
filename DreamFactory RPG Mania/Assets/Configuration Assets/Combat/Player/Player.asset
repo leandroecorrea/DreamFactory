@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   Name: Broxo
-  baseHP: 100
+  baseHP: 10000
   baseMP: 25
   baseAttack: 5
-  baseSpeed: 5
+  baseSpeed: 5000
   combatEntityPrefab: {fileID: 383984641823725566, guid: 33559ca928aeac046be8248a69f6b05d,
     type: 3}
   actions:

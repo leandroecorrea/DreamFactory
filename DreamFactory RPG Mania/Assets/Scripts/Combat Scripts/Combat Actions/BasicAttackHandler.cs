@@ -12,7 +12,7 @@ public class BasicAttackHandler : ICombatAction
     private CombatEntity[] targets;
     private Vector3 initialPosition;
     private int currentTargetIndex;
-    private int fixedDamage = 10;
+    private int fixedDamage = 1000;
 
     public void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
     {
