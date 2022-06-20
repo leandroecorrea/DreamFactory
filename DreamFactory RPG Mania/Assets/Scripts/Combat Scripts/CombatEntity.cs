@@ -100,8 +100,9 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        animator.SetTrigger("IsHit");
         CurrentHP -= damage;
-
+        
         if (IsDead())
         {
             // TODO: Remove this once hooked up to animation event

@@ -58,13 +58,14 @@ public class BasicAttackHandler : ICombatAction
 
     public void DoDamage()
     {
-        targets[currentTargetIndex].TakeDamage(fixedDamage);
-
+        targets[currentTargetIndex].TakeDamage(fixedDamage);        
         currentTargetIndex++;
     }
 
     private void HandleReturnToPositionComplete(object sender, EventArgs e)
     {
+        executor.onAnimationComplete -= ProcessNextTarget;
+        executor.onAnimationComplete -= DoDamage;
         executor.TriggerIdleAnimation();
         combatRouter.onRoutingComplete -= HandleReturnToPositionComplete;
         onCombatActionComplete?.Invoke(this, new ActionPerformedArgs { TargetedUnits = targets });

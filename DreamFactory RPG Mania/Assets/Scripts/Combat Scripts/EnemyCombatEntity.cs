@@ -10,9 +10,8 @@ public class EnemyCombatEntity : CombatEntity
 
     public override void StartTurn(CombatContext turnContext)
     {
-        base.StartTurn(turnContext);
+        //base.StartTurn(turnContext);
         CombatEntity target = turnContext.playerParty[0];
-
         PerformAction(combatAction, target);
     }
 }
