@@ -5,13 +5,18 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
-{    
-    [SerializeField] private CombatSpawner combatSpawner;    
+{
+    public static CombatStartRequest currentStartRequest;
+
+    [SerializeField] private CombatSpawner combatSpawner;
+    
     [Header("Test Enemies")]
     [SerializeField] private List<CombatEntityConfig> testEnemies;
     [SerializeField] private List<CombatEntityConfig> testPlayers;
+    [SerializeField] private bool useTestData = true;
 
     public CombatContext currentTurnContext;
 
@@ -23,7 +28,13 @@ public class CombatManager : MonoBehaviour
 
     private void Awake()
     {
-        InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers));
+        if (useTestData)
+        {
+            InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, ""));
+            return;
+        }
+        
+        InitializeCombatManager(currentStartRequest);
     }
 
     public void InitializeCombatManager(CombatStartRequest combatRequest)
@@ -88,8 +99,6 @@ public class CombatManager : MonoBehaviour
         {
             if (combatEntity != null && combatEntity.gameObject != null && !combatEntity.IsDead())
             {
-                Debug.Log($"{combatEntity.gameObject.name} is still alive");
-
                 allEntitiesKilled = false;
                 break;
             }
@@ -100,7 +109,11 @@ public class CombatManager : MonoBehaviour
     
     private void HandlePlayerVictory()
     {
-        Debug.Log("Player(s) Win!!!");
+        if (currentStartRequest.originScene != "")
+        {
+            SceneManager.LoadScene(currentStartRequest.originScene);
+            currentStartRequest = null;
+        }
     }
 
     private void HandlePlayerLose()
@@ -113,11 +126,13 @@ public class CombatStartRequest
 {
     public List<CombatEntityConfig> enemies;
     public List<CombatEntityConfig> allies;
+    public string originScene;
 
-    public CombatStartRequest(List<CombatEntityConfig> enemies, List<CombatEntityConfig> players)
+    public CombatStartRequest(List<CombatEntityConfig> enemies, List<CombatEntityConfig> players, string originScene)
     {
         this.enemies = enemies;
         this.allies = players;
+        this.originScene = originScene;
     }
 }
 
