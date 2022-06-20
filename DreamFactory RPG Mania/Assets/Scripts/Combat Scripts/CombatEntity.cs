@@ -9,7 +9,7 @@ public class CombatEntity : MonoBehaviour
 
     private List<IEffectHandler> effectsCaused;
     private CombatContext currentTurnCtx;
-
+    [SerializeField] private Animator animator;
     public int CurrentHP { get; private set; }    
     private int currentMaxHP;
     public int CurrentMP { get; private set; }
@@ -64,7 +64,8 @@ public class CombatEntity : MonoBehaviour
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction combatActionInstance = (ICombatAction)Activator.CreateInstance(combatActionType);
         combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;
-        combatActionInstance.ExecuteAction(this, target);
+        combatActionInstance.ExecuteAction(this, target);        
+        animator.SetTrigger("Attack");
     }
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)

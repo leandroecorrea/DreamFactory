@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6566625682677313315}
   - component: {fileID: 8018967988042350834}
   - component: {fileID: 5734826404920586246}
+  - component: {fileID: 60154673849765549}
   m_Layer: 0
   m_Name: Kraken
   m_TagString: Untagged
@@ -114,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityConfig: {fileID: 11400000, guid: aa0b06ba21a0c9841910b74a927790e5, type: 2}
   combatAction: {fileID: 11400000, guid: c65458008a14be841848f66837d5566c, type: 2}
+  animator: {fileID: 60154673849765549}
 --- !u!114 &5734826404920586246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +130,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routingSpeed: 7.5
   targetDistance: 1
+--- !u!95 &60154673849765549
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566625682677313314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d65a9e401bd671040a4ba947852ac1ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

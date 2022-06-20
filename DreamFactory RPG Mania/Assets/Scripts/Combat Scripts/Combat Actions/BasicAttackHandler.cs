@@ -51,8 +51,7 @@ public class BasicAttackHandler : ICombatAction
         combatRouter.onRoutingComplete -= HandleMoveToAttackTargetComplete;
         combatRouter.onRoutingComplete += HandleReturnToPositionComplete;
 
-        combatRouter.BeginRouting(initialPosition);
-        //TODO uncomment when merging CombatEventSystem
+        combatRouter.BeginRouting(initialPosition);        
         CombatEventSystem.instance.OnActionPerformed(this, new ActionPerformedArgs { TargetedUnits = targets, ActionPerformed = this });
     }
     private void HandleReturnToPositionComplete(object sender, EventArgs e)

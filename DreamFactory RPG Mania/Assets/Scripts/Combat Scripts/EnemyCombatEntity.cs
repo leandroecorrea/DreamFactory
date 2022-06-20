@@ -6,6 +6,7 @@ public class EnemyCombatEntity : CombatEntity
 {
     [Header("Test")]
     [SerializeField] private CombatActionConfig combatAction;
+    
 
     public override void StartTurn(CombatContext turnContext)
     {
