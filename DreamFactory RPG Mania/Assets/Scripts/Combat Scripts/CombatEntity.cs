@@ -18,6 +18,7 @@ public class CombatEntity : MonoBehaviour
     private int currentSpeed;
 
     public event EventHandler<OnTurnCompleteEventArgs> onTurnComplete;
+    public event Action onAnimationComplete;
 
     public void Awake()
     {
@@ -30,6 +31,13 @@ public class CombatEntity : MonoBehaviour
         currentAttack = entityConfig.baseAttack;
         currentSpeed = entityConfig.baseSpeed;
     }
+
+
+    public void OnAnimationComplete()
+    {
+        onAnimationComplete?.Invoke();
+    }
+
 
     private void OnDestroy()
     {
@@ -66,16 +74,20 @@ public class CombatEntity : MonoBehaviour
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
     {
-        animator.SetTrigger("Running");
-        Debug.Log("Seteado en running");
+        animator.SetTrigger("Running");        
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction combatActionInstance = (ICombatAction)Activator.CreateInstance(combatActionType);
-        combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;
-        CombatEventSystem.instance.onAttackAreaTrigger += TriggerAttackAnimation;
+        combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;        
         combatActionInstance.ExecuteAction(this, target);        
     }
 
-    private void TriggerAttackAnimation(CombatEntity entity)
+    internal void TriggerIdleAnimation()
+    {
+        animator.ResetTrigger("Running");
+        animator.SetTrigger("Idle");
+    }
+
+    public void TriggerAttackAnimation()
     {
         animator.ResetTrigger("Running");
         animator.SetTrigger("Attack");

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class BasicAttackHandler : ICombatAction
 {
-    public event EventHandler<ActionPerformedArgs> onCombatActionComplete;
+    public event EventHandler<ActionPerformedArgs> onCombatActionComplete;   
+
 
     private CombatRouter combatRouter;
     private CombatEntity executor;
@@ -26,19 +27,20 @@ public class BasicAttackHandler : ICombatAction
         {
             Debug.LogError($"Couldn't find Combat Router for {combatRouter.gameObject.name}");
             return;
-        }
-
+        }        
         combatRouter.onRoutingComplete += HandleMoveToAttackTargetComplete;
         combatRouter.BeginRouting(targets[0].transform.position);
     }
 
     private void HandleMoveToAttackTargetComplete(object sender, EventArgs e)
     {
-        // Damage the current target
-        targets[currentTargetIndex].TakeDamage(fixedDamage);
+        executor.TriggerAttackAnimation();
+        executor.onAnimationComplete += DoDamage;
+        executor.onAnimationComplete += ProcessNextTarget;
+    }
 
-        currentTargetIndex++;
-
+    public void ProcessNextTarget()
+    {
         // Check for more targets, if any exist then move to those
         if (currentTargetIndex < targets.Length)
         {
@@ -50,11 +52,20 @@ public class BasicAttackHandler : ICombatAction
         combatRouter.onRoutingComplete -= HandleMoveToAttackTargetComplete;
         combatRouter.onRoutingComplete += HandleReturnToPositionComplete;
 
-        combatRouter.BeginRouting(initialPosition);        
+        combatRouter.BeginRouting(initialPosition);
         CombatEventSystem.instance.OnActionPerformed(this, new ActionPerformedArgs { TargetedUnits = targets, ActionPerformed = this });
     }
+
+    public void DoDamage()
+    {
+        targets[currentTargetIndex].TakeDamage(fixedDamage);
+
+        currentTargetIndex++;
+    }
+
     private void HandleReturnToPositionComplete(object sender, EventArgs e)
     {
+        executor.TriggerIdleAnimation();
         combatRouter.onRoutingComplete -= HandleReturnToPositionComplete;
         onCombatActionComplete?.Invoke(this, new ActionPerformedArgs { TargetedUnits = targets });
     }
