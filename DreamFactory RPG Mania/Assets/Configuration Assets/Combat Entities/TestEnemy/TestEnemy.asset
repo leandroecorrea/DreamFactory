@@ -17,7 +17,7 @@ MonoBehaviour:
   baseMP: 25
   baseAttack: 5
   baseSpeed: 9999
-  combatEntityPrefab: {fileID: 6566625682677313314, guid: a2a9f29bf582267459f186f6429ae2cb,
+  combatEntityPrefab: {fileID: 6566625682677313314, guid: 4193e9e0e9a6b2c4dbb7c5c0576ffbd6,
     type: 3}
   actions:
   - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
