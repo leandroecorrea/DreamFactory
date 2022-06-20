@@ -12,7 +12,7 @@ public class BasicAttackHandler : ICombatAction
     private CombatEntity[] targets;
     private Vector3 initialPosition;
     private int currentTargetIndex;
-    private int fixedDamage = 10;
+    private int fixedDamage = 1000;
 
     public void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
     {
@@ -36,7 +36,6 @@ public class BasicAttackHandler : ICombatAction
     {
         // Damage the current target
         targets[currentTargetIndex].TakeDamage(fixedDamage);
-        Debug.Log($"Target {targets[currentTargetIndex].gameObject.name} took {fixedDamage} damage, its current HP is {targets[currentTargetIndex].CurrentHP}");
 
         currentTargetIndex++;
 
