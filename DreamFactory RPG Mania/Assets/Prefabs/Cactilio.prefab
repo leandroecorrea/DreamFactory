@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6566625682677313315}
   - component: {fileID: -668097277484650110}
   - component: {fileID: 211551554961450874}
+  - component: {fileID: -2895828141913799893}
   m_Layer: 0
   m_Name: Cactilio
   m_TagString: Untagged
@@ -113,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityConfig: {fileID: 11400000, guid: 4825c01bc7249564cbae960014b92890, type: 2}
+  animator: {fileID: -2895828141913799893}
   combatAction: {fileID: 11400000, guid: c65458008a14be841848f66837d5566c, type: 2}
 --- !u!114 &211551554961450874
 MonoBehaviour:
@@ -128,3 +130,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   routingSpeed: 7.5
   targetDistance: 1
+  attackArea: 0
+--- !u!95 &-2895828141913799893
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6566625682677313314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d65a9e401bd671040a4ba947852ac1ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -61,10 +61,18 @@ public class CombatEntity : MonoBehaviour
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
     {
+        animator.SetTrigger("Running");
+        Debug.Log("Seteado en running");
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction combatActionInstance = (ICombatAction)Activator.CreateInstance(combatActionType);
         combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;
+        CombatEventSystem.instance.onAttackAreaTrigger += TriggerAttackAnimation;
         combatActionInstance.ExecuteAction(this, target);        
+    }
+
+    private void TriggerAttackAnimation(CombatEntity entity)
+    {
+        animator.ResetTrigger("Running");
         animator.SetTrigger("Attack");
     }
 

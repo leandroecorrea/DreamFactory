@@ -1217,13 +1217,13 @@ MonoBehaviour:
   targetsPanel: {fileID: 1684197812}
   actionsPanel: {fileID: 1434273452}
   charactersPanel: {fileID: 2078376386}
+  targetIndicator: {fileID: 1179871488}
   combatOptionPrefab: {fileID: 8001084468119128338, guid: dbfa2fb5dcd98774593cd1f2b71d80b6,
     type: 3}
   targetOptionPrefab: {fileID: 8001084468119128338, guid: 179d634660f3f1844a92994d83dddea6,
     type: 3}
   characterStatsPrefab: {fileID: 4844194964159851255, guid: 56f80367f76c5ae4d9a5da1ede01fa03,
     type: 3}
-  targetIndicator: {fileID: 1179871488}
   actionFeedbackPrefab: {fileID: 1241133928165980219, guid: bcfbb965ee7d4e84aa264311e7d0330b,
     type: 3}
 --- !u!114 &1188401473
@@ -1814,7 +1814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1684197813
 RectTransform:
   m_ObjectHideFlags: 0

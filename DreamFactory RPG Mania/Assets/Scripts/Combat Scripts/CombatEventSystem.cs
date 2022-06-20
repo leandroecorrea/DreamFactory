@@ -13,9 +13,16 @@ public class CombatEventSystem : MonoBehaviour
 
     public event EventHandler<ActionPerformedArgs> onActionPerformed;
 
+    public Action<CombatEntity> onAttackAreaTrigger;
+
     public void OnActionPerformed(object sender, ActionPerformedArgs args)
     {
         onActionPerformed?.Invoke(sender, args);
+    }
+
+    public void OnAttackAreaTrigger(CombatEntity entity)
+    {
+        onAttackAreaTrigger?.Invoke(entity);
     }
     
 }
