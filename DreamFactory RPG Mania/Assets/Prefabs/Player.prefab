@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 383984641823725567}
   - component: {fileID: 5802998010149161121}
   - component: {fileID: 2943687722694859257}
-  - component: {fileID: -2902556456390858170}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33,8 +32,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.348, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 182211223503464680}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383984641823725566}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -99,9 +97,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2.0913973
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.021659136, z: 0}
 --- !u!54 &5802998010149161121
 Rigidbody:
   m_ObjectHideFlags: 0
