@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityConfig: {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
-  combatAction: {fileID: 11400000, guid: c65458008a14be841848f66837d5566c, type: 2}
+  combatAction: {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
 --- !u!114 &-2417585513862724144
 MonoBehaviour:
   m_ObjectHideFlags: 0

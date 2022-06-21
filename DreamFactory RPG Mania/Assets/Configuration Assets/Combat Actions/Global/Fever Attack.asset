@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Fever Attack
   description: Do a fever attack against an enemy
+  baseEffectiveness: 0
+  effectsToApply:
+  - {fileID: 11400000, guid: 2c04164df08ac834d89cd51f3b28e99f, type: 2}
   actionHandlerClassName: FeverAttackHandler
+  combatActionType: 0

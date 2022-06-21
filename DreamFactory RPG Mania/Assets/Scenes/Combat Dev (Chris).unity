@@ -1581,7 +1581,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296, type: 2}
-  useTestData: 0
+  useTestData: 1
   currentTurnEntity: {fileID: 0}
 --- !u!4 &1547774754
 Transform:

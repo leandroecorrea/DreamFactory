@@ -7,20 +7,25 @@ public class CombatEntity : MonoBehaviour
 {
     public CombatEntityConfig entityConfig;
 
-    private List<IEffectHandler> effectsCaused;
+    private Dictionary<string, List<IEffectHandler>> effectsCaused;
+    private List<IEffectHandler> effectsToRemove;
     private CombatContext currentTurnCtx;
 
     public int CurrentHP { get; private set; }    
     private int currentMaxHP;
     public int CurrentMP { get; private set; }
     private int currentMaxMP;
+
+    public int CurrentAttack { get; private set; }
     private int currentAttack;
+
     private int currentSpeed;
 
     public event EventHandler<OnTurnCompleteEventArgs> onTurnComplete;
 
     public void Awake()
     {
+        // Initializing Stats
         currentMaxHP = entityConfig.baseHP;
         CurrentHP = currentMaxHP;
 
@@ -28,7 +33,12 @@ public class CombatEntity : MonoBehaviour
         CurrentMP = currentMaxMP;
 
         currentAttack = entityConfig.baseAttack;
+        CurrentAttack = currentAttack;
+
         currentSpeed = entityConfig.baseSpeed;
+
+        // Initializing Effect Dictionary
+        effectsCaused = new Dictionary<string, List<IEffectHandler>>();
     }
 
     private void OnDestroy()
@@ -40,9 +50,15 @@ public class CombatEntity : MonoBehaviour
     {
         currentTurnCtx = turnContext;
 
-        foreach (IEffectHandler effectHandler in effectsCaused)
+        if (effectsCaused.Count > 0)
         {
-            effectHandler.HandleTurnStart(this, currentTurnCtx);
+            foreach (KeyValuePair<string, List<IEffectHandler>> effectIdToEffectHandlers in effectsCaused)
+            {
+                foreach(IEffectHandler effectHandler in effectIdToEffectHandlers.Value)
+                {
+                    effectHandler.HandleTurnStart(this, currentTurnCtx);
+                }
+            }
         }
 
         return;
@@ -50,13 +66,28 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void EndTurn(CombatContext turnContext)
     {
-        if (effectsCaused != null && effectsCaused.Count > 0)
+        if (effectsCaused.Count > 0)
         {
-            foreach (IEffectHandler effectHandler in effectsCaused)
+            foreach (KeyValuePair<string, List<IEffectHandler>> effectIdToEffectHandlers in effectsCaused)
             {
-                effectHandler.HandleTurnEnd(this, currentTurnCtx);
+                foreach (IEffectHandler effectHandler in effectIdToEffectHandlers.Value)
+                {
+                    effectHandler.HandleTurnEnd(this, currentTurnCtx);
+                }
             }
         }
+
+        if (effectsToRemove != null && effectsToRemove.Count > 0)
+        {
+            foreach (IEffectHandler effectHandlerToRemove in effectsToRemove)
+            {
+                if (effectsCaused.TryGetValue(effectHandlerToRemove.combatEffectConfig.effectId, out List<IEffectHandler> existingEffectHandlersById))
+                {
+                    existingEffectHandlersById.Remove(effectHandlerToRemove);
+                }
+            }
+        }
+        
 
         currentTurnCtx = null;
         onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this });
@@ -67,9 +98,11 @@ public class CombatEntity : MonoBehaviour
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
     {
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
-        ICombatAction combatActionInstance = (ICombatAction)Activator.CreateInstance(combatActionType);
-        combatActionInstance.onCombatActionComplete += HandleCombatActionComplete;
-        combatActionInstance.ExecuteAction(this, target);
+        ICombatAction attackHandlerInterface = (ICombatAction)Activator.CreateInstance(combatActionType);
+
+        attackHandlerInterface.combatActionConfig = action;
+        attackHandlerInterface.onCombatActionComplete += HandleCombatActionComplete;
+        attackHandlerInterface.ExecuteAction(this, target);
     }
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)
@@ -92,16 +125,53 @@ public class CombatEntity : MonoBehaviour
     {
         foreach(IEffectHandler effectHandler in affectsToApply)
         {
-            effectHandler.HandleOnApply(this, currentTurnCtx);
+            CombatEffectConfig targetEffectConfig = effectHandler.combatEffectConfig;
+
+            // There is already a list of the target effect type, check stacking
+            if (effectsCaused.TryGetValue(targetEffectConfig.effectId, out List<IEffectHandler> existingEffects))
+            {
+                if ((!targetEffectConfig.doesStack && existingEffects.Count > 0) || (targetEffectConfig.doesStack && existingEffects.Count >= targetEffectConfig.maxStackCount))
+                {
+                    continue;
+                }
+
+                effectHandler.onEffectExpire += HandleEffectExpire;
+                effectHandler.HandleOnApply(this, currentTurnCtx);
+
+                existingEffects.Add(effectHandler);
+            }
+            else
+            {
+                // The effect hasn't been applied yet, so apply it
+                effectHandler.onEffectExpire += HandleEffectExpire;
+                effectHandler.HandleOnApply(this, currentTurnCtx);
+
+                effectsCaused.Add(targetEffectConfig.effectId, new List<IEffectHandler> { effectHandler });
+            }
+                
         }
 
-        if (effectsCaused == null)
-        {
-            effectsCaused = new List<IEffectHandler>();
-        }
-
-        effectsCaused.AddRange(affectsToApply);
         return;
+    }
+
+    public void HandleEffectExpire(object sender, EventArgs e)
+    {
+        IEffectHandler effectHandlerInterfaceInstance = (IEffectHandler)sender;
+        CombatEffectConfig effectConfig = effectHandlerInterfaceInstance.combatEffectConfig;
+
+        if (effectsCaused.TryGetValue(effectConfig.effectId, out List<IEffectHandler> existingHandlers))
+        {
+            IEffectHandler effectHandlerToRemove = existingHandlers.Find(handler => handler == effectHandlerInterfaceInstance);
+            if (effectHandlerToRemove != null)
+            {
+                if (effectsToRemove == null)
+                {
+                    effectsToRemove = new List<IEffectHandler>();
+                }
+
+                effectsToRemove.Add(effectHandlerToRemove);
+            }
+        }
     }
 
     public bool IsDead()

@@ -1,18 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FeverDebuffHandler : IEffectHandler
+public class FeverDebuffHandler : BaseEffectHandler
 {
-    private int baseDamage = 10;
-
-    public void HandleOnApply(CombatEntity applicant, CombatContext combatCtx) { }
-
-    public void HandleTurnStart(CombatEntity applicant, CombatContext combatCtx) { }
-
-    public void HandleTurnEnd(CombatEntity applicant, CombatContext combatCtx)
+    public override void HandleTurnEnd(CombatEntity applicant, CombatContext combatCtx)
     {
-        applicant.TakeDamage(baseDamage);
-        Debug.Log($"Target {applicant.gameObject.name} took {baseDamage} fever damage, its current HP is {applicant.CurrentHP}");
+        base.HandleTurnEnd(applicant, combatCtx);
+
+        applicant.TakeDamage(combatEffectConfig.baseEffectiveness);
+        Debug.Log($"Target {applicant.gameObject.name} took {combatEffectConfig.baseEffectiveness} fever damage, its current HP is {applicant.CurrentHP}");
     }
 }

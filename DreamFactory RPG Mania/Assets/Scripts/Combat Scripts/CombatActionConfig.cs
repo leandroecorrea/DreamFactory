@@ -9,6 +9,10 @@ public class CombatActionConfig : ScriptableObject
     public string actionName;
     public string description;
 
+    [Header("Combat Stat Configurations")]
+    [Tooltip("Varies from action to action (I.e determines base damage for physical attacks)")] public int baseEffectiveness;
+    public List<CombatEffectConfig> effectsToApply;
+
     [Header("Programmer Configuration")]
     [Tooltip("Set this to the name of a Action Handler class name")]
     public string actionHandlerClassName;    

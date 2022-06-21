@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
-  m_Name: Cactilio
+  m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
+  m_Name: Physical Attack
   m_EditorClassIdentifier: 
-  Name: Cactilio
-  baseHP: 55
-  baseMP: 5
-  baseAttack: 2
-  baseSpeed: 1
-  combatEntityPrefab: {fileID: 6566625682677313314, guid: fe3b202dbee5917488f0bca2f51a65ac,
-    type: 3}
-  actions: []
+  actionName: Physical Attack
+  description: Do a physical attack against an enemy
+  baseEffectiveness: 10
+  actionHandlerClassName: BasicAttackHandler
+  combatActionType: 0
