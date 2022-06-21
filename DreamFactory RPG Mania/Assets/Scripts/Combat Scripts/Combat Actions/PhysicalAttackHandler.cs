@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAttackHandler : BaseAttackHandler, ICombatAction
+public class PhysicalAttackHandler : BaseAttackHandler, ICombatAction
 {
     public event EventHandler<ActionPerformedArgs> onCombatActionComplete;   
 
