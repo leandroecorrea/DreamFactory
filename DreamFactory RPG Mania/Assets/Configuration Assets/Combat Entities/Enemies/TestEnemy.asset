@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
+  m_Name: TestEnemy
+  m_EditorClassIdentifier: 
+  Name: AnEnemy
+  baseHP: 100
+  baseMP: 25
+  baseAttack: 5
+  baseSpeed: 0
+  combatEntityPrefab: {fileID: 5008707017202677556, guid: c2c4dfcd700617b47ac83f3792aab32f,
+    type: 3}
+  actions:
+  - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}

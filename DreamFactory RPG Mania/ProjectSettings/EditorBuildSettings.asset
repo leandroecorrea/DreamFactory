@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Combat Transition Dev.unity
+    guid: abbb3929055f2a64eb13f45272a608ea
+  - enabled: 1
+    path: Assets/Scenes/Combat Dev (Chris).unity
+    guid: 8f9dd3a63f622294caed188d685fb7b0
   m_configObjects: {}
