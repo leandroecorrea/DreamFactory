@@ -5,6 +5,8 @@ using UnityEngine;
 
 public interface ICombatAction
 {
+    CombatActionConfig combatActionConfig { get; set; }
+
     event EventHandler<ActionPerformedArgs> onCombatActionComplete;
 
     void ExecuteAction(CombatEntity executor, params CombatEntity[] targets);

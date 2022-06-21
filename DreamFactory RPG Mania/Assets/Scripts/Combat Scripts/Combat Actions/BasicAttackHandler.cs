@@ -3,17 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAttackHandler : ICombatAction
+public class BasicAttackHandler : BaseAttackHandler, ICombatAction
 {
     public event EventHandler<ActionPerformedArgs> onCombatActionComplete;   
 
 
+    public CombatActionConfig combatActionConfig { get; set; }
+    public int Damage { 
+        get
+        {
+            return (combatActionConfig?.baseEffectiveness ?? 0) + executor.CurrentAttack;
+        } 
+    }
+
     private CombatRouter combatRouter;
     private CombatEntity executor;
     private CombatEntity[] targets;
+
     private Vector3 initialPosition;
     private int currentTargetIndex;
-    private int fixedDamage = 1000;
 
     public void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
     {
@@ -29,7 +37,7 @@ public class BasicAttackHandler : ICombatAction
             return;
         }        
         combatRouter.onRoutingComplete += HandleMoveToAttackTargetComplete;
-        combatRouter.BeginRouting(targets[0].transform.position);
+        combatRouter.BeginRouting(targets[0].gameObject);
     }
 
     private void HandleMoveToAttackTargetComplete(object sender, EventArgs e)
@@ -44,7 +52,7 @@ public class BasicAttackHandler : ICombatAction
         // Check for more targets, if any exist then move to those
         if (currentTargetIndex < targets.Length)
         {
-            combatRouter.BeginRouting(targets[currentTargetIndex].transform.position);
+            combatRouter.BeginRouting(targets[currentTargetIndex].gameObject);
             return;
         }
 

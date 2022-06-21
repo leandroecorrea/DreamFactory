@@ -3,16 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FeverAttackHandler : ICombatAction
+public class FeverAttackHandler : BaseAttackHandler, ICombatAction
 {
     public event EventHandler<ActionPerformedArgs> onCombatActionComplete;
+
+    public CombatActionConfig combatActionConfig { get; set; }
 
     private CombatRouter combatRouter;
     private CombatEntity executor;
     private CombatEntity[] targets;
+
     private Vector3 initialPosition;
     private int currentTargetIndex;
-    private int fixedDamage = 10;
 
     public void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
     {
@@ -29,18 +31,20 @@ public class FeverAttackHandler : ICombatAction
         }
 
         combatRouter.onRoutingComplete += HandleMoveToAttackTargetComplete;
-        combatRouter.BeginRouting(targets[0].transform.position);
+        combatRouter.BeginRouting(targets[0].gameObject);
     }
 
     private void HandleMoveToAttackTargetComplete(object sender, EventArgs e)
     {
         // Damage the current target
-        targets[currentTargetIndex++].ApplyEffects(new List<IEffectHandler> { new FeverDebuffHandler() });
+        // targets[currentTargetIndex++].ApplyEffects(new List<IEffectHandler> { new FeverDebuffHandler() });
+
+        ApplyEffects(combatActionConfig.effectsToApply, targets[currentTargetIndex++]);
 
         // Check for more targets, if any exist then move to those
         if (currentTargetIndex < targets.Length)
         {
-            combatRouter.BeginRouting(targets[currentTargetIndex].transform.position);
+            combatRouter.BeginRouting(targets[currentTargetIndex].gameObject);
             return;
         }
 
