@@ -66,7 +66,7 @@ public class BasicAttackHandler : BaseAttackHandler, ICombatAction
 
     public void DoDamage()
     {
-        targets[currentTargetIndex].TakeDamage(fixedDamage);        
+        targets[currentTargetIndex].TakeDamage(Damage);        
         currentTargetIndex++;
     }
 
