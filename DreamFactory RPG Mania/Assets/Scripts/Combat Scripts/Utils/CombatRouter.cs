@@ -40,7 +40,6 @@ public class CombatRouter : MonoBehaviour
             Vector3 diffVector = (adjustedTargetRoutePosition - adjustedPosition).normalized;
             transform.position += new Vector3(diffVector.x, 0f, diffVector.z) * routingSpeed * Time.deltaTime;
 
-            Debug.Log(Vector3.Distance(adjustedPosition, adjustedTargetRoutePosition));
             adjustedPosition = new Vector3(transform.position.x, 0f, transform.position.z);
             yield return null;
         }

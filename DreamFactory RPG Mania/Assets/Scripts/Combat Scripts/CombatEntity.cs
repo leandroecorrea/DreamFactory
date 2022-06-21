@@ -94,6 +94,8 @@ public class CombatEntity : MonoBehaviour
                     existingEffectHandlersById.Remove(effectHandlerToRemove);
                 }
             }
+
+            effectsToRemove = null;
         }
         
 

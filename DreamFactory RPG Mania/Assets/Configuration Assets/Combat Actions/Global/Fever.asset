@@ -18,5 +18,5 @@ MonoBehaviour:
   effectsToApply:
   - {fileID: 11400000, guid: 2c04164df08ac834d89cd51f3b28e99f, type: 2}
   actionHandlerClassName: FeverAttackHandler
-  combatActionType: 1
+  combatActionType: 0
   targetType: 1
