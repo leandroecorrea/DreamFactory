@@ -12,8 +12,6 @@ public class CombatRouter : MonoBehaviour
     private bool snapToPosition;
     public event EventHandler onRoutingComplete;
 
-
-
     public void BeginRouting(GameObject targetToRouteTo)
     {
         targetDistance = targetToRouteTo.transform.localScale.magnitude;
