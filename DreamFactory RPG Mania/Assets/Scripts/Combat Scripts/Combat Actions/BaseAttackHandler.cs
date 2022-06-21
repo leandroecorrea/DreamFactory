@@ -15,7 +15,7 @@ public abstract class BaseAttackHandler : ICombatAction
     protected Vector3 initialPosition;
     protected int currentTargetIndex;
 
-    public void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
+    public virtual void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
     {
         this.executor = executor;
         this.targets = targets;
@@ -55,7 +55,7 @@ public abstract class BaseAttackHandler : ICombatAction
     {
         CombatEntity targetCombatEntity = ((CombatRouter)sender).GetComponent<CombatEntity>();
         
-        targetCombatEntity.TriggerAttackAnimation();
+        targetCombatEntity.TriggerHitAnimation();
         targetCombatEntity.onAnimationComplete += HandleAttackAnimationComplete;
     }
 

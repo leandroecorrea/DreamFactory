@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 1170688846626861461}
   - component: {fileID: 7449330649396601833}
   m_Layer: 0
-  m_Name: TestEnemyPlaceholder
+  m_Name: KrakenPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9990eef5aebc247ac46952497d3690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityConfig: {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
+  entityConfig: {fileID: 11400000, guid: aa0b06ba21a0c9841910b74a927790e5, type: 2}
   animator: {fileID: 1741059099112683508}
   combatAction: {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
 --- !u!114 &5452128709867985166

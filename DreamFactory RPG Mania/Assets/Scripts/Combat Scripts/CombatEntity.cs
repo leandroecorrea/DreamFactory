@@ -12,11 +12,12 @@ public class CombatEntity : MonoBehaviour
     private CombatContext currentTurnCtx;
     [SerializeField] private Animator animator;
     public int CurrentHP { get; private set; }    
+
     private int currentMaxHP;
     public int CurrentMP { get; private set; }
     private int currentMaxMP;
 
-    public int CurrentAttack { get; private set; }
+    public int CurrentAttack { get; set; }
     private int currentAttack;
 
     private int currentSpeed;
@@ -47,7 +48,10 @@ public class CombatEntity : MonoBehaviour
     {
         onAnimationComplete?.Invoke();
     }
-
+    public void TriggerSpellAnimation()
+    {
+        animator.SetTrigger("SPELL");
+    }
 
     private void OnDestroy()
     {
@@ -106,8 +110,9 @@ public class CombatEntity : MonoBehaviour
     }
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
-    {
-        animator.SetTrigger("Running");        
+    {        
+        Debug.Log(action.combatActionType);
+        animator.SetTrigger(action.combatActionType.ToString());        
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction attackHandlerInterface = (ICombatAction)Activator.CreateInstance(combatActionType);
         attackHandlerInterface.combatActionConfig = action;
@@ -117,14 +122,14 @@ public class CombatEntity : MonoBehaviour
 
     internal void TriggerIdleAnimation()
     {
-        animator.ResetTrigger("Running");
+        //animator.ResetTrigger("ATTACK");
         animator.SetTrigger("Idle");
     }
 
-    public void TriggerAttackAnimation()
+    public void TriggerHitAnimation()
     {
-        animator.ResetTrigger("Running");
-        animator.SetTrigger("Attack");
+        //animator.ResetTrigger("ATTACK");
+        animator.SetTrigger("HIT");
     }
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)

@@ -104,26 +104,47 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         //CleanCombatOptions(actionsPanel);
         currentAction = action;
         //Don't like this switch
-        switch (action.combatActionType)
+        switch (action.targetType)
         {
-            case CombatActionType.ATTACK:
+            case TargetType.ENEMIES:
                 CleanCombatActions(actionsPanel);
                 CleanTargets(targetsPanel);
                 ShowEnemiesList();
                 //Show targets list and target indicator
                 break;
-            case CombatActionType.SPELL:
+            case TargetType.ALLIES:
+                CleanCombatActions(actionsPanel);
+                CleanTargets(targetsPanel);
+                ShowAlliesList();
                 //Show spells UI
-                break;
-            case CombatActionType.ITEM:
-            //Show all items in inventory
-            case CombatActionType.RUN:
-            //Try to run
+                break;            
             default:
                 //Do nothing
                 break;
         }
     }
+
+    private void ShowAlliesList()
+    {
+        actionsPanel.SetActive(false);
+        targetsPanel.gameObject.SetActive(true);
+        combatContext.playerParty.ForEach(ally =>
+        {
+            var targetListElement = Instantiate(targetOptionPrefab);
+            if (targetListElement.TryGetComponent(out TargetOptionPrefab targetPrefab))
+            {
+                targetPrefab.optionName.text = ally.entityConfig.Name;
+                targetPrefab.Attach(ally.entityConfig);
+                targetPrefab.Subscribe(this);
+                targetPrefab.optionButton.onClick.AddListener(delegate
+                {
+                    ReceiveInputFor(currentAction);
+                });
+            }
+            targetListElement.transform.SetParent(targetsPanel.transform, false);
+        });
+    }
+
     private void ShowCharactersPanel()
     {
         CleanCharacterStats(charactersPanel);
@@ -159,14 +180,17 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     }
     public void SwitchTarget(CombatEntityConfig enemyConfig)
     {
-        currentTarget = combatContext.enemyParty.Where(combatEntity => combatEntity.entityConfig == enemyConfig).FirstOrDefault();
+        var allPossibleTargets = new List<CombatEntity>();
+        allPossibleTargets.AddRange(combatContext.enemyParty);
+        allPossibleTargets.AddRange(combatContext.playerParty);
+        currentTarget = allPossibleTargets.Where(combatEntity => combatEntity.entityConfig == enemyConfig).FirstOrDefault();
         if (currentTarget != null)
         {
             targetIndicator.gameObject.SetActive(true);
             var indicatorPosition = currentTarget.transform.position;
             indicatorPosition.y += currentTarget.transform.localScale.y * 2;
             targetIndicator.transform.position = indicatorPosition;
-            turnMessage.text = $"Enemy {currentTarget.entityConfig.Name} is being targeted";
+            turnMessage.text = $"{currentTarget.entityConfig.Name} is being targeted";
         }
     }
 
