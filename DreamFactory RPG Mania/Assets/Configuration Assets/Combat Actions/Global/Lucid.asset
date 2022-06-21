@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
-  m_Name: Physical Attack
+  m_Name: Lucid
   m_EditorClassIdentifier: 
-  actionName: Physical Attack
-  description: Do a physical attack against an enemy
-  baseEffectiveness: 10
-  effectsToApply: []
-  actionHandlerClassName: PhysicalAttackHandler
-  combatActionType: 0
-  targetType: 1
+  actionName: Lucid
+  description: Doubles target's attack power for two turns
+  baseEffectiveness: 100
+  effectsToApply:
+  - {fileID: 11400000, guid: 7e60fdc4b2310b042bebf6cee875c3f8, type: 2}
+  actionHandlerClassName: LucidAttackHandler
+  combatActionType: 1
+  targetType: 0
