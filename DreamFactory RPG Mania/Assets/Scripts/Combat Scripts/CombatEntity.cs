@@ -200,7 +200,7 @@ public class CombatEntity : MonoBehaviour
                 effectsToRemove.Add(effectHandlerToRemove);
             }
         }
-    }
+    }    
 
     public bool IsDead()
     {
