@@ -16,8 +16,8 @@ public class CombatSpawner : MonoBehaviour
     public List<CombatEntity> SpawnParties(CombatStartRequest request)
     {
         var parties = new List<CombatEntity>();
-        parties.AddRange(SpawnEntities(playerTeamArenaOrigin, request.allies.Select(x => x.combatEntityPrefab).ToList()));
-        parties.AddRange(SpawnEntities(enemyTeamArenaOrigin, request.enemies.Select(x => x.combatEntityPrefab).ToList()));
+        parties.AddRange(SpawnEntities(playerTeamArenaOrigin, enemyTeamArenaOrigin, request.allies.Select(x => x.combatEntityPrefab).ToList()));
+        parties.AddRange(SpawnEntities(enemyTeamArenaOrigin, playerTeamArenaOrigin, request.enemies.Select(x => x.combatEntityPrefab).ToList()));
         return parties;
     }
 
@@ -32,7 +32,7 @@ public class CombatSpawner : MonoBehaviour
         Gizmos.DrawWireCube(enemyTeamArenaOrigin, rowSize);
     }
 
-    private List<CombatEntity> SpawnEntities(Vector3 playerTeamArenaOrigin, List<GameObject> entitiesToSpawn)
+    private List<CombatEntity> SpawnEntities(Vector3 playerTeamArenaOrigin, Vector3 opposingArenaOrigin, List<GameObject> entitiesToSpawn)
     {
         List<CombatEntity> entities = new List<CombatEntity>();
         // If only one entity, place them dead center
@@ -56,7 +56,9 @@ public class CombatSpawner : MonoBehaviour
             int entitiesInRow = Mathf.Min((entitiesToSpawn.Count - runningEntitiySpawnIndex), rowCapacity);
             if (entitiesInRow == 1)
             {
-                var entity = GameObject.Instantiate(entitiesToSpawn[runningEntitiySpawnIndex], currentRowOrigin, Quaternion.identity);
+                GameObject entity = GameObject.Instantiate(entitiesToSpawn[runningEntitiySpawnIndex], currentRowOrigin, Quaternion.identity);
+                entity.transform.LookAt(new Vector3(opposingArenaOrigin.x, transform.position.y, opposingArenaOrigin.z), Vector3.up);
+
                 entities.Add(entity.GetComponent<CombatEntity>());
                 break;
             }
@@ -65,6 +67,8 @@ public class CombatSpawner : MonoBehaviour
             for (int i = 0; i < entitiesInRow; i++)
             {
                 var entity = GameObject.Instantiate(entitiesToSpawn[runningEntitiySpawnIndex++], runningPosition, Quaternion.identity);
+                entity.transform.LookAt(new Vector3(opposingArenaOrigin.x, transform.position.y, opposingArenaOrigin.z), Vector3.up);
+
                 entities.Add(entity.GetComponent<CombatEntity>());
                 runningPosition.x += xIncrement;
             }
