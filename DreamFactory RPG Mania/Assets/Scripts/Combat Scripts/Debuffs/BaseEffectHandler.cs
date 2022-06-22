@@ -39,9 +39,14 @@ public class BaseEffectHandler : IEffectHandler
 
             if (RemainingRounds == 0)
             {
-                Debug.Log("Effect Expired!");
-                onEffectExpire?.Invoke(this, EventArgs.Empty);
+                HandleEffectExpire();
             }
         }
+    }
+
+    protected virtual void HandleEffectExpire()
+    {
+        Debug.Log("Effect Expired!");
+        onEffectExpire?.Invoke(this, EventArgs.Empty);
     }
 }
