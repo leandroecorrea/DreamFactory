@@ -12,9 +12,11 @@ public class PhysicalAttackHandler : BaseAttackHandler
         } 
     }
 
-    protected override void HandleActionExecution()
+    protected override ActionPerformedArgs HandleActionExecution()
     {
-        targets[currentTargetIndex].TakeDamage(Damage);        
-        currentTargetIndex++;
+        CombatEntity currentTarget = targets[currentTargetIndex++];
+        currentTarget.TakeDamage(Damage);
+
+        return new ActionPerformedArgs { TargetedUnits = new CombatEntity[] { currentTarget }, ActionPerformed = this, feedbackMessage = $"{Damage}" };
     }
 }

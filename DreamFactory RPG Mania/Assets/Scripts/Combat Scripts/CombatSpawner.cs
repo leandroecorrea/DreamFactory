@@ -39,6 +39,8 @@ public class CombatSpawner : MonoBehaviour
         if (entitiesToSpawn.Count == 1)
         {
             var entity = GameObject.Instantiate(entitiesToSpawn[0], playerTeamArenaOrigin, Quaternion.identity);
+            entity.transform.LookAt(new Vector3(opposingArenaOrigin.x, transform.position.y, opposingArenaOrigin.z), Vector3.up);
+
             entities.Add(entity.GetComponent<CombatEntity>());
             return entities;
         }

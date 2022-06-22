@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Lucid
   description: Doubles target's attack power for two turns
+  requireRouting: 0
   baseEffectiveness: 100
   effectsToApply:
   - {fileID: 11400000, guid: 7e60fdc4b2310b042bebf6cee875c3f8, type: 2}

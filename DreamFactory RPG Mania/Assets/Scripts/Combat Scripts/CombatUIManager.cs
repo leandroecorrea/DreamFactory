@@ -28,14 +28,15 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     private void OnEnable()
     {
         combatManager.onCombatTurnStart += handleCombatTurnStart;        
-        CombatEventSystem.instance.onActionPerformed += CombatEventSystem_onActionPerformed;
+        CombatEventSystem.instance.onCombatEntityDamaged += HandleCombatEntityDamageFeedback;
     }
 
-    private void CombatEventSystem_onActionPerformed(object sender, ActionPerformedArgs e)
-    {        
-        var currentTarget = e.TargetedUnits.FirstOrDefault();
-        var feedback = Instantiate(actionFeedbackPrefab, currentTarget.transform.position, Quaternion.identity);
-        feedback.GetComponent<TMP_Text>().text = e.ActionPerformed.ToString();
+    private void HandleCombatEntityDamageFeedback(object sender, CombatEntityDamagedArgs e)
+    {
+        CombatEntity currentTarget = (CombatEntity)sender;
+        GameObject feedback = Instantiate(actionFeedbackPrefab, currentTarget.transform.position, Quaternion.identity);
+
+        feedback.GetComponent<TMP_Text>().text = $"{e.damageTaken}";
         feedback.transform.SetParent(playerUI.transform, false);
     }
 

@@ -111,10 +111,11 @@ public class CombatEntity : MonoBehaviour
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
     {        
-        Debug.Log(action.combatActionType);
-        animator.SetTrigger(action.combatActionType.ToString());        
+        // animator.SetTrigger(action.combatActionType.ToString());
+        
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction attackHandlerInterface = (ICombatAction)Activator.CreateInstance(combatActionType);
+
         attackHandlerInterface.combatActionConfig = action;
         attackHandlerInterface.onCombatActionComplete += HandleCombatActionComplete;
         attackHandlerInterface.ExecuteAction(this, target);        
@@ -122,13 +123,16 @@ public class CombatEntity : MonoBehaviour
 
     internal void TriggerIdleAnimation()
     {
-        //animator.ResetTrigger("ATTACK");
-        animator.SetTrigger("Idle");
+        animator.SetBool("IsMoving", false);
+    }
+
+    internal void TriggerRunningAnimation()
+    {
+        animator.SetBool("IsMoving", true);
     }
 
     public void TriggerHitAnimation()
     {
-        //animator.ResetTrigger("ATTACK");
         animator.SetTrigger("HIT");
     }
 
@@ -139,9 +143,11 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        animator.SetTrigger("IsHit");
+        animator.SetTrigger("Damaged");
+
         CurrentHP -= damage;
-        
+        CombatEventSystem.instance.OnCombatEntityDamage(this, new CombatEntityDamagedArgs { damageTaken = damage });
+
         if (IsDead())
         {
             // TODO: Remove this once hooked up to animation event

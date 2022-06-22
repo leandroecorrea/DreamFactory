@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class LucidAttackHandler : BaseAttackHandler
 {
-    
-    protected override void HandleActionExecution()
+    protected override ActionPerformedArgs HandleActionExecution()
     {
-        ApplyEffects(combatActionConfig.effectsToApply, targets);
-        executor.GetComponent<Animator>().GetBehaviour<Spell_CombatBehaviour>().onSpellAnimationComplete -= HandleActionExecution;
-        OnCombatActionComplete(this, new ActionPerformedArgs { TargetedUnits = targets });
+        CombatEntity targetEntity = targets[currentTargetIndex++];
+
+        ApplyEffects(combatActionConfig.effectsToApply, targetEntity);
+        return new ActionPerformedArgs { TargetedUnits = new CombatEntity[] { targetEntity }, ActionPerformed = this, feedbackMessage = "" };
+
+        // executor.GetComponent<Animator>().GetBehaviour<Spell_CombatBehaviour>().onSpellAnimationComplete -= HandleActionExecution;
+        // OnCombatActionComplete(this, new ActionPerformedArgs { TargetedUnits = targets });
     }
-    public override void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
-    {
-        this.executor = executor;
-        this.targets = targets;
-        executor.TriggerSpellAnimation();
-        //suscribe to an animator event on behaviour finished
-        executor.GetComponent<Animator>().GetBehaviour<Spell_CombatBehaviour>().onSpellAnimationComplete += HandleActionExecution;
-    }
+
+    //public override void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
+    //{
+    //    this.executor = executor;
+    //    this.targets = targets;
+    //    executor.TriggerSpellAnimation();
+    //    //suscribe to an animator event on behaviour finished
+    //    executor.GetComponent<Animator>().GetBehaviour<Spell_CombatBehaviour>().onSpellAnimationComplete += HandleActionExecution;
+    //}
 }

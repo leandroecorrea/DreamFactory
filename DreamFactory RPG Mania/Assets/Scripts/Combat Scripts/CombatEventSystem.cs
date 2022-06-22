@@ -12,6 +12,7 @@ public class CombatEventSystem : MonoBehaviour
     }
 
     public event EventHandler<ActionPerformedArgs> onActionPerformed;
+    public event EventHandler<CombatEntityDamagedArgs> onCombatEntityDamaged;
     public event EventHandler<CombatEntityKilledArgs> onCombatEntityKilled;
 
     public Action<CombatEntity> onAttackAreaTrigger;
@@ -26,6 +27,11 @@ public class CombatEventSystem : MonoBehaviour
         onAttackAreaTrigger?.Invoke(entity);
     }
     
+    public void OnCombatEntityDamage(object sender, CombatEntityDamagedArgs args)
+    {
+        onCombatEntityDamaged?.Invoke(sender, args);
+    }
+
     public void OnCombatEntityKilled(object sender, CombatEntityKilledArgs args)
     {
         onCombatEntityKilled?.Invoke(sender, args);
@@ -35,4 +41,9 @@ public class CombatEventSystem : MonoBehaviour
 public class CombatEntityKilledArgs : EventArgs
 {
     public CombatEntity entityKilled;
+}
+
+public class CombatEntityDamagedArgs : EventArgs
+{
+    public int damageTaken;
 }

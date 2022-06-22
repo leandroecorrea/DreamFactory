@@ -1242,9 +1242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatSpawner: {fileID: 1188401473}
   testEnemies:
-  - {fileID: 11400000, guid: 4825c01bc7249564cbae960014b92890, type: 2}
   - {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
-  - {fileID: 11400000, guid: aa0b06ba21a0c9841910b74a927790e5, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296, type: 2}
   useTestData: 1

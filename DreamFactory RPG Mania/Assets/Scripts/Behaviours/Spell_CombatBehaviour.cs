@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Spell_CombatBehaviour : StateMachineBehaviour
 {
-    public Action onSpellAnimationComplete;
+    // public Action onSpellAnimationComplete;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -21,7 +21,9 @@ public class Spell_CombatBehaviour : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        onSpellAnimationComplete?.Invoke();
+        // onSpellAnimationComplete?.Invoke();
+
+        animator.GetComponent<CombatEntity>().OnAnimationComplete();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

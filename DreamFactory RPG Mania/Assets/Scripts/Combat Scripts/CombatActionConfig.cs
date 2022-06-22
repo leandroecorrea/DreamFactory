@@ -9,6 +9,9 @@ public class CombatActionConfig : ScriptableObject
     public string actionName;
     public string description;
 
+    [Header("Routing Configuration")]
+    [Tooltip("Enable this for attacks that require the Combat Entity to approach the target (I.e Physical Attack)")] public bool requireRouting = true;
+
     [Header("Combat Stat Configurations")]
     [Tooltip("Varies from action to action (I.e determines base damage for physical attacks)")] public int baseEffectiveness;
     public List<CombatEffectConfig> effectsToApply;
