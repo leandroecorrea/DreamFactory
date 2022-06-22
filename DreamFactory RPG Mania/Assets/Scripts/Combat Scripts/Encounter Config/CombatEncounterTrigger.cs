@@ -16,8 +16,13 @@ public class CombatEncounterTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            CombatManager.currentStartRequest = new CombatStartRequest(targetEncounter.enemies, new List<CombatEntityConfig> { playerEntityConfig }, SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene(targetEncounter.targetCombatSceneName);
+            //CombatManager.currentStartRequest = new CombatStartRequest(targetEncounter.enemies, new List<CombatEntityConfig> { playerEntityConfig }, SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(targetEncounter.targetCombatSceneName);
+
+            CombatTransitionManager.instance.InitializeCombatTransition(
+                new CombatStartRequest(targetEncounter.enemies, new List<CombatEntityConfig> { playerEntityConfig }, SceneManager.GetActiveScene().name),
+                targetEncounter.targetCombatSceneName
+            );
         }
     }
 }
