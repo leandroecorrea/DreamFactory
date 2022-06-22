@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 {
@@ -17,13 +18,15 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     [SerializeField] private GameObject actionsPanel;
     [SerializeField] private GameObject charactersPanel;
     [SerializeField] private GameObject targetIndicator;
+    [SerializeField] private GameObject backButton;
 
     [Header("Prefabs")]
     [SerializeField] private GameObject combatOptionPrefab;
     [SerializeField] private GameObject targetOptionPrefab;
     [SerializeField] private GameObject characterStatsPrefab;
-    [SerializeField] private GameObject actionFeedbackPrefab;    
-
+    [SerializeField] private GameObject actionFeedbackPrefab;
+    [SerializeField] private GameObject effectsIconPrefab;
+    [SerializeField] private Camera view;
     private CombatEntity currentTarget;
     private CombatContext combatContext;
     private CombatActionConfig currentAction;    
@@ -36,12 +39,18 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 
     private void HandleCombatEntityDamageFeedback(object sender, CombatEntityDamagedArgs e)
     {
-        CombatEntity currentTarget = (CombatEntity)sender;
-        GameObject feedback = Instantiate(actionFeedbackPrefab, currentTarget.transform.position, Quaternion.identity);
-
+        CombatEntity damagedUnit = (CombatEntity)sender;        
+        var position = view.WorldToScreenPoint(damagedUnit.transform.position);
+        position.x = position.x - view.pixelWidth / 2;
+        position.y = position.y - view.pixelHeight / 2;
+        Debug.Log(position);
+        GameObject feedback = Instantiate(actionFeedbackPrefab, position, Quaternion.identity);
         feedback.GetComponent<TMP_Text>().text = $"{e.damageTaken}";
-        feedback.transform.SetParent(playerUI.transform, false);
+        feedback.transform.SetParent(playerUI.transform, false);        
     }
+
+
+   
 
     private void handleCombatTurnStart(CombatContext ctx)
     {        
@@ -111,6 +120,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     {
         //CleanCombatOptions(actionsPanel);
         currentAction = action;
+        backButton.SetActive(true);
         //Don't like this switch
         switch (action.targetType)
         {
@@ -123,12 +133,21 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
             case TargetType.ALLIES:
                 CleanCombatActions(actionsPanel);
                 CleanTargets(targetsPanel);
-                ShowAlliesList();
-                
+                ShowAlliesList();                
                 break;            
             default:
                 break;
         }
+    }
+
+    public void BackToPreviousView()
+    {       
+        CleanTargets(targetsPanel);
+        CleanCombatActions(actionsPanel);
+        ShowActions();
+        ShowTurnMessage();
+        targetIndicator.SetActive(false);
+        backButton.SetActive(false);
     }
 
     private void ShowAlliesList()
@@ -158,12 +177,19 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         combatContext.playerParty.ForEach(character =>
         {
             var statsPrefab = Instantiate(characterStatsPrefab);
-            var component = statsPrefab.GetComponent<CharacterStatsPrefab>();
-            component.characterName.text = character.entityConfig.Name;
-            component.HP.text = $"{character.CurrentHP}/{character.entityConfig.baseHP}";
-            component.MP.text = $"{character.CurrentMP}/{character.entityConfig.baseMP}";
-            statsPrefab.transform.SetParent(charactersPanel.transform, false);
+            var characterStats = statsPrefab.GetComponent<CharacterStatsPrefab>();
+            characterStats.characterName.text = character.entityConfig.Name;
+            characterStats.HP.text = $"{character.CurrentHP}/{character.entityConfig.baseHP}";
+            characterStats.MP.text = $"{character.CurrentMP}/{character.entityConfig.baseMP}";
+            statsPrefab.transform.SetParent(charactersPanel.transform, false);            
+            int maxIterations = Mathf.Min(character.EffectsCaused.Count, characterStats.effectIcons.Length);
+            for (int i = 0; i < maxIterations; i++)
+            {
+                characterStats.effectIcons[i].enabled = true;
+                characterStats.effectIcons[i].sprite = character.EffectsCaused[i].combatEffectConfig.displayIcon;
+            }
         });
+        
     }
     private void ShowEnemiesList()
     {
@@ -184,30 +210,57 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
             }
             targetListElement.transform.SetParent(targetsPanel.transform, false);
         });
+        SetCurrentDefaultEnemyTarget();
     }
+
+    private void SetCurrentDefaultEnemyTarget()
+    {
+        currentTarget = combatContext.enemyParty.FirstOrDefault();
+        ShowTargetIndicator();
+    }
+
     public void SwitchTarget(CombatEntityConfig enemyConfig)
     {
         var allPossibleTargets = new List<CombatEntity>();
         allPossibleTargets.AddRange(combatContext.enemyParty);
         allPossibleTargets.AddRange(combatContext.playerParty);
         currentTarget = allPossibleTargets.Where(combatEntity => combatEntity.entityConfig == enemyConfig).FirstOrDefault();
+        ShowTargetIndicator();
+    }
+
+    private void ShowTargetIndicator()
+    {
         if (currentTarget != null)
         {
             targetIndicator.gameObject.SetActive(true);
+            
             var indicatorPosition = currentTarget.transform.position;
             indicatorPosition.y += currentTarget.transform.localScale.y * 2;
             targetIndicator.transform.position = indicatorPosition;
             turnMessage.text = $"{currentTarget.entityConfig.Name} is being targeted";
         }
     }
+    private void ShowEffectsApplied(CombatEntity controllableEntity)
+    {
+        Debug.Log(controllableEntity is PlayerControllableEntity);
+        var targetRow = charactersPanel.GetComponentsInChildren<CharacterStatsPrefab>().Where(x => x.characterName.text == controllableEntity.entityConfig.Name).FirstOrDefault();
+        int maxIterations = Mathf.Min(controllableEntity.EffectsCaused.Count, targetRow.effectIcons.Length);
+        for (int i = 0; i < maxIterations; i++)
+        {
+            targetRow.effectIcons[i].enabled = true;
+        }
+    }
+
 
     private void ReceiveInputFor(CombatActionConfig action)
     {        
         var currentCharacter = combatContext.currentTurnEntity;
         if (currentTarget != null)
         {
+            HideUIForPlayer();
             currentCharacter.PerformAction(action, currentTarget);
             currentTarget = null;
+            backButton.gameObject.SetActive(false);
         }
     }
 

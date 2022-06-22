@@ -63,4 +63,20 @@ public class CombatRouter : MonoBehaviour
 
         onRoutingComplete?.Invoke(this, EventArgs.Empty);
     }
+
+    public void MakeLookTo(params CombatEntity[] targets)
+    {
+        var average = GetAveragePositionFor(targets);        
+        transform.LookAt(average);
+    }
+
+    private Vector3 GetAveragePositionFor(CombatEntity[] targets)
+    {
+        var accumulation = Vector3.zero;
+        for (int i = 0; i < targets.Length; i++)
+        {
+            accumulation+=targets[i].transform.position;
+        }
+        return accumulation / targets.Length;
+    }
 }

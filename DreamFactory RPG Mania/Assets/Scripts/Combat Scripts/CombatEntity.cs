@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CombatEntity : MonoBehaviour
@@ -12,13 +13,25 @@ public class CombatEntity : MonoBehaviour
     private CombatContext currentTurnCtx;
     [SerializeField] private Animator animator;
 
-    public int CurrentHP { get; private set; }    
+    public int CurrentHP { get; private set; }
     private int currentMaxHP;
 
     public int CurrentMP { get; private set; }
     private int currentMaxMP;
 
     public int CurrentAttack { get; set; }
+    public List<IEffectHandler> EffectsCaused
+    {
+        get {
+            var list = new List<IEffectHandler>();
+            foreach(var listOfEffects in effectsCaused.Values)
+            {
+                list.AddRange(listOfEffects);
+            }
+            return list;
+        }
+    }
+
     private int currentAttack;
 
     public event EventHandler<OnTurnCompleteEventArgs> onTurnComplete;
@@ -53,7 +66,7 @@ public class CombatEntity : MonoBehaviour
         {
             foreach (KeyValuePair<string, List<IEffectHandler>> effectIdToEffectHandlers in effectsCaused)
             {
-                foreach(IEffectHandler effectHandler in effectIdToEffectHandlers.Value)
+                foreach (IEffectHandler effectHandler in effectIdToEffectHandlers.Value)
                 {
                     effectHandler.HandleTurnStart(this, currentTurnCtx);
                 }
@@ -88,7 +101,7 @@ public class CombatEntity : MonoBehaviour
 
             effectsToRemove = null;
         }
-        
+
 
         currentTurnCtx = null;
         onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this });
@@ -97,15 +110,15 @@ public class CombatEntity : MonoBehaviour
     }
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
-    {        
+    {
         // animator.SetTrigger(action.combatActionType.ToString());
-        
+
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction attackHandlerInterface = (ICombatAction)Activator.CreateInstance(combatActionType);
 
         attackHandlerInterface.combatActionConfig = action;
         attackHandlerInterface.onCombatActionComplete += HandleCombatActionComplete;
-        attackHandlerInterface.ExecuteAction(this, target);        
+        attackHandlerInterface.ExecuteAction(this, target);
     }
 
     public void UpdateEntityMP(int newMP)
@@ -154,7 +167,7 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void ApplyEffects(List<IEffectHandler> affectsToApply)
     {
-        foreach(IEffectHandler effectHandler in affectsToApply)
+        foreach (IEffectHandler effectHandler in affectsToApply)
         {
             CombatEffectConfig targetEffectConfig = effectHandler.combatEffectConfig;
 
@@ -179,7 +192,7 @@ public class CombatEntity : MonoBehaviour
 
                 effectsCaused.Add(targetEffectConfig.effectId, new List<IEffectHandler> { effectHandler });
             }
-                
+
         }
 
         return;
@@ -203,7 +216,7 @@ public class CombatEntity : MonoBehaviour
                 effectsToRemove.Add(effectHandlerToRemove);
             }
         }
-    }    
+    }
 
     public bool IsDead()
     {
@@ -220,4 +233,4 @@ public class CombatEntity : MonoBehaviour
 public class OnTurnCompleteEventArgs : EventArgs
 {
     public CombatEntity targetEntity { get; set; }
-} 
+}

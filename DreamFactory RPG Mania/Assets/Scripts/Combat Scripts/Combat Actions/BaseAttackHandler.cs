@@ -44,7 +44,9 @@ public abstract class BaseAttackHandler : ICombatAction
         else
         {
             // For attacks that don't need routing (I.e far range magic spell, immediately execute)
-            HandleMoveToAttackTargetComplete(executor.GetComponent<CombatRouter>(), EventArgs.Empty);
+            var router = executor.GetComponent<CombatRouter>();
+            router.MakeLookTo(targets);
+            HandleMoveToAttackTargetComplete(router, EventArgs.Empty);
         }
         
     }

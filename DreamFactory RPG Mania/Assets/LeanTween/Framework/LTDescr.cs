@@ -1,5 +1,6 @@
 //namespace DentedPixel{
 using System;
+using TMPro;
 using UnityEngine;
 
 /**
@@ -86,6 +87,7 @@ public class LTDescr
 	public UnityEngine.UI.Image uiImage;
 	public UnityEngine.UI.RawImage rawImage;
 	public UnityEngine.Sprite[] sprites;
+	public TMP_Text textMeshPro;
 #endif
 
     // Convenience Getters
@@ -1039,7 +1041,23 @@ public class LTDescr
 		this._optional.axis = new Vector3( col.r, col.g, col.b );
 		return this;
 	}
-
+	public LTDescr setTMP_TextColor()
+	{
+		this.type = TweenAction.IMAGE_COLOR;
+		this.initInternal = () => {
+			this.textMeshPro = trans.GetComponent<TMP_Text>();
+			this.setFromColor(this.textMeshPro != null ? this.textMeshPro.color : Color.white);
+		};
+		this.easeInternal = () => {
+			newVect = easeMethod();
+			val = newVect.x;
+			Color toColor = tweenColor(this, val);
+			this.textMeshPro.color = toColor;
+			if (dt != 0f && this._optional.onUpdateColor != null)
+				this._optional.onUpdateColor(toColor);
+		};
+		return this;
+	}
 	private static void alphaRecursive( Transform transform, float val, bool useRecursion = true){
 		Renderer renderer = transform.gameObject.GetComponent<Renderer>();
 		if(renderer!=null){
