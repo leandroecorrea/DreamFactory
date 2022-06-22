@@ -9,6 +9,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 {
     [Header("Refs")]
     [SerializeField] private CombatManager combatManager;
+
     [Header("Player UI")]
     [SerializeField] private GameObject playerUI;
     [SerializeField] private TMP_Text turnMessage;
@@ -16,11 +17,13 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     [SerializeField] private GameObject actionsPanel;
     [SerializeField] private GameObject charactersPanel;
     [SerializeField] private GameObject targetIndicator;
+
     [Header("Prefabs")]
     [SerializeField] private GameObject combatOptionPrefab;
     [SerializeField] private GameObject targetOptionPrefab;
     [SerializeField] private GameObject characterStatsPrefab;
     [SerializeField] private GameObject actionFeedbackPrefab;    
+
     private CombatEntity currentTarget;
     private CombatContext combatContext;
     private CombatActionConfig currentAction;    
@@ -90,11 +93,15 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
             if (optionListElement.TryGetComponent(out CombatOptionPrefab targetPrefab))
             {
                 targetPrefab.optionName.text = action.actionName;
-                targetPrefab.optionButton.onClick.AddListener(delegate
+
+                targetPrefab.optionButton.interactable = (combatContext.currentTurnEntity.CurrentMP >= action.requireMana);
+                if (targetPrefab.optionButton.interactable)
                 {
-                    OnActionChosen(action);
-                });
-                var button = targetPrefab.optionButton;
+                    targetPrefab.optionButton.onClick.AddListener(delegate
+                    {
+                        OnActionChosen(action);
+                    });
+                } 
             }
             optionListElement.transform.SetParent(actionsPanel.transform, false);
         });
@@ -111,16 +118,15 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
                 CleanCombatActions(actionsPanel);
                 CleanTargets(targetsPanel);
                 ShowEnemiesList();
-                //Show targets list and target indicator
+                
                 break;
             case TargetType.ALLIES:
                 CleanCombatActions(actionsPanel);
                 CleanTargets(targetsPanel);
                 ShowAlliesList();
-                //Show spells UI
+                
                 break;            
             default:
-                //Do nothing
                 break;
         }
     }

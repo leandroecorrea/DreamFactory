@@ -13,6 +13,7 @@ public class CombatActionConfig : ScriptableObject
     [Tooltip("Enable this for attacks that require the Combat Entity to approach the target (I.e Physical Attack)")] public bool requireRouting = true;
 
     [Header("Combat Stat Configurations")]
+    public int requireMana = 0;
     [Tooltip("Varies from action to action (I.e determines base damage for physical attacks)")] public int baseEffectiveness;
     public List<CombatEffectConfig> effectsToApply;
 

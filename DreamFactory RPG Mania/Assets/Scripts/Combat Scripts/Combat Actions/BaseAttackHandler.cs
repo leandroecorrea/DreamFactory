@@ -22,6 +22,8 @@ public abstract class BaseAttackHandler : ICombatAction
         this.initialPosition = executor.gameObject.transform.position;
         this.currentTargetIndex = 0;
 
+        executor.UpdateEntityMP(executor.CurrentMP - combatActionConfig.requireMana);
+
         combatRouter = executor.gameObject.GetComponent<CombatRouter>();
         if (combatRouter == null)
         {

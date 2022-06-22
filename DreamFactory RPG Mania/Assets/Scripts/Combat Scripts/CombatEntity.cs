@@ -11,16 +11,15 @@ public class CombatEntity : MonoBehaviour
     private List<IEffectHandler> effectsToRemove;
     private CombatContext currentTurnCtx;
     [SerializeField] private Animator animator;
-    public int CurrentHP { get; private set; }    
 
+    public int CurrentHP { get; private set; }    
     private int currentMaxHP;
+
     public int CurrentMP { get; private set; }
     private int currentMaxMP;
 
     public int CurrentAttack { get; set; }
     private int currentAttack;
-
-    private int currentSpeed;
 
     public event EventHandler<OnTurnCompleteEventArgs> onTurnComplete;
     public event Action onAnimationComplete;
@@ -37,20 +36,8 @@ public class CombatEntity : MonoBehaviour
         currentAttack = entityConfig.baseAttack;
         CurrentAttack = currentAttack;
 
-        currentSpeed = entityConfig.baseSpeed;
-
         // Initializing Effect Dictionary
         effectsCaused = new Dictionary<string, List<IEffectHandler>>();
-    }
-
-
-    public void OnAnimationComplete()
-    {
-        onAnimationComplete?.Invoke();
-    }
-    public void TriggerSpellAnimation()
-    {
-        animator.SetTrigger("SPELL");
     }
 
     private void OnDestroy()
@@ -121,19 +108,29 @@ public class CombatEntity : MonoBehaviour
         attackHandlerInterface.ExecuteAction(this, target);        
     }
 
-    internal void TriggerIdleAnimation()
+    public void UpdateEntityMP(int newMP)
+    {
+        this.CurrentMP = newMP;
+    }
+
+    public void TriggerIdleAnimation()
     {
         animator.SetBool("IsMoving", false);
     }
 
-    internal void TriggerRunningAnimation()
+    public void TriggerRunningAnimation()
     {
         animator.SetBool("IsMoving", true);
     }
 
-    public void TriggerHitAnimation()
+    public void TriggerSpellAnimation()
     {
-        animator.SetTrigger("HIT");
+        animator.SetTrigger("SPELL");
+    }
+
+    public void OnAnimationComplete()
+    {
+        onAnimationComplete?.Invoke();
     }
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)
