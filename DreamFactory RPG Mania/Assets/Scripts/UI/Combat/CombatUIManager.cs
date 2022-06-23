@@ -42,8 +42,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         CombatEntity damagedUnit = (CombatEntity)sender;        
         var position = view.WorldToScreenPoint(damagedUnit.transform.position);
         position.x = position.x - view.pixelWidth / 2;
-        position.y = position.y - view.pixelHeight / 2;
-        Debug.Log(position);
+        position.y = position.y - view.pixelHeight / 2;        
         GameObject feedback = Instantiate(actionFeedbackPrefab, position, Quaternion.identity);
         feedback.GetComponent<TMP_Text>().text = $"{e.damageTaken}";
         feedback.transform.SetParent(playerUI.transform, false);        
@@ -53,11 +52,19 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
    
 
     private void handleCombatTurnStart(CombatContext ctx)
-    {        
+    {   
+        
         combatContext = ctx;        
         ShowCharactersPanel();        
         if (combatContext.currentTurnEntity is PlayerControllableEntity)
         {
+            //TODO this logic should be in turn manager, but code is a bit tangled there             
+            if ((combatContext.currentTurnEntity as PlayerControllableEntity).IsDisabled)
+            {
+                ((PlayerControllableEntity)combatContext.currentTurnEntity).SkipTurn(ctx);
+                Debug.Log("turn skipped");
+                return;
+            }
             ShowActions();
             ShowTurnMessage();
         }
@@ -68,15 +75,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         }
     }    
 
-    private void CleanTargets(GameObject panel)
-    {
-        for (int i = 0; i < panel.transform.childCount; i++)
-        {
-            panel.transform.GetChild(i).GetComponent<TargetOptionPrefab>().optionButton.onClick.RemoveAllListeners();
-            Destroy(panel.transform.GetChild(i).gameObject);
-        }
-        panel.gameObject.SetActive(false);
-    }
+  
 
     private void ShowTurnMessage()
     {
@@ -117,29 +116,17 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     }
 
     private void OnActionChosen(CombatActionConfig action)
-    {
-        //CleanCombatOptions(actionsPanel);
+    {          
         currentAction = action;
-        backButton.SetActive(true);
-        //Don't like this switch
-        switch (action.targetType)
-        {
-            case TargetType.ENEMIES:
-                CleanCombatActions(actionsPanel);
-                CleanTargets(targetsPanel);
-                ShowEnemiesList();
-                
-                break;
-            case TargetType.ALLIES:
-                CleanCombatActions(actionsPanel);
-                CleanTargets(targetsPanel);
-                ShowAlliesList();                
-                break;            
-            default:
-                break;
-        }
+        backButton.SetActive(true);        
+        CleanCombatActions(actionsPanel);
+        CleanTargets(targetsPanel);
+        var targets = action.targetStrategy.GetTargets(combatContext);
+        ShowTargets(targets);        
     }
+  
 
+    //listener is set in editor
     public void BackToPreviousView()
     {       
         CleanTargets(targetsPanel);
@@ -150,11 +137,11 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         backButton.SetActive(false);
     }
 
-    private void ShowAlliesList()
+    private void ShowTargets(List<CombatEntity> party)
     {
         actionsPanel.SetActive(false);
         targetsPanel.gameObject.SetActive(true);
-        combatContext.playerParty.ForEach(ally =>
+        party.ForEach(ally =>
         {
             var targetListElement = Instantiate(targetOptionPrefab);
             if (targetListElement.TryGetComponent(out TargetOptionPrefab targetPrefab))
@@ -169,7 +156,8 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
             }
             targetListElement.transform.SetParent(targetsPanel.transform, false);
         });
-    }
+        SetCurrentDefaultTargetFor(party);
+    }    
 
     private void ShowCharactersPanel()
     {
@@ -191,33 +179,14 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         });
         
     }
-    private void ShowEnemiesList()
-    {
-        actionsPanel.SetActive(false);
-        targetsPanel.gameObject.SetActive(true);
-        combatContext.enemyParty.ForEach(enemy =>
-        {
-            var targetListElement = Instantiate(targetOptionPrefab);
-            if (targetListElement.TryGetComponent(out TargetOptionPrefab targetPrefab))
-            {
-                targetPrefab.optionName.text = enemy.entityConfig.Name;
-                targetPrefab.Attach(enemy.entityConfig);
-                targetPrefab.Subscribe(this);
-                targetPrefab.optionButton.onClick.AddListener(delegate
-                {
-                    ReceiveInputFor(currentAction);
-                });
-            }
-            targetListElement.transform.SetParent(targetsPanel.transform, false);
-        });
-        SetCurrentDefaultEnemyTarget();
-    }
+    
 
-    private void SetCurrentDefaultEnemyTarget()
+    private void SetCurrentDefaultTargetFor(List<CombatEntity> party)
     {
-        currentTarget = combatContext.enemyParty.FirstOrDefault();
+        currentTarget = party.FirstOrDefault();
         ShowTargetIndicator();
     }
+
 
     public void SwitchTarget(CombatEntityConfig enemyConfig)
     {
@@ -232,26 +201,13 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     {
         if (currentTarget != null)
         {
-            targetIndicator.gameObject.SetActive(true);
-            
+            targetIndicator.gameObject.SetActive(true);            
             var indicatorPosition = currentTarget.transform.position;
             indicatorPosition.y += currentTarget.transform.localScale.y * 2;
             targetIndicator.transform.position = indicatorPosition;
             turnMessage.text = $"{currentTarget.entityConfig.Name} is being targeted";
         }
     }
-    private void ShowEffectsApplied(CombatEntity controllableEntity)
-    {
-        Debug.Log(controllableEntity is PlayerControllableEntity);
-        var targetRow = charactersPanel.GetComponentsInChildren<CharacterStatsPrefab>().Where(x => x.characterName.text == controllableEntity.entityConfig.Name).FirstOrDefault();
-        int maxIterations = Mathf.Min(controllableEntity.EffectsCaused.Count, targetRow.effectIcons.Length);
-        for (int i = 0; i < maxIterations; i++)
-        {
-            targetRow.effectIcons[i].enabled = true;
-        }
-    }
-
-
     private void ReceiveInputFor(CombatActionConfig action)
     {        
         var currentCharacter = combatContext.currentTurnEntity;
@@ -278,9 +234,18 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         for (int i = 0; i < panel.transform.childCount; i++)
         {
             var child = panel.transform.GetChild(i).gameObject;
-            if (child.tag == "Removable")
+            if (child.tag == "Removable")//check if removeable so it does not delete header row
                 Destroy(child);
         }
     }
-    
+    private void CleanTargets(GameObject panel)
+    {
+        for (int i = 0; i < panel.transform.childCount; i++)
+        {
+            panel.transform.GetChild(i).GetComponent<TargetOptionPrefab>().optionButton.onClick.RemoveAllListeners();
+            Destroy(panel.transform.GetChild(i).gameObject);
+        }
+        panel.gameObject.SetActive(false);
+    }
+
 }

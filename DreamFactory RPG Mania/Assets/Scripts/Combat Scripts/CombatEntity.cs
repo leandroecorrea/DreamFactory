@@ -13,10 +13,11 @@ public class CombatEntity : MonoBehaviour
     private CombatContext currentTurnCtx;
     [SerializeField] private Animator animator;
 
-    public int CurrentHP { get; private set; }
+    public int CurrentHP { get; set; }
     private int currentMaxHP;
+    public bool IsDisabled { get; set; } = false;
 
-    public int CurrentMP { get; private set; }
+    public int CurrentMP { get; set; }
     private int currentMaxMP;
 
     public int CurrentAttack { get; set; }
@@ -141,6 +142,11 @@ public class CombatEntity : MonoBehaviour
         animator.SetTrigger("SPELL");
     }
 
+    public void TriggerReviveAnimation()
+    {
+        throw new NotImplementedException();
+    }
+
     public void OnAnimationComplete()
     {
         onAnimationComplete?.Invoke();
@@ -226,6 +232,7 @@ public class CombatEntity : MonoBehaviour
     // TODO: Hook this up via an animation event to death animation
     public void HandleEntityDeath()
     {
+        //if its player controllable entity, we may want to keep alive rendering but dead, in case it is revived
         GameObject.Destroy(gameObject);
     }
 }

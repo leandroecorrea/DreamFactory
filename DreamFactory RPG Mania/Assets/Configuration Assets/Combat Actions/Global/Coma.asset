@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
-  m_Name: Physical Attack
+  m_Name: Coma
   m_EditorClassIdentifier: 
-  actionName: Physical Attack
-  description: Do a physical attack against an enemy
-  requireRouting: 1
-  requireMana: 0
-  baseEffectiveness: 10
-  effectsToApply: []
-  actionHandlerClassName: PhysicalAttackHandler
+  actionName: Coma
+  description: OP disabling attack
+  requireRouting: 0
+  requireMana: 10
+  baseEffectiveness: 100
+  effectsToApply:
+  - {fileID: 11400000, guid: cd1df2966886ad8409ab9ba6e52bc156, type: 2}
+  - {fileID: 11400000, guid: 8d44fcba0f37e284a9dbcd507e2a8263, type: 2}
+  - {fileID: 11400000, guid: dd86add15451131438b661f3e57ab27e, type: 2}
+  actionHandlerClassName: ComaAttackHandler
   targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
-  combatActionType: 0
+  combatActionType: 1
