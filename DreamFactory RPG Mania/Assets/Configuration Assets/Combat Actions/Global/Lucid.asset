@@ -20,5 +20,5 @@ MonoBehaviour:
   effectsToApply:
   - {fileID: 11400000, guid: 7e60fdc4b2310b042bebf6cee875c3f8, type: 2}
   actionHandlerClassName: LucidAttackHandler
+  targetStrategy: {fileID: 11400000, guid: 850b408e02baa854a99b2c248e8f4334, type: 2}
   combatActionType: 1
-  targetType: 0

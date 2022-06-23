@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TargetDiana : MonoBehaviour
+public class TargetIndicator : MonoBehaviour
 {
     public void Start()
     {

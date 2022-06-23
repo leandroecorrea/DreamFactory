@@ -20,15 +20,11 @@ public class CombatActionConfig : ScriptableObject
     [Header("Programmer Configuration")]
     [Tooltip("Set this to the name of a Action Handler class name")]
     public string actionHandlerClassName;    
-    public CombatActionType combatActionType;
-    public TargetType targetType;
+    public TargetStrategy targetStrategy;
+    public CombatActionType combatActionType;    
 }
 
 public enum CombatActionType
 {
     ATTACK, SPELL, ITEM, RUN
-}
-public enum TargetType
-{
-    ALLIES, ENEMIES, ALL
 }

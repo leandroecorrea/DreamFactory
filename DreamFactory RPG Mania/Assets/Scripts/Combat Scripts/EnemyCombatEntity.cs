@@ -13,6 +13,12 @@ public class EnemyCombatEntity : CombatEntity
         //this.entityConfig.actions;
         //AI.GetActionFor(turnContext)
         //base.StartTurn(turnContext);
+        if(IsDisabled)
+        {
+            Debug.Log("Enemy is disabled");
+            EndTurn(turnContext);
+            return;
+        }
         CombatEntity target = turnContext.playerParty[0];
         PerformAction(combatAction, target);
     }

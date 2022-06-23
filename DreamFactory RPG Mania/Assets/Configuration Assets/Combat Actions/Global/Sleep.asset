@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
-  m_Name: Physical Attack
+  m_Name: Sleep
   m_EditorClassIdentifier: 
-  actionName: Physical Attack
-  description: Do a physical attack against an enemy
-  requireRouting: 1
-  requireMana: 0
-  baseEffectiveness: 10
+  actionName: Sleep
+  description: 'Get an ally back to dreams realm '
+  requireRouting: 0
+  requireMana: 5
+  baseEffectiveness: 100
   effectsToApply: []
-  actionHandlerClassName: PhysicalAttackHandler
-  targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
-  combatActionType: 0
+  actionHandlerClassName: SleepAttackHandler
+  targetStrategy: {fileID: 11400000, guid: 663c154b518347c4a90d1820d50b44fc, type: 2}
+  combatActionType: 1
