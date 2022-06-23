@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float _movementSpeed;
 
+    [Header("References")]
+    [SerializeField] private Animator anim;
+
     private Player _playerInput;
     private Rigidbody _playerRigidBody;
 
@@ -43,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_currentInputValue != Vector3.zero)
         {
+            transform.forward = _currentInputValue;
             _playerRigidBody.MovePosition(
                 transform.position + (_currentInputValue * _movementSpeed * Time.deltaTime)
             );
@@ -55,9 +59,12 @@ public class PlayerMovement : MonoBehaviour
         if (rawInputValue == Vector2.zero)
         {
             _currentInputValue = Vector3.zero;
+            anim.SetBool("IsMoving", false);
+
             return;
         }
 
+        anim.SetBool("IsMoving", true);
         _currentInputValue = new Vector3(rawInputValue.x, 0f, rawInputValue.y);
     }
 }
