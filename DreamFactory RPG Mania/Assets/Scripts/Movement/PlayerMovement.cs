@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        InitializeMovement();
+        // InitializeMovement();
         InitializeState();
     }
 
@@ -28,13 +28,13 @@ public class PlayerMovement : MonoBehaviour
         ApplyInputMovement();
     }
 
-    private void InitializeMovement()
-    {
-        _playerInput = new Player();
-        _playerInput.Movement.Walk.performed += OnWalkPerformed;
+    //private void InitializeMovement()
+    //{
+    //    _playerInput = new Player();
+    //    _playerInput.Main.Walk.performed += OnWalkPerformed;
 
-        _playerInput.Enable();
-    }
+    //    _playerInput.Enable();
+    //}
 
     private void InitializeState()
     {
@@ -53,8 +53,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnWalkPerformed(InputAction.CallbackContext ctx)
+    public void OnWalk(InputAction.CallbackContext ctx)
     {
+        if (ctx.phase != InputActionPhase.Performed)
+        {
+            return;
+        }
+
         Vector2 rawInputValue = ctx.ReadValue<Vector2>();
         if (rawInputValue == Vector2.zero)
         {

@@ -5,17 +5,17 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [Header("Follow Settings")]
-    [SerializeField] private Transform _defaultFollowTarget;
-    [SerializeField] private float _followDelay;
+    [SerializeField] protected Transform _defaultFollowTarget;
+    [SerializeField] protected float _followDelay;
 
     [Header("Follow Control")]
-    [SerializeField] private bool _isFollowEnabled = true;
+    [SerializeField] protected bool _isFollowEnabled = true;
 
-    private Transform _currentFollowTarget;
-    private Vector3 _followOffset;
-    private Vector3 _followVelocity;
+    protected Transform _currentFollowTarget;
+    protected Vector3 _followOffset;
+    protected Vector3 _followVelocity;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if (_defaultFollowTarget != null)
         {
@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (_currentFollowTarget != null && _isFollowEnabled)
         {
