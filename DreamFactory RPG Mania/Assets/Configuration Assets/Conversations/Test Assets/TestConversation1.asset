@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestConversation1
   m_EditorClassIdentifier: 
   conversationPoints:
-  - conversationPointSpeaker: 
-    conversationPointText: 
-  - conversationPointSpeaker: 
-    conversationPointText: 
+  - conversationPointSpeaker: TestNPC
+    conversationPointText: Hey there, this is my test message
+  - conversationPointSpeaker: Player
+    conversationPointText: And this is me, the player's, test message

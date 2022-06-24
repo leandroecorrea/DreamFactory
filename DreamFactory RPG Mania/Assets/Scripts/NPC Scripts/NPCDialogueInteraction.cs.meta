@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 287ef1f5754504f4eb255eb4935f388d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - interactionPrefab: {fileID: 479811804496791172, guid: c88a238d713dde1469fed989da3cf8a6,
+      type: 3}
+  - targetConversation: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

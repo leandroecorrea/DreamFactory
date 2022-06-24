@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 70fe794e3c1981340aef85b7622c0e7e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - npcInteractionOptionPrefab: {fileID: 3161999188191019363, guid: ee98d873359198c4dac05ce56f01d246,
+      type: 3}
+  - interactionUIParent: {instanceID: 0}
+  - interactionOptionListParent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

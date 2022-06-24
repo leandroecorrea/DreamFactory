@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Conversation", menuName = "Dialogue/New Conversation")]
 public class Conversation : ScriptableObject
 {
-    public List<ConversationPoint> conversationPoints;
+    [NonReorderable] public List<ConversationPoint> conversationPoints;
 }
 
 [System.Serializable]

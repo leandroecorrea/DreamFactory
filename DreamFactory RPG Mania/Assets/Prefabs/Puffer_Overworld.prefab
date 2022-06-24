@@ -156,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc16c6dea04c71649b2f1a9783e9e378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionLayermask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &1571998093156805879
 PrefabInstance:
   m_ObjectHideFlags: 0
