@@ -15,10 +15,10 @@ public class PauseGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseStateSwitch(GameManager.Instance.isPaused);
-        }
+      //  if (Input.GetKeyDown(KeyCode.Escape))
+      //  {
+       //     PauseStateSwitch(GameManager.Instance.isPaused);
+      //  }
     }
     public void PauseStateSwitch( bool curr)
     {
