@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: TestConversation1
   m_EditorClassIdentifier: 
   conversationPoints:
-  - conversationPointSpeaker: TestNPC
+  - isPlayerSpeaking: 0
+    conversationPointSpeaker: {fileID: 11400000, guid: c0472ed1166db8e4daaeec8cafc435cb,
+      type: 2}
     conversationPointText: Hey there, this is my test message
     typingDelay: 0.03
-  - conversationPointSpeaker: Player
+  - isPlayerSpeaking: 1
+    conversationPointSpeaker: {fileID: 0}
     conversationPointText: And this is me, the player, saying a test message
     typingDelay: 0.03

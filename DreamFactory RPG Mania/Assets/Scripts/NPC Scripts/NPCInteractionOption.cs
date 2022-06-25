@@ -7,7 +7,6 @@ using TMPro;
 public class NPCInteractionOption : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField] private GameObject pointer;
     [SerializeField] private TextMeshProUGUI interactionOptionText;
 
     private INPCInteraction interactionInterface;
@@ -20,9 +19,6 @@ public class NPCInteractionOption : MonoBehaviour
             onInteractionSelect -= (EventHandler<NPCInteractionSelectedArgs>)handler;
         }
     }
-
-    public void HandlePointerEnter() { pointer.SetActive(true); }
-    public void HandlePointerExit() { pointer.SetActive(false); }
 
     public void InitializeOptionDisplay(NPCInteractionUIDisplay uiDisplayConfig)
     {

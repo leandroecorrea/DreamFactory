@@ -42,7 +42,7 @@ public class PlayerInteractionManager : MonoBehaviour
         {
             if (currentRangeInteractionManager != null)
             {
-                currentRangeInteractionManager.InitializeInteractionUI();
+                currentRangeInteractionManager.InitailizeInteraction();
                 currentRangeInteractionManager.onInteractionMenuDismiss += HandleInteractionUIDismiss;
 
                 movementControl.StopMoving();

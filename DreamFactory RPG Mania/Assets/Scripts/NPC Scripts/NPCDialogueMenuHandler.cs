@@ -35,7 +35,10 @@ public class NPCDialogueMenuHandler : MonoBehaviour, INPCInteractionMenuHandler
 
     private void InitializeConversationPointState(ConversationPoint targetConversationPoint)
     {
-        speakerText.text = targetConversationPoint.conversationPointSpeaker;
+        // The hard coded "Player" may be replaced with a player selected name at some point
+        string speakerDisplayText = (targetConversationPoint.isPlayerSpeaking) ? "Player" : targetConversationPoint.conversationPointSpeaker.characterName;
+
+        speakerText.text = speakerDisplayText;
         dialogueText.text = "";
 
         currentWritingCoroutine = StartCoroutine(WriteCurrentDialogueText());

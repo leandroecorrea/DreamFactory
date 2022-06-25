@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class NPCInteractionManager : MonoBehaviour
 {
@@ -12,11 +12,18 @@ public class NPCInteractionManager : MonoBehaviour
     [SerializeField] private GameObject npcInteractionOptionPrefab;
     [SerializeField] private GameObject dismissNPCInteractionUIPrefab;
 
+    [Header("Character Config")]
+    [SerializeField] private NPCConfig npcConfig;
+
+    [Header("Component Refs")]
+    [SerializeField] private Animator npcAnim;
+
     [Header("UI References")]
     [SerializeField] private GameObject selectInteractionUIParent;
     [SerializeField] private GameObject interactionUIParent;
     [SerializeField] private Transform interactionMenuParent;
     [SerializeField] private Transform interactionOptionListParent;
+    [SerializeField] private TextMeshProUGUI npcNameText;
 
     public event EventHandler onInteractionMenuDismiss;
 
@@ -30,6 +37,12 @@ public class NPCInteractionManager : MonoBehaviour
     public bool HasInteractions()
     {
         return (interactions != null && interactions.Count > 0);
+    }
+
+    public void InitailizeInteraction()
+    {
+        npcAnim.SetBool("IsTalking", true);
+        InitializeInteractionUI();
     }
 
     public void InitializeInteractionUI()
@@ -53,6 +66,8 @@ public class NPCInteractionManager : MonoBehaviour
 
     private void BuildSelectInteractionUI()
     {
+        npcNameText.text = npcConfig.characterName;
+
         // Instantiate New interaction options
         foreach (INPCInteraction interaction in interactions)
         {
@@ -106,6 +121,8 @@ public class NPCInteractionManager : MonoBehaviour
 
     public void DismissInteractionUI()
     {
+        npcAnim.SetBool("IsTalking", false);
+
         CleanSelectInteractionUI();
         DisableInteractionUI();
 

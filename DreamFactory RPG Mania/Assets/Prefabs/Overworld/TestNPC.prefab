@@ -97,10 +97,13 @@ MonoBehaviour:
     type: 3}
   dismissNPCInteractionUIPrefab: {fileID: 3161999188191019363, guid: 294a7a30dacaf4d4ab263a18d75510a3,
     type: 3}
+  npcConfig: {fileID: 0}
+  npcAnim: {fileID: 6361195490571331557}
   selectInteractionUIParent: {fileID: 8094587384809770290}
   interactionUIParent: {fileID: 661206923163982199}
   interactionMenuParent: {fileID: 3598587419736522420}
   interactionOptionListParent: {fileID: 661206923956448588}
+  npcNameText: {fileID: 661206924898812896}
 --- !u!114 &7628923725829587062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,6 +530,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 661206923153152628}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6361195490571331557 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: da86256cb3573d94da8ef4533aebbe18,
+    type: 3}
+  m_PrefabInstance: {fileID: 661206923153152628}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6899056794634661878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,6 +678,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6899056794634661878}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &661206924898812896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6238413110691949590, guid: 66cf913b399abe84bb6681a5cd0f3b8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6899056794634661878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3598587419736522420 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7948465950081421634, guid: 66cf913b399abe84bb6681a5cd0f3b8b,

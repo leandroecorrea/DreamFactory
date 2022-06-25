@@ -11,7 +11,9 @@ public class Conversation : ScriptableObject
 [System.Serializable]
 public class ConversationPoint
 {
-    public string conversationPointSpeaker;
+    public bool isPlayerSpeaking;
+    public NPCConfig conversationPointSpeaker;
+
     public string conversationPointText;
     public float typingDelay;
 }
