@@ -8,22 +8,35 @@ public class BaseEffectHandler : IEffectHandler
     protected int roundsRemaining;
     protected CombatEffectConfig effectConfig;
 
-    public CombatEffectConfig combatEffectConfig { 
-        get 
-        { 
-            return effectConfig; 
-        } 
+    protected CombatEntity _applier;
+    public CombatEntity applier { 
+        get { return _applier; } 
+        set { _applier = value; } 
+    }
 
-        set
-        {
-            effectConfig = value;
-            roundsRemaining = value.roundDuration;
-        }
+    public CombatEffectConfig combatEffectConfig { 
+        get { return effectConfig; } 
+        set { effectConfig = value; }
     }
 
     public int RemainingRounds { get { return roundsRemaining; } }
 
     public event EventHandler<EventArgs> onEffectExpire;
+
+    public void InitializeEffect(CombatEffectConfig combatEffectConfig, CombatEntity applier, CombatEntity applicant)
+    {
+        this.applier = applier;
+        this.combatEffectConfig = combatEffectConfig;
+
+        // Handle Round Initialization
+        // If the applier is the same as the applicant, add an extra round to ensure expected duration
+        roundsRemaining = combatEffectConfig.roundDuration;
+
+        if (applier == applicant)
+        {
+            roundsRemaining += 1;
+        }
+    }
 
     public virtual void HandleOnApply(CombatEntity applicant, CombatContext combatCtx) { }
 
@@ -39,9 +52,14 @@ public class BaseEffectHandler : IEffectHandler
 
             if (RemainingRounds == 0)
             {
-                Debug.Log("Effect Expired!");
-                onEffectExpire?.Invoke(this, EventArgs.Empty);
+                HandleEffectExpire();
             }
         }
+    }
+
+    protected virtual void HandleEffectExpire()
+    {
+        Debug.Log("Effect Expired!");
+        onEffectExpire?.Invoke(this, EventArgs.Empty);
     }
 }

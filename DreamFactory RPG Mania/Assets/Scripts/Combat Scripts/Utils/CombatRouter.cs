@@ -12,19 +12,32 @@ public class CombatRouter : MonoBehaviour
     private bool snapToPosition;
     public event EventHandler onRoutingComplete;
 
+    private Quaternion savedRotation;
+
+    public void SaveRotation()
+    {
+        savedRotation = transform.rotation;
+    }
+
+    public void RestoreRotation()
+    {
+        transform.rotation = savedRotation;
+    }
+
     public void BeginRouting(GameObject targetToRouteTo)
     {
         targetDistance = targetToRouteTo.transform.localScale.magnitude;
         snapToPosition = false;
 
+        transform.LookAt(new Vector3(targetToRouteTo.transform.position.x, transform.position.y, targetToRouteTo.transform.position.z));
         StartCoroutine(ExecuteRouting(targetToRouteTo.transform.position));
     }
 
     public void BeginRouting(Vector3 targetToRouteTo)
     {
-        targetDistance = 0.01f;
+        targetDistance = 0.1f;
         snapToPosition = true;
-
+        transform.LookAt(new Vector3(targetToRouteTo.x, transform.position.y, targetToRouteTo.z));
         StartCoroutine(ExecuteRouting(targetToRouteTo));
     }
 
@@ -48,5 +61,21 @@ public class CombatRouter : MonoBehaviour
         }
 
         onRoutingComplete?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void MakeLookTo(params CombatEntity[] targets)
+    {
+        var average = GetAveragePositionFor(targets);        
+        transform.LookAt(average);
+    }
+
+    private Vector3 GetAveragePositionFor(CombatEntity[] targets)
+    {
+        var accumulation = Vector3.zero;
+        for (int i = 0; i < targets.Length; i++)
+        {
+            accumulation+=targets[i].transform.position;
+        }
+        return accumulation / targets.Length;
     }
 }

@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class FeverAttackHandler : BaseAttackHandler
 {
-    protected override void HandleActionExecution()
+    protected override ActionPerformedArgs HandleActionExecution()
     {
-        ApplyEffects(combatActionConfig.effectsToApply, targets[currentTargetIndex++]);
+        CombatEntity currentTarget = targets[currentTargetIndex++];
+
+        ApplyEffects(combatActionConfig.effectsToApply, currentTarget);
+        return new ActionPerformedArgs { TargetedUnits = new CombatEntity[] { currentTarget }, ActionPerformed = this, feedbackMessage = "" };
     }
 }

@@ -16,4 +16,5 @@ public class ActionPerformedArgs : EventArgs
 {
     public CombatEntity[] TargetedUnits { get; set; }
     public ICombatAction ActionPerformed { get; set; }
+    public string feedbackMessage { get; set; }
 }

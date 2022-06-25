@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Physical Attack
   description: Do a physical attack against an enemy
+  requireRouting: 1
+  requireMana: 0
   baseEffectiveness: 10
   effectsToApply: []
   actionHandlerClassName: PhysicalAttackHandler
+  targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
   combatActionType: 0
-  targetType: 1

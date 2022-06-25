@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CombatEntity : MonoBehaviour
@@ -11,15 +12,28 @@ public class CombatEntity : MonoBehaviour
     private List<IEffectHandler> effectsToRemove;
     private CombatContext currentTurnCtx;
     [SerializeField] private Animator animator;
-    public int CurrentHP { get; private set; }    
+
+    public int CurrentHP { get; set; }
     private int currentMaxHP;
-    public int CurrentMP { get; private set; }
+    public bool IsDisabled { get; set; } = false;
+
+    public int CurrentMP { get; set; }
     private int currentMaxMP;
 
-    public int CurrentAttack { get; private set; }
-    private int currentAttack;
+    public int CurrentAttack { get; set; }
+    public List<IEffectHandler> EffectsCaused
+    {
+        get {
+            var list = new List<IEffectHandler>();
+            foreach(var listOfEffects in effectsCaused.Values)
+            {
+                list.AddRange(listOfEffects);
+            }
+            return list;
+        }
+    }
 
-    private int currentSpeed;
+    private int currentAttack;
 
     public event EventHandler<OnTurnCompleteEventArgs> onTurnComplete;
     public event Action onAnimationComplete;
@@ -36,18 +50,9 @@ public class CombatEntity : MonoBehaviour
         currentAttack = entityConfig.baseAttack;
         CurrentAttack = currentAttack;
 
-        currentSpeed = entityConfig.baseSpeed;
-
         // Initializing Effect Dictionary
         effectsCaused = new Dictionary<string, List<IEffectHandler>>();
     }
-
-
-    public void OnAnimationComplete()
-    {
-        onAnimationComplete?.Invoke();
-    }
-
 
     private void OnDestroy()
     {
@@ -62,7 +67,7 @@ public class CombatEntity : MonoBehaviour
         {
             foreach (KeyValuePair<string, List<IEffectHandler>> effectIdToEffectHandlers in effectsCaused)
             {
-                foreach(IEffectHandler effectHandler in effectIdToEffectHandlers.Value)
+                foreach (IEffectHandler effectHandler in effectIdToEffectHandlers.Value)
                 {
                     effectHandler.HandleTurnStart(this, currentTurnCtx);
                 }
@@ -97,7 +102,7 @@ public class CombatEntity : MonoBehaviour
 
             effectsToRemove = null;
         }
-        
+
 
         currentTurnCtx = null;
         onTurnComplete?.Invoke(this, new OnTurnCompleteEventArgs { targetEntity = this });
@@ -107,24 +112,44 @@ public class CombatEntity : MonoBehaviour
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
     {
-        animator.SetTrigger("Running");        
+        // animator.SetTrigger(action.combatActionType.ToString());
+
         Type combatActionType = Type.GetType(action.actionHandlerClassName);
         ICombatAction attackHandlerInterface = (ICombatAction)Activator.CreateInstance(combatActionType);
+
         attackHandlerInterface.combatActionConfig = action;
         attackHandlerInterface.onCombatActionComplete += HandleCombatActionComplete;
-        attackHandlerInterface.ExecuteAction(this, target);        
+        attackHandlerInterface.ExecuteAction(this, target);
     }
 
-    internal void TriggerIdleAnimation()
+    public void UpdateEntityMP(int newMP)
     {
-        animator.ResetTrigger("Running");
-        animator.SetTrigger("Idle");
+        this.CurrentMP = newMP;
     }
 
-    public void TriggerAttackAnimation()
+    public void TriggerIdleAnimation()
     {
-        animator.ResetTrigger("Running");
-        animator.SetTrigger("Attack");
+        animator.SetBool("IsMoving", false);
+    }
+
+    public void TriggerRunningAnimation()
+    {
+        animator.SetBool("IsMoving", true);
+    }
+
+    public void TriggerSpellAnimation()
+    {
+        animator.SetTrigger("SPELL");
+    }
+
+    public void TriggerReviveAnimation()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void OnAnimationComplete()
+    {
+        onAnimationComplete?.Invoke();
     }
 
     private void HandleCombatActionComplete(object sender, ActionPerformedArgs e)
@@ -134,9 +159,11 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
-        animator.SetTrigger("IsHit");
+        animator.SetTrigger("Damaged");
+
         CurrentHP -= damage;
-        
+        CombatEventSystem.instance.OnCombatEntityDamage(this, new CombatEntityDamagedArgs { damageTaken = damage });
+
         if (IsDead())
         {
             // TODO: Remove this once hooked up to animation event
@@ -146,7 +173,7 @@ public class CombatEntity : MonoBehaviour
 
     public virtual void ApplyEffects(List<IEffectHandler> affectsToApply)
     {
-        foreach(IEffectHandler effectHandler in affectsToApply)
+        foreach (IEffectHandler effectHandler in affectsToApply)
         {
             CombatEffectConfig targetEffectConfig = effectHandler.combatEffectConfig;
 
@@ -171,7 +198,7 @@ public class CombatEntity : MonoBehaviour
 
                 effectsCaused.Add(targetEffectConfig.effectId, new List<IEffectHandler> { effectHandler });
             }
-                
+
         }
 
         return;
@@ -205,6 +232,7 @@ public class CombatEntity : MonoBehaviour
     // TODO: Hook this up via an animation event to death animation
     public void HandleEntityDeath()
     {
+        //if its player controllable entity, we may want to keep alive rendering but dead, in case it is revived
         GameObject.Destroy(gameObject);
     }
 }
@@ -212,4 +240,4 @@ public class CombatEntity : MonoBehaviour
 public class OnTurnCompleteEventArgs : EventArgs
 {
     public CombatEntity targetEntity { get; set; }
-} 
+}

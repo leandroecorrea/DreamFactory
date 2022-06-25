@@ -6,9 +6,14 @@ using UnityEngine;
 public interface IEffectHandler
 {
     public CombatEffectConfig combatEffectConfig { get; set; }
+
+    public CombatEntity applier { get; set; }
+
     public int RemainingRounds { get; }
 
     public event EventHandler<EventArgs> onEffectExpire;
+
+    void InitializeEffect(CombatEffectConfig combatEffectConfig, CombatEntity applier, CombatEntity applicant);
 
     void HandleOnApply(CombatEntity applicant, CombatContext combatCtx);
     void HandleTurnStart(CombatEntity applicant, CombatContext combatCtx);

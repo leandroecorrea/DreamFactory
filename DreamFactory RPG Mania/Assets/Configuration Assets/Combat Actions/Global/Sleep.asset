@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
+  m_Name: Sleep
+  m_EditorClassIdentifier: 
+  actionName: Sleep
+  description: 'Get an ally back to dreams realm '
+  requireRouting: 0
+  requireMana: 5
+  baseEffectiveness: 100
+  effectsToApply: []
+  actionHandlerClassName: SleepAttackHandler
+  targetStrategy: {fileID: 11400000, guid: 663c154b518347c4a90d1820d50b44fc, type: 2}
+  combatActionType: 1

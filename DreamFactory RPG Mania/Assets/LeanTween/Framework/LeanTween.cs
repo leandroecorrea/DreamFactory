@@ -197,7 +197,7 @@ public enum TweenAction{
     CANVAS_SCALE,
     CANVAS_SIZEDELTA,
     FOLLOW,
-
+    IMAGE_COLOR
 }
 
 public enum LeanTweenType{
@@ -549,17 +549,20 @@ public class LeanTween : MonoBehaviour {
         cancel( rect.gameObject, false);
     }
 
-//  public static void cancel( GameObject gameObject, int uniqueId ){
-//      if(uniqueId>=0){
-//          init();
-//          int backId = uniqueId & 0xFFFF;
-//          int backCounter = uniqueId >> 16;
-//          // Debug.Log("uniqueId:"+uniqueId+ " id:"+backId +" counter:"+backCounter + " setCounter:"+ tweens[backId].counter + " tweens[id].type:"+tweens[backId].type);
-//          if(tweens[backId].trans==null || (tweens[backId].trans.gameObject == gameObject && tweens[backId].counter==backCounter))
-//              removeTween((int)backId);
-//      }
-//  }
-
+    //  public static void cancel( GameObject gameObject, int uniqueId ){
+    //      if(uniqueId>=0){
+    //          init();
+    //          int backId = uniqueId & 0xFFFF;
+    //          int backCounter = uniqueId >> 16;
+    //          // Debug.Log("uniqueId:"+uniqueId+ " id:"+backId +" counter:"+backCounter + " setCounter:"+ tweens[backId].counter + " tweens[id].type:"+tweens[backId].type);
+    //          if(tweens[backId].trans==null || (tweens[backId].trans.gameObject == gameObject && tweens[backId].counter==backCounter))
+    //              removeTween((int)backId);
+    //      }
+    //  }
+    public static LTDescr textMeshProColor(RectTransform rectTransform, Color to, float time)
+    {
+        return pushNewTween(rectTransform.gameObject, new Vector3(1.0f, to.a, 0.0f), time, options().setTMP_TextColor().setPoint(new Vector3(to.r, to.g, to.b)));
+    }
     public static void cancel( GameObject gameObject, int uniqueId, bool callOnComplete = false ){
         if(uniqueId>=0){
             init();

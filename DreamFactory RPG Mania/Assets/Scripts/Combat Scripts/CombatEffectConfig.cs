@@ -10,7 +10,7 @@ public class CombatEffectConfig : ScriptableObject
     public Sprite displayIcon;
 
     [Header("Combat Configuration")]
-    public bool doesExpire;
+    public bool doesExpire;        
     [Tooltip("Controls how many combat rounds before effect is auto-removed (if doesExpire is true)")] public int roundDuration;
     public bool doesStack;
     [Tooltip("Max amount of effect instances on an entity at once (if doesStack is true)")]public int maxStackCount;
