@@ -15,5 +15,7 @@ MonoBehaviour:
   conversationPoints:
   - conversationPointSpeaker: TestNPC
     conversationPointText: Hey there, this is my test message
+    typingDelay: 0.03
   - conversationPointSpeaker: Player
-    conversationPointText: And this is me, the player's, test message
+    conversationPointText: And this is me, the player, saying a test message
+    typingDelay: 0.03

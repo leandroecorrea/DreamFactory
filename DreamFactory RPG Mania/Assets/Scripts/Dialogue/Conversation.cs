@@ -13,4 +13,5 @@ public class ConversationPoint
 {
     public string conversationPointSpeaker;
     public string conversationPointText;
+    public float typingDelay;
 }

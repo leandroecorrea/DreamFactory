@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5802998010149161121}
   - component: {fileID: 7781423680861165275}
   - component: {fileID: 2943687722694859257}
+  - component: {fileID: 7003077887085074894}
   - component: {fileID: 800044006692152200}
   m_Layer: 0
   m_Name: Puffer_Overworld
@@ -144,6 +145,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementSpeed: 3
   anim: {fileID: 4952356803371553126}
+--- !u!114 &7003077887085074894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383984641823725566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6d1ac3d0764d34bb214f95cb73b25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOverworldAnim: {fileID: 4952356803371553126}
 --- !u!114 &800044006692152200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc16c6dea04c71649b2f1a9783e9e378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animControl: {fileID: 7003077887085074894}
+  movementControl: {fileID: 2943687722694859257}
   interactionLayermask:
     serializedVersion: 2
     m_Bits: 64

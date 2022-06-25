@@ -95,6 +95,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcInteractionOptionPrefab: {fileID: 3161999188191019363, guid: ee98d873359198c4dac05ce56f01d246,
     type: 3}
+  dismissNPCInteractionUIPrefab: {fileID: 3161999188191019363, guid: 294a7a30dacaf4d4ab263a18d75510a3,
+    type: 3}
+  selectInteractionUIParent: {fileID: 8094587384809770290}
   interactionUIParent: {fileID: 661206923163982199}
   interactionMenuParent: {fileID: 3598587419736522420}
   interactionOptionListParent: {fileID: 661206923956448588}
@@ -669,6 +672,12 @@ RectTransform:
 --- !u!224 &3598587419736522420 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7948465950081421634, guid: 66cf913b399abe84bb6681a5cd0f3b8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6899056794634661878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8094587384809770290 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3453029241917039300, guid: 66cf913b399abe84bb6681a5cd0f3b8b,
     type: 3}
   m_PrefabInstance: {fileID: 6899056794634661878}
   m_PrefabAsset: {fileID: 0}

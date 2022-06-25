@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteractionManager : MonoBehaviour
 {
+    [Header("Component Refs")]
+    [SerializeField] private PlayerOverworldAnimatorCtrl animControl;
+    [SerializeField] private PlayerMovement movementControl;
+
     [Header("Interaction Settings")]
     [SerializeField] private LayerMask interactionLayermask;
 
@@ -39,8 +43,22 @@ public class PlayerInteractionManager : MonoBehaviour
             if (currentRangeInteractionManager != null)
             {
                 currentRangeInteractionManager.InitializeInteractionUI();
+                currentRangeInteractionManager.onInteractionMenuDismiss += HandleInteractionUIDismiss;
+
+                movementControl.StopMoving();
+                animControl.NotifyMovementUpdate(false);
+                animControl.StartTalking();
+
                 gameObject.GetComponent<PlayerInput>().DeactivateInput();
             }
         }
+    }
+
+    private void HandleInteractionUIDismiss(object sender, System.EventArgs e)
+    {
+        currentRangeInteractionManager.onInteractionMenuDismiss -= HandleInteractionUIDismiss;
+
+        animControl.StopTalking();
+        gameObject.GetComponent<PlayerInput>().ActivateInput();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class NPCDialogueInteraction : BaseNPCInteraction, INPCInteraction
 {
     [Header("Dialogue Settings")]
     public Conversation targetConversation;
+
+    public event EventHandler<InteractionCompletedArgs> onInteractionComplete;
 
     public bool CanExecuteInteraction()
     {
@@ -19,7 +22,13 @@ public class NPCDialogueInteraction : BaseNPCInteraction, INPCInteraction
 
     public void StartInteraction()
     {
-        GameObject dialogueMenu = GameObject.Instantiate(interactionPrefab, interactionUIMenuParent);
-        dialogueMenu.GetComponent<NPCDialogueMenuHandler>().InitializeMenuHandler(this);
+        CreateInteractionUIInstance();
+        interactionMenuHandlerInstance.InitializeMenuHandler(this);
+    }
+
+    public void CompleteInteraction()
+    {
+        CleanUI();
+        onInteractionComplete?.Invoke(this, new InteractionCompletedArgs());
     }
 }

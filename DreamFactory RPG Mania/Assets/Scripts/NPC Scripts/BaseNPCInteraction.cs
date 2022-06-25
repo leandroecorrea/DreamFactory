@@ -9,4 +9,18 @@ public class BaseNPCInteraction : MonoBehaviour
 
     [Header("Interaction UI Refs")]
     [SerializeField] protected Transform interactionUIMenuParent;
+
+    protected GameObject interactionMenuInstance;
+    protected INPCInteractionMenuHandler interactionMenuHandlerInstance;
+
+    protected void CreateInteractionUIInstance()
+    {
+        interactionMenuInstance = GameObject.Instantiate(interactionPrefab, interactionUIMenuParent);
+        interactionMenuHandlerInstance = interactionMenuInstance.GetComponent<INPCInteractionMenuHandler>();
+    }
+
+    protected void CleanUI()
+    {
+        GameObject.Destroy(interactionMenuInstance);
+    }
 }

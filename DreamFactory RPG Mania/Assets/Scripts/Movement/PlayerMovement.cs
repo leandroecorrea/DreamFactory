@@ -28,14 +28,6 @@ public class PlayerMovement : MonoBehaviour
         ApplyInputMovement();
     }
 
-    //private void InitializeMovement()
-    //{
-    //    _playerInput = new Player();
-    //    _playerInput.Main.Walk.performed += OnWalkPerformed;
-
-    //    _playerInput.Enable();
-    //}
-
     private void InitializeState()
     {
         _currentInputValue = Vector2.zero;
@@ -71,5 +63,10 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetBool("IsMoving", true);
         _currentInputValue = new Vector3(rawInputValue.x, 0f, rawInputValue.y);
+    }
+
+    public void StopMoving()
+    {
+        _currentInputValue = Vector3.zero;
     }
 }

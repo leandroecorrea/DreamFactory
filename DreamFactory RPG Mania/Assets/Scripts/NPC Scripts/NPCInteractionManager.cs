@@ -10,11 +10,15 @@ public class NPCInteractionManager : MonoBehaviour
 {
     [Header("Prefab References")]
     [SerializeField] private GameObject npcInteractionOptionPrefab;
+    [SerializeField] private GameObject dismissNPCInteractionUIPrefab;
 
     [Header("UI References")]
+    [SerializeField] private GameObject selectInteractionUIParent;
     [SerializeField] private GameObject interactionUIParent;
     [SerializeField] private Transform interactionMenuParent;
     [SerializeField] private Transform interactionOptionListParent;
+
+    public event EventHandler onInteractionMenuDismiss;
 
     private List<INPCInteraction> interactions;
 
@@ -30,6 +34,13 @@ public class NPCInteractionManager : MonoBehaviour
 
     public void InitializeInteractionUI()
     {
+        CleanSelectInteractionUI();
+        BuildSelectInteractionUI();
+        EnableSelectInteraction();
+    }
+
+    private void CleanSelectInteractionUI()
+    {
         // Clean any existing interaction options
         if (interactionOptionListParent.childCount > 0)
         {
@@ -38,9 +49,12 @@ public class NPCInteractionManager : MonoBehaviour
                 GameObject.Destroy(interactionOptionListParent.GetChild(i).gameObject);
             }
         }
-        
+    }
+
+    private void BuildSelectInteractionUI()
+    {
         // Instantiate New interaction options
-        foreach(INPCInteraction interaction in interactions)
+        foreach (INPCInteraction interaction in interactions)
         {
             if (interaction.CanExecuteInteraction())
             {
@@ -52,21 +66,49 @@ public class NPCInteractionManager : MonoBehaviour
             }
         }
 
+        GameObject dismissInteractionUIInstance = GameObject.Instantiate(dismissNPCInteractionUIPrefab, interactionOptionListParent);
+        dismissInteractionUIInstance.GetComponent<Button>().onClick.AddListener(DismissInteractionUI);
+    }
+
+    private void EnableSelectInteraction()
+    {
         // Enable the UI
         interactionMenuParent.gameObject.SetActive(false);
-        interactionOptionListParent.gameObject.SetActive(true);
+        selectInteractionUIParent.SetActive(true);
         interactionUIParent.SetActive(true);
+    }
+
+    private void DisableInteractionUI()
+    {
+        // Enable the UI
+        interactionMenuParent.gameObject.SetActive(false);
+        selectInteractionUIParent.SetActive(false);
+        interactionUIParent.SetActive(false);
     }
 
     private void HandleInteractionSelect(object sender, NPCInteractionSelectedArgs e)
     {
+        interactionMenuParent.gameObject.SetActive(true);
+        selectInteractionUIParent.SetActive(false);
+
         INPCInteraction interactionInterface = e.selectedInteraction;
         if (interactionInterface != null)
         {
+            interactionInterface.onInteractionComplete += HandleNPCInteractionComplete;
             interactionInterface.StartInteraction();
         }
+    }
 
-        interactionMenuParent.gameObject.SetActive(true);
-        interactionOptionListParent.gameObject.SetActive(false);
+    private void HandleNPCInteractionComplete(object sender, InteractionCompletedArgs e)
+    {
+        EnableSelectInteraction();
+    }
+
+    public void DismissInteractionUI()
+    {
+        CleanSelectInteractionUI();
+        DisableInteractionUI();
+
+        onInteractionMenuDismiss?.Invoke(this, EventArgs.Empty);
     }
 }
