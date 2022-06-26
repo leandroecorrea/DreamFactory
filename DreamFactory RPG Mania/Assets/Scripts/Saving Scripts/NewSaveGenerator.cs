@@ -10,7 +10,7 @@ public static class NewSaveGenerator
         {
             return new Dictionary<string, object>
             {
-                { SaveKeys.UNLOCKED_PARTY_MEMBERS, new HashSet<string> { "PUFFER", "THEO" } }
+                { SaveKeys.UNLOCKED_PARTY_MEMBERS, new HashSet<string> { "PUFFER", "THEO", "MINDY" } }
             };
         }
     }
