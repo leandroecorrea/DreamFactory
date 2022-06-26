@@ -800,7 +800,7 @@ PrefabInstance:
         type: 3}
       propertyPath: targetConversation
       value: 
-      objectReference: {fileID: 11400000, guid: b008ab6682ff8d64c95217011efc7840,
+      objectReference: {fileID: 11400000, guid: cd9c193687a85054e97b885c21231708,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 960bd18ba7560ad4a96957163be8ec3a, type: 3}
