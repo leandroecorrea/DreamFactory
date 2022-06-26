@@ -137,7 +137,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7717009952858876837, guid: da86256cb3573d94da8ef4533aebbe18,
+  m_Motion: {fileID: 2446752081711068322, guid: e2bf3e161f96cd3419304cfce4ef67e9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -177,7 +177,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 4645343847104836327, guid: e2bf3e161f96cd3419304cfce4ef67e9,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -232,7 +233,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9024326500159597813, guid: da86256cb3573d94da8ef4533aebbe18,
+  m_Motion: {fileID: -3047310181010008097, guid: e2bf3e161f96cd3419304cfce4ef67e9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -382,7 +383,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_Combat_Revised
+  m_Name: Theo_Combat
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: IsMoving
@@ -450,7 +451,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5289835342800581009, guid: da86256cb3573d94da8ef4533aebbe18,
+  m_Motion: {fileID: 1874587855690487336, guid: e2bf3e161f96cd3419304cfce4ef67e9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -588,7 +589,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -6335068017558501742, guid: da86256cb3573d94da8ef4533aebbe18,
+  m_Motion: {fileID: 4645343847104836327, guid: e2bf3e161f96cd3419304cfce4ef67e9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -643,7 +644,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8258282684127617647, guid: da86256cb3573d94da8ef4533aebbe18,
+  m_Motion: {fileID: 6917972687798224570, guid: e2bf3e161f96cd3419304cfce4ef67e9,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

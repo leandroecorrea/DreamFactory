@@ -1196,7 +1196,7 @@ GameObject:
   - component: {fileID: 1170688846626861461}
   - component: {fileID: 7449330649396601833}
   m_Layer: 0
-  m_Name: Puffer
+  m_Name: Puffer (Combat)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08de74959a8e5f34fbf35228a4f43aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityConfig: {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296, type: 2}
+  entityConfig: {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
   animator: {fileID: 1741059099112683508}
 --- !u!136 &1170688846626861461
 CapsuleCollider:

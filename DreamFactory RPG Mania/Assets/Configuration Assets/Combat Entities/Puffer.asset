@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
+  m_Name: Puffer
+  m_EditorClassIdentifier: 
+  Name: Puffer
+  baseHP: 10000
+  baseMP: 25
+  baseAttack: 5
+  baseSpeed: 5000
+  combatEntityPrefab: {fileID: 5008707017202677556, guid: 4195037550c2a51499359a1488c3139b,
+    type: 3}
+  actions:
+  - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
+  - {fileID: 11400000, guid: dec20bb659ce55747aab7c5667fb332f, type: 2}
+  - {fileID: 11400000, guid: fbb94ac3b7baecf4388123d47e45acb8, type: 2}
