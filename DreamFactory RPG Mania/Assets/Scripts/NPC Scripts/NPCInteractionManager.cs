@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class NPCInteractionManager : MonoBehaviour
@@ -71,14 +72,12 @@ public class NPCInteractionManager : MonoBehaviour
         // Instantiate New interaction options
         foreach (INPCInteraction interaction in interactions)
         {
-            if (interaction.CanExecuteInteraction())
-            {
-                GameObject newInteractionOption = GameObject.Instantiate(npcInteractionOptionPrefab, interactionOptionListParent);
+            GameObject newInteractionOption = GameObject.Instantiate(npcInteractionOptionPrefab, interactionOptionListParent);
+            newInteractionOption.GetComponent<Button>().interactable = (interaction.CanExecuteInteraction());
 
-                NPCInteractionOption interactionOptionHandler = newInteractionOption.GetComponent<NPCInteractionOption>();
-                interactionOptionHandler.InitializeOptionDisplay(interaction.GetInteractionDisplay());
-                interactionOptionHandler.onInteractionSelect += HandleInteractionSelect;
-            }
+            NPCInteractionOption interactionOptionHandler = newInteractionOption.GetComponent<NPCInteractionOption>();
+            interactionOptionHandler.InitializeOptionDisplay(interaction.GetInteractionDisplay());
+            interactionOptionHandler.onInteractionSelect += HandleInteractionSelect;
         }
 
         GameObject dismissInteractionUIInstance = GameObject.Instantiate(dismissNPCInteractionUIPrefab, interactionOptionListParent);
@@ -91,6 +90,8 @@ public class NPCInteractionManager : MonoBehaviour
         interactionMenuParent.gameObject.SetActive(false);
         selectInteractionUIParent.SetActive(true);
         interactionUIParent.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(interactionOptionListParent.GetChild(0).gameObject);
     }
 
     private void DisableInteractionUI()

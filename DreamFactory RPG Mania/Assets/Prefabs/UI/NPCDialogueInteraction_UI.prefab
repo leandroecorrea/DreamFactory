@@ -535,6 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerText: {fileID: 479811805296027012}
   dialogueText: {fileID: 479811804168127946}
+  proceedButton: {fileID: 378566071186817329}
 --- !u!1 &479811804980387964
 GameObject:
   m_ObjectHideFlags: 0

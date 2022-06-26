@@ -127,8 +127,8 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""488d6863-5810-411b-b685-37d73d9e8a00"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""NPCTalk"",

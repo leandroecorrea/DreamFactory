@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class NPCDialogueMenuHandler : MonoBehaviour, INPCInteractionMenuHandler
@@ -10,6 +11,7 @@ public class NPCDialogueMenuHandler : MonoBehaviour, INPCInteractionMenuHandler
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI speakerText;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private GameObject proceedButton;
 
     private NPCDialogueInteraction dialogueInteraction;
     private Coroutine currentWritingCoroutine;
@@ -40,6 +42,8 @@ public class NPCDialogueMenuHandler : MonoBehaviour, INPCInteractionMenuHandler
 
         speakerText.text = speakerDisplayText;
         dialogueText.text = "";
+
+        EventSystem.current.SetSelectedGameObject(proceedButton);
 
         currentWritingCoroutine = StartCoroutine(WriteCurrentDialogueText());
     }
