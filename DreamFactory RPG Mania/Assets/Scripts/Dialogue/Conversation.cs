@@ -6,6 +6,7 @@ using UnityEngine;
 public class Conversation : ScriptableObject
 {
     [NonReorderable] public List<ConversationPoint> conversationPoints;
+    public DialogueEvent onConversationCompleteEvent;
 }
 
 [System.Serializable]
@@ -16,4 +17,6 @@ public class ConversationPoint
 
     public string conversationPointText;
     public float typingDelay;
+
+    public DialogueEvent onCompleteEvent;
 }
