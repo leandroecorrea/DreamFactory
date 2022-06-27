@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: ec34c74ac1d3f984891d582721f11c8f
+guid: 09a91ba187d750241812e070939d8e15
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 8786162806413089151
-    second: Theo_Floating
-  - first:
-      74: -4525104656459308630
-    second: Theo_Victory
+      74: 1743783898425021546
+    second: OpenLid
   externalObjects: {}
   materials:
     materialImportMode: 2

@@ -30,6 +30,9 @@ ModelImporter:
   - first:
       74: 6755398341621750414
     second: Mindy_Walking_Overworld
+  - first:
+      74: -4757963774939551307
+    second: Mindy_HitReaction
   externalObjects: {}
   materials:
     materialImportMode: 2
