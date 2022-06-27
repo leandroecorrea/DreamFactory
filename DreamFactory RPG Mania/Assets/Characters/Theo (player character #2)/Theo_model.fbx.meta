@@ -16,9 +16,6 @@ ModelImporter:
       74: 2446752081711068322
     second: Theo_FastRun_Combat
   - first:
-      74: -8554338436531756258
-    second: Theo_HitReaction
-  - first:
       74: -3047310181010008097
     second: Theo_Idle
   - first:
@@ -33,6 +30,9 @@ ModelImporter:
   - first:
       74: 7977391465360918164
     second: Theo_Turning
+  - first:
+      74: -8554338436531756258
+    second: Theo_HitReaction
   externalObjects: {}
   materials:
     materialImportMode: 2
