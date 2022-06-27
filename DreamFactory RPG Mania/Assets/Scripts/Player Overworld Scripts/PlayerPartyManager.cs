@@ -20,6 +20,19 @@ public static class PlayerPartyManager
         }
     }
 
+    public static HashSet<string> UnlockedPartyMemberIds
+    {
+        get
+        {
+            if (_unlockedPartyMemberIds == null)
+            {
+                RetrievePartyMembersFromSave();
+            }
+
+            return _unlockedPartyMemberIds;
+        }
+    }
+
     private static void RetrievePartyMembersFromSave()
     {
         PlayerPartyMemberConfig[] allPartyMemberConfigs = Resources.LoadAll<PlayerPartyMemberConfig>("Party Member Configs");
@@ -38,14 +51,14 @@ public static class PlayerPartyManager
 
     public static void UnlockPartyMemberById(PlayerPartyMemberConfig newPartyMemberConfig)
     {
-        if (_unlockedPartyMemberIds.Contains(newPartyMemberConfig.partyMemberId))
+        if (UnlockedPartyMemberIds.Contains(newPartyMemberConfig.partyMemberId))
         {
             Debug.LogError($"Trying to add ${newPartyMemberConfig.name} to party when they're already added");
             return;
         }
 
-        _unlockedPartyMemberIds.Add(newPartyMemberConfig.partyMemberId);
-        _unlockedPartyMembers.Add(newPartyMemberConfig);
+        UnlockedPartyMemberIds.Add(newPartyMemberConfig.partyMemberId);
+        UnlockedPartyMembers.Add(newPartyMemberConfig);
     }
 
     public static List<CombatEntityConfig> GetAllUnlockedCombatConfigs()

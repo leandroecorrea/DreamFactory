@@ -77,9 +77,20 @@ public class NPCDialogueMenuHandler : MonoBehaviour, INPCInteractionMenuHandler
             return;
         }
 
+        if (currentConversationPoint.onCompleteEvent != null)
+        {
+            DialogueEventSystem.Publish(currentConversationPoint.onCompleteEvent);
+        }
+
         currentConversationPointIndex += 1;
         if (currentConversationPointIndex == dialogueInteraction.targetConversation.conversationPoints.Count)
         {
+            DialogueEvent conversationCompleteEvent = dialogueInteraction.targetConversation.onConversationCompleteEvent;
+            if (conversationCompleteEvent != null)
+            {
+                DialogueEventSystem.Publish(conversationCompleteEvent);
+            }
+            
             dialogueInteraction.CompleteInteraction();
             return;
         }
