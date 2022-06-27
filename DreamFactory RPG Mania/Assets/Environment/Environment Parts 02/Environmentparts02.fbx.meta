@@ -1,15 +1,24 @@
 fileFormatVersion: 2
-guid: f1bc081a4ccb3c84890c8d089c921ce7
+guid: e0c0702644cb9134bb38efdd02d8d955
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: -3101355851602136986
-    second: Puffer_Floating
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ConveyerBelt
+    second: {fileID: 2100000, guid: 99c80b27f7d01474b9cffa0bdb7f4971, type: 2}
   - first:
-      74: -1703417138778402184
-    second: Puffer_Victory
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Environment02
+    second: {fileID: 2100000, guid: b036a168a1d815b42938b33c5f3cae30, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IndicatorLights
+    second: {fileID: 2100000, guid: 292b5f89750eed842abef4d50621c34a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

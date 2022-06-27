@@ -4,17 +4,26 @@ ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
+      74: 8786162806413089151
+    second: Theo_Floating
+  - first:
+      74: -4525104656459308630
+    second: Theo_Victory
+  - first:
       74: 1874587855690487336
     second: Theo_AttackCombo
   - first:
       74: 2446752081711068322
     second: Theo_FastRun_Combat
   - first:
+      74: -8554338436531756258
+    second: Theo_HitReaction
+  - first:
       74: -3047310181010008097
     second: Theo_Idle
   - first:
-      74: 4645343847104836327
-    second: Theo_Sitting
+      74: 1098754970533274385
+    second: Theo_Walking_Overworld
   - first:
       74: 6917972687798224570
     second: Theo_Spellcast
@@ -24,9 +33,6 @@ ModelImporter:
   - first:
       74: 7977391465360918164
     second: Theo_Turning
-  - first:
-      74: 1098754970533274385
-    second: Theo_Walking_Overworld
   externalObjects: {}
   materials:
     materialImportMode: 2

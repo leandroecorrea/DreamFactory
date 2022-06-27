@@ -4,6 +4,12 @@ ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
+      74: -3101355851602136986
+    second: Puffer_Floating
+  - first:
+      74: -1703417138778402184
+    second: Puffer_Victory
+  - first:
       74: -5289835342800581009
     second: Puffer_Attack_Combo
   - first:
