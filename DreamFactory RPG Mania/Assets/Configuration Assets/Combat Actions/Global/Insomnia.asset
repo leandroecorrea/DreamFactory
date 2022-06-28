@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
+  m_Name: Insomnia
+  m_EditorClassIdentifier: 
+  actionName: Insomnia
+  description: makes the target immune to damage and status effects for 2 turns,
+    has a 2 turn cooldown
+  requireRouting: 0
+  requireMana: 5
+  baseEffectiveness: 100
+  effectsToApply:
+  - {fileID: 11400000, guid: 68c9b9a9fc3bd2846af27a9de866bfc0, type: 2}
+  actionHandlerClassName: InsomniaAttackHandler
+  targetStrategy: {fileID: 11400000, guid: 850b408e02baa854a99b2c248e8f4334, type: 2}
+  combatActionType: 1

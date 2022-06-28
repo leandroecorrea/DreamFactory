@@ -12,8 +12,7 @@ public class ComaCooldownHandler : BaseEffectHandler
         this.applicant = applicant;
         removedAction = applicant.entityConfig.actions.Find(x => x.actionName == "Coma");
         if(removedAction != null)
-            applicant.entityConfig.actions.Remove(removedAction);
-        Debug.Log($"Target {applicant.gameObject.name} current attack is {applicant.CurrentAttack}, doubled by Lucid spell");
+            applicant.entityConfig.actions.Remove(removedAction);        
     }
 
     protected override void HandleEffectExpire()

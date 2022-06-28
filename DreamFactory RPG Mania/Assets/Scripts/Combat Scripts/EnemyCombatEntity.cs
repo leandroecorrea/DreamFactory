@@ -15,13 +15,13 @@ public class EnemyCombatEntity : CombatEntity
         //base.StartTurn(turnContext);
         if(IsDisabled)
         {
-            Debug.Log("Enemy is disabled");
-            EndTurn(turnContext);
+            SkipTurn(turnContext);
             return;
         }
         CombatEntity target = turnContext.playerParty[0];
         PerformAction(combatAction, target);
     }
+
 }
 
 

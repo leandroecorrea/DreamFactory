@@ -1,0 +1,11 @@
+﻿public class RecallAttackHandler : BaseAttackHandler
+{
+    protected override ActionPerformedArgs HandleActionExecution()
+    {
+        CombatEntity targetEntity = targets[currentTargetIndex++];
+        var freezeHandler = targetEntity.EffectsCaused.Find(x => x.combatEffectConfig.displayName == "Freeze");
+        targetEntity.AddEffectToRemove(freezeHandler);
+        targetEntity.entityConfig.actions.Add(targetEntity.LastExecutedAction);
+        return new ActionPerformedArgs { TargetedUnits = new CombatEntity[] { targetEntity }, ActionPerformed = this, feedbackMessage = "" };
+    }
+}

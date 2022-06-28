@@ -17,41 +17,42 @@ public abstract class BaseAttackHandler : ICombatAction
 
     public virtual void ExecuteAction(CombatEntity executor, params CombatEntity[] targets)
     {
-        this.executor = executor;
-        this.targets = targets;
-        this.initialPosition = executor.gameObject.transform.position;
-        this.currentTargetIndex = 0;
-
+        InitializeHandler(executor, targets);
         executor.UpdateEntityMP(executor.CurrentMP - combatActionConfig.requireMana);
-
-        combatRouter = executor.gameObject.GetComponent<CombatRouter>();
         if (combatRouter == null)
-        {
-            Debug.LogError($"Couldn't find Combat Router for {combatRouter.gameObject.name}");
-            return;
-        }
-
+            return;        
         // Handle Routing
         if (combatActionConfig.requireRouting)
         {
-            combatRouter.onRoutingComplete += HandleMoveToAttackTargetComplete;
-
-            combatRouter.SaveRotation();
-            combatRouter.BeginRouting(targets[0].gameObject);
-
-            executor.TriggerRunningAnimation();
+            HandleRouting(executor, targets);
         }
         else
         {
             // For attacks that don't need routing (I.e far range magic spell, immediately execute)
             var router = executor.GetComponent<CombatRouter>();
             router.MakeLookTo(targets);
-            HandleMoveToAttackTargetComplete(router, EventArgs.Empty);
+            HandleAttackComplete(router, EventArgs.Empty);
         }
-        
     }
 
-    protected void HandleMoveToAttackTargetComplete(object sender, EventArgs e)
+    private void HandleRouting(CombatEntity executor, CombatEntity[] targets)
+    {
+        combatRouter.onRoutingComplete += HandleAttackComplete;
+        combatRouter.SaveRotation();
+        combatRouter.BeginRouting(targets[currentTargetIndex++].gameObject);
+        executor.TriggerRunningAnimation();
+    }
+
+    private void InitializeHandler(CombatEntity executor, CombatEntity[] targets)
+    {
+        this.executor = executor;
+        this.targets = targets;
+        this.initialPosition = executor.gameObject.transform.position;
+        this.currentTargetIndex = 0;
+        combatRouter = executor.gameObject.GetComponent<CombatRouter>();
+    }
+
+    protected virtual void HandleAttackComplete(object sender, EventArgs e)
     {
         CombatEntity targetCombatEntity = ((CombatRouter)sender).GetComponent<CombatEntity>();
 
@@ -69,7 +70,7 @@ public abstract class BaseAttackHandler : ICombatAction
         {
             if (!combatActionConfig.requireRouting)
             {
-                HandleMoveToAttackTargetComplete(executor.GetComponent<CombatRouter>(), EventArgs.Empty);
+                HandleAttackComplete(executor.GetComponent<CombatRouter>(), EventArgs.Empty);
                 return;
             }
 
@@ -86,7 +87,7 @@ public abstract class BaseAttackHandler : ICombatAction
             return;
         }
 
-        combatRouter.onRoutingComplete -= HandleMoveToAttackTargetComplete;
+        combatRouter.onRoutingComplete -= HandleAttackComplete;
         combatRouter.onRoutingComplete += HandleReturnToPositionComplete;
 
         executor.TriggerRunningAnimation();
@@ -103,7 +104,7 @@ public abstract class BaseAttackHandler : ICombatAction
 
     protected abstract ActionPerformedArgs HandleActionExecution();
 
-    protected void HandleReturnToPositionComplete(object sender, EventArgs e)
+    protected virtual void HandleReturnToPositionComplete(object sender, EventArgs e)
     {
         executor.onAnimationComplete -= HandleAttackAnimationComplete;
         combatRouter.onRoutingComplete -= HandleReturnToPositionComplete;
@@ -113,6 +114,7 @@ public abstract class BaseAttackHandler : ICombatAction
         
         OnCombatActionComplete(this, new ActionPerformedArgs { TargetedUnits = targets });
     }
+
 
     public void ApplyEffects(List<CombatEffectConfig> effectsToApply, params CombatEntity[] targets)
     {
