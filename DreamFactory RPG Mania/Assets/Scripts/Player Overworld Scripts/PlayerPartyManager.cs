@@ -38,6 +38,8 @@ public static class PlayerPartyManager
         PlayerPartyMemberConfig[] allPartyMemberConfigs = Resources.LoadAll<PlayerPartyMemberConfig>("Party Member Configs");
 
         _unlockedPartyMemberIds = PlayerProgression.GetPlayerData<HashSet<string>>(SaveKeys.UNLOCKED_PARTY_MEMBERS);
+        Debug.Log($"Unlocked Party Member Id Count: {_unlockedPartyMemberIds.Count}");
+
         _unlockedPartyMembers = new List<PlayerPartyMemberConfig>();
 
         foreach (PlayerPartyMemberConfig partyMemberConfig in allPartyMemberConfigs)
@@ -51,14 +53,18 @@ public static class PlayerPartyManager
 
     public static void UnlockPartyMemberById(PlayerPartyMemberConfig newPartyMemberConfig)
     {
+        Debug.Log($"Attempting to unlock {newPartyMemberConfig.name}");
+
         if (UnlockedPartyMemberIds.Contains(newPartyMemberConfig.partyMemberId))
         {
-            Debug.LogError($"Trying to add ${newPartyMemberConfig.name} to party when they're already added");
+            Debug.LogError($"Trying to add {newPartyMemberConfig.name} to party when they're already added");
             return;
         }
 
         UnlockedPartyMemberIds.Add(newPartyMemberConfig.partyMemberId);
         UnlockedPartyMembers.Add(newPartyMemberConfig);
+
+        PlayerProgression.UpdatePlayerData<HashSet<string>>(SaveKeys.UNLOCKED_PARTY_MEMBERS, UnlockedPartyMemberIds);
     }
 
     public static List<CombatEntityConfig> GetAllUnlockedCombatConfigs()

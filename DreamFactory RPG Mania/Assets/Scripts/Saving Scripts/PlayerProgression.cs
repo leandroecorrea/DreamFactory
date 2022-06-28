@@ -81,16 +81,12 @@ public static class PlayerProgression
         return gameData;
     }
 
-    public static List<PlayerSaveDisplay> GetAllSaveDisplays()
+    public static PlayerSaveDisplay GetPlayerSaveDisplay(int saveIndex)
     {
-        List<PlayerSaveDisplay> displays = new List<PlayerSaveDisplay>();
-
-        for(int i = 0; i < 3; i++)
-        {
-            displays.Add(new PlayerSaveDisplay(ReadPlayerSaveData(i), i));
-        }
-
-        return displays;
+        return new PlayerSaveDisplay(
+            ReadPlayerSaveData(saveIndex), 
+            saveIndex
+        );
     }
 
     public static void SaveLoadedData()
@@ -109,6 +105,7 @@ public static class PlayerProgression
         FileStream inputStream = new FileStream(totalTargetDataPath, FileMode.Create);
 
         converter.Serialize(inputStream, loadedPlayerData);
+        inputStream.Close();
     }
 
     public static void LoadPlayerSave(int saveIndex)

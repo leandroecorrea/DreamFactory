@@ -22,6 +22,11 @@ public class IntroTextScroll : MonoBehaviour
 
     private Transform parentTransform;
 
+    private void OnDestroy()
+    {
+        completeTextScroll.Dispose();
+    }
+
     private void Awake()
     {
         parentTransform = transform;
@@ -30,6 +35,7 @@ public class IntroTextScroll : MonoBehaviour
 
     private void HandleCompleteTextScroll(InputAction.CallbackContext obj)
     {
+        completeTextScroll.performed -= HandleCompleteTextScroll;
         SceneManager.LoadScene(targetScene);
     }
 

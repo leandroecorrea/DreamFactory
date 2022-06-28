@@ -10,6 +10,8 @@ public class RecruitableNPC : MonoBehaviour
     public void RecruitPartyMember()
     {
         PlayerPartyManager.UnlockPartyMemberById(partyMemberToRecruit);
+        PlayerProgression.SaveLoadedData();
+
         return;
     }
 }
