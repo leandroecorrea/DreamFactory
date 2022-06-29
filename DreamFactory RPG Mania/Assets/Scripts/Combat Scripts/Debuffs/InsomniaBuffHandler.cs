@@ -1,7 +1,9 @@
 ﻿public class InsomniaBuffHandler : BaseEffectHandler
 {
     CombatEntity applicant;
-    
+
+    public override bool IsDebuff => false;
+
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
         applicant.TakeDamageStrategy = x => { };

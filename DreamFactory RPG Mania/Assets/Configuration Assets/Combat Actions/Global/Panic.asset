@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
-  m_Name: Awaken
+  m_Name: Panic
   m_EditorClassIdentifier: 
-  actionName: Awaken
-  description: Pulls target out of the dream realm/instantly removes them from combat
-    - very low accuracy
+  actionName: 
+  description: 
   requireRouting: 1
   requireMana: 0
   baseEffectiveness: 0
   effectsToApply: []
   actionHandlerClassName: 
-  targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
+  targetStrategy: {fileID: 0}
   combatActionType: 0

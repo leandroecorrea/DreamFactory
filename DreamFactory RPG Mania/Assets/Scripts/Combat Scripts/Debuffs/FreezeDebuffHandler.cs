@@ -2,6 +2,9 @@
 {
     CombatEntity applicant;
     CombatActionConfig configRemoved;
+
+    public override bool IsDebuff => true;
+
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
         if (applicant.LastExecutedAction == null)

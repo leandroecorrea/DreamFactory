@@ -6,7 +6,7 @@ using UnityEngine;
 public interface IEffectHandler
 {
     public CombatEffectConfig combatEffectConfig { get; set; }
-
+    public bool IsDebuff { get; }
     public CombatEntity applier { get; set; }
 
     public int RemainingRounds { get; }

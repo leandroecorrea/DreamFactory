@@ -3,6 +3,8 @@
     CombatEntity applicant;
     int attackPreBuff;
 
+    public override bool IsDebuff => true;
+
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
         var hypnosisActionExecution = new HypnosisActionExecution(new BaseActionExecution());

@@ -206,6 +206,10 @@ public class CombatEntity : MonoBehaviour
             HandleEntityDeath();
         }
     }
+    public void Heal(int healAmount)
+    {
+        CurrentHP = CurrentHP + healAmount > entityConfig.baseHP? entityConfig.baseHP : CurrentHP + healAmount;
+    }
 
     
 

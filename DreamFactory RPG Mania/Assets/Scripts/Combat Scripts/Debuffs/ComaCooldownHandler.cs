@@ -7,6 +7,8 @@ public class ComaCooldownHandler : BaseEffectHandler
     CombatEntity applicant;
     private CombatActionConfig removedAction;
 
+    public override bool IsDebuff => true;
+
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {    
         this.applicant = applicant;

@@ -5,6 +5,9 @@ using UnityEngine;
 public class ComaDebuffHandler : BaseEffectHandler
 {
     CombatEntity applicant;
+
+    public override bool IsDebuff => true;
+
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
         this.applicant = applicant;
