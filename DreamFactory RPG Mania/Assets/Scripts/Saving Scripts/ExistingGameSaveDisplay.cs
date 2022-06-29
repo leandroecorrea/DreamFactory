@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class ExistingGameSaveDisplay : MonoBehaviour
 {
+    [Header("Prefab Refs")]
+    [SerializeField] private GameObject unlockedMemberPortraitPrefab;
+
     [Header("UI Component Refs")]
     [SerializeField] private GameObject noExistingDataUIParent;
     [SerializeField] private GameObject existingDataUIParent;
     [SerializeField] private TextMeshProUGUI gameSaveName;
+    [SerializeField] private Transform unlockedMemberPortraitParent;
 
     [Header("Scene Management Refs")]
     [SerializeField] private string newGameTargetScene;
@@ -23,12 +28,12 @@ public class ExistingGameSaveDisplay : MonoBehaviour
         UpdateGameSaveUI();
     }
 
-    public void LoadGameSaveDisplay()
+    private void LoadGameSaveDisplay()
     {
         playerSaveDisplay = PlayerProgression.GetPlayerSaveDisplay(transform.GetSiblingIndex());
     }
 
-    public void UpdateGameSaveUI()
+    private void UpdateGameSaveUI()
     {
         if (playerSaveDisplay.isNewSave)
         {
@@ -42,6 +47,16 @@ public class ExistingGameSaveDisplay : MonoBehaviour
         noExistingDataUIParent.SetActive(false);
 
         gameSaveName.text = playerSaveDisplay.fileName;
+        CreateUnlockedCharacterDisplays();
+    }
+
+    private void CreateUnlockedCharacterDisplays()
+    {
+        foreach(PlayerPartyMemberConfig unlockedPartyMember in playerSaveDisplay.unlockedPartyMembers)
+        {
+            GameObject newUnlockedCharacterPortrait = Instantiate(unlockedMemberPortraitPrefab, unlockedMemberPortraitParent);
+            newUnlockedCharacterPortrait.GetComponent<Image>().sprite = unlockedPartyMember.partyMemberPortrait;
+        }
     }
 
     public void HandleSelectGameSave()

@@ -5,7 +5,7 @@ using UnityEngine;
 public static class PlayerPartyManager
 {
     private static List<PlayerPartyMemberConfig> _unlockedPartyMembers;
-    private static HashSet<string> _unlockedPartyMemberIds;
+    private static List<string> _unlockedPartyMemberIds;
 
     public static List<PlayerPartyMemberConfig> UnlockedPartyMembers
     {
@@ -20,7 +20,7 @@ public static class PlayerPartyManager
         }
     }
 
-    public static HashSet<string> UnlockedPartyMemberIds
+    public static List<string> UnlockedPartyMemberIds
     {
         get
         {
@@ -33,11 +33,16 @@ public static class PlayerPartyManager
         }
     }
 
+    public static PlayerPartyMemberConfig[] LoadAllAvailablePartyMemberConfigs()
+    {
+        return Resources.LoadAll<PlayerPartyMemberConfig>("Party Member Configs");
+    }
+
     private static void RetrievePartyMembersFromSave()
     {
-        PlayerPartyMemberConfig[] allPartyMemberConfigs = Resources.LoadAll<PlayerPartyMemberConfig>("Party Member Configs");
+        PlayerPartyMemberConfig[] allPartyMemberConfigs = LoadAllAvailablePartyMemberConfigs();
 
-        _unlockedPartyMemberIds = PlayerProgression.GetPlayerData<HashSet<string>>(SaveKeys.UNLOCKED_PARTY_MEMBERS);
+        _unlockedPartyMemberIds = PlayerProgression.GetPlayerData<List<string>>(SaveKeys.UNLOCKED_PARTY_MEMBERS);
         Debug.Log($"Unlocked Party Member Id Count: {_unlockedPartyMemberIds.Count}");
 
         _unlockedPartyMembers = new List<PlayerPartyMemberConfig>();
@@ -64,7 +69,7 @@ public static class PlayerPartyManager
         UnlockedPartyMemberIds.Add(newPartyMemberConfig.partyMemberId);
         UnlockedPartyMembers.Add(newPartyMemberConfig);
 
-        PlayerProgression.UpdatePlayerData<HashSet<string>>(SaveKeys.UNLOCKED_PARTY_MEMBERS, UnlockedPartyMemberIds);
+        PlayerProgression.UpdatePlayerData(SaveKeys.UNLOCKED_PARTY_MEMBERS, UnlockedPartyMemberIds);
     }
 
     public static List<CombatEntityConfig> GetAllUnlockedCombatConfigs()

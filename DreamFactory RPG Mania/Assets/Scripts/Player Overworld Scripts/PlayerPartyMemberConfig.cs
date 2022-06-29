@@ -9,4 +9,5 @@ public class PlayerPartyMemberConfig : ScriptableObject
     public CombatEntityConfig combatEntityConfig;
 
     public int baseLevel;
+    public Sprite partyMemberPortrait;
 }

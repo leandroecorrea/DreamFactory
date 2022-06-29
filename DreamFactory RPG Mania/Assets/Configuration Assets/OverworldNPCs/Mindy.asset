@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9e1d92a9bf6b242a8cb4009ba78d98, type: 3}
+  m_Script: {fileID: 11500000, guid: 175b35ae9e909ec4eb2b24ec616b821a, type: 3}
   m_Name: Mindy
   m_EditorClassIdentifier: 
-  partyMemberId: MINDY
-  combatEntityConfig: {fileID: 11400000, guid: 8972d770ab23b194997e9747922430d9, type: 2}
-  baseLevel: 1
-  partyMemberPortrait: {fileID: 21300000, guid: 938aae6f0c3726647bbbdfea3cd3a766,
-    type: 3}
+  characterName: Mindy
