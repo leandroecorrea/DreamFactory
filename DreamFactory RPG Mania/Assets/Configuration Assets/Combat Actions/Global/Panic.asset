@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
+  m_Name: Panic
+  m_EditorClassIdentifier: 
+  actionName: 
+  description: 
+  requireRouting: 1
+  requireMana: 0
+  baseEffectiveness: 0
+  effectsToApply: []
+  actionHandlerClassName: 
+  targetStrategy: {fileID: 0}
+  combatActionType: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FeverDebuffHandler : BaseEffectHandler
 {
+    public override bool IsDebuff => true;
+
     public override void HandleTurnEnd(CombatEntity applicant, CombatContext combatCtx)
     {
         base.HandleTurnEnd(applicant, combatCtx);

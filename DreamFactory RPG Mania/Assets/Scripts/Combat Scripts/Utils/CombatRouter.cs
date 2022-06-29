@@ -35,7 +35,7 @@ public class CombatRouter : MonoBehaviour
 
     public void BeginRouting(Vector3 targetToRouteTo)
     {
-        targetDistance = 0.1f;
+        targetDistance = 30f;
         snapToPosition = true;
         transform.LookAt(new Vector3(targetToRouteTo.x, transform.position.y, targetToRouteTo.z));
         StartCoroutine(ExecuteRouting(targetToRouteTo));

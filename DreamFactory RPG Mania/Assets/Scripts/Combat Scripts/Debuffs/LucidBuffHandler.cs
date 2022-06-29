@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +6,8 @@ public class LucidBuffHandler : BaseEffectHandler
 {
     CombatEntity applicant;
     int attackPreBuff;
+
+    public override bool IsDebuff => false;
 
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {        

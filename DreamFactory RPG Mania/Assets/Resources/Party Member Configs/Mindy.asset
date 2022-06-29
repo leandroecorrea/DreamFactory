@@ -15,3 +15,5 @@ MonoBehaviour:
   partyMemberId: MINDY
   combatEntityConfig: {fileID: 11400000, guid: 8972d770ab23b194997e9747922430d9, type: 2}
   baseLevel: 1
+  partyMemberPortrait: {fileID: 21300000, guid: 938aae6f0c3726647bbbdfea3cd3a766,
+    type: 3}

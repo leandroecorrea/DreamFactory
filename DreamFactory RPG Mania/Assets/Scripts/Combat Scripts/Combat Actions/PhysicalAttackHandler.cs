@@ -13,10 +13,9 @@ public class PhysicalAttackHandler : BaseAttackHandler
     }
 
     protected override ActionPerformedArgs HandleActionExecution()
-    {
-        CombatEntity currentTarget = targets[currentTargetIndex++];
+    {        
+        CombatEntity currentTarget = targets[0];
         currentTarget.TakeDamage(Damage);
-
         return new ActionPerformedArgs { TargetedUnits = new CombatEntity[] { currentTarget }, ActionPerformed = this, feedbackMessage = $"{Damage}" };
     }
 }

@@ -15,3 +15,5 @@ MonoBehaviour:
   partyMemberId: THEO
   combatEntityConfig: {fileID: 11400000, guid: 901175df4c6c72a42a6a6b7b32278cd4, type: 2}
   baseLevel: 1
+  partyMemberPortrait: {fileID: 21300000, guid: aa39ac2a888a8b4498c63a316aea9b08,
+    type: 3}

@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEffectHandler : IEffectHandler
+public abstract class BaseEffectHandler : IEffectHandler
 {
     protected int roundsRemaining;
     protected CombatEffectConfig effectConfig;
+    
 
     protected CombatEntity _applier;
     public CombatEntity applier { 
@@ -20,6 +21,8 @@ public class BaseEffectHandler : IEffectHandler
     }
 
     public int RemainingRounds { get { return roundsRemaining; } }
+
+    public abstract bool IsDebuff { get;}
 
     public event EventHandler<EventArgs> onEffectExpire;
 

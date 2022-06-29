@@ -58,6 +58,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         ShowCharactersPanel();        
         if (combatContext.currentTurnEntity is PlayerControllableEntity)
         {
+            combatContext.currentTurnEntity.StartTurn(combatContext);
             //TODO this logic should be in turn manager, but code is a bit tangled there             
             if ((combatContext.currentTurnEntity as PlayerControllableEntity).IsDisabled)
             {

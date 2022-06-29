@@ -15,3 +15,5 @@ MonoBehaviour:
   partyMemberId: PUFFER
   combatEntityConfig: {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
   baseLevel: 1
+  partyMemberPortrait: {fileID: 21300000, guid: 3c4e0207e5d13554eb884b14c20d6f81,
+    type: 3}

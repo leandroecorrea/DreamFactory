@@ -2,6 +2,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class PlayerProgression
@@ -81,16 +82,12 @@ public static class PlayerProgression
         return gameData;
     }
 
-    public static List<PlayerSaveDisplay> GetAllSaveDisplays()
+    public static PlayerSaveDisplay GetPlayerSaveDisplay(int saveIndex)
     {
-        List<PlayerSaveDisplay> displays = new List<PlayerSaveDisplay>();
-
-        for(int i = 0; i < 3; i++)
-        {
-            displays.Add(new PlayerSaveDisplay(ReadPlayerSaveData(i), i));
-        }
-
-        return displays;
+        return new PlayerSaveDisplay(
+            ReadPlayerSaveData(saveIndex), 
+            saveIndex
+        );
     }
 
     public static void SaveLoadedData()
@@ -109,11 +106,12 @@ public static class PlayerProgression
         FileStream inputStream = new FileStream(totalTargetDataPath, FileMode.Create);
 
         converter.Serialize(inputStream, loadedPlayerData);
+        inputStream.Close();
     }
 
     public static void LoadPlayerSave(int saveIndex)
     {
-        Dictionary<string, object> playerDataToLoad = ReadPlayerSaveData(currentSaveIndex);
+        Dictionary<string, object> playerDataToLoad = ReadPlayerSaveData(saveIndex);
         if (playerDataToLoad == null)
         {
             playerDataToLoad = new Dictionary<string, object>(NewSaveGenerator.newSaveDefaultInfo);
@@ -126,12 +124,46 @@ public static class PlayerProgression
 
 public class PlayerSaveDisplay
 {
+    private static List<PlayerPartyMemberConfig> allPartyMemberConfigs;
+
     public string fileName;
     public bool isNewSave;
+
+    public List<PlayerPartyMemberConfig> unlockedPartyMembers;
 
     public PlayerSaveDisplay(Dictionary<string, object> rawPlayerSaveData, int saveIndex)
     {
         fileName = $"Save {saveIndex + 1}";
         isNewSave = (rawPlayerSaveData == null);
+
+        if (!isNewSave)
+        {
+            if (rawPlayerSaveData.TryGetValue(SaveKeys.UNLOCKED_PARTY_MEMBERS, out object partyMemberIds))
+            {
+                List<string> partyMemberIdList = partyMemberIds as List<string>;
+                if (partyMemberIdList != null)
+                {
+                    LocateUnlockedPartyMemberConfigs(partyMemberIdList);
+                }
+            }
+            
+        }
+    }
+
+    private void LocateUnlockedPartyMemberConfigs(List<string> unlockedPartyMemberIds)
+    {
+        if (allPartyMemberConfigs == null)
+        {
+            allPartyMemberConfigs = PlayerPartyManager.LoadAllAvailablePartyMemberConfigs().ToList();
+        }
+
+        unlockedPartyMembers = new List<PlayerPartyMemberConfig>();
+        foreach (PlayerPartyMemberConfig availableConfig in allPartyMemberConfigs)
+        {
+            if (unlockedPartyMemberIds.Contains(availableConfig.partyMemberId))
+            {
+                unlockedPartyMembers.Add(availableConfig);
+            }
+        }
     }
 }

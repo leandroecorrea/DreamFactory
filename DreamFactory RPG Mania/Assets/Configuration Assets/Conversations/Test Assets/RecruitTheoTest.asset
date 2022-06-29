@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversationPoints:
   - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: c0472ed1166db8e4daaeec8cafc435cb,
+    conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
       type: 2}
     conversationPointText: Hey I'm Theo
     typingDelay: 0.03
@@ -26,7 +26,7 @@ MonoBehaviour:
     typingDelay: 0.03
     onCompleteEvent: {fileID: 0}
   - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: c0472ed1166db8e4daaeec8cafc435cb,
+    conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
       type: 2}
     conversationPointText: Sure!!!
     typingDelay: 0.03
