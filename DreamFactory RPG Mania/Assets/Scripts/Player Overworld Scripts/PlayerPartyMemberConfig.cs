@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Party Member", menuName = "Player Party/New Party Member")]
 public class PlayerPartyMemberConfig : ScriptableObject
 {
+    [Header("Party member details")]
     public string partyMemberId;
-    public CombatEntityConfig combatEntityConfig;
-
-    public int baseLevel;
-    public Sprite partyMemberPortrait;
+    public CharacterDetails characterConfig;
+    [Header("Party member combat stats")]
+    public PartyMemberCombatConfig characterCombatConfig;            
+    public LevelingStats levelingStats;
+    public CombatActionConfig actions { get; set; }        
 }

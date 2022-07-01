@@ -141,16 +141,9 @@ public class CombatEntity : MonoBehaviour
     }
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
-    {
-        // animator.SetTrigger(action.combatActionType.ToString());
+    {        
         var actionRequest = new CombatActionRequest { ActionChosen = action, CurrentEntity = this, Targets = target };
-        actionExecution.Execute(actionRequest);
-        //Type combatActionType = Type.GetType(action.actionHandlerClassName);
-        //ICombatAction attackHandlerInterface = (ICombatAction)Activator.CreateInstance(combatActionType);
-        //attackHandlerInterface.combatActionConfig = action;
-        //attackHandlerInterface.onCombatActionComplete += HandleCombatActionComplete;
-        //attackHandlerInterface.ExecuteAction(this, target);
-        //LastExecutedAction = entityConfig.actions.Where(x=> action).FirstOrDefault();
+        actionExecution.Execute(actionRequest);        
     }
 
     public void UpdateEntityMP(int newMP)

@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9e1d92a9bf6b242a8cb4009ba78d98, type: 3}
-  m_Name: Puffer
+  m_Script: {fileID: 11500000, guid: 400ea4b5e94c9ac4a9d0f0fb4c755ece, type: 3}
+  m_Name: Mindy Config
   m_EditorClassIdentifier: 
-  partyMemberId: PUFFER
-  combatEntityConfig: {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
-  baseLevel: 1
-  partyMemberPortrait: {fileID: 21300000, guid: 3c4e0207e5d13554eb884b14c20d6f81,
+  characterName: Mindy
+  characterPrefab: {fileID: 3184674319563369056, guid: da8cd3083b96db8428d43a91564f42e8,
     type: 3}
+  portrait: {fileID: 21300000, guid: 938aae6f0c3726647bbbdfea3cd3a766, type: 3}

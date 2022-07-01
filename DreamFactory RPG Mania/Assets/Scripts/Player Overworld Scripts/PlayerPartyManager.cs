@@ -78,7 +78,7 @@ public static class PlayerPartyManager
 
         foreach(PlayerPartyMemberConfig partyMemberConfig in UnlockedPartyMembers)
         {
-            combatEntityConfigs.Add(partyMemberConfig.combatEntityConfig);
+            combatEntityConfigs.Add(partyMemberConfig.characterCombatConfig.combatEntityConfig);
         }
 
         return combatEntityConfigs;

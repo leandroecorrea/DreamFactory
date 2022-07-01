@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9e1d92a9bf6b242a8cb4009ba78d98, type: 3}
+  m_Name: Mindy
+  m_EditorClassIdentifier: 
+  partyMemberId: MINDY
+  characterConfig: {fileID: 11400000, guid: e7459945b11b3f146b5444349fe0a303, type: 2}
+  characterCombatConfig: {fileID: 11400000, guid: 92be43170b95cef47986529ed3dee051,
+    type: 2}
+  levelingStats: {fileID: 11400000, guid: 82b0f568fc747934e96423b90e31ad2b, type: 2}

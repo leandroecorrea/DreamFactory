@@ -5,25 +5,37 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
-{
-    // Start is called before the first frame update
+public class InventoryUIManager : MonoBehaviour
+{    
     [SerializeField] private GameObject charactersView;
     [SerializeField] private GameObject mainOptions;
     [SerializeField] private GameObject itemOptions;
     [SerializeField] private GameObject equipmentOptions;
+    [SerializeField] private GameObject abilitiesOptions;
     [SerializeField] private Button backToMain;
     [SerializeField] private EventSystem eventSystem;
     private GameObject _defaultFirst;
 
     void OnEnable()
     {
-        ShowCharacters();
-        ShowMainOptions();
+        var playerParty = PlayerPartyManager.UnlockedPartyMembers;
+        HandlePlayerMenuRequest(playerParty);
     }
     private void Awake()
+    {        
+        _defaultFirst = eventSystem.firstSelectedGameObject;
+    }
+
+
+    public void HandlePlayerMenuRequest(List<PlayerPartyMemberConfig> playerParty)
     {
-        _defaultFirst = eventSystem.firstSelectedGameObject;        
+        ShowCharacters(playerParty);
+        ShowMainOptions();
+    }
+    private void ShowCharacters(List<PlayerPartyMemberConfig> playerParty)
+    {
+        playerParty.ForEach(x => charactersView.GetComponent<CharactersView>().InitializeCardFor(x));
+        
     }
 
     public void ShowMainOptions()
@@ -31,9 +43,21 @@ public class InventoryManager : MonoBehaviour
         mainOptions.gameObject.SetActive(true);
         itemOptions.gameObject.SetActive(false);
         equipmentOptions.gameObject.SetActive(false);
+        abilitiesOptions.gameObject.SetActive(false);
         charactersView.SetActive(true);
         eventSystem.SetSelectedGameObject(_defaultFirst);
         HideBackButton();        
+    }
+
+    public void ShowAbilitiesOptions()
+    {
+        mainOptions.gameObject.SetActive(false);
+        itemOptions.gameObject.SetActive(false);
+        equipmentOptions.gameObject.SetActive(false);
+        abilitiesOptions.gameObject.SetActive(true);
+        charactersView.SetActive(true);
+        eventSystem.SetSelectedGameObject(_defaultFirst);
+        HideBackButton();
     }
 
     private void ShowBackButton()
@@ -49,6 +73,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ShowItems()
     {
+        abilitiesOptions.gameObject.SetActive(false);
         mainOptions.gameObject.SetActive(false);
         itemOptions.gameObject.SetActive(true);   
         ShowBackButton();
@@ -57,26 +82,11 @@ public class InventoryManager : MonoBehaviour
     public void ShowEquipment()
     {
         mainOptions.gameObject.SetActive(false);
+        abilitiesOptions.gameObject.SetActive(false);
         charactersView.gameObject.SetActive(false);
         equipmentOptions.gameObject.SetActive(true);
         ShowBackButton();
     }
 
-    private void ShowCharacters()
-    {
-        Character c = new Character();
-        c.Name = "Zidane Tribal";
-        c.Level = 10;
-        c.MaxHP = 100;
-        c.CurrentHP = 90;
-        c.MaxMP = 25;
-        c.CurrentMP = 25;
-        charactersView.GetComponent<CharactersView>().InitializeCardFor(c);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+      
 }

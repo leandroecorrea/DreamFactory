@@ -55,7 +55,7 @@ public class ExistingGameSaveDisplay : MonoBehaviour
         foreach(PlayerPartyMemberConfig unlockedPartyMember in playerSaveDisplay.unlockedPartyMembers)
         {
             GameObject newUnlockedCharacterPortrait = Instantiate(unlockedMemberPortraitPrefab, unlockedMemberPortraitParent);
-            newUnlockedCharacterPortrait.GetComponent<Image>().sprite = unlockedPartyMember.partyMemberPortrait;
+            newUnlockedCharacterPortrait.GetComponent<Image>().sprite = unlockedPartyMember.characterConfig.portrait;
         }
     }
 
