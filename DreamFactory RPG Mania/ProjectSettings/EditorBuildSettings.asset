@@ -6,14 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/UI Scenes/Main Menu.unity
     guid: 03f29023dfe4f0b45be8aad82a185701
   - enabled: 1
-    path: Assets/Scenes/Intro-Text Crawl.unity
+    path: Assets/Scenes/UI Scenes/Intro-Text Crawl.unity
     guid: 038614b3749c6054caa51e17063c8830
   - enabled: 1
-    path: Assets/Scenes/NPC Interaction Dev.unity
-    guid: 8e3e962e2601a084086426c6ff626267
+    path: Assets/Scenes/Game Scenes/EastWing.unity
+    guid: 3f12f6e237a87104b828459d3e90ca39
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/WestWing.unity
+    guid: 5642bd352812ed049a83a349457f3adc
   - enabled: 1
     path: Assets/Scenes/Combat Dev (Chris).unity
     guid: 53bf8618f99b986478b9751777f59de1

@@ -1189,5 +1189,5 @@ MonoBehaviour:
     m_Flags: 0
   endPosition: {x: 200, y: 1900, z: 0}
   scrollSpeed: {x: 0, y: 100, z: 0}
-  targetScene: NPC Interaction Dev
+  targetScene: EastWing
   completeTextScrollText: {fileID: 797287608}

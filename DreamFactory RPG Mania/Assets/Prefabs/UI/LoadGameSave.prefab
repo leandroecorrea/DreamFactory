@@ -391,7 +391,7 @@ MonoBehaviour:
   gameSaveName: {fileID: 4572089662131164029}
   unlockedMemberPortraitParent: {fileID: 8302801297896059532}
   newGameTargetScene: Intro-Text Crawl
-  existingGameTargetScene: NPC Interaction Dev
+  existingGameTargetScene: EastWing
 --- !u!1 &9098072158245664567
 GameObject:
   m_ObjectHideFlags: 0
