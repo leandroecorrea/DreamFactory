@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿
+using System;
 
-[CreateAssetMenu(fileName = "New Leveling stats", menuName = "Player Party/Stats/New Leveling Stats")]
-public class LevelingStats : ScriptableObject
+[Serializable]
+public struct LevelingStats
 {
     public int Level;
     public int experience;

@@ -6,6 +6,7 @@
 
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
+        this.applicant = applicant;
         applicant.TakeDamageStrategy = x => { };
         applicant.ApplyEffectsStrategy = x=> { };   
     }

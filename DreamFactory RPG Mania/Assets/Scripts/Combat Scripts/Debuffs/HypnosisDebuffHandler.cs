@@ -7,6 +7,7 @@
 
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
+        this.applicant = applicant;
         var hypnosisActionExecution = new HypnosisActionExecution(new BaseActionExecution());
         applicant.SetActionExecution(hypnosisActionExecution);
     }

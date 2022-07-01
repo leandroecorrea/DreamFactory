@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "New Party Combat Config", menuName = "Player Party/Combat Config/New Party Member Combat Config")]
-public class PartyMemberCombatConfig : ScriptableObject
+[Serializable]
+public struct PartyMemberCombatConfig
 {
     public int currentHP;
     public int currentMP;
-    public List<CombatEffectConfig> effects;
-    public CombatEntityConfig combatEntityConfig;
+    public List<string> EffectsID;
+    public List<CombatEffectConfig> combatEffectConfigs;
+    public CombatEntityConfig CombatEntityConfig;
 }

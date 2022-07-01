@@ -15,10 +15,10 @@ public class CharacterCard : MonoBehaviour
 
     public void UpdateCard(PlayerPartyMemberConfig c)
     {
-        characterName.text = c.characterConfig.characterName;
-        level.text = $"Level {c.levelingStats.Level}";
-        HP.text = $"HP {c.characterCombatConfig.currentHP}/{c.characterCombatConfig.combatEntityConfig.baseHP}";
-        MP.text = $"MP {c.characterCombatConfig.currentMP}/{c.characterCombatConfig.combatEntityConfig.baseMP}";
-        characterSprite.sprite = c.characterConfig.portrait;
+        characterName.text = c.CharacterDetails.characterName;
+        level.text = $"Level {c.Stats.Level}";
+        HP.text = $"HP {c.PartyMemberCombatConfig.currentHP}/{c.PartyMemberCombatConfig.CombatEntityConfig.baseHP}";
+        MP.text = $"MP {c.PartyMemberCombatConfig.currentMP}/{c.PartyMemberCombatConfig.CombatEntityConfig.baseMP}";
+        characterSprite.sprite = c.CharacterDetails.characterPortrait;
     }
 }

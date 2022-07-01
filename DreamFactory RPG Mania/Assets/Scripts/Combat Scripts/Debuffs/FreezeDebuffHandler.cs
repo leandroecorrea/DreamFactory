@@ -7,6 +7,7 @@
 
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
+        this.applicant = applicant;
         if (applicant.LastExecutedAction == null)
             return;
         configRemoved = applicant.LastExecutedAction;

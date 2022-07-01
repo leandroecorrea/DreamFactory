@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Character Config", menuName = "Player Party/Configuration/New Character config")]
-public class CharacterDetails : ScriptableObject
+
+[Serializable]
+public struct CharacterDetails
 {
     public string characterName;
     public GameObject characterPrefab;
-    public Sprite portrait;
+    public Sprite characterPortrait;
 }
