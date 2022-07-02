@@ -6,6 +6,7 @@ using UnityEngine;
 public class CombatEntityConfig : ScriptableObject
 {
     [Header("Description")]
+    public string Id;
     public string Name;
     [Header("Base Stats")]
     public int baseHP;

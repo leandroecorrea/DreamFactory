@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory
+public static class InventoryManager
 {
-    public List<Item> items;
+    private static List<Item> items = ItemsProvider.Provide();
+    public static List<Item> GetAll() 
+        => items;   
 
-    public Inventory()
-    {
-        items = new List<Item>();
-    }
-
-    public void Add(Item item)
+    public static void Add(Item item)
     {
         var existentItem = Get(item);
         if (existentItem == null)
@@ -19,21 +16,23 @@ public class Inventory
         else
             existentItem.Add();
     }
-    public void Consume(Item item)
+    public static void Consume(Item item)
     {
         var existentItem = Get(item);
         if (existentItem != null)
+        {
             existentItem.Substract();
+            if(existentItem.amount == 0)
+                items.Remove(existentItem);
+        }
     }
-    private Item Get(Item item)
+    private static Item Get(Item item)
     {
         foreach (Item existentItem in items)
         {
-            if(existentItem.data.itemName == item.data.itemName)
+            if (existentItem.data.itemName == item.data.itemName)
                 return existentItem;
         }
         return null;
     }
-
-
 }

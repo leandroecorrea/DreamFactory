@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
   m_Name: Mindy
   m_EditorClassIdentifier: 
+  Id: MINDY
   Name: Mindy
   baseHP: 10000
   baseMP: 25

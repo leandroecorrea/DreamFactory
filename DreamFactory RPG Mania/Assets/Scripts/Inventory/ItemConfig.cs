@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="Inventory Item")]
-public class ItemData : ScriptableObject
+public class ItemConfig : ScriptableObject
 {
     public string id;
     public string itemName;
+    public string description;
     public Sprite icon;
-    public GameObject prefab;    
+    public string itemHandlerClassName;
+    //public GameObject prefab;    
 }

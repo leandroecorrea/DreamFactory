@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
+[Serializable]
 public class Item
 {
-    public ItemData data;
+    public string itemId;
+    public ItemConfig data;
     public int amount { get; set; }
     private readonly int maxAmount = 99;
     private readonly int minAmount = 0;
 
-    public Item(ItemData data)=>
+    public Item(ItemConfig data)=>
         this.data = data;
     
     public void Add() =>

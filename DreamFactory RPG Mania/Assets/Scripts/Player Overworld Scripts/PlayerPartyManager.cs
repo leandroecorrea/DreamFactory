@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,14 +38,16 @@ public static class PlayerPartyManager
     {
         return Resources.LoadAll<PlayerPartyMemberConfig>("Party Member Configs");
     }
+    public static CombatEntityConfig[] LoadAllAvailableCombatEntitiesConfigs()
+    {
+        return Resources.LoadAll<CombatEntityConfig>("Combat Entities Configs");
+    }
 
     private static void RetrievePartyMembersFromSave()
     {
         PlayerPartyMemberConfig[] allPartyMemberConfigs = LoadAllAvailablePartyMemberConfigs();
-
         _unlockedPartyMemberIds = PlayerProgression.GetPlayerData<List<string>>(SaveKeys.UNLOCKED_PARTY_MEMBERS);
         Debug.Log($"Unlocked Party Member Id Count: {_unlockedPartyMemberIds.Count}");
-
         _unlockedPartyMembers = new List<PlayerPartyMemberConfig>();
 
         foreach (PlayerPartyMemberConfig partyMemberConfig in allPartyMemberConfigs)
@@ -54,7 +57,19 @@ public static class PlayerPartyManager
                 _unlockedPartyMembers.Add(partyMemberConfig);
             }
         }
+        SetAllCombatEntitiesConfigFor(_unlockedPartyMembers);
     }
+
+    private static void SetAllCombatEntitiesConfigFor(IEnumerable<PlayerPartyMemberConfig> allPartyMemberConfigs)
+    {
+        var configs = LoadAllAvailableCombatEntitiesConfigs();
+        foreach (var partyMemberConfig in allPartyMemberConfigs)
+        {
+            partyMemberConfig.PartyMemberCombatConfig.CombatEntityConfig = configs.GetCombatEntityConfig(partyMemberConfig.partyMemberId);
+        }
+    }
+
+    
 
     public static void UnlockPartyMemberById(PlayerPartyMemberConfig newPartyMemberConfig)
     {

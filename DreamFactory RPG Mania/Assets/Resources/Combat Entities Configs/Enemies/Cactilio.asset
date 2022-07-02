@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
-  m_Name: Theo
+  m_Name: Cactilio
   m_EditorClassIdentifier: 
-  Name: Theo
-  baseHP: 10000
-  baseMP: 25
-  baseAttack: 5
-  baseSpeed: 5000
-  combatEntityPrefab: {fileID: 8450227428587258759, guid: 510767dd9e3d03f4ca76b60fa4754efa,
+  Id: CACTILIO
+  Name: Cactilio
+  baseHP: 55
+  baseMP: 5
+  baseAttack: 2
+  baseSpeed: 0
+  combatEntityPrefab: {fileID: 5008707017202677556, guid: 6d7c55a97d3659c4d8e8fed70847289b,
     type: 3}
   actions:
   - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}

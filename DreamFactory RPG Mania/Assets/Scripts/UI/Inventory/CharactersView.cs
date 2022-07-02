@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharactersView : MonoBehaviour
 {
     [SerializeField] private GameObject characterCardPrefab;
+    public Action<PlayerPartyMemberConfig> DelegateBehaviour;
 
     public void InitializeCardFor(PlayerPartyMemberConfig character)
     {
@@ -12,5 +15,6 @@ public class CharactersView : MonoBehaviour
         newPrefab.transform.SetParent(transform, false);
         var card = newPrefab.GetComponent<CharacterCard>();
         card.UpdateCard(character);
+        card.GetComponent<Button>().onClick.AddListener(() => DelegateBehaviour(character));
     }
 }
