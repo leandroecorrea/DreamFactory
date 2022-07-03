@@ -1,23 +1,8 @@
 fileFormatVersion: 2
-guid: 50b622528ae420343b1ada7473b36699
+guid: 726ea88c4ee09f24c8f41f323a5db50e
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 6901071539281376771
-    second: Shadow_Idle
-  - first:
-      74: 3977686360557729281
-    second: Shadow_Attack
-  - first:
-      74: -6822981094634296169
-    second: Shadow_CastSpell
-  - first:
-      74: 4355288131705792701
-    second: Shadow_HitReaction
-  - first:
-      74: -2587629155285758635
-    second: Shadow_Movement
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
