@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class StoryEntity : MonoBehaviour
 {
     [Header("Story Configuration")]
-    [SerializeField] private List<StoryEntityListener> storyPointEvents;
+    [SerializeField, NonReorderable] private List<StoryEntityListener> storyPointEvents;
 
     private void OnDestroy()
     {

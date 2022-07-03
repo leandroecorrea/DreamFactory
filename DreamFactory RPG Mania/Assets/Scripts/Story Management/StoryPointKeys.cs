@@ -7,6 +7,7 @@ public static class StoryPointKeys
     public enum StoryKeys
     {
         Unset,
+        INT_Sal_Controls_Intro,
         INT_Boss_Intro,
         INT_Dream_Machine_Intro,
         PT1_Boss_Visit,

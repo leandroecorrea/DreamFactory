@@ -125,7 +125,7 @@ PrefabInstance:
     - target: {fileID: 4644956054816769364, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4644956054816769364, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 4644956054816769364, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4644956054816769364, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 4644956054816769364, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4644956054816769364, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
@@ -160,7 +160,7 @@ PrefabInstance:
     - target: {fileID: 4644956054816769365, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
       propertyPath: m_Name
-      value: Boss_NPC Variant
+      value: Fred_NPC
       objectReference: {fileID: 0}
     - target: {fileID: 4644956054816769369, guid: 026e6ec8bf76cca41aed14dbb672b873,
         type: 3}
@@ -196,7 +196,7 @@ PrefabInstance:
         type: 3}
       propertyPath: npcConfig
       value: 
-      objectReference: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      objectReference: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 026e6ec8bf76cca41aed14dbb672b873, type: 3}
@@ -231,7 +231,7 @@ MonoBehaviour:
     type: 2}
   allDialogueInterations:
   - conversation: {fileID: 11400000, guid: cd9c193687a85054e97b885c21231708, type: 2}
-    availableStoryPoints: 01000000
+    availableStoryPoints: 0100000002000000
 --- !u!114 &5309758444279687895
 MonoBehaviour:
   m_ObjectHideFlags: 0
