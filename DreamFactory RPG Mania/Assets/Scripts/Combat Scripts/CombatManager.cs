@@ -37,13 +37,20 @@ public class CombatManager : MonoBehaviour
         InitializeCombatManager(currentStartRequest);
     }
 
+
+    private void HandleItemUsedInCombat(string itemHandler)
+    {
+        var item = InventoryManager.GetAll().Find(x => x.data.actionConfig.actionHandlerClassName == itemHandler);
+        if (item != null)
+            InventoryManager.Consume(item);
+    }
     public void InitializeCombatManager(CombatStartRequest combatRequest)
     {
         var spawnedEntities = combatSpawner.SpawnParties(combatRequest);
         combatEntities = new Queue<CombatEntity>(spawnedEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
 
         CombatEventSystem.instance.onCombatEntityKilled += HandleCombatEntityDeath;
-        
+        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;    
         InitializeTurns();        
     }
 

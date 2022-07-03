@@ -24,6 +24,7 @@ public static class InventoryManager
             existentItem.Substract();
             if(existentItem.amount == 0)
                 items.Remove(existentItem);
+            Debug.Log(item.itemId + " was consumed");
         }
     }
     private static Item Get(Item item)

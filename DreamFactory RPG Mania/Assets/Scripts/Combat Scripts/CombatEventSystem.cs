@@ -14,9 +14,15 @@ public class CombatEventSystem : MonoBehaviour
     public event EventHandler<ActionPerformedArgs> onActionPerformed;
     public event EventHandler<CombatEntityDamagedArgs> onCombatEntityDamaged;
     public event EventHandler<CombatEntityKilledArgs> onCombatEntityKilled;
+    public Action<string> onItemUsedInCombat;
+
 
     public Action<CombatEntity> onAttackAreaTrigger;
 
+    public void OnItemUsedInCombat(string itemHandler)
+    {
+        onItemUsedInCombat?.Invoke(itemHandler); 
+    }
     public void OnActionPerformed(object sender, ActionPerformedArgs args)
     {
         onActionPerformed?.Invoke(sender, args);

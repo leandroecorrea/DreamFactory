@@ -130,7 +130,6 @@ public abstract class BaseAttackHandler : ICombatAction
                 effectHandlerInterfaceInstance.InitializeEffect(targetEffect, executor, targetEntity);
                 effectHandlerInstances.Add(effectHandlerInterfaceInstance);
             }
-
             targetEntity.ApplyEffects(effectHandlerInstances);
         }
     }
