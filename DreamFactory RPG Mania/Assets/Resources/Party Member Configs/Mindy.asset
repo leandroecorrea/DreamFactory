@@ -14,15 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyMemberId: MINDY
   PartyMemberCombatConfig:
-    currentHP: 0
-    currentMP: 0
-    effects: []
-    combatEntityConfig: {fileID: 0}
+    currentHP: 105
+    currentMP: 22
+    EffectsID: []
+    combatEffectConfigs: []
+    CombatEntityConfig: {fileID: 11400000, guid: 8972d770ab23b194997e9747922430d9,
+      type: 2}
   CharacterDetails:
-    characterName: 
-    characterPrefab: {fileID: 0}
-    characterPortrait: {fileID: 0}
+    characterName: Mindy
+    characterPrefab: {fileID: 3184674319563369056, guid: da8cd3083b96db8428d43a91564f42e8,
+      type: 3}
+    characterPortrait: {fileID: 21300000, guid: 938aae6f0c3726647bbbdfea3cd3a766,
+      type: 3}
   Stats:
-    Level: 0
-    experience: 0
-    experienceUntilNextLevel: 0
+    level: 5
+    experience: 15651
+    experienceUntilNextLevel: 1005

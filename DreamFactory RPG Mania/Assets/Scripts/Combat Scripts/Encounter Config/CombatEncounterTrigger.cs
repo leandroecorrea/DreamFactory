@@ -12,8 +12,9 @@ public class CombatEncounterTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            GetComponent<SphereCollider>().enabled = false;
             CombatTransitionManager.instance.InitializeCombatTransition(
-                new CombatStartRequest(targetEncounter.enemies, PlayerPartyManager.GetAllUnlockedCombatConfigs(), SceneManager.GetActiveScene().name),
+                new CombatStartRequest(targetEncounter.enemies, PlayerPartyManager.GetAllUnlockedCombatConfigs(), SceneManager.GetActiveScene().name, targetEncounter.experienceReward),
                 targetEncounter.targetCombatSceneName
             );
         }

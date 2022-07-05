@@ -12,10 +12,11 @@ public class CombatManager : MonoBehaviour
     public static CombatStartRequest currentStartRequest;
 
     [SerializeField] private CombatSpawner combatSpawner;
-    
-    [Header("Test Enemies")]
+
+    [Header("Test Data")]
     [SerializeField] private List<CombatEntityConfig> testEnemies;
     [SerializeField] private List<CombatEntityConfig> testPlayers;
+    [SerializeField] public int experienceReward = 100;
     [SerializeField] private bool useTestData = true;
 
     public CombatContext currentTurnContext;
@@ -24,16 +25,18 @@ public class CombatManager : MonoBehaviour
     [HideInInspector] public CombatEntity currentTurnEntity;
 
     public delegate void OnCombatTurnStart(CombatContext ctx);
+    private bool isCombatFinished;
+    private CombatResult combatResult;
     public event OnCombatTurnStart onCombatTurnStart;
 
     private void Awake()
     {
         if (useTestData)
         {
-            InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, ""));
+
+            InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, "", experienceReward));
             return;
         }
-        
         InitializeCombatManager(currentStartRequest);
     }
 
@@ -48,10 +51,9 @@ public class CombatManager : MonoBehaviour
     {
         var spawnedEntities = combatSpawner.SpawnParties(combatRequest);
         combatEntities = new Queue<CombatEntity>(spawnedEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
-
         CombatEventSystem.instance.onCombatEntityKilled += HandleCombatEntityDeath;
-        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;    
-        InitializeTurns();        
+        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;
+        InitializeTurns();
     }
 
     public void InitializeTurns()
@@ -59,7 +61,7 @@ public class CombatManager : MonoBehaviour
         currentTurnEntity = combatEntities.Peek();
 
         // Remove any entities that died last turn
-        while(currentTurnEntity == null || currentTurnEntity.gameObject == null)
+        while (currentTurnEntity == null || currentTurnEntity.gameObject == null)
         {
             combatEntities.Dequeue();
             currentTurnEntity = combatEntities.Peek();
@@ -78,24 +80,37 @@ public class CombatManager : MonoBehaviour
     private void HandleCurrentTurnComplete(object sender, OnTurnCompleteEventArgs e)
     {
         currentTurnEntity.onTurnComplete -= HandleCurrentTurnComplete;
-
+        if (isCombatFinished)
+        {
+            StartCoroutine(WaitAndFinishCombat());
+            return;
+        }
         // Removing the last combat entity from the queue
         combatEntities.Dequeue();
         combatEntities.Enqueue(currentTurnEntity);
 
         InitializeTurns();
     }
+    private IEnumerator WaitAndFinishCombat()
+    {
+        yield return new WaitForSeconds(1);
 
+        CombatEventSystem.instance.OnCombatFinished(combatResult);
+    }
     private void HandleCombatEntityDeath(object sender, CombatEntityKilledArgs e)
     {
         // Check for Player Victory
         if ((e.entityKilled as EnemyCombatEntity) != null && IsCombatTeamKilled(currentTurnContext.enemyParty))
         {
-            HandlePlayerVictory();
+            combatResult = CombatResult.WIN;
+            isCombatFinished = true;
+            //HandlePlayerVictory();
         }
         else if ((e.entityKilled as PlayerControllableEntity) != null && IsCombatTeamKilled(currentTurnContext.playerParty))
         {
-            HandlePlayerLose();
+            combatResult = CombatResult.LOSE;
+            isCombatFinished = true;
+            //(HandlePlayerLose();
         }
     }
 
@@ -112,9 +127,9 @@ public class CombatManager : MonoBehaviour
         }
 
         return allEntitiesKilled;
-    }
-    
-    private void HandlePlayerVictory()
+    }    
+
+    public void GoBackToOriginScene()
     {
         if (currentStartRequest.originScene != "")
         {
@@ -127,26 +142,4 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Players Lose...");
     }
-}
-
-public class CombatStartRequest
-{
-    public List<CombatEntityConfig> enemies;
-    public List<CombatEntityConfig> allies;
-    public string originScene;
-
-    public CombatStartRequest(List<CombatEntityConfig> enemies, List<CombatEntityConfig> players, string originScene)
-    {
-        this.enemies = enemies;
-        this.allies = players;
-        this.originScene = originScene;
-    }
-}
-
-public class CombatContext
-{
-    public List<CombatEntity> playerParty;
-    public List<CombatEntity> enemyParty;
-
-    public CombatEntity currentTurnEntity;
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: TESTENEMY
   Name: AnEnemy
-  baseHP: 1000000
+  baseHP: 10
   baseMP: 25
   baseAttack: 5
   baseSpeed: 0

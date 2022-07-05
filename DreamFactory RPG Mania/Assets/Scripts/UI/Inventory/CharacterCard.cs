@@ -16,7 +16,7 @@ public class CharacterCard : MonoBehaviour
     public void UpdateCard(PlayerPartyMemberConfig c)
     {
         characterName.text = c.CharacterDetails.characterName;
-        level.text = $"Level {c.Stats.Level}";
+        level.text = $"Level {c.Stats.level}";
         HP.text = $"HP {c.PartyMemberCombatConfig.currentHP}/{c.PartyMemberCombatConfig.CombatEntityConfig.baseHP}";
         MP.text = $"MP {c.PartyMemberCombatConfig.currentMP}/{c.PartyMemberCombatConfig.CombatEntityConfig.baseMP}";
         characterSprite.sprite = c.CharacterDetails.characterPortrait;

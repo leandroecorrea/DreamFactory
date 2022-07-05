@@ -16,8 +16,9 @@ MonoBehaviour:
   PartyMemberCombatConfig:
     currentHP: 100
     currentMP: 5
-    effects: []
-    combatEntityConfig: {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9,
+    EffectsID: []
+    combatEffectConfigs: []
+    CombatEntityConfig: {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9,
       type: 2}
   CharacterDetails:
     characterName: Puffer
@@ -26,6 +27,6 @@ MonoBehaviour:
     characterPortrait: {fileID: 21300000, guid: 3c4e0207e5d13554eb884b14c20d6f81,
       type: 3}
   Stats:
-    Level: 1
+    level: 11
     experience: 150
     experienceUntilNextLevel: 1500

@@ -7,4 +7,5 @@ public class CombatEncounterConfig : ScriptableObject
 {
     public List<CombatEntityConfig> enemies;
     public string targetCombatSceneName;
+    public int experienceReward;    
 }
