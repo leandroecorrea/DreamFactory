@@ -1,23 +1,23 @@
 fileFormatVersion: 2
-guid: 1f70ede0e54047541b111f5b38c85cc0
+guid: b072e350710fefc41b46f5d26ed3ca88
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -3662994617159760279
-    second: Manager_Walking
+      74: 8712992595997246593
+    second: Sheep_Attack
   - first:
-      74: -6275003187551919742
-    second: Manager_Talking
+      74: 6482872800745455205
+    second: Sheep_Idle
   - first:
-      74: -4978327996412036985
-    second: Manager_Turn
+      74: 3833829356694233326
+    second: Sheep_Movement
   - first:
-      74: 1129797568125133420
-    second: Manager_ArmsCrossed
+      74: 6296263157007861879
+    second: Sheep_Spellcast
   - first:
-      74: -7475688346570923865
-    second: Manager_Idle
+      74: 682603995303979740
+    second: Sheep_HitReaction
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -48,11 +48,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Manager_Walking
-      takeName: Manager_Walking
+      name: Sheep_Attack
+      takeName: Sheep_Attack
       internalID: 0
       firstFrame: 0
-      lastFrame: 22
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -77,11 +77,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Manager_Talking
-      takeName: Manager_Talking
+      name: Sheep_Idle
+      takeName: Sheep_Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 113
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -106,11 +106,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Manager_Turn
-      takeName: Manager_Turn
+      name: Sheep_Movement
+      takeName: Sheep_Movement
       internalID: 0
       firstFrame: 0
-      lastFrame: 28
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -135,11 +135,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Manager_ArmsCrossed
-      takeName: Manager_ArmsCrossed
+      name: Sheep_Spellcast
+      takeName: Sheep_Spellcast
       internalID: 0
       firstFrame: 0
-      lastFrame: 59
+      lastFrame: 149
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -164,11 +164,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Manager_Idle
-      takeName: Manager_Idle
+      name: Sheep_HitReaction
+      takeName: Sheep_HitReaction
       internalID: 0
       firstFrame: 0
-      lastFrame: 250
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

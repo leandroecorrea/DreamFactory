@@ -6,9 +6,27 @@ using UnityEngine;
 public class NPCDialogueInteraction : BaseNPCInteraction, INPCInteraction
 {
     [Header("Dialogue Settings")]
-    public Conversation targetConversation;
+    public Conversation defaultConversation;
+    [NonReorderable] public List<DialogueInteractionSettings> allDialogueInterations;
 
     public event EventHandler<InteractionCompletedArgs> onInteractionComplete;
+    public Conversation targetConversation
+    {
+        get
+        {
+            StoryPointKeys.StoryKeys currentStoryKey = StoryManager.GetCurrentStoryKey();
+
+            foreach(DialogueInteractionSettings dialogueInteraction in allDialogueInterations)
+            {
+                if (dialogueInteraction.availableStoryPoints.Contains(currentStoryKey))
+                {
+                    return dialogueInteraction.conversation;
+                }
+            }
+
+            return defaultConversation;
+        }
+    }
 
     public bool CanExecuteInteraction()
     {
@@ -31,4 +49,11 @@ public class NPCDialogueInteraction : BaseNPCInteraction, INPCInteraction
         CleanUI();
         onInteractionComplete?.Invoke(this, new InteractionCompletedArgs());
     }
+}
+
+[System.Serializable]
+public class DialogueInteractionSettings
+{
+    public Conversation conversation;
+    public List<StoryPointKeys.StoryKeys> availableStoryPoints;
 }

@@ -91,7 +91,7 @@ public class NPCInteractionManager : MonoBehaviour
         selectInteractionUIParent.SetActive(true);
         interactionUIParent.SetActive(true);
 
-        EventSystem.current.SetSelectedGameObject(interactionOptionListParent.GetChild(0).gameObject);
+        EventSystem.current?.SetSelectedGameObject(interactionOptionListParent.GetChild(0).gameObject);
     }
 
     private void DisableInteractionUI()

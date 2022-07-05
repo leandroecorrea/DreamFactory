@@ -19,6 +19,7 @@ MonoBehaviour:
     conversationPointText: You! You're the new guy, right? I can never remember you
       guys. Oh, well.
     typingDelay: 0.03
+    onCompleteEvent: {fileID: 0}
   - isPlayerSpeaking: 0
     conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
       type: 2}
@@ -26,8 +27,12 @@ MonoBehaviour:
       broken sometimes. Go around and fix them so everything runs smooth and I look
       good.
     typingDelay: 0.03
+    onCompleteEvent: {fileID: 0}
   - isPlayerSpeaking: 0
     conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
       type: 2}
     conversationPointText: Now get your ass to work!
     typingDelay: 0.03
+    onCompleteEvent: {fileID: 0}
+  onConversationCompleteEvent: {fileID: 11400000, guid: 2d689f9ff59742e45a1b52264be55649,
+    type: 2}
