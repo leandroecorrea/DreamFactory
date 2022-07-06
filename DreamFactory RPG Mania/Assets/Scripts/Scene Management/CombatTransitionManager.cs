@@ -32,7 +32,9 @@ public class CombatTransitionManager : MonoBehaviour
     public void InitializeCombatTransition(CombatEncounterConfig encounterConfig)
     {
         this.targetCombatScene = encounterConfig.targetCombatSceneName;
-        CombatManager.currentStartRequest = new CombatStartRequest(PlayerPartyManager.GetAllUnlockedCombatConfigs(), encounterConfig.enemies, SceneManager.GetActiveScene().name);
+
+        List<CombatEntityConfig> targetPlayerConfigs = PlayerPartyManager.GetAllUnlockedCombatConfigs();
+        CombatManager.currentStartRequest = new CombatStartRequest(encounterConfig.enemies, targetPlayerConfigs, SceneManager.GetActiveScene().name);
 
         transitionUIParentCanvas.SetActive(true);
         anim.SetTrigger("Display");

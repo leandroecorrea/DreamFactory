@@ -1556,7 +1556,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
-  useTestData: 1
+  useTestData: 0
   setupCombatOnAwake: 1
   startCombatOnAwake: 0
   currentTurnEntity: {fileID: 0}

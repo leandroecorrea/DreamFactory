@@ -9,7 +9,6 @@ public class CutsceneActions : MonoBehaviour
 
     public void StartAfterCutsceneCombatEncounter()
     {
-        Debug.Log("Hello There");
         CombatTransitionManager.instance.InitializeCombatTransition(afterCutsceneCombatEncounter);
     }
 }
