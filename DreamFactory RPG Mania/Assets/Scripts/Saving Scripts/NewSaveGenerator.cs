@@ -10,7 +10,7 @@ public static class NewSaveGenerator
         {
             return new Dictionary<string, object>
             {
-                { SaveKeys.CURRENT_STORY_POINT, StoryPointKeys.StoryKeys.INT_Sal_Controls_Intro },
+                { SaveKeys.CURRENT_STORY_POINT, StoryPointKeys.StoryKeys.PT1_Boss_Visit },
                 { SaveKeys.UNLOCKED_PARTY_MEMBERS, new List<string> { "PUFFER" } }
             };
         }
