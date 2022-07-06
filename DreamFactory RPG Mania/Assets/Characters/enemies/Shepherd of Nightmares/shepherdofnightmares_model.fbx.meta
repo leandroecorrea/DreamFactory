@@ -22,9 +22,6 @@ ModelImporter:
       74: -967121344942726136
     second: Shepherd_Laughing
   - first:
-      74: 442728698833158577
-    second: Shepherd_Idle
-  - first:
       74: 4713167437151613157
     second: Shepherd_HitReaction
   - first:
@@ -36,6 +33,12 @@ ModelImporter:
   - first:
       74: -1638371543329224578
     second: Shepherd_1Hcast
+  - first:
+      74: -1210335353384195417
+    second: Shepherd_Melee_NoWeapon
+  - first:
+      74: 442728698833158577
+    second: Shepherd_Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
