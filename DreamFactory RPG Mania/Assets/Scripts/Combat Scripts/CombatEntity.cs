@@ -166,6 +166,11 @@ public class CombatEntity : MonoBehaviour
         animator.SetTrigger("SPELL");
     }
 
+    public void TriggerActionAction(string actionKeyName)
+    {
+        animator.SetTrigger(actionKeyName);
+    }
+
     public void TriggerReviveAnimation()
     {
         throw new NotImplementedException();

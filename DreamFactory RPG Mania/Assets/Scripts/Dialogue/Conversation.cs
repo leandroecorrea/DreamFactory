@@ -12,11 +12,11 @@ public class Conversation : ScriptableObject
 [System.Serializable]
 public class ConversationPoint
 {
-    public bool isPlayerSpeaking;
     public NPCConfig conversationPointSpeaker;
 
     public string conversationPointText;
     public float typingDelay;
 
-    public DialogueEvent onCompleteEvent;
+    public List<DialogueEvent> onStartEvent;
+    public List<DialogueEvent> onCompleteEvent;
 }

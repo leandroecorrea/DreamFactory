@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Game Scenes/WestWing.unity
     guid: 5642bd352812ed049a83a349457f3adc
   - enabled: 1
+    path: Assets/Scenes/Cutscenes/Intro - Dream Machine Break.unity
+    guid: cee70011b0ca0ee4d859edaafd8a6e22
+  - enabled: 1
+    path: Assets/Scenes/Combat Scenes/Intro-Dream Machine Battle.unity
+    guid: 290b6c7c3c15d394b9c13129bf187d07
+  - enabled: 1
     path: Assets/Scenes/Combat Dev (Chris).unity
     guid: 53bf8618f99b986478b9751777f59de1
   - enabled: 1

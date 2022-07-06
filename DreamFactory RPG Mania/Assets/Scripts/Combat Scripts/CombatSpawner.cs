@@ -38,7 +38,10 @@ public class CombatSpawner : MonoBehaviour
         // If only one entity, place them dead center
         if (entitiesToSpawn.Count == 1)
         {
-            var entity = GameObject.Instantiate(entitiesToSpawn[0], playerTeamArenaOrigin, Quaternion.identity);
+            GameObject targetPrefab = entitiesToSpawn[0];
+            playerTeamArenaOrigin.y = playerTeamArenaOrigin.y + targetPrefab.transform.position.y;
+
+            var entity = GameObject.Instantiate(targetPrefab, playerTeamArenaOrigin, Quaternion.identity);
             entity.transform.LookAt(new Vector3(opposingArenaOrigin.x, transform.position.y, opposingArenaOrigin.z), Vector3.up);
 
             entities.Add(entity.GetComponent<CombatEntity>());
@@ -58,7 +61,10 @@ public class CombatSpawner : MonoBehaviour
             int entitiesInRow = Mathf.Min((entitiesToSpawn.Count - runningEntitiySpawnIndex), rowCapacity);
             if (entitiesInRow == 1)
             {
-                GameObject entity = GameObject.Instantiate(entitiesToSpawn[runningEntitiySpawnIndex], currentRowOrigin, Quaternion.identity);
+                GameObject targetPrefab = entitiesToSpawn[runningEntitiySpawnIndex];
+                currentRowOrigin.y = currentRowOrigin.y + targetPrefab.transform.position.y;
+
+                GameObject entity = GameObject.Instantiate(targetPrefab, currentRowOrigin, Quaternion.identity);
                 entity.transform.LookAt(new Vector3(opposingArenaOrigin.x, transform.position.y, opposingArenaOrigin.z), Vector3.up);
 
                 entities.Add(entity.GetComponent<CombatEntity>());
@@ -68,7 +74,10 @@ public class CombatSpawner : MonoBehaviour
             float xIncrement = rowSize.x / (entitiesInRow - 1);
             for (int i = 0; i < entitiesInRow; i++)
             {
-                var entity = GameObject.Instantiate(entitiesToSpawn[runningEntitiySpawnIndex++], runningPosition, Quaternion.identity);
+                GameObject targetPrefab = entitiesToSpawn[runningEntitiySpawnIndex++];
+                runningPosition.y = startPosition.y + targetPrefab.transform.position.y;
+
+                var entity = GameObject.Instantiate(targetPrefab, runningPosition, Quaternion.identity);
                 entity.transform.LookAt(new Vector3(opposingArenaOrigin.x, transform.position.y, opposingArenaOrigin.z), Vector3.up);
 
                 entities.Add(entity.GetComponent<CombatEntity>());

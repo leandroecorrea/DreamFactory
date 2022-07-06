@@ -15,14 +15,13 @@ public class NPCDialogueInteraction : BaseNPCInteraction, INPCInteraction
         get
         {
             StoryPointKeys.StoryKeys currentStoryKey = StoryManager.GetCurrentStoryKey();
-
             foreach(DialogueInteractionSettings dialogueInteraction in allDialogueInterations)
             {
                 if (dialogueInteraction.availableStoryPoints.Contains(currentStoryKey))
                 {
                     return dialogueInteraction.conversation;
-                }
             }
+                }
 
             return defaultConversation;
         }

@@ -19,6 +19,10 @@ public class CombatManager : MonoBehaviour
     [SerializeField] public int experienceReward = 100;
     [SerializeField] private bool useTestData = true;
 
+    [Header("Settings")]
+    [SerializeField] private bool setupCombatOnAwake = true;
+    [SerializeField] private bool startCombatOnAwake = true;
+
     public CombatContext currentTurnContext;
 
     public Queue<CombatEntity> combatEntities;
@@ -31,6 +35,19 @@ public class CombatManager : MonoBehaviour
 
     private void Awake()
     {
+        if (setupCombatOnAwake)
+        {
+            RunSetup();
+        }
+
+        if (startCombatOnAwake)
+        {
+            InitializeTurns();
+        }
+    }
+
+    public void RunSetup()
+    {
         if (useTestData)
         {
 
@@ -40,20 +57,19 @@ public class CombatManager : MonoBehaviour
         InitializeCombatManager(currentStartRequest);
     }
 
-
     private void HandleItemUsedInCombat(string itemHandler)
     {
         var item = InventoryManager.GetAll().Find(x => x.data.actionConfig.actionHandlerClassName == itemHandler);
         if (item != null)
             InventoryManager.Consume(item);
     }
+
     public void InitializeCombatManager(CombatStartRequest combatRequest)
     {
         var spawnedEntities = combatSpawner.SpawnParties(combatRequest);
         combatEntities = new Queue<CombatEntity>(spawnedEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
         CombatEventSystem.instance.onCombatEntityKilled += HandleCombatEntityDeath;
-        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;
-        InitializeTurns();
+        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;           
     }
 
     public void InitializeTurns()
@@ -142,4 +158,27 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Players Lose...");
     }
+}
+
+[System.Serializable]
+public class CombatStartRequest
+{
+    public List<CombatEntityConfig> enemies;
+    public List<CombatEntityConfig> allies;
+    public string originScene;
+
+    public CombatStartRequest(List<CombatEntityConfig> enemies, List<CombatEntityConfig> players, string originScene)
+    {
+        this.enemies = enemies;
+        this.allies = players;
+        this.originScene = originScene;
+    }
+}
+
+public class CombatContext
+{
+    public List<CombatEntity> playerParty;
+    public List<CombatEntity> enemyParty;
+
+    public CombatEntity currentTurnEntity;
 }
