@@ -1553,12 +1553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatSpawner: {fileID: 1188401473}
   testEnemies:
-  - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
-  - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
-  - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
+  - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
   testPlayers:
-  - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
-  - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
   - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
   useTestData: 1
   setupCombatOnAwake: 1
@@ -1610,7 +1606,7 @@ MonoBehaviour:
   rowCapacity: 3
   rowSize: {x: 900, y: 1, z: 500}
   playerTeamArenaOrigin: {x: 0, y: 0.5, z: -500}
-  enemyTeamArenaOrigin: {x: 0, y: 0.5, z: 500}
+  enemyTeamArenaOrigin: {x: 0, y: 1.5, z: 500}
 --- !u!1 &1194665428
 GameObject:
   m_ObjectHideFlags: 0
