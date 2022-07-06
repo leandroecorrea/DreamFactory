@@ -51,7 +51,7 @@ public class CombatManager : MonoBehaviour
         if (useTestData)
         {
 
-            InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, "", experienceReward));
+            InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, ""));
             return;
         }
         InitializeCombatManager(currentStartRequest);
@@ -154,31 +154,4 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private void HandlePlayerLose()
-    {
-        Debug.Log("Players Lose...");
-    }
-}
-
-[System.Serializable]
-public class CombatStartRequest
-{
-    public List<CombatEntityConfig> enemies;
-    public List<CombatEntityConfig> allies;
-    public string originScene;
-
-    public CombatStartRequest(List<CombatEntityConfig> enemies, List<CombatEntityConfig> players, string originScene)
-    {
-        this.enemies = enemies;
-        this.allies = players;
-        this.originScene = originScene;
-    }
-}
-
-public class CombatContext
-{
-    public List<CombatEntity> playerParty;
-    public List<CombatEntity> enemyParty;
-
-    public CombatEntity currentTurnEntity;
 }

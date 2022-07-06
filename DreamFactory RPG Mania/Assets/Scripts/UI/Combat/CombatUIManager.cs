@@ -43,7 +43,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         RemoveListeners();
         HideUIForPlayer();
         informationMessage.text = $"You won!";
-        PostCombatTransitionManager.instance.InitializePostCombatTransition(result, CombatManager.currentStartRequest.experienceReward, CombatManager.currentStartRequest.originScene);
+        PostCombatTransitionManager.instance.InitializePostCombatTransition(result, 100, CombatManager.currentStartRequest.originScene);
     }
   
 
