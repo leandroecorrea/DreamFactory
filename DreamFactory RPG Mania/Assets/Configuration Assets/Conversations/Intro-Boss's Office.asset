@@ -13,26 +13,26 @@ MonoBehaviour:
   m_Name: Intro-Boss's Office
   m_EditorClassIdentifier: 
   conversationPoints:
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
       type: 2}
     conversationPointText: You! You're the new guy, right? I can never remember you
       guys. Oh, well.
     typingDelay: 0.03
-    onCompleteEvent: {fileID: 0}
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
       type: 2}
     conversationPointText: Here's what you're gonna do. These machines get a little
       broken sometimes. Go around and fix them so everything runs smooth and I look
       good.
     typingDelay: 0.03
-    onCompleteEvent: {fileID: 0}
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
       type: 2}
     conversationPointText: Now get your ass to work!
     typingDelay: 0.03
-    onCompleteEvent: {fileID: 0}
+    onStartEvent: []
+    onCompleteEvent: []
   onConversationCompleteEvent: {fileID: 11400000, guid: 2d689f9ff59742e45a1b52264be55649,
     type: 2}

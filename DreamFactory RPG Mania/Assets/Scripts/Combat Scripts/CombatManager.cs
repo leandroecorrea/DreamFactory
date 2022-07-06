@@ -18,6 +18,10 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private List<CombatEntityConfig> testPlayers;
     [SerializeField] private bool useTestData = true;
 
+    [Header("Settings")]
+    [SerializeField] private bool setupCombatOnAwake = true;
+    [SerializeField] private bool startCombatOnAwake = true;
+
     public CombatContext currentTurnContext;
 
     public Queue<CombatEntity> combatEntities;
@@ -28,15 +32,27 @@ public class CombatManager : MonoBehaviour
 
     private void Awake()
     {
+        if (setupCombatOnAwake)
+        {
+            RunSetup();
+        }
+
+        if (startCombatOnAwake)
+        {
+            InitializeTurns();
+        }
+    }
+
+    public void RunSetup()
+    {
         if (useTestData)
         {
             InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, ""));
             return;
         }
-        
+
         InitializeCombatManager(currentStartRequest);
     }
-
 
     private void HandleItemUsedInCombat(string itemHandler)
     {
@@ -44,14 +60,14 @@ public class CombatManager : MonoBehaviour
         if (item != null)
             InventoryManager.Consume(item);
     }
+
     public void InitializeCombatManager(CombatStartRequest combatRequest)
     {
         var spawnedEntities = combatSpawner.SpawnParties(combatRequest);
         combatEntities = new Queue<CombatEntity>(spawnedEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
 
         CombatEventSystem.instance.onCombatEntityKilled += HandleCombatEntityDeath;
-        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;    
-        InitializeTurns();        
+        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;           
     }
 
     public void InitializeTurns()
@@ -129,6 +145,7 @@ public class CombatManager : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class CombatStartRequest
 {
     public List<CombatEntityConfig> enemies;

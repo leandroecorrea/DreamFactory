@@ -13,65 +13,41 @@ MonoBehaviour:
   m_Name: Intro-Dream Machine Room
   m_EditorClassIdentifier: 
   conversationPoints:
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
+  - conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
       type: 2}
     conversationPointText: Hey, I think the machine is making a weird noise!
     typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5013613c61bd4ce4c98e1270e8c327d2,
+    onStartEvent:
+    - {fileID: 11400000, guid: 1db79115baf961b489f793c9637abc2c, type: 2}
+    onCompleteEvent:
+    - {fileID: 11400000, guid: beff7c30d32336a45a0efdb63b02a430, type: 2}
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5013613c61bd4ce4c98e1270e8c327d2,
       type: 2}
     conversationPointText: Nah, you're just hearing things.
     typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
+    onStartEvent:
+    - {fileID: 11400000, guid: 3cf1fc13c7322af42accf1734b08621a, type: 2}
+    onCompleteEvent:
+    - {fileID: 11400000, guid: 572aea5b810c4bd4680f3bfbf4955feb, type: 2}
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  - conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
       type: 2}
     conversationPointText: Woah!
     typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
+    onStartEvent:
+    - {fileID: 11400000, guid: 1db79115baf961b489f793c9637abc2c, type: 2}
+    onCompleteEvent:
+    - {fileID: 11400000, guid: beff7c30d32336a45a0efdb63b02a430, type: 2}
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
       type: 2}
     conversationPointText: ' Hey, new guy! Remember when I said I''d show you how
       to fight later? Well, later is now!'
     typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
-      type: 2}
-    conversationPointText: 'First off, we take turns here at the dream factory. We''re
-      a polite bunch. '
-    typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
-      type: 2}
-    conversationPointText: 'Recall cancels out any frozen spells cast on your allies.
-      Sleep revives an ally. '
-    typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
-      type: 2}
-    conversationPointText: 'Lucid will double your allies attack power for two turns. '
-    typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
-      type: 2}
-    conversationPointText: 'Coma will stop your enemy from attacking for four turns
-      but don''t think you can just use that whenever you want, there''s a four turn
-      cool down and you skip a turn once you use it. '
-    typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
-      type: 2}
-    conversationPointText: 'Finally, Amnesia will cause moderate damage to your enemy.
-      Oh, you can also just whack the suckers too. That''s how I do it, at least. '
-    typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
-      type: 2}
-    conversationPointText: 'Now, just pick one, pick your target, then you''re all
-      set. Go get em, new guy! '
-    typingDelay: 0.03
-  - isPlayerSpeaking: 0
-    conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
-      type: 2}
-    conversationPointText: 'The name''s Puffer! '
-    typingDelay: 0.03
+    onStartEvent:
+    - {fileID: 11400000, guid: 0169d314534761a41b0c751f68dc1608, type: 2}
+    onCompleteEvent:
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  onConversationCompleteEvent: {fileID: 0}
