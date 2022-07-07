@@ -82,7 +82,7 @@ public class CombatEntity : MonoBehaviour
     }
     private void OnDestroy()
     {
-        CombatEventSystem.instance.OnCombatEntityKilled(this, new CombatEntityKilledArgs { entityKilled = this });
+        CombatEventSystem.instance?.OnCombatEntityKilled(this, new CombatEntityKilledArgs { entityKilled = this });
     }
 
     public virtual void StartTurn(CombatContext turnContext)

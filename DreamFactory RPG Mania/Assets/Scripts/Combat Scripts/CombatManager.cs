@@ -50,7 +50,6 @@ public class CombatManager : MonoBehaviour
     {
         if (useTestData)
         {
-
             InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, ""));
             return;
         }
@@ -86,8 +85,10 @@ public class CombatManager : MonoBehaviour
         currentTurnEntity.onTurnComplete += HandleCurrentTurnComplete;
 
         currentTurnContext = new CombatContext();
-        currentTurnContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
-        currentTurnContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
+        currentTurnContext.playerParty = combatEntities.Where(x => currentStartRequest.allies.Contains(x.entityConfig)).ToList();
+        currentTurnContext.enemyParty = combatEntities.Where(x => currentStartRequest.enemies.Contains(x.entityConfig)).ToList();
+        //currentTurnContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
+        //currentTurnContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
         currentTurnContext.currentTurnEntity = currentTurnEntity;
 
         onCombatTurnStart?.Invoke(currentTurnContext);
@@ -120,6 +121,7 @@ public class CombatManager : MonoBehaviour
         {
             combatResult = CombatResult.WIN;
             isCombatFinished = true;
+            EncounterHistory.SaveEncounterAsFinished(currentStartRequest.encounter);
             //HandlePlayerVictory();
         }
         else if ((e.entityKilled as PlayerControllableEntity) != null && IsCombatTeamKilled(currentTurnContext.playerParty))

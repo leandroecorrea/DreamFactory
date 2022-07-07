@@ -11,7 +11,8 @@ public static class NewSaveGenerator
             return new Dictionary<string, object>
             {
                 { SaveKeys.CURRENT_STORY_POINT, StoryPointKeys.StoryKeys.PT1_Boss_Visit },
-                { SaveKeys.UNLOCKED_PARTY_MEMBERS, new List<string> { "PUFFER" } }
+                { SaveKeys.UNLOCKED_PARTY_MEMBERS, new List<string> { "PUFFER" } },
+                { SaveKeys.COMBAT_ENCOUNTERS_COMPLETED, new List<EncounterHistory.Encounters>{ } }
             };
         }
     }
