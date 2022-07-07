@@ -28,10 +28,10 @@ public class EncountersManager : MonoBehaviour
         for (int i = 0; i < encounters.Length; i++)
         {
             var enemyPrefab = encounters[i].enemies[0].combatEntityPrefab;
-            Instantiate(enemyPrefab, spawningPoints[i].transform.position, Quaternion.identity);
-            var component = enemyPrefab.AddComponent<CombatEncounterTrigger>();
+            var prefab = Instantiate(enemyPrefab, spawningPoints[i].transform.position, Quaternion.identity);
+            var component = prefab.AddComponent<CombatEncounterTrigger>();
             component.targetEncounter = encounters[i];
-            var trigger = enemyPrefab.AddComponent<SphereCollider>();
+            var trigger = prefab.AddComponent<SphereCollider>();
             trigger.radius = 3;
             trigger.isTrigger = true;
         }        
