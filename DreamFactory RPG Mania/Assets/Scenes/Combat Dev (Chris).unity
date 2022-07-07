@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 85942596}
   - component: {fileID: 85942595}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: InformationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1281,7 +1281,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296, type: 2}
-  useTestData: 1
+  experienceReward: 100
+  useTestData: 0
+  setupCombatOnAwake: 1
+  startCombatOnAwake: 1
   currentTurnEntity: {fileID: 0}
 --- !u!114 &1188401472
 MonoBehaviour:
@@ -1297,7 +1300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatManager: {fileID: 1188401471}
   playerUI: {fileID: 1225500697}
-  turnMessage: {fileID: 85942595}
+  informationMessage: {fileID: 85942595}
   targetsPanel: {fileID: 1684197812}
   actionsPanel: {fileID: 1434273452}
   charactersPanel: {fileID: 2078376386}
@@ -2526,3 +2529,77 @@ Transform:
   m_Father: {fileID: 814026949}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4687319545046538418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 448857141477550623, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8f34e4b927fcc3e40ae5f031b1ae2802, type: 2}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 629
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687319544697410595, guid: b5aaa107bf5c2cc41a329376edd065b5,
+        type: 3}
+      propertyPath: m_Name
+      value: PostCombatTransition
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b5aaa107bf5c2cc41a329376edd065b5, type: 3}

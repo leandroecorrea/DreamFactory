@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Intro-Starting Room
+  m_EditorClassIdentifier: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: So you're the new guy, huh? My names Sal. Nice to meet
+      ya.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: So, let's get you ready for the job. Naturally, you can
+      move around with WASD/Left Stick
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: You got some meat on your bones so I won't bother with
+      defense just yet. Let's see you get your assignment done first.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
+      type: 2}
+    conversationPointText: The boss was looking for you down on the machine floor.
+      Good luck, kid.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  onConversationCompleteEvent: {fileID: 11400000, guid: 0e9e90dd0a61c6c4f810ff35a572a263,
+    type: 2}

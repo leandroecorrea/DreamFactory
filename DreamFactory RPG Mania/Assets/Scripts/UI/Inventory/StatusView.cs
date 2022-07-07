@@ -14,7 +14,7 @@ public class StatusView : MonoBehaviour
         attack.text = $"Attack: {combatConfig.baseAttack}";
         defence.text = $"Defence: Not implemented";
         speed.text = $"Speed: {combatConfig.baseSpeed}";
-        level.text = $"Level: {levelingStats.Level}";
+        level.text = $"Level: {levelingStats.level}";
         total_xp.text = $"Total XP: {levelingStats.experience}";
         xpToNextLevel.text = $"Next level: {levelingStats.experienceUntilNextLevel}";
     }

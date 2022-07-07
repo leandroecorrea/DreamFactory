@@ -29,8 +29,20 @@ public class CombatTransitionManager : MonoBehaviour
         }
     }
 
+    public void InitializeCombatTransition(CombatEncounterConfig encounterConfig)
+    {
+        this.targetCombatScene = encounterConfig.targetCombatSceneName;
+
+        List<CombatEntityConfig> targetPlayerConfigs = PlayerPartyManager.GetAllUnlockedCombatConfigs();
+        CombatManager.currentStartRequest = new CombatStartRequest(encounterConfig.enemies, targetPlayerConfigs, SceneManager.GetActiveScene().name);
+
+        transitionUIParentCanvas.SetActive(true);
+        anim.SetTrigger("Display");
+    }
+
     public void InitializeCombatTransition(CombatStartRequest startRequest, string targetCombatScene)
     {
+        PlayerOverworldPersistance.persistance.StorePosition();
         CombatManager.currentStartRequest = startRequest;
         this.targetCombatScene = targetCombatScene;
 
@@ -44,6 +56,7 @@ public class CombatTransitionManager : MonoBehaviour
         targetCombatScene = "";
 
         anim.SetTrigger("Hide");
+        transitionUIParentCanvas.SetActive(false);
     }
 
     public void CloseCombatTransition()

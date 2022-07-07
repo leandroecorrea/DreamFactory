@@ -82,7 +82,7 @@ public class CombatEntity : MonoBehaviour
     }
     private void OnDestroy()
     {
-        CombatEventSystem.instance.OnCombatEntityKilled(this, new CombatEntityKilledArgs { entityKilled = this });
+        CombatEventSystem.instance?.OnCombatEntityKilled(this, new CombatEntityKilledArgs { entityKilled = this });
     }
 
     public virtual void StartTurn(CombatContext turnContext)
@@ -164,6 +164,11 @@ public class CombatEntity : MonoBehaviour
     public void TriggerSpellAnimation()
     {
         animator.SetTrigger("SPELL");
+    }
+
+    public void TriggerActionAction(string actionKeyName)
+    {
+        animator.SetTrigger(actionKeyName);
     }
 
     public void TriggerReviveAnimation()

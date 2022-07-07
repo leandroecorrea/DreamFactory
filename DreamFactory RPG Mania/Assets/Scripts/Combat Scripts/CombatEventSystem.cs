@@ -15,10 +15,17 @@ public class CombatEventSystem : MonoBehaviour
     public event EventHandler<CombatEntityDamagedArgs> onCombatEntityDamaged;
     public event EventHandler<CombatEntityKilledArgs> onCombatEntityKilled;
     public Action<string> onItemUsedInCombat;
+    public Action<CombatResult> onCombatFinished;
 
 
     public Action<CombatEntity> onAttackAreaTrigger;
 
+
+
+    public void OnCombatFinished(CombatResult result)
+    {
+        onCombatFinished?.Invoke(result);
+    }
     public void OnItemUsedInCombat(string itemHandler)
     {
         onItemUsedInCombat?.Invoke(itemHandler); 
@@ -52,4 +59,8 @@ public class CombatEntityKilledArgs : EventArgs
 public class CombatEntityDamagedArgs : EventArgs
 {
     public int damageTaken;
+}
+public enum CombatResult
+{
+    WIN, LOSE
 }

@@ -1247,7 +1247,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa0b06ba21a0c9841910b74a927790e5, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296, type: 2}
-  useTestData: 1
+  useTestData: 0
   currentTurnEntity: {fileID: 0}
 --- !u!114 &1188401472
 MonoBehaviour:
@@ -1268,6 +1268,7 @@ MonoBehaviour:
   actionsPanel: {fileID: 1434273452}
   charactersPanel: {fileID: 2078376386}
   targetIndicator: {fileID: 1179871488}
+  backButton: {fileID: 0}
   combatOptionPrefab: {fileID: 8001084468119128338, guid: dbfa2fb5dcd98774593cd1f2b71d80b6,
     type: 3}
   targetOptionPrefab: {fileID: 8001084468119128338, guid: 179d634660f3f1844a92994d83dddea6,
@@ -1276,6 +1277,8 @@ MonoBehaviour:
     type: 3}
   actionFeedbackPrefab: {fileID: 1241133928165980219, guid: bcfbb965ee7d4e84aa264311e7d0330b,
     type: 3}
+  effectsIconPrefab: {fileID: 0}
+  view: {fileID: 0}
 --- !u!114 &1188401473
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -58,7 +58,7 @@ public abstract class BaseAttackHandler : ICombatAction
 
         //targetCombatEntity.TriggerHitAnimation();
         executor.TriggerIdleAnimation();
-        targetCombatEntity.GetComponent<Animator>().SetTrigger(combatActionConfig.combatActionType.ToString());
+        executor.TriggerActionAction(combatActionConfig.combatActionType.ToString());
 
         targetCombatEntity.onAnimationComplete += HandleAttackAnimationComplete;
     }

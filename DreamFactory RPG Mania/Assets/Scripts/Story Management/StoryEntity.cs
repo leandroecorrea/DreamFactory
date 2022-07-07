@@ -7,7 +7,16 @@ using UnityEngine.Events;
 public class StoryEntity : MonoBehaviour
 {
     [Header("Story Configuration")]
-    [SerializeField] private List<StoryEntityListener> storyPointEvents;
+    [SerializeField] private List<StoryPointKeys.StoryKeys> availableStoryPoints;
+    [SerializeField, NonReorderable] private List<StoryEntityListener> storyPointEvents;
+
+    private void OnEnable()
+    {
+        if (!availableStoryPoints.Contains(StoryManager.GetCurrentStoryKey()))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
     private void OnDestroy()
     {

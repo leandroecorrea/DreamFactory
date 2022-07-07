@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
+  Id: 
   Name: Broxo
-  baseHP: 10000
+  baseHP: 1000
   baseMP: 25
   baseAttack: 5
   baseSpeed: 5000

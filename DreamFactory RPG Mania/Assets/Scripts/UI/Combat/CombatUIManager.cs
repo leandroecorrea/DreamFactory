@@ -13,7 +13,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 
     [Header("Player UI")]
     [SerializeField] private GameObject playerUI;
-    [SerializeField] private TMP_Text turnMessage;
+    [SerializeField] private TMP_Text informationMessage;
     [SerializeField] private GameObject targetsPanel;
     [SerializeField] private GameObject actionsPanel;
     [SerializeField] private GameObject charactersPanel;
@@ -35,6 +35,23 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     {
         combatManager.onCombatTurnStart += handleCombatTurnStart;
         CombatEventSystem.instance.onCombatEntityDamaged += HandleCombatEntityDamageFeedback;
+        CombatEventSystem.instance.onCombatFinished += HandleCombatFinished;
+    }
+
+    private void HandleCombatFinished(CombatResult result)
+    {
+        RemoveListeners();
+        HideUIForPlayer();
+        informationMessage.text = $"You won!";
+        PostCombatTransitionManager.instance.InitializePostCombatTransition(result, 100, CombatManager.currentStartRequest.originScene);
+    }
+  
+
+    private void RemoveListeners()
+    {
+        combatManager.onCombatTurnStart -= handleCombatTurnStart;
+        CombatEventSystem.instance.onCombatEntityDamaged -= HandleCombatEntityDamageFeedback;
+        CombatEventSystem.instance.onCombatFinished -= HandleCombatFinished;
     }
 
     private void HandleCombatEntityDamageFeedback(object sender, CombatEntityDamagedArgs e)
@@ -82,7 +99,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 
     private void ShowTurnMessage()
     {
-        turnMessage.text = "It's your turn!";
+        informationMessage.text = "It's your turn!";
     }
 
     private void HideUIForPlayer()
@@ -243,7 +260,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
             var indicatorPosition = currentTarget.transform.position;
             indicatorPosition.y += currentTarget.transform.localScale.y * 2;
             targetIndicator.transform.position = indicatorPosition;
-            turnMessage.text = $"{currentTarget.entityConfig.Name} is being targeted";
+            informationMessage.text = $"{currentTarget.entityConfig.Name} is being targeted";
         }
     }
     private void ReceiveInputFor(CombatActionConfig action)
