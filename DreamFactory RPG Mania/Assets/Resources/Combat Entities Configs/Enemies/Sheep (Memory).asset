@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: SHEEP_MEMORY
   Name: Sheep
-  baseHP: 60
+  baseHP: 1
   baseMP: 10
   baseAttack: 10
   baseSpeed: 2
