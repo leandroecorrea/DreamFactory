@@ -24,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6050990318499412182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.28301, z: -0.07179}
+  m_LocalScale: {x: 0.77903, y: 0.77903, z: 0.77903}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8929727774549459698}
@@ -195,8 +195,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud Floor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8996666317983471410, guid: 42a140626dabb6e479c5b620acb79814, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 42a140626dabb6e479c5b620acb79814, type: 3}
+--- !u!1 &1865896237368048724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4954337222484334315, guid: 42a140626dabb6e479c5b620acb79814,
+    type: 3}
+  m_PrefabInstance: {fileID: 6711957502896106175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &6757503734548269719
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865896237368048724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 1.9999996
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &7564576004582660853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3881940174933078090, guid: 42a140626dabb6e479c5b620acb79814,

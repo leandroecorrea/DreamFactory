@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2177014188522678730
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 191946167158580766}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &191946167158580766
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2177014188522678730}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1463075952215731648}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8468942431601071020
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +30,6 @@ Transform:
   m_Children:
   - {fileID: 3271502606552222604}
   - {fileID: 7078694217149919735}
-  - {fileID: 191946167158580766}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,7 +138,7 @@ PrefabInstance:
     - target: {fileID: 1437515278732594477, guid: e835c8a055e0629479d115f41a544680,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.8602532
+      value: 0.6451544
       objectReference: {fileID: 0}
     - target: {fileID: 1437515278732594477, guid: e835c8a055e0629479d115f41a544680,
         type: 3}
@@ -180,7 +148,7 @@ PrefabInstance:
     - target: {fileID: 1437515278732594477, guid: e835c8a055e0629479d115f41a544680,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.0268599
+      value: 0.5901877
       objectReference: {fileID: 0}
     - target: {fileID: 1437515278732594477, guid: e835c8a055e0629479d115f41a544680,
         type: 3}
@@ -190,12 +158,12 @@ PrefabInstance:
     - target: {fileID: 1437515278732594477, guid: e835c8a055e0629479d115f41a544680,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.49088997
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1437515278732594477, guid: e835c8a055e0629479d115f41a544680,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.2461
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1437515278732594477, guid: e835c8a055e0629479d115f41a544680,
         type: 3}

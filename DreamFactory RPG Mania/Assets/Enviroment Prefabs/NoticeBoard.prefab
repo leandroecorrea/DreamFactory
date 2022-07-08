@@ -75,6 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4244952715268583354}
   - component: {fileID: 6757438566438826826}
+  - component: {fileID: 9041663448984372773}
   m_Layer: 0
   m_Name: NoticeBoard_Large
   m_TagString: Untagged
@@ -153,6 +154,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.4989344, y: 0.24934268, z: -3.3222926}
     m_Extent: {x: 1.2691034, y: 2.3319032, z: 3.3003047}
   m_DirtyAABB: 0
+--- !u!65 &9041663448984372773
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752679313945768500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.334339, y: 21.673464, z: 15.313869}
+  m_Center: {x: -0.0064821243, y: 4.094594, z: 11.256969}
 --- !u!1 &7675176506035283936
 GameObject:
   m_ObjectHideFlags: 0
