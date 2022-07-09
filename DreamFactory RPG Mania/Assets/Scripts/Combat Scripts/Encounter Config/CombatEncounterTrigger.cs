@@ -10,6 +10,13 @@ public class CombatEncounterTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Safeguard incase completed combat encounter remains active
+        List<EncounterHistory.Encounters> completedEncounters = EncounterHistory.EncountersFinished;
+        if (completedEncounters.Contains(targetEncounter.encounter))
+        {
+            return;
+        }
+
         if (other.gameObject.tag == "Player")
         {
             GetComponent<SphereCollider>().enabled = false;
@@ -30,7 +37,7 @@ public class CombatEncounterTrigger : MonoBehaviour
             CombatTransitionManager.instance.InitializeCombatTransition(
                 startRequest,
                 targetEncounter.targetCombatSceneName
-            );            
+            );           
         }
     }
 }

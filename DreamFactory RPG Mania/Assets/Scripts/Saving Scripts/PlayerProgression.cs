@@ -16,7 +16,7 @@ public static class PlayerProgression
     public static T GetPlayerData<T>(string dataKey)
     {
         // This indicates a save hasn't been loaded, load the default save
-        if (currentSaveIndex == -1)
+        if (loadedPlayerData == null && currentSaveIndex == -1)
         {
             loadedPlayerData = new Dictionary<string, object>(NewSaveGenerator.newSaveDefaultInfo);
         }
@@ -32,7 +32,7 @@ public static class PlayerProgression
     public static void UpdatePlayerData<T>(string dataKey, T dataValue)
     {
         // This indicates a save hasn't been loaded, load the default save
-        if (currentSaveIndex == -1)
+        if (loadedPlayerData == null && currentSaveIndex == -1)
         {
             loadedPlayerData = new Dictionary<string, object>(NewSaveGenerator.newSaveDefaultInfo);
         }
@@ -52,7 +52,7 @@ public static class PlayerProgression
     public static void RemovePlayerData(string dataKey)
     {
         // This indicates a save hasn't been loaded, load the default save
-        if (currentSaveIndex == -1)
+        if (loadedPlayerData == null && currentSaveIndex == -1)
         {
             loadedPlayerData = new Dictionary<string, object>(NewSaveGenerator.newSaveDefaultInfo);
         }

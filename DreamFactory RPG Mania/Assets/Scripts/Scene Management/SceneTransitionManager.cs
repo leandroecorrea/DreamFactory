@@ -47,4 +47,13 @@ public static class SceneTransitionManager
         CurrentlyLoadedScenes.Remove(targetSceneName);
         return SceneManager.UnloadSceneAsync(targetSceneName);
     }
+
+    public static void LoadNewSingleScene(string targetSceneName)
+    {
+        SceneManager.LoadScene(targetSceneName, LoadSceneMode.Single);
+
+        // Loading Scene with Single Mode will unload all other scenes
+        // Clear the stored Hashset
+        CurrentlyLoadedScenes.Clear();
+    }
 }
