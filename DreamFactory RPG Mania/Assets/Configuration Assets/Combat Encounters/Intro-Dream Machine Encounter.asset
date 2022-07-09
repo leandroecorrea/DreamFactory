@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39ede5d564541b4d8655e34c50b73df, type: 3}
   m_Name: Intro-Dream Machine Encounter
   m_EditorClassIdentifier: 
+  encounter: 0
   enemies:
   - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
-  - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
-  - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
+  encounterScene: 
+  sceneToReturnTo: WestWing
   targetCombatSceneName: Intro-Dream Machine Battle
+  experienceReward: 0
