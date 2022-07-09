@@ -12,10 +12,23 @@ public class CombatEncounterTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Trigger");
             GetComponent<SphereCollider>().enabled = false;
+
+            CombatStartRequest startRequest = new CombatStartRequest(
+                targetEncounter.enemies,
+                PlayerPartyManager.GetAllUnlockedCombatConfigs(),
+                SceneManager.GetActiveScene().name,
+                targetEncounter.experienceReward,
+                targetEncounter.encounter
+            );
+
+            if (targetEncounter.sceneToReturnTo != "")
+            {
+                startRequest.OverrideReturnScene(targetEncounter.sceneToReturnTo);
+            }
+
             CombatTransitionManager.instance.InitializeCombatTransition(
-                new CombatStartRequest(targetEncounter.enemies, PlayerPartyManager.GetAllUnlockedCombatConfigs(), SceneManager.GetActiveScene().name, targetEncounter.experienceReward, targetEncounter.encounter),
+                startRequest,
                 targetEncounter.targetCombatSceneName
             );            
         }

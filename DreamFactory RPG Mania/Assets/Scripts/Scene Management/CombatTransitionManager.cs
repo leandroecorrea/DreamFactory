@@ -34,7 +34,18 @@ public class CombatTransitionManager : MonoBehaviour
         this.targetCombatScene = encounterConfig.targetCombatSceneName;
 
         List<CombatEntityConfig> targetPlayerConfigs = PlayerPartyManager.GetAllUnlockedCombatConfigs();
-        CombatManager.currentStartRequest = new CombatStartRequest(encounterConfig.enemies, targetPlayerConfigs, SceneManager.GetActiveScene().name);
+        CombatManager.currentStartRequest = new CombatStartRequest(
+            encounterConfig.enemies, 
+            targetPlayerConfigs, 
+            SceneManager.GetActiveScene().name,
+            encounterConfig.experienceReward,
+            encounterConfig.encounter
+        );
+
+        if (encounterConfig.sceneToReturnTo != "")
+        {
+            CombatManager.currentStartRequest.OverrideReturnScene(encounterConfig.sceneToReturnTo);
+        }
 
         transitionUIParentCanvas.SetActive(true);
         anim.SetTrigger("Display");
