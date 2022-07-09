@@ -7,13 +7,13 @@ public class PostCombatUI : MonoBehaviour
 {
     [SerializeField] private GameObject[] characterReward;
     [SerializeField] private TMP_Text informationText;
-    
+    private List<PlayerPartyMemberConfig> players;
 
     private void OnEnable()
     {   
-        var players = PlayerPartyManager.LoadAllAvailablePartyMemberConfigs();
+        players = PlayerPartyManager.UnlockedPartyMembers;
         informationText.text = "Combat finished!";
-        for (int i = 0; i < players.Length; i++)
+        for (int i = 0; i < players.Count; i++)
         {
             characterReward[i].gameObject.SetActive(true);
             var component = characterReward[i].GetComponentInChildren<CombatRewardView>();
@@ -22,6 +22,8 @@ public class PostCombatUI : MonoBehaviour
     }
     public void InitializePreviousSceneTransition()
     {
-        PostCombatTransitionManager.instance.InitializeBackToPreviousScene();
+        // Save player state?
+        PostCombatTransitionManager.instance.InitializeReturnToPreviousScene();
     }
 }
+

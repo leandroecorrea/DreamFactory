@@ -33,7 +33,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 
     private void OnEnable()
     {
-        combatManager.onCombatTurnStart += handleCombatTurnStart;
+        combatManager.onCombatTurnStart += HandleCombatTurnStart;
         CombatEventSystem.instance.onCombatEntityDamaged += HandleCombatEntityDamageFeedback;
         CombatEventSystem.instance.onCombatFinished += HandleCombatFinished;
     }
@@ -49,7 +49,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 
     private void RemoveListeners()
     {
-        combatManager.onCombatTurnStart -= handleCombatTurnStart;
+        combatManager.onCombatTurnStart -= HandleCombatTurnStart;
         CombatEventSystem.instance.onCombatEntityDamaged -= HandleCombatEntityDamageFeedback;
         CombatEventSystem.instance.onCombatFinished -= HandleCombatFinished;
     }
@@ -65,12 +65,8 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         feedback.transform.SetParent(playerUI.transform, false);
     }
 
-
-
-
-    private void handleCombatTurnStart(CombatContext ctx)
+    private void HandleCombatTurnStart(CombatContext ctx)
     {
-
         combatContext = ctx;
         ShowCharactersPanel();
         if (combatContext.currentTurnEntity is PlayerControllableEntity)
@@ -92,10 +88,6 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
             (combatContext.currentTurnEntity as EnemyCombatEntity)?.StartTurn(combatContext);
         }
     }
-
-
-
-
 
     private void ShowTurnMessage()
     {
@@ -232,7 +224,6 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
                 characterStats.effectIcons[i].sprite = character.EffectsCaused[i].combatEffectConfig.displayIcon;
             }
         });
-
     }
 
 

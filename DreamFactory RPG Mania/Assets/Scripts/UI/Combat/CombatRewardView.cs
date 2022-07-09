@@ -13,38 +13,55 @@ public class CombatRewardView : MonoBehaviour
     [SerializeField] private TMP_Text experienceUntilNextLevel;
     [SerializeField] private Image characterAsset;
     private int _reward;
+    private int _currentExperience;
+    private int _futureExperience;
+    private int _currentToNextLevel;
+    private int _futureToNextLevel;
+    private LevelingStats _stats;
 
     public void SetCharacterRewardView(PlayerPartyMemberConfig characterConfig)
     {
         //_reward = CombatManager.currentStartRequest.experienceReward;
-        _reward = 100;
+        _reward = 2000;
+        _stats = characterConfig.Stats;
         characterName.text = characterConfig.CharacterDetails.characterName;
         level.text = "Level: " + characterConfig.Stats.level.ToString();
-        TweenExperience(characterConfig);
-
-        experienceUntilNextLevel.text = characterConfig.Stats.experienceUntilNextLevel.ToString();
+        _currentExperience = characterConfig.Stats.experience;
+        _futureExperience = _currentExperience + _reward;
+        _currentToNextLevel = characterConfig.Stats.experienceUntilNextLevel;
+        _futureToNextLevel = _currentToNextLevel - _reward;
+        //experienceUntilNextLevel.text = characterConfig.Stats.experienceUntilNextLevel.ToString();
         characterAsset.sprite = characterConfig.CharacterDetails.characterPortrait;
+        StartCoroutine(UpdateExperience());
+        StartCoroutine(UpdateToNextTurn());
     }
 
-    private void TweenExperience(PlayerPartyMemberConfig characterConfig)
+    private IEnumerator UpdateExperience()
     {        
-        var currentExperience = characterConfig.Stats.experience;
-        var futureExperience = currentExperience + _reward;
-        var currentToNextLevel = characterConfig.Stats.experienceUntilNextLevel;
-        var futureToNextLevel = characterConfig.Stats.experienceUntilNextLevel - _reward;
-        LeanTween.value(gameObject, currentExperience, futureExperience, 5f)            
-            .setOnUpdate(SetExperienceText);
-        LeanTween.value(gameObject, currentToNextLevel, futureToNextLevel, 5f)
-            .setOnUpdate(SetExperienceToNextLevel);
+        while(_currentExperience < _futureExperience)
+        {
+            totalExperience.text = Convert.ToInt32(_currentExperience).ToString();
+            _currentExperience+=2;
+            
+            yield return null;
+        }
+        _stats.experience = _currentExperience;
     }
-
-    private void SetExperienceToNextLevel(float value)
+    private IEnumerator UpdateToNextTurn()
     {
-        experienceUntilNextLevel.text = "XP to next level: "+ Convert.ToInt32(value).ToString();
-    }
 
-    private void SetExperienceText(float value)
-    {
-        totalExperience.text = "Current XP: "+ Convert.ToInt32(value).ToString();
-    }
+        while(_currentToNextLevel > _futureToNextLevel)
+        {
+            experienceUntilNextLevel.text = Convert.ToInt32(_currentToNextLevel).ToString();
+            _currentToNextLevel-=2;
+            if(_currentToNextLevel < 0)
+            {
+                LevelingManager.LevelUp(ref _stats);
+                level.text = "Level: "+ _stats.level.ToString();
+                _currentToNextLevel = _stats.experienceUntilNextLevel;
+                _futureToNextLevel = _currentToNextLevel + _futureToNextLevel;
+            }
+            yield return null;
+        }
+    }   
 }

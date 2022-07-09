@@ -54,7 +54,7 @@ public class PostCombatTransitionManager : MonoBehaviour
         transitionUIParentCanvas.SetActive(false);
     }
 
-    public void InitializeBackToPreviousScene()
+    public void InitializeReturnToPreviousScene()
     {
         _targetCombatScene = _originScene;                
         transitionUIParentCanvas.SetActive(true);

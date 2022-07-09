@@ -28,7 +28,8 @@ public class PlayerOverworldPersistance : MonoBehaviour
     public void ResetPosition()
     {
         gameObject.SetActive(true);
-        transform.position = previousPosition;
+        transform.position = previousPosition;        
+        GetComponent<PlayerMovement>().StopMoving();
     }
 
 }

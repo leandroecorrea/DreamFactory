@@ -122,13 +122,12 @@ public class CombatManager : MonoBehaviour
             combatResult = CombatResult.WIN;
             isCombatFinished = true;
             EncounterHistory.SaveEncounterAsFinished(currentStartRequest.encounter);
-            //HandlePlayerVictory();
+            //PlayerPartyManager.UnlockedPartyMembers.ForEach(x => LevelingManager.Instance.Update(ref x.Stats, currentStartRequest.experienceReward));
         }
         else if ((e.entityKilled as PlayerControllableEntity) != null && IsCombatTeamKilled(currentTurnContext.playerParty))
         {
             combatResult = CombatResult.LOSE;
-            isCombatFinished = true;
-            //(HandlePlayerLose();
+            isCombatFinished = true;            
         }
     }
 
@@ -156,4 +155,28 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+}
+public static class LevelingManager
+{    
+    private static readonly Dictionary<int, int> experiencePerLevel = new Dictionary<int, int>
+    {
+        { 1, 100 },
+        { 2, 200 },
+        { 3, 345 },
+        { 4, 500 },
+        {5, 600 },
+        {6, 850 },
+        {7, 1000 },
+        {8, 1500 },
+        {9, 2000 },
+        {10, 3000 },
+        {11, 4000 },
+        {12, 5000 }
+    };  
+
+    public static void LevelUp(ref LevelingStats stats)
+    {
+        stats.level++;
+        stats.experienceUntilNextLevel = experiencePerLevel[stats.level];
+    }
 }
