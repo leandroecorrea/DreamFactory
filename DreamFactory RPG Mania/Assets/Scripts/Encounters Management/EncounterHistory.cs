@@ -8,7 +8,17 @@ public static class EncounterHistory
     public enum Encounters
     {
         Test,
-        Test2
+        Test2,
+        DREAM_MACHINE_1_ENCOUNTER_1,
+        DREAM_MACHINE_1_ENCOUNTER_2,
+        DREAM_MACHINE_1_ENCOUNTER_3,
+        DREAM_MACHINE_2_ENCOUNTER_1,
+        DREAM_MACHINE_2_ENCOUNTER_2,
+        DREAM_MACHINE_2_ENCOUNTER_3,
+        DREAM_MACHINE_3_ENCOUNTER_1,
+        DREAM_MACHINE_3_ENCOUNTER_2,
+        DREAM_MACHINE_3_ENCOUNTER_3,
+        SHEPHERD_ENCOUNTER
     }
 
     private static List<Encounters> encountersFinished;

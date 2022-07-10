@@ -123,6 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &150787158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7877463044282019094, guid: 5f9a3919759192948871214e944d0b3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1303896446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &562640782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -702,6 +708,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1583777359385303102, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: targetSceneName
+      value: Dream Machine 1 Pocket Dimension
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583777359385303102, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: targetSpawnPosition.x
+      value: 46.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583777359385303102, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: targetSpawnPosition.y
+      value: 0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583777359385303102, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: targetSpawnPosition.z
+      value: 48.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3222039330692930162, guid: 5f9a3919759192948871214e944d0b3d,
         type: 3}
       propertyPath: m_Name
@@ -761,6 +787,101 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].listenerStoryKey
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryExit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 150787158}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5567493058080100626, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].listenerStoryKey
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1856518047}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8381637347991369394, guid: 5f9a3919759192948871214e944d0b3d,
+        type: 3}
+      propertyPath: storyPointEvents.Array.data[0].onStoryEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f9a3919759192948871214e944d0b3d, type: 3}
@@ -1068,6 +1189,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1856518047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2210981515961881468, guid: 5f9a3919759192948871214e944d0b3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1303896446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4001579409390285128
 PrefabInstance:
   m_ObjectHideFlags: 0
