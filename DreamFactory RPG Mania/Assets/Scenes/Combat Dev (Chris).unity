@@ -823,7 +823,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &839939454
 GameObject:
@@ -1173,7 +1173,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3008afbf8b775ce4d94bf3ae28f3e817, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1216,7 +1216,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -54.987, y: -76.905, z: 61.052}
 --- !u!114 &1179871493
 MonoBehaviour:
@@ -1278,8 +1278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatSpawner: {fileID: 1188401473}
   testEnemies:
-  - {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
-  - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
+  - {fileID: 11400000, guid: f635128365046fb45bb64f54f116187d, type: 2}
+  - {fileID: 11400000, guid: 6adbbcaa6690d2a489c1bf40ddd914d8, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 901175df4c6c72a42a6a6b7b32278cd4, type: 2}
   - {fileID: 11400000, guid: 8972d770ab23b194997e9747922430d9, type: 2}
@@ -2547,7 +2547,7 @@ PrefabInstance:
     - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4687319544697410593, guid: b5aaa107bf5c2cc41a329376edd065b5,
         type: 3}

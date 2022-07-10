@@ -253,7 +253,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         {
             targetIndicator.gameObject.SetActive(true);
             var indicatorPosition = currentTarget.transform.position;
-            indicatorPosition.y += currentTarget.transform.localScale.y * 2;
+            indicatorPosition.y += currentTarget.transform.GetComponent<CapsuleCollider>().bounds.max.y * 2;
             targetIndicator.transform.position = indicatorPosition;
             informationMessage.text = $"{currentTarget.entityConfig.Name} is being targeted";
         }
