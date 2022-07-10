@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class CombatEntityConfig : ScriptableObject
 {
     [Header("Description")]
+    public string Id;
     public string Name;
     [Header("Base Stats")]
     public int baseHP;
@@ -15,5 +17,5 @@ public class CombatEntityConfig : ScriptableObject
 
     [Header("Combat Action References")]
     public GameObject combatEntityPrefab;    
-    public List<CombatActionConfig> actions;
+    public List<CombatActionConfig> actions;    
 }

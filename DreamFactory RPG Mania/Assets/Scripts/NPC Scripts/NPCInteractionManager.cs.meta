@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 70fe794e3c1981340aef85b7622c0e7e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - npcInteractionOptionPrefab: {fileID: 3161999188191019363, guid: ee98d873359198c4dac05ce56f01d246,
+      type: 3}
+  - dismissNPCInteractionUIPrefab: {fileID: 3161999188191019363, guid: 294a7a30dacaf4d4ab263a18d75510a3,
+      type: 3}
+  - npcConfig: {instanceID: 0}
+  - npcAnim: {instanceID: 0}
+  - selectInteractionUIParent: {instanceID: 0}
+  - interactionUIParent: {instanceID: 0}
+  - interactionMenuParent: {instanceID: 0}
+  - interactionOptionListParent: {instanceID: 0}
+  - npcNameText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ICombatAction : MonoBehaviour
+public interface ICombatAction
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    CombatActionConfig combatActionConfig { get; set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    event EventHandler<ActionPerformedArgs> onCombatActionComplete;
+
+    void ExecuteAction(CombatEntity executor, params CombatEntity[] targets);
+}
+
+public class ActionPerformedArgs : EventArgs
+{
+    public CombatEntity[] TargetedUnits { get; set; }
+    public ICombatAction ActionPerformed { get; set; }
+    public string feedbackMessage { get; set; }
 }

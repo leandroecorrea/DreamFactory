@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9e1d92a9bf6b242a8cb4009ba78d98, type: 3}
+  m_Name: Mindy
+  m_EditorClassIdentifier: 
+  partyMemberId: MINDY
+  PartyMemberCombatConfig:
+    currentHP: 105
+    currentMP: 22
+    EffectsID: []
+    combatEffectConfigs: []
+    CombatEntityConfig: {fileID: 11400000, guid: 8972d770ab23b194997e9747922430d9,
+      type: 2}
+  CharacterDetails:
+    characterName: Mindy
+    characterPrefab: {fileID: 3184674319563369056, guid: da8cd3083b96db8428d43a91564f42e8,
+      type: 3}
+    characterPortrait: {fileID: 21300000, guid: 938aae6f0c3726647bbbdfea3cd3a766,
+      type: 3}
+  Stats:
+    level: 5
+    experience: 15651
+    experienceUntilNextLevel: 1005

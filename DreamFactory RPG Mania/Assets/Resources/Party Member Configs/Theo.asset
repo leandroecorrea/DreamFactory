@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9e1d92a9bf6b242a8cb4009ba78d98, type: 3}
+  m_Name: Theo
+  m_EditorClassIdentifier: 
+  partyMemberId: THEO
+  PartyMemberCombatConfig:
+    currentHP: 1212
+    currentMP: 33
+    EffectsID: []
+    combatEffectConfigs: []
+    CombatEntityConfig: {fileID: 11400000, guid: 901175df4c6c72a42a6a6b7b32278cd4,
+      type: 2}
+  CharacterDetails:
+    characterName: Theo
+    characterPrefab: {fileID: 8450227428587258759, guid: 510767dd9e3d03f4ca76b60fa4754efa,
+      type: 3}
+    characterPortrait: {fileID: 21300000, guid: aa39ac2a888a8b4498c63a316aea9b08,
+      type: 3}
+  Stats:
+    level: 5
+    experience: 1
+    experienceUntilNextLevel: 9999

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e63b0a9af916840aedbad7a3720519, type: 3}
+  m_Name: Faerie
+  m_EditorClassIdentifier: 
+  Id: FAERIE
+  Name: Faerie
+  baseHP: 150
+  baseMP: 80
+  baseAttack: 15
+  baseSpeed: 12
+  combatEntityPrefab: {fileID: 8616404973628940178, guid: 1c3b5206ffa2bce439eb9b488551f4c2,
+    type: 3}
+  actions:
+  - {fileID: 11400000, guid: f030385a7bb48774ea6622662f3dd2d1, type: 2}
+  - {fileID: 11400000, guid: a9bff729f7f052d44b7d670c6eccdd7e, type: 2}
+  - {fileID: 11400000, guid: 7c50a8a8f4424c84a9d1e68c6fcb92dd, type: 2}
+  - {fileID: 11400000, guid: 9b3e65b18d2722c47b28ac4021dc9d94, type: 2}

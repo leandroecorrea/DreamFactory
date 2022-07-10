@@ -1,133 +1,161 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class CombatManager : MonoBehaviour
-{    
-    [Header("Test Enemies")]
+{
+    public static CombatStartRequest currentStartRequest;
+
+    [SerializeField] private CombatSpawner combatSpawner;
+
+    [Header("Test Data")]
     [SerializeField] private List<CombatEntityConfig> testEnemies;
     [SerializeField] private List<CombatEntityConfig> testPlayers;
-    [Header("Battle Arena Config")]
-    [SerializeField] private Vector3 playerControllableArena;
-    [SerializeField] private Vector3 enemyArena;
-    [SerializeField] private Vector3 arenaSize;
-    
+    [SerializeField] public int experienceReward = 100;
+    [SerializeField] private bool useTestData = true;
+
+    [Header("Settings")]
+    [SerializeField] private bool setupCombatOnAwake = true;
+    [SerializeField] private bool startCombatOnAwake = true;
+
+    public CombatContext currentTurnContext;
 
     public Queue<CombatEntity> combatEntities;
     [HideInInspector] public CombatEntity currentTurnEntity;
 
     public delegate void OnCombatTurnStart(CombatContext ctx);
+    private bool isCombatFinished;
+    private CombatResult combatResult;
     public event OnCombatTurnStart onCombatTurnStart;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(playerControllableArena, arenaSize);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(enemyArena, arenaSize);
-    }
 
     private void Awake()
     {
-        InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers));
+        if (setupCombatOnAwake)
+        {
+            RunSetup();
+        }
+
+        if (startCombatOnAwake)
+        {
+            InitializeTurns();
+        }
+    }
+
+    public void RunSetup()
+    {
+        if (useTestData)
+        {
+            var request = new CombatStartRequest(testEnemies, testPlayers, "UI Scenes/Main Menu", 100, EncounterHistory.Encounters.Test);
+            currentStartRequest = request;
+            InitializeCombatManager(request);
+            return;
+        }
+        InitializeCombatManager(currentStartRequest);
+    }
+
+    private void HandleItemUsedInCombat(string itemHandler)
+    {
+        var item = InventoryManager.GetAll().Find(x => x.data.actionConfig.actionHandlerClassName == itemHandler);
+        if (item != null)
+            InventoryManager.Consume(item);
     }
 
     public void InitializeCombatManager(CombatStartRequest combatRequest)
     {
-        SpawnCombatEntities(combatRequest);
-        InitializeTurns();
-        
-        var combatContext = new CombatContext();
-        combatContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
-        combatContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
-        combatContext.currentTurnEntity = currentTurnEntity;
-        onCombatTurnStart(combatContext);
-    }
-
-    
-    public void Perform(CombatActionConfig action, params CombatEntity[] target)
-    {        
-        target.ToList().ForEach(t => Debug.Log($"{action.name} performed on {t.entityConfig.Name}"));        
-    }    
-
-    public void SpawnCombatEntities(CombatStartRequest combatRequest)
-    {
-        List<CombatEntity> spawnedCombatEntities = new List<CombatEntity>();
-        foreach (var playerEntityConfig in combatRequest.players)
-        {
-            spawnedCombatEntities.Add(
-                GameObject.Instantiate(
-                    playerEntityConfig.combatEntityPrefab,
-                    playerControllableArena,
-                    Quaternion.identity
-                ).GetComponent<CombatEntity>()
-            );
-        }
-
-        //float spacing = 1f;
-        //var enemyArenaLengthPerEnemy = (arenaSize.magnitude - (spacing * (combatRequest.enemies.Count - 1))) / combatRequest.enemies.Count;
-
-        var enemyArenaLengthPerEnemy = arenaSize.magnitude / combatRequest.enemies.Count;
-        int enemiesSpawned = 0;
-        foreach (var enemyEntityConfig in combatRequest.enemies)
-        {
-            var position = enemyArena;
-            position.x = enemyArena.x - arenaSize.x / 2;
-            float enemyPrefabSize = (float)(enemyEntityConfig.combatEntityPrefab.transform.localScale.x * 1.5);
-            //position.x = (enemyArena.x - (arenaSize.x / 2)) + (enemyArenaLengthPerEnemy * enemiesSpawned) - enemyPrefabSize; 
-            position.x += enemyArenaLengthPerEnemy * enemiesSpawned + enemyPrefabSize;
-            spawnedCombatEntities.Add(
-                GameObject.Instantiate(
-                    enemyEntityConfig.combatEntityPrefab,
-                    position,
-                    Quaternion.identity
-                ).GetComponent<CombatEntity>()
-            );
-
-            enemiesSpawned++;
-        }
-
-        combatEntities = new Queue<CombatEntity>(spawnedCombatEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
+        var spawnedEntities = combatSpawner.SpawnParties(combatRequest);
+        combatEntities = new Queue<CombatEntity>(spawnedEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
+        CombatEventSystem.instance.onCombatEntityKilled += HandleCombatEntityDeath;
+        CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;           
     }
 
     public void InitializeTurns()
     {
         currentTurnEntity = combatEntities.Peek();
-        StartCombat();
+
+        // Remove any entities that died last turn
+        while (currentTurnEntity == null || currentTurnEntity.gameObject == null)
+        {
+            combatEntities.Dequeue();
+            currentTurnEntity = combatEntities.Peek();
+        }
+
+        currentTurnEntity.onTurnComplete += HandleCurrentTurnComplete;
+
+        currentTurnContext = new CombatContext();
+        //currentTurnContext.playerParty = combatEntities.Where(x => currentStartRequest.allies.Contains(x.entityConfig)).ToList();
+        //currentTurnContext.enemyParty = combatEntities.Where(x => currentStartRequest.enemies.Contains(x.entityConfig)).ToList();
+
+        currentTurnContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
+        currentTurnContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
+        currentTurnContext.currentTurnEntity = currentTurnEntity;
+
+        onCombatTurnStart?.Invoke(currentTurnContext);
     }
 
-    public void StartCombat()
+    private void HandleCurrentTurnComplete(object sender, OnTurnCompleteEventArgs e)
     {
-        // Start Current Combat Entity Turn
-    }
-
-
-    public void EndTurn()
-    {
+        currentTurnEntity.onTurnComplete -= HandleCurrentTurnComplete;
+        if (isCombatFinished)
+        {
+            StartCoroutine(WaitAndFinishCombat());
+            return;
+        }
+        // Removing the last combat entity from the queue
+        combatEntities.Dequeue();
         combatEntities.Enqueue(currentTurnEntity);
-        currentTurnEntity = combatEntities.Dequeue();
+
+        InitializeTurns();
     }
-}
-
-public class CombatStartRequest
-{
-    public List<CombatEntityConfig> enemies;
-    public List<CombatEntityConfig> players;
-
-    public CombatStartRequest(List<CombatEntityConfig> enemies, List<CombatEntityConfig> players)
+    private IEnumerator WaitAndFinishCombat()
     {
-        this.enemies = enemies;
-        this.players = players;
+        yield return new WaitForSeconds(1);
+
+        CombatEventSystem.instance.OnCombatFinished(combatResult);
     }
-}
+    private void HandleCombatEntityDeath(object sender, CombatEntityKilledArgs e)
+    {
+        // Check for Player Victory
+        if ((e.entityKilled as EnemyCombatEntity) != null && IsCombatTeamKilled(currentTurnContext.enemyParty))
+        {
+            combatResult = CombatResult.WIN;
+            isCombatFinished = true;
+            EncounterHistory.SaveEncounterAsFinished(currentStartRequest.encounter);
+            //PlayerPartyManager.UnlockedPartyMembers.ForEach(x => LevelingManager.Instance.Update(ref x.Stats, currentStartRequest.experienceReward));
+        }
+        else if ((e.entityKilled as PlayerControllableEntity) != null && IsCombatTeamKilled(currentTurnContext.playerParty))
+        {
+            combatResult = CombatResult.LOSE;
+            isCombatFinished = true;            
+        }
+    }
 
-public class CombatContext
-{
-    public List<CombatEntity> playerParty;
-    public List<CombatEntity> enemyParty;
+    private bool IsCombatTeamKilled(List<CombatEntity> team)
+    {
+        bool allEntitiesKilled = true;
+        foreach (CombatEntity combatEntity in team)
+        {
+            if (combatEntity != null && combatEntity.gameObject != null && !combatEntity.IsDead())
+            {
+                allEntitiesKilled = false;
+                break;
+            }
+        }
 
-    public CombatEntity currentTurnEntity;
+        return allEntitiesKilled;
+    }    
+
+    public void GoBackToOriginScene()
+    {
+        if (currentStartRequest.originScene != "")
+        {
+            SceneManager.LoadScene(currentStartRequest.originScene);
+            currentStartRequest = null;
+        }
+    }
+
 }

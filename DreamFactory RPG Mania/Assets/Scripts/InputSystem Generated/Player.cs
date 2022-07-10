@@ -24,7 +24,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
     ""name"": ""Player"",
     ""maps"": [
         {
-            ""name"": ""Movement"",
+            ""name"": ""Main"",
             ""id"": ""cf68be96-22a3-4fc6-a162-ce63725d3844"",
             ""actions"": [
                 {
@@ -35,6 +35,15 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NPCTalk"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2cb6c98-3753-40f1-848d-2ca535b2aa22"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -103,6 +112,28 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""action"": ""Walk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95b41330-67e7-46d4-9499-a618d457f8d2"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard_Mouse"",
+                    ""action"": ""NPCTalk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""488d6863-5810-411b-b685-37d73d9e8a00"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NPCTalk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -137,9 +168,10 @@ public partial class @Player : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Movement
-        m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_Walk = m_Movement.FindAction("Walk", throwIfNotFound: true);
+        // Main
+        m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
+        m_Main_Walk = m_Main.FindAction("Walk", throwIfNotFound: true);
+        m_Main_NPCTalk = m_Main.FindAction("NPCTalk", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,38 +228,46 @@ public partial class @Player : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Movement
-    private readonly InputActionMap m_Movement;
-    private IMovementActions m_MovementActionsCallbackInterface;
-    private readonly InputAction m_Movement_Walk;
-    public struct MovementActions
+    // Main
+    private readonly InputActionMap m_Main;
+    private IMainActions m_MainActionsCallbackInterface;
+    private readonly InputAction m_Main_Walk;
+    private readonly InputAction m_Main_NPCTalk;
+    public struct MainActions
     {
         private @Player m_Wrapper;
-        public MovementActions(@Player wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Walk => m_Wrapper.m_Movement_Walk;
-        public InputActionMap Get() { return m_Wrapper.m_Movement; }
+        public MainActions(@Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Walk => m_Wrapper.m_Main_Walk;
+        public InputAction @NPCTalk => m_Wrapper.m_Main_NPCTalk;
+        public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MovementActions set) { return set.Get(); }
-        public void SetCallbacks(IMovementActions instance)
+        public static implicit operator InputActionMap(MainActions set) { return set.Get(); }
+        public void SetCallbacks(IMainActions instance)
         {
-            if (m_Wrapper.m_MovementActionsCallbackInterface != null)
+            if (m_Wrapper.m_MainActionsCallbackInterface != null)
             {
-                @Walk.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnWalk;
-                @Walk.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnWalk;
-                @Walk.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnWalk;
+                @Walk.started -= m_Wrapper.m_MainActionsCallbackInterface.OnWalk;
+                @Walk.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnWalk;
+                @Walk.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnWalk;
+                @NPCTalk.started -= m_Wrapper.m_MainActionsCallbackInterface.OnNPCTalk;
+                @NPCTalk.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnNPCTalk;
+                @NPCTalk.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnNPCTalk;
             }
-            m_Wrapper.m_MovementActionsCallbackInterface = instance;
+            m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Walk.started += instance.OnWalk;
                 @Walk.performed += instance.OnWalk;
                 @Walk.canceled += instance.OnWalk;
+                @NPCTalk.started += instance.OnNPCTalk;
+                @NPCTalk.performed += instance.OnNPCTalk;
+                @NPCTalk.canceled += instance.OnNPCTalk;
             }
         }
     }
-    public MovementActions @Movement => new MovementActions(this);
+    public MainActions @Main => new MainActions(this);
     private int m_Keyboard_MouseSchemeIndex = -1;
     public InputControlScheme Keyboard_MouseScheme
     {
@@ -246,8 +286,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    public interface IMovementActions
+    public interface IMainActions
     {
         void OnWalk(InputAction.CallbackContext context);
+        void OnNPCTalk(InputAction.CallbackContext context);
     }
 }
