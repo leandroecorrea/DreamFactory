@@ -91,7 +91,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
 
     private void ShowTurnMessage()
     {
-        informationMessage.text = "It's your turn!";
+        informationMessage.text = $"It's {combatManager.currentTurnEntity.entityConfig.Name} turn!";
     }
 
     private void HideUIForPlayer()
@@ -170,7 +170,11 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         backButton.SetActive(true);
         CleanCombatActions(actionsPanel);
         CleanTargets(targetsPanel);
-        var targets = action.targetStrategy.GetTargets(combatContext);
+
+        var targets = action.targetStrategy
+                            .GetTargets(combatContext)
+                            .Where(x=> combatManager.combatEntities.Contains(x))
+                            .ToList();
         ShowTargets(targets);
     }
 
@@ -184,17 +188,17 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         backButton.SetActive(false);
     }
 
-    private void ShowTargets(List<CombatEntity> party)
+    private void ShowTargets(List<CombatEntity> enemyTargets)
     {
         actionsPanel.SetActive(false);
-        targetsPanel.gameObject.SetActive(true);
-        party.ForEach(ally =>
+        targetsPanel.gameObject.SetActive(true);        
+        enemyTargets.ForEach(enemy =>
         {
             var targetListElement = Instantiate(targetOptionPrefab);
             if (targetListElement.TryGetComponent(out TargetOptionPrefab targetPrefab))
             {
-                targetPrefab.optionName.text = ally.entityConfig.Name;
-                targetPrefab.Attach(ally.entityConfig);
+                targetPrefab.optionName.text = enemy.entityConfig.Name;                
+                targetPrefab.Attach(enemy.entityConfig);
                 targetPrefab.Subscribe(this);
                 targetPrefab.optionButton.onClick.AddListener(delegate
                 {
@@ -203,7 +207,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
             }
             targetListElement.transform.SetParent(targetsPanel.transform, false);
         });
-        SetCurrentDefaultTargetFor(party);
+        SetCurrentDefaultTargetFor(enemyTargets);
     }
 
     private void ShowCharactersPanel()

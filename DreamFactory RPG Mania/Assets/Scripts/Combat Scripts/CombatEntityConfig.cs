@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,5 +17,5 @@ public class CombatEntityConfig : ScriptableObject
 
     [Header("Combat Action References")]
     public GameObject combatEntityPrefab;    
-    public List<CombatActionConfig> actions;
+    public List<CombatActionConfig> actions;    
 }

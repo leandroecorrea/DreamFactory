@@ -63,5 +63,9 @@ public class CombatRewardView : MonoBehaviour
             }
             yield return null;
         }
-    }   
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 }

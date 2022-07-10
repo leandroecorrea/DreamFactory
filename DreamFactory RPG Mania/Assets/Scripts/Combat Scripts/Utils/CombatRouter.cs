@@ -26,9 +26,9 @@ public class CombatRouter : MonoBehaviour
 
     public void BeginRouting(GameObject targetToRouteTo)
     {
-        targetDistance = targetToRouteTo.transform.localScale.magnitude;
+        //targetDistance = targetToRouteTo.transform.localScale.magnitude;        
+        targetDistance = targetToRouteTo.GetComponent<CapsuleCollider>().bounds.min.magnitude / 2;
         snapToPosition = false;
-
         transform.LookAt(new Vector3(targetToRouteTo.transform.position.x, transform.position.y, targetToRouteTo.transform.position.z));
         StartCoroutine(ExecuteRouting(targetToRouteTo.transform.position));
     }

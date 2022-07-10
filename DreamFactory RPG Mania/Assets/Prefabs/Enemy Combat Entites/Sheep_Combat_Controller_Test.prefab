@@ -311,9 +311,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359199401564131703}
   m_LocalRotation: {x: 0.5, y: 0.49999997, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3784618, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -0, y: 0.00000023841858, z: 0}
+  m_LocalScale: {x: 2.7698894, y: 2.0094059, z: 2.0094059}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9036838323710489121}
   m_RootOrder: 1
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 2994079993887075435}
   - component: {fileID: -2301258608164475005}
   m_Layer: 0
-  m_Name: Sheep_Combat_Controller
+  m_Name: Sheep_Combat_Controller_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -884,8 +884,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6047257843069023445}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 60, z: 0}
-  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_LocalPosition: {x: 0, y: 53, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3813212056046796715}
@@ -919,10 +919,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 1
+  m_Radius: 2.5
+  m_Height: 8
   m_Direction: 2
-  m_Center: {x: 0, y: -1.4, z: 0}
+  m_Center: {x: 0.0069187935, y: 0, z: 0}
 --- !u!95 &2842121846902470838
 Animator:
   serializedVersion: 4
@@ -968,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9990eef5aebc247ac46952497d3690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityConfig: {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
+  entityConfig: {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
   animator: {fileID: 2842121846902470838}
   combatAction: {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
 --- !u!114 &-2301258608164475005
@@ -1041,8 +1041,8 @@ Transform:
   m_GameObject: {fileID: 6298649782289708873}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: -2.2679, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 3.1601, y: 3.1601, z: 3.1601}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2451571766980838084}
   m_Father: {fileID: 9036838323710489121}

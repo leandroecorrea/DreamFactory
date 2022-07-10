@@ -50,7 +50,9 @@ public class CombatManager : MonoBehaviour
     {
         if (useTestData)
         {
-            InitializeCombatManager(new CombatStartRequest(testEnemies, testPlayers, ""));
+            var request = new CombatStartRequest(testEnemies, testPlayers, "UI Scenes/Main Menu", 100, EncounterHistory.Encounters.Test);
+            currentStartRequest = request;
+            InitializeCombatManager(request);
             return;
         }
         InitializeCombatManager(currentStartRequest);
@@ -85,10 +87,11 @@ public class CombatManager : MonoBehaviour
         currentTurnEntity.onTurnComplete += HandleCurrentTurnComplete;
 
         currentTurnContext = new CombatContext();
-        currentTurnContext.playerParty = combatEntities.Where(x => currentStartRequest.allies.Contains(x.entityConfig)).ToList();
-        currentTurnContext.enemyParty = combatEntities.Where(x => currentStartRequest.enemies.Contains(x.entityConfig)).ToList();
-        //currentTurnContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
-        //currentTurnContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
+        //currentTurnContext.playerParty = combatEntities.Where(x => currentStartRequest.allies.Contains(x.entityConfig)).ToList();
+        //currentTurnContext.enemyParty = combatEntities.Where(x => currentStartRequest.enemies.Contains(x.entityConfig)).ToList();
+
+        currentTurnContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
+        currentTurnContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
         currentTurnContext.currentTurnEntity = currentTurnEntity;
 
         onCombatTurnStart?.Invoke(currentTurnContext);
@@ -155,28 +158,4 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-}
-public static class LevelingManager
-{    
-    private static readonly Dictionary<int, int> experiencePerLevel = new Dictionary<int, int>
-    {
-        { 1, 100 },
-        { 2, 200 },
-        { 3, 345 },
-        { 4, 500 },
-        {5, 600 },
-        {6, 850 },
-        {7, 1000 },
-        {8, 1500 },
-        {9, 2000 },
-        {10, 3000 },
-        {11, 4000 },
-        {12, 5000 }
-    };  
-
-    public static void LevelUp(ref LevelingStats stats)
-    {
-        stats.level++;
-        stats.experienceUntilNextLevel = experiencePerLevel[stats.level];
-    }
 }
