@@ -6,11 +6,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class CombatUIManager : MonoBehaviour, ITargetUpdatable
+public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
 {
     [Header("Refs")]
     [SerializeField] private CombatManager combatManager;
-
+    
     [Header("Player UI")]
     [SerializeField] private GameObject playerUI;
     [SerializeField] private TMP_Text informationMessage;
@@ -30,12 +30,24 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
     private CombatEntity currentTarget;
     private CombatContext combatContext;
     private CombatActionConfig currentAction;
+    public static IInformation instance;
 
     private void OnEnable()
     {
         combatManager.onCombatTurnStart += HandleCombatTurnStart;
         CombatEventSystem.instance.onCombatEntityDamaged += HandleCombatEntityDamageFeedback;
         CombatEventSystem.instance.onCombatFinished += HandleCombatFinished;
+    }
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     private void HandleCombatFinished(CombatResult result)
@@ -270,6 +282,16 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         }
     }
 
+    
+
+    private IEnumerator ShowInfo(string info)
+    {
+        informationMessage.gameObject.SetActive(true);
+        informationMessage.text = info;
+        yield return new WaitForSeconds(4);
+        informationMessage.gameObject.SetActive(false);
+    }
+
     private void CleanCombatActions(GameObject panel)
     {
         for (int i = 0; i < panel.transform.childCount; i++)
@@ -298,4 +320,13 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable
         panel.gameObject.SetActive(false);
     }
 
+    public void UpdateInformation(string message)
+    {
+        StartCoroutine(ShowInfo(message));
+    }
+}
+
+public interface IInformation
+{
+    void UpdateInformation(string message);
 }

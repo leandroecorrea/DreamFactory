@@ -1282,8 +1282,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6adbbcaa6690d2a489c1bf40ddd914d8, type: 2}
   testPlayers:
   - {fileID: 11400000, guid: 901175df4c6c72a42a6a6b7b32278cd4, type: 2}
-  - {fileID: 11400000, guid: 8972d770ab23b194997e9747922430d9, type: 2}
-  - {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9, type: 2}
   experienceReward: 100
   useTestData: 1
   setupCombatOnAwake: 1

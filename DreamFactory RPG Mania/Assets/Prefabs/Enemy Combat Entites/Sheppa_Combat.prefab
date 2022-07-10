@@ -3322,6 +3322,7 @@ MonoBehaviour:
   entityConfig: {fileID: 11400000, guid: 6adbbcaa6690d2a489c1bf40ddd914d8, type: 2}
   animator: {fileID: 9112598296634341391}
   combatAction: {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
+  behaviourTreeClassName: 3
 --- !u!114 &5483296173501938306
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,7 +21,8 @@ public class CombatActionConfig : ScriptableObject
     [Tooltip("Set this to the name of a Action Handler class name")]
     public string actionHandlerClassName;    
     public TargetStrategy targetStrategy;
-    public CombatActionType combatActionType;    
+    public CombatActionType combatActionType;
+    public bool IsHeal;
 }
 
 public enum CombatActionType
