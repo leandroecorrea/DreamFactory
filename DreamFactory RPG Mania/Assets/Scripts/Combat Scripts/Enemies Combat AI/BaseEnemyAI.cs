@@ -59,7 +59,7 @@ public abstract class BaseEnemyAI : IEnemyAI
 
     protected CombatEntity GetRandomEntity(List<CombatEntity> entities)
     {
-        var randomIndex = UnityEngine.Random.Range(0, entities.Count);
+        var randomIndex = UnityEngine.Random.Range(0, entities.Count - 1);
         return entities[randomIndex];
     }
 }
