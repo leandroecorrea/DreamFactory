@@ -8,7 +8,8 @@ public class ItemConfig : ScriptableObject
     public string id;
     public string itemName;
     public string description;
+    public int price;
     public Sprite icon;    
     public CombatActionConfig actionConfig;
-    //public GameObject prefab;    
+    public bool validForCombat;
 }

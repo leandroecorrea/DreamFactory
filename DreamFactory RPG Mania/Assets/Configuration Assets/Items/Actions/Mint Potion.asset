@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
   m_Name: Mint Potion
   m_EditorClassIdentifier: 
-  actionName: 
-  description: 
-  requireRouting: 1
+  actionName: Mint Potion
+  description: Restores HP
+  requireRouting: 0
   requireMana: 0
-  baseEffectiveness: 0
+  baseEffectiveness: 15
   effectsToApply: []
-  actionHandlerClassName: 
-  targetStrategy: {fileID: 0}
-  combatActionType: 0
+  actionHandlerClassName: MintPotionItemHandler
+  targetStrategy: {fileID: 11400000, guid: 850b408e02baa854a99b2c248e8f4334, type: 2}
+  combatActionType: 2
+  IsHeal: 1

@@ -31,7 +31,7 @@ public static class InventoryManager
     {
         foreach (Item existentItem in items)
         {
-            if (existentItem.data.itemName == item.data.itemName)
+            if(existentItem.Equals(item))            
                 return existentItem;
         }
         return null;

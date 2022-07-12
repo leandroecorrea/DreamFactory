@@ -17,7 +17,7 @@ MonoBehaviour:
   baseHP: 10000
   baseMP: 25
   baseAttack: 5
-  baseSpeed: 5000
+  baseSpeed: 1
   combatEntityPrefab: {fileID: 5008707017202677556, guid: 4195037550c2a51499359a1488c3139b,
     type: 3}
   actions:
