@@ -123,6 +123,105 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &487288470
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4544324597914116, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: c6b0d597b4ae2db4690ffba7ee789918,
+        type: 3}
+    - target: {fileID: 4544324663920480, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: c6b0d597b4ae2db4690ffba7ee789918,
+        type: 3}
+    - target: {fileID: 4544324663920480, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8de91330a48c540279c3bc6e3aff2b4d, type: 2}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.21899964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6001568
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071071
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -270
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898467, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324944898470, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Name
+      value: PlayerClawSlash_VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544324965457577, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: c6b0d597b4ae2db4690ffba7ee789918,
+        type: 3}
+    - target: {fileID: 4544324965457577, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8de91330a48c540279c3bc6e3aff2b4d, type: 2}
+    - target: {fileID: 4544325475335055, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: c6b0d597b4ae2db4690ffba7ee789918,
+        type: 3}
+    - target: {fileID: 4544326107532674, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: c6b0d597b4ae2db4690ffba7ee789918,
+        type: 3}
+    - target: {fileID: 4544326107532674, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8de91330a48c540279c3bc6e3aff2b4d, type: 2}
+    - target: {fileID: 4544326216619852, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2534964839176971238, guid: c6b0d597b4ae2db4690ffba7ee789918,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b5c7751e95c4df342bd70c0a1bd826f8, type: 3}
 --- !u!1001 &557713538
 PrefabInstance:
   m_ObjectHideFlags: 0
