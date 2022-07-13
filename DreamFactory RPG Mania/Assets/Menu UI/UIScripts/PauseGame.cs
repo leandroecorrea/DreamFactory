@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PauseGame : MonoBehaviour
 {
+    private Player _playerInput;
     public GameObject pauseScreen;
     // Start is called before the first frame update
     void Start()
@@ -15,10 +16,11 @@ public class PauseGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  if (Input.GetKeyDown(KeyCode.Escape))
-      //  {
-       //     PauseStateSwitch(GameManager.Instance.isPaused);
-      //  }
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            PauseStateSwitch(GameManager.Instance.isPaused);
+        }
     }
     public void PauseStateSwitch( bool curr)
     {
@@ -30,6 +32,10 @@ public class PauseGame : MonoBehaviour
         {
             Resume();
         }
+    }
+    public void OnPause(InputAction.CallbackContext ctx)
+    {
+       
     }
     public void Pause()
     {
