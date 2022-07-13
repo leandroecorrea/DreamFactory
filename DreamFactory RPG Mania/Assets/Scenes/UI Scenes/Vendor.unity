@@ -1211,8 +1211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe3876f8cab1de4984ba00f596356c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sold:
-    value: 0
 --- !u!4 &1294671318
 Transform:
   m_ObjectHideFlags: 0
@@ -2205,9 +2203,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2972b944e22af754f91bc51a283c79d4, type: 2}
   - {fileID: 11400000, guid: db24973fef9352f4a9349a9ad614eede, type: 2}
   - {fileID: 11400000, guid: 4e627f4e678d65a4fbd95a3bdabb9358, type: 2}
-  currencyAvailable: {fileID: 247030002}
+  remainingCurrencyText: {fileID: 247030002}
   cart: {fileID: 1294671317}
-  currentCurrency: 0
+  remainingCurrency:
+    value: 0
 --- !u!1 &2118352852
 GameObject:
   m_ObjectHideFlags: 0

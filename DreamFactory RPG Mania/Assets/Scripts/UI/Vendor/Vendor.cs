@@ -9,12 +9,13 @@ public class Vendor : MonoBehaviour
     [SerializeField] private GameObject itemRow;
     [SerializeField] private GameObject content;
     [SerializeField] private List<ItemConfig> items;
-    [SerializeField] private TMP_Text currencyAvailable;
+    [SerializeField] private TMP_Text remainingCurrencyText;
     [SerializeField] private Cart cart;
-    public int currentCurrency;
+    public IntReactiveProperty remainingCurrency = new IntReactiveProperty();
 
     private void OnEnable()
-    {        
+    {
+        remainingCurrency.Subscribe(c => UpdateRemainingCurrency(c));
         items.ForEach(item =>
         {
             var itemPrefab = Instantiate(itemRow);
@@ -26,17 +27,20 @@ public class Vendor : MonoBehaviour
             });
             itemPrefab.transform.SetParent(content.transform, false);
         });
-        //currentCurrency = PlayerProgression.GetPlayerData<int>(SaveKeys.CURRENT_CURRENCY);        
-        currentCurrency = 100;
-        currencyAvailable.text = $"You have: ${currentCurrency}";
+        var currentCurrency = PlayerProgression.GetPlayerData<int>(SaveKeys.CURRENT_CURRENCY);
+        remainingCurrency.Value = currentCurrency;
     }
 
-   
+    private void UpdateRemainingCurrency(int c)
+    {
+        remainingCurrencyText.text = $"You have: ${c}";
+    }
 
     public void Buy()
     {
-        if (!cart.sold.Value && currentCurrency >= cart.Total)
-        {            
+        if (remainingCurrency.Value >= cart.Total)
+        {
+            remainingCurrency.Value -= cart.Total;
             cart.Buy();
         }
     }

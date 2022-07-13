@@ -16,16 +16,17 @@ public class CartDetails : MonoBehaviour
 
     private void Awake()
     {
-        subscriptions = new List<IDisposable>();    
-        cart.sold.Subscribe(sold =>
+        subscriptions = new List<IDisposable>();            
+    }
+
+    private void OnDisable()
+    {
+        subscriptions.ForEach(x =>
         {
-            if(sold)
-                subscriptions.ForEach(x=> 
-                {   
-                    x?.Dispose();
-                });
+            x?.Dispose();
         });
     }
+
     private void OnEnable()
     {
         UpdateTotal();

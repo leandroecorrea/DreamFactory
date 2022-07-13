@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class Cart : MonoBehaviour
 {
-    public ReactiveCollection<Item> items = new ReactiveCollection<Item>();
-    public BoolReactiveProperty sold = new BoolReactiveProperty();
+    public ReactiveCollection<Item> items = new ReactiveCollection<Item>();    
     public int Total { get => items.Aggregate(0, (prev, x) => prev + x.amount * x.data.price); }
 
 
@@ -24,8 +23,7 @@ public class Cart : MonoBehaviour
             Debug.Log($"Bought!{item.data.itemName} has {InventoryManager.Get(item)?.amount} amount in inventory");
             itemsToRemove.Add(item);
         }
-        itemsToRemove.ForEach(x=> items.Remove(x));
-        sold.Value = true;
+        itemsToRemove.ForEach(x=> items.Remove(x));        
     }
 
     public void AddToCart(ItemConfig item)
@@ -41,16 +39,11 @@ public class Cart : MonoBehaviour
         }
         items.Add(addedItem);
     }
-
-    private void OnEnable()
-    {
-        sold.Value = false;
-    }
+    
 
     private void OnDisable()
     {
-        items.Dispose();
-        sold.Dispose();
+        items.Dispose();        
     }
 
 }
