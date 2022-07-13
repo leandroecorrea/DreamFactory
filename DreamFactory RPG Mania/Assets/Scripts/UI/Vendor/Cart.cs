@@ -1,12 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UniRx;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CartItems", menuName = "Vendor/Cart Items")]
-public class Cart : ScriptableObject
+
+public class Cart : MonoBehaviour
 {
     public ReactiveCollection<Item> items = new ReactiveCollection<Item>();
+    public BoolReactiveProperty sold = new BoolReactiveProperty();
+    public int Total { get => items.Aggregate(0, (prev, x) => prev + x.amount * x.data.price); }
+
+
+    public void Buy()
+    {
+        var itemsToRemove = new List<Item>();
+        foreach (var item in items)
+        {
+            for (int i = 0; i < item.amount; i++)
+            {
+                InventoryManager.Add(item);
+            }
+            Debug.Log($"Bought!{item.data.itemName} has {InventoryManager.Get(item)?.amount} amount in inventory");
+            itemsToRemove.Add(item);
+        }
+        itemsToRemove.ForEach(x=> items.Remove(x));
+        sold.Value = true;
+    }
 
     public void AddToCart(ItemConfig item)
     {
@@ -19,6 +39,18 @@ public class Cart : ScriptableObject
                 return;
             }
         }
-        items.Add(addedItem);             
+        items.Add(addedItem);
     }
+
+    private void OnEnable()
+    {
+        sold.Value = false;
+    }
+
+    private void OnDisable()
+    {
+        items.Dispose();
+        sold.Dispose();
+    }
+
 }

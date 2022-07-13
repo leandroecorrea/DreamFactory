@@ -27,16 +27,6 @@ public class CartRow : MonoBehaviour
     {                    
             this.quantity.text = item.amount.ToString();
             this.price.text = (item.amount * item.data.price).ToString();        
-    }
-
-    private void RemoveItem()
-    {
-        if (Convert.ToInt32(quantity.text) > 0)
-        {
-            var nextQuantity = Convert.ToInt32(quantity.text) - 1;
-            this.price.text = (Convert.ToInt32(price.text) * nextQuantity).ToString();
-            this.quantity.text = nextQuantity.ToString();
-        }
-    }
+    }   
 
 }
