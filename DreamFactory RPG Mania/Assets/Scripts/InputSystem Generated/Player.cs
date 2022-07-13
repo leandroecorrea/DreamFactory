@@ -44,6 +44,15 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""343f7f4a-a7f2-41f2-a954-c74c150b8395"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -134,6 +143,17 @@ public partial class @Player : IInputActionCollection2, IDisposable
                     ""action"": ""NPCTalk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""272a3d6a-3917-4015-b5e7-29794859172d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard_Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -172,6 +192,7 @@ public partial class @Player : IInputActionCollection2, IDisposable
         m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
         m_Main_Walk = m_Main.FindAction("Walk", throwIfNotFound: true);
         m_Main_NPCTalk = m_Main.FindAction("NPCTalk", throwIfNotFound: true);
+        m_Main_Pause = m_Main.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,12 +254,14 @@ public partial class @Player : IInputActionCollection2, IDisposable
     private IMainActions m_MainActionsCallbackInterface;
     private readonly InputAction m_Main_Walk;
     private readonly InputAction m_Main_NPCTalk;
+    private readonly InputAction m_Main_Pause;
     public struct MainActions
     {
         private @Player m_Wrapper;
         public MainActions(@Player wrapper) { m_Wrapper = wrapper; }
         public InputAction @Walk => m_Wrapper.m_Main_Walk;
         public InputAction @NPCTalk => m_Wrapper.m_Main_NPCTalk;
+        public InputAction @Pause => m_Wrapper.m_Main_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -254,6 +277,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @NPCTalk.started -= m_Wrapper.m_MainActionsCallbackInterface.OnNPCTalk;
                 @NPCTalk.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnNPCTalk;
                 @NPCTalk.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnNPCTalk;
+                @Pause.started -= m_Wrapper.m_MainActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_MainActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_MainActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_MainActionsCallbackInterface = instance;
             if (instance != null)
@@ -264,6 +290,9 @@ public partial class @Player : IInputActionCollection2, IDisposable
                 @NPCTalk.started += instance.OnNPCTalk;
                 @NPCTalk.performed += instance.OnNPCTalk;
                 @NPCTalk.canceled += instance.OnNPCTalk;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -290,5 +319,6 @@ public partial class @Player : IInputActionCollection2, IDisposable
     {
         void OnWalk(InputAction.CallbackContext context);
         void OnNPCTalk(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
