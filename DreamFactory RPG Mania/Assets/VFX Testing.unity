@@ -805,6 +805,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49b35e66b36dc2d4ca0d3cbb9b269984, type: 3}
+--- !u!1001 &5352886762472780104
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.8168938
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.071623
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.3880844
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113122699707249708, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269762526695018963, guid: 3ff9cff159a720649a1bbdaf6650d258,
+        type: 3}
+      propertyPath: m_Name
+      value: ShepherdWeaponSummon_VFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ff9cff159a720649a1bbdaf6650d258, type: 3}
 --- !u!1001 &5355358420232481662
 PrefabInstance:
   m_ObjectHideFlags: 0
