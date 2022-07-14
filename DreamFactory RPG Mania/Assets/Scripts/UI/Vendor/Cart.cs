@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ public class Cart : MonoBehaviour
 {
     public ReactiveCollection<Item> items = new ReactiveCollection<Item>();    
     public int Total { get => items.Aggregate(0, (prev, x) => prev + x.amount * x.data.price); }
+
+    public event Action onBuy;
 
 
     public void Buy()
@@ -23,7 +26,8 @@ public class Cart : MonoBehaviour
             Debug.Log($"Bought!{item.data.itemName} has {InventoryManager.Get(item)?.amount} amount in inventory");
             itemsToRemove.Add(item);
         }
-        itemsToRemove.ForEach(x=> items.Remove(x));        
+        itemsToRemove.ForEach(x=> items.Remove(x));       
+        onBuy?.Invoke();
     }
 
     public void AddToCart(ItemConfig item)
@@ -37,13 +41,14 @@ public class Cart : MonoBehaviour
                 return;
             }
         }
-        items.Add(addedItem);
+        items.Add(addedItem);        
     }
     
 
     private void OnDisable()
     {
-        items.Dispose();        
+        items.Dispose();   
+        onBuy = null;
     }
 
 }

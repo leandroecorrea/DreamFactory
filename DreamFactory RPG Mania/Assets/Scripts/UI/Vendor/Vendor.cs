@@ -38,7 +38,7 @@ public class Vendor : MonoBehaviour
 
     public void Buy()
     {
-        if (remainingCurrency.Value >= cart.Total)
+        if (remainingCurrency.Value > 0 && remainingCurrency.Value >= cart.Total)
         {
             remainingCurrency.Value -= cart.Total;
             cart.Buy();
