@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Act One-Theo Abilities
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Hey, new guy! You made it! Oh and Theo, what''s up buddy? '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Make sure to use Theo''s Desire magic. He''s got some
+      doozies. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Insomnia makes your ally immune to damage for two turns
+      with a two turn cool down. Soothe gets rid of any nasty status effects. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Delerium reduces your enemy''s attack power for two turns.
+      Rem heals a moderate amount of health. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Finally, Anxiety, which causes a moderate amount of damage
+      to your enemy. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Okay, good luck, new guy! Oh, and Theo, I uh, was the
+      one that ate your lunch. Okay, see ya! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: 'Curse you, Sal! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  onConversationCompleteEvent: {fileID: 11400000, guid: 1a624f1e266ab0e4b83e2e874bd23476,
+    type: 2}
