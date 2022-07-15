@@ -16,7 +16,7 @@ public class AnxietyAttackHandler : BaseAttackHandler
 
     protected override ActionPerformedArgs HandleActionExecution()
     {
-        currentTarget = targets[currentTargetIndex++];
+        currentTarget = targets[0];
         currentTarget.TakeDamage(Damage);
         currentTarget.onAnimationComplete += OnTargetAnimationComplete;
         HandleReturnToPositionComplete(this, EventArgs.Empty);

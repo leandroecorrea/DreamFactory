@@ -8,7 +8,7 @@
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
         this.applicant = applicant;
-        if (applicant.LastExecutedAction == null)
+        if (applicant.LastExecutedAction == null || applicant.LastExecutedAction.actionName == "Physical Attack")
             return;
         configRemoved = applicant.LastExecutedAction;
         applicant.entityConfig.actions.Remove(configRemoved);

@@ -5,7 +5,7 @@ public class FairieEnemyAI : BaseEnemyAI
     protected override string[] ActionKeys => new[] {"Anxiety", "Delirium", "Physical Attack", "REM", "Soothe"};        
 
     protected override CombatActionConfig ChooseAnAction()
-    {
+    {        
         var random = UnityEngine.Random.Range(0, 100);
         if (!IsAbleToPerformAllAbilities())
             return RandomAction();

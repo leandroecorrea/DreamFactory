@@ -18,6 +18,7 @@ MonoBehaviour:
   requireMana: 0
   baseEffectiveness: 0
   effectsToApply: []
-  actionHandlerClassName: 
-  targetStrategy: {fileID: 0}
+  actionHandlerClassName: AnxietyAttackHandler
+  targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
   combatActionType: 0
+  IsHeal: 0

@@ -7,13 +7,13 @@
     public override void HandleOnApply(CombatEntity applicant, CombatContext combatCtx)
     {
         this.applicant = applicant;
-        applicant.TakeDamageStrategy = x => { };
+        applicant.DamageCalculationStrategy = x => 0;
         applicant.ApplyEffectsStrategy = x=> { };   
     }
 
     protected override void HandleEffectExpire()
     {
-        applicant.ResetTakeDamage();
+        applicant.ResetDamageCalculation();
         applicant.ResetStandardEffects();
         
         base.HandleEffectExpire();
