@@ -26,8 +26,7 @@ public class EnemyCombatEntity : CombatEntity
         var turnChoice = behaviourTree.SetActions(entityConfig.actions)
                                       .SetContext(turnContext)
                                       .ThenGenerateAttack()
-                                      .AndTarget();
-        CombatUIManager.instance.UpdateInformation($"Enemy {entityConfig.Name} performed {turnChoice.action.actionName}!");
+                                      .AndTarget();        
         PerformAction(turnChoice.action, turnChoice.targets);
     }
 }

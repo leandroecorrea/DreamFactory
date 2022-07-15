@@ -15,7 +15,16 @@ public static class LevelingManager
         {9, 2000 },
         {10, 3000 },
         {11, 4000 },
-        {12, 5000 }
+        {13, 5000 },
+        {14, 5000 },
+        {15, 5000 },
+        {16, 5000 },
+        {17, 5000 },
+        {18, 5000 },
+        {19, 5000 },
+        {20, 5000 },
+        {21, 5000 },
+        {22, 5000 }
     };  
 
     public static void LevelUp(ref LevelingStats stats)

@@ -29,26 +29,14 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
     [SerializeField] private Camera view;
     private CombatEntity currentTarget;
     private CombatContext combatContext;
-    private CombatActionConfig currentAction;
-    public static IInformation instance;
+    private CombatActionConfig currentAction;    
 
     private void OnEnable()
     {
         combatManager.onCombatTurnStart += HandleCombatTurnStart;
         CombatEventSystem.instance.onCombatEntityDamaged += HandleCombatEntityDamageFeedback;
         CombatEventSystem.instance.onCombatFinished += HandleCombatFinished;
-    }
-    void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
+    }   
 
     private void HandleCombatFinished(CombatResult result)
     {
