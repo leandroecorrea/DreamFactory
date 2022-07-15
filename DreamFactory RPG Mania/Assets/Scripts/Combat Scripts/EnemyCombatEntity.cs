@@ -1,48 +1,33 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyCombatEntity : CombatEntity
 {
     [Header("Test")]
     [SerializeField] private CombatActionConfig combatAction;
-    
+    [SerializeField] private BehaviourTreeClassName behaviourTreeClassName;
+    private IEnemyAI behaviourTree;
+
+    private void OnEnable()
+    {
+        var type = Type.GetType(behaviourTreeClassName.ToString());
+        behaviourTree = (IEnemyAI)Activator.CreateInstance(type);
+    }
 
     public override void StartTurn(CombatContext turnContext)
     {
-        //this.entityConfig.actions;
-        //AI.GetActionFor(turnContext)
-        //base.StartTurn(turnContext);
-        if(IsDisabled)
+        
+        if (IsDisabled)
         {
             SkipTurn(turnContext);
             return;
-        }
-        CombatEntity target = turnContext.playerParty[0];
-        PerformAction(combatAction, target);
-    }
-
-}
-
-
-public class BaseEnemyBehaviourTree
-{
-    private static CombatContext _context;
-    private static List<ICombatAction> _availableActions;
-
-    private BaseEnemyBehaviourTree()
-    {
-
-    }
-    public static BaseEnemyBehaviourTree RequireActionFor(CombatContext combatContext)
-    {
-         _context = combatContext;
-        return new BaseEnemyBehaviourTree();
-    }
-    public CombatActionConfig From(List<ICombatAction> availableActions)
-    {
-        //Apply logic to decide which behaviour should be executed
-        _availableActions = availableActions;
-        return _availableActions[0].combatActionConfig;
+        }        
+        var turnChoice = behaviourTree.SetActions(entityConfig.actions)
+                                      .SetContext(turnContext)
+                                      .ThenGenerateAttack()
+                                      .AndTarget();
+        CombatUIManager.instance.UpdateInformation($"Enemy {entityConfig.Name} performed {turnChoice.action.actionName}!");
+        PerformAction(turnChoice.action, turnChoice.targets);
     }
 }

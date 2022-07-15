@@ -33,6 +33,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Combat Dev (Chris).unity
     guid: 53bf8618f99b986478b9751777f59de1
   - enabled: 1
-    path: Assets/Scenes/Win combat scene.unity
+    path: Assets/Scenes/Combat Scenes/Win combat scene.unity
     guid: 5cdd93a626a4d584c8b4fb8bcfbda111
   m_configObjects: {}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
   m_Name: Anxiety
   m_EditorClassIdentifier: 
-  actionName: 
-  description: 
+  actionName: Anxiety
+  description: Causes a moderate amount of damage to the target
   requireRouting: 1
   requireMana: 0
   baseEffectiveness: 0

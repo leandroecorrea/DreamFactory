@@ -16,8 +16,9 @@ MonoBehaviour:
   description: Causes a moderate amount of damage to the target
   requireRouting: 0
   requireMana: 5
-  baseEffectiveness: 100
+  baseEffectiveness: 50
   effectsToApply: []
   actionHandlerClassName: AmnesiaAttackHandler
   targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
   combatActionType: 1
+  IsHeal: 0

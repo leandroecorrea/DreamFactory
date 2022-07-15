@@ -1650,6 +1650,7 @@ MonoBehaviour:
   entityConfig: {fileID: 11400000, guid: 56900ac211f519243902b9186d38eee2, type: 2}
   animator: {fileID: 3856520869804938506}
   combatAction: {fileID: 11400000, guid: f030385a7bb48774ea6622662f3dd2d1, type: 2}
+  behaviourTreeClassName: 1
 --- !u!114 &-1810946309404610005
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,11 +27,11 @@ public static class InventoryManager
             Debug.Log(item.itemId + " was consumed");
         }
     }
-    private static Item Get(Item item)
+    public static Item Get(Item item)
     {
         foreach (Item existentItem in items)
         {
-            if (existentItem.data.itemName == item.data.itemName)
+            if(existentItem.Equals(item))            
                 return existentItem;
         }
         return null;
