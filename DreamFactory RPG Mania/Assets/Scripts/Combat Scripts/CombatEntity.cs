@@ -81,8 +81,7 @@ public class CombatEntity : MonoBehaviour
             {
 
                 // TODO: Remove this once hooked up to animation event                                                                
-                HandleEntityDeath();
-                
+                HandleEntityDeath();                
             }
             else
             {
