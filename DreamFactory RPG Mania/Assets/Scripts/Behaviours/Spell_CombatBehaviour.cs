@@ -23,7 +23,7 @@ public class Spell_CombatBehaviour : StateMachineBehaviour
     {
         // onSpellAnimationComplete?.Invoke();
 
-        animator.GetComponent<CombatEntity>().OnAnimationComplete();
+        animator.GetComponent<CombatEntity>()?.OnAnimationComplete();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

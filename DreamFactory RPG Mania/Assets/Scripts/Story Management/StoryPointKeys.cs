@@ -14,6 +14,7 @@ public static class StoryPointKeys
         PT1_Dream_Machine_1_Pre_Fix,
         PT1_Dream_Machine_1_Post_Fix,
         PT2_Dream_Machine_2_Pre_Fix,
+        PT2_Dream_Machine_2_During_Fix,
         PT2_Dream_Machine_2_Post_Fix,
         PT3_Dream_Machine_3_Pre_Fix,
         PT3_Dream_Machine_3_Post_Fix,

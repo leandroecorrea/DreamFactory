@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Act Two-Machine Fixed
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: 'That leaves one left. Let''s go Theo! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: 'Right! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: 'Ahem! I''m coming with you. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: ' You sure?'
+    typingDelay: 0
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: 'Trust me. You''ll need my help. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: Alright. Welcome to the team!
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  onConversationCompleteEvent: {fileID: 11400000, guid: 74c9c2faaaed3bd4086da1fd45c6018c,
+    type: 2}
