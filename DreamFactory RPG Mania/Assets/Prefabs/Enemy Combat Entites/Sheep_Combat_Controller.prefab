@@ -869,6 +869,8 @@ GameObject:
   - component: {fileID: 6738885472311096044}
   - component: {fileID: 2994079993887075435}
   - component: {fileID: -2301258608164475005}
+  - component: {fileID: -8593833461884782820}
+  - component: {fileID: 8504654174388852493}
   m_Layer: 0
   m_Name: Sheep_Combat_Controller
   m_TagString: Untagged
@@ -969,8 +971,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityConfig: {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
+  entitySoundConfig: {fileID: -8593833461884782820}
   animator: {fileID: 2842121846902470838}
   combatAction: {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
+  behaviourTreeClassName: 0
 --- !u!114 &-2301258608164475005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,6 +988,117 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetEncounter: {fileID: 11400000, guid: 36661f388096a29428dfb3953fb3d068, type: 2}
+--- !u!114 &-8593833461884782820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047257843069023445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a3d0aa5f5f4b045803bbbb3b2e7a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioConfig: {fileID: 11400000, guid: 71213df0f0916694a9ddc9d93f33c56d, type: 2}
+  audioSource: {fileID: 8504654174388852493}
+--- !u!82 &8504654174388852493
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047257843069023445}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2590607835173418267, guid: 81fa154f64e9acf4090e9047db5241be,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6228191312775405943
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class SheppaEnemyAI : BaseEnemyAI
     private Func<List<CombatEntity>, CombatEntity[]> AimingChoice;
 
     protected override CombatActionConfig ChooseAnAction()
-    {
+    {        
         var random = UnityEngine.Random.Range(0, 100);
         if (!IsAbleToPerformAllAbilities())
             return RandomAction();

@@ -7,19 +7,19 @@ using UnityEngine;
 public class CombatEntity : MonoBehaviour
 {
     public CombatEntityConfig entityConfig;
-
     private Dictionary<string, List<IEffectHandler>> effectsCaused;
     private List<IEffectHandler> effectsToRemove;
     private CombatContext currentTurnCtx;
     private ActionExecution actionExecution;
+    [SerializeField] EntitySoundConfig entitySoundConfig;
 
-    internal void ResetStandardEffects()
+    public void ResetStandardEffects()
     {
         ApplyEffectsStrategy = ApplyEffectsStandard;
     }
 
     [SerializeField] private Animator animator;
-    public Action<int> TakeDamageStrategy;
+    public Func<int, int> DamageCalculationStrategy;
     public Action<List<IEffectHandler>> ApplyEffectsStrategy;
     public CombatActionConfig LastExecutedAction { get; set; }
 
@@ -33,9 +33,10 @@ public class CombatEntity : MonoBehaviour
     public int CurrentAttack { get; set; }
     public List<IEffectHandler> EffectsCaused
     {
-        get {
+        get
+        {
             var list = new List<IEffectHandler>();
-            foreach(var listOfEffects in effectsCaused.Values)
+            foreach (var listOfEffects in effectsCaused.Values)
             {
                 list.AddRange(listOfEffects);
             }
@@ -44,13 +45,13 @@ public class CombatEntity : MonoBehaviour
     }
 
     private int currentAttack;
-    
+
     public event EventHandler<OnTurnCompleteEventArgs> onTurnComplete;
     public event Action onAnimationComplete;
 
     public void Awake()
     {
-        TakeDamageStrategy = TakeStandardDamage;
+        DamageCalculationStrategy = StandardDamageCalc;
         ApplyEffectsStrategy = ApplyEffectsStandard;
         // Initializing Stats
         currentMaxHP = entityConfig.baseHP;
@@ -67,13 +68,29 @@ public class CombatEntity : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int actionEffectiveness)
     {
-        TakeDamageStrategy?.Invoke(damage);
+        var damageReceived = DamageCalculationStrategy?.Invoke(actionEffectiveness) ?? StandardDamageCalc(actionEffectiveness);
+        if (damageReceived > 0)
+        {
+            CurrentHP -= damageReceived;
+            animator.SetTrigger("Damaged");
+            CombatEventSystem.instance.OnCombatEntityDamage(this, new CombatEntityDamagedArgs { damageTaken = damageReceived });
+            if (IsDead())
+            {
+                // TODO: Remove this once hooked up to animation event
+                HandleEntityDeath();
+                entitySoundConfig.PlayDieSound();
+            }
+            else
+            {
+                entitySoundConfig.PlayHitSound();
+            }
+        }
     }
     public void ApplyEffects(List<IEffectHandler> effectHandlers)
     {
-        ApplyEffectsStrategy?.Invoke(effectHandlers);   
+        ApplyEffectsStrategy?.Invoke(effectHandlers);
     }
 
     public void SetActionExecution(ActionExecution actionExecution)
@@ -141,9 +158,11 @@ public class CombatEntity : MonoBehaviour
     }
 
     public void PerformAction(CombatActionConfig action, params CombatEntity[] target)
-    {        
+    {
         var actionRequest = new CombatActionRequest { ActionChosen = action, CurrentEntity = this, Targets = target };
-        actionExecution.Execute(actionRequest);        
+        actionExecution.Execute(actionRequest);
+        if (actionRequest.ActionChosen.combatActionType == CombatActionType.SPELL)
+            entitySoundConfig.PlaySpellSound();
     }
 
     public void UpdateEntityMP(int newMP)
@@ -186,30 +205,21 @@ public class CombatEntity : MonoBehaviour
         EndTurn(currentTurnCtx);
     }
 
-    public void ResetTakeDamage()
+    public void ResetDamageCalculation()
     {
-        TakeDamageStrategy = TakeStandardDamage;
+        DamageCalculationStrategy = StandardDamageCalc;
     }
-    
-    protected virtual void TakeStandardDamage(int damage)
+
+    protected virtual int StandardDamageCalc(int damage)
     {
-        animator.SetTrigger("Damaged");
-
-        CurrentHP -= damage;
-        CombatEventSystem.instance.OnCombatEntityDamage(this, new CombatEntityDamagedArgs { damageTaken = damage });
-
-        if (IsDead())
-        {
-            // TODO: Remove this once hooked up to animation event
-            HandleEntityDeath();
-        }
+        return damage;
     }
     public void Heal(int healAmount)
     {
-        CurrentHP = CurrentHP + healAmount > entityConfig.baseHP? entityConfig.baseHP : CurrentHP + healAmount;
+        CurrentHP = CurrentHP + healAmount > entityConfig.baseHP ? entityConfig.baseHP : CurrentHP + healAmount;
     }
 
-    
+
 
     protected virtual void ApplyEffectsStandard(List<IEffectHandler> affectsToApply)
     {
@@ -238,9 +248,7 @@ public class CombatEntity : MonoBehaviour
 
                 effectsCaused.Add(targetEffectConfig.effectId, new List<IEffectHandler> { effectHandler });
             }
-
         }
-
         return;
     }
 
@@ -266,12 +274,11 @@ public class CombatEntity : MonoBehaviour
     public void SkipTurn(CombatContext turnContext)
     {
         Debug.Log("Player is disabled");
-        EndTurn(turnContext);        
+        EndTurn(turnContext);
     }
-    public bool IsDead()
-    {
-        return (CurrentHP <= 0);
-    }
+    public bool IsDead() => 
+        CurrentHP <= 0;
+    
 
     // TODO: Hook this up via an animation event to death animation
     public virtual void HandleEntityDeath()

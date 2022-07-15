@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef606dbbc95543946ac9bb081900f70a, type: 3}
+  m_Name: Audio Config
+  m_EditorClassIdentifier: 
+  hit: {fileID: 8300000, guid: 6f7a1590de31ab249a7262ef75550d86, type: 3}
+  spell: {fileID: 8300000, guid: 067d78fa43eee7f4285d4c229ed14f05, type: 3}
+  die: {fileID: 8300000, guid: f202de331135f9f4c8e9720647745bfd, type: 3}
