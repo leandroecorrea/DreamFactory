@@ -30,6 +30,12 @@ public class Cart : MonoBehaviour
         onBuy?.Invoke();
     }
 
+
+    public void RemoveCart()
+    {
+        items.Clear();
+    }
+
     public void AddToCart(ItemConfig item)
     {
         var addedItem = new Item(item);

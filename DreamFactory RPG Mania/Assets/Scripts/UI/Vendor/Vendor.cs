@@ -13,7 +13,7 @@ public class Vendor : MonoBehaviour
     [SerializeField] private Cart cart;
     public IntReactiveProperty remainingCurrency = new IntReactiveProperty();
 
-    private void OnEnable()
+    private void Start()
     {
         remainingCurrency.Subscribe(c => UpdateRemainingCurrency(c));
         items.ForEach(item =>
@@ -26,7 +26,11 @@ public class Vendor : MonoBehaviour
                 cart.AddToCart(item);                
             });
             itemPrefab.transform.SetParent(content.transform, false);
-        });
+        });        
+    }
+
+    private void OnEnable()
+    {
         var currentCurrency = PlayerProgression.GetPlayerData<int>(SaveKeys.CURRENT_CURRENCY);
         remainingCurrency.Value = currentCurrency;
     }
@@ -43,6 +47,6 @@ public class Vendor : MonoBehaviour
             remainingCurrency.Value -= cart.Total;
             cart.Buy();
         }
-    }
+    }   
 
 }
