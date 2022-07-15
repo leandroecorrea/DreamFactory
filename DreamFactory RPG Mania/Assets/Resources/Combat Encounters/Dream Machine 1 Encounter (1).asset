@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encounter: 2
   enemies:
-  - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
+  - {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
   encounterScene: Dream Machine 1 Pocket Dimension
   sceneToReturnTo: 
   targetCombatSceneName: Dream Machine 1 Pocket Dimension Battle

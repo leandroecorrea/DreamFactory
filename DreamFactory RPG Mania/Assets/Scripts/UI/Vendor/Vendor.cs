@@ -23,7 +23,7 @@ public class Vendor : MonoBehaviour
             itemRowComponent.SetRow(item);
             itemRowComponent.button.onClick.AddListener(delegate
             {
-                cart.AddToCart(item);
+                cart.AddToCart(item);                
             });
             itemPrefab.transform.SetParent(content.transform, false);
         });

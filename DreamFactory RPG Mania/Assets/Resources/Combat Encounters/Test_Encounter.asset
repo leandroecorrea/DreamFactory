@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39ede5d564541b4d8655e34c50b73df, type: 3}
   m_Name: Test_Encounter
   m_EditorClassIdentifier: 
-  encounterId: Test
+  encounter: 0
   enemies:
-  - {fileID: 11400000, guid: 4fea339a3b6b0d547af3763adc6fc83e, type: 2}
+  - {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
   encounterScene: Combat Transition Dev
+  sceneToReturnTo: 
   targetCombatSceneName: Combat Dev (Chris)
   experienceReward: 150

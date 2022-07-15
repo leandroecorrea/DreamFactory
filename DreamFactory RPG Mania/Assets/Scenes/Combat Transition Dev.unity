@@ -530,6 +530,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7723517471482514764, guid: 489142d58dc1c644c818bdf2d1240c47,
         type: 3}
+      propertyPath: targetEncounter
+      value: 
+      objectReference: {fileID: 11400000, guid: 52e295d85b70d4043a06b32c5b6f5248,
+        type: 2}
+    - target: {fileID: 7723517471482514764, guid: 489142d58dc1c644c818bdf2d1240c47,
+        type: 3}
       propertyPath: playerEntityConfig
       value: 
       objectReference: {fileID: 11400000, guid: 4f305b0334292b645bbb5ad88e8f3296,

@@ -11,7 +11,8 @@ public class CombatEntity : MonoBehaviour
     private List<IEffectHandler> effectsToRemove;
     private CombatContext currentTurnCtx;
     private ActionExecution actionExecution;
-    [SerializeField] EntitySoundConfig entitySoundConfig;
+    [SerializeField] EntitySoundConfig entitySoundConfig;        
+
 
     public void ResetStandardEffects()
     {
@@ -78,9 +79,10 @@ public class CombatEntity : MonoBehaviour
             CombatEventSystem.instance.OnCombatEntityDamage(this, new CombatEntityDamagedArgs { damageTaken = damageReceived });
             if (IsDead())
             {
-                // TODO: Remove this once hooked up to animation event
+
+                // TODO: Remove this once hooked up to animation event                                                                
                 HandleEntityDeath();
-                entitySoundConfig.PlayDieSound();
+                
             }
             else
             {
@@ -88,6 +90,10 @@ public class CombatEntity : MonoBehaviour
             }
         }
     }
+
+    
+
+
     public void ApplyEffects(List<IEffectHandler> effectHandlers)
     {
         ApplyEffectsStrategy?.Invoke(effectHandlers);
