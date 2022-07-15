@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Act Two-Mindy Intro (Cutscene)
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: 'Take that you rapscallions! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent:
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: 'Look! They even have an evil hamster! Ahhh! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: 'What? I''m not with these things! And I''m a Necrohamster! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: ' A Necro-what?'
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: ' It doesn''t matter. Let''s take these monsters out!'
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent:
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  onConversationCompleteEvent: {fileID: 0}

@@ -11,4 +11,9 @@ public class CutsceneActions : MonoBehaviour
     {
         CombatTransitionManager.instance.InitializeCombatTransition(afterCutsceneCombatEncounter);
     }
+
+    public void TransitionToNewScene(string targetSceneName)
+    {
+        SceneTransitionManager.LoadNewSingleScene(targetSceneName);
+    }
 }

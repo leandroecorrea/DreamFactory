@@ -10,8 +10,8 @@ public static class NewSaveGenerator
         {
             return new Dictionary<string, object>
             {
-                { SaveKeys.CURRENT_STORY_POINT, StoryPointKeys.StoryKeys.PT1_Dream_Machine_1_Pre_Fix },
-                { SaveKeys.UNLOCKED_PARTY_MEMBERS, new List<string> { "PUFFER" } },
+                { SaveKeys.CURRENT_STORY_POINT, StoryPointKeys.StoryKeys.PT2_Dream_Machine_2_Pre_Fix },
+                { SaveKeys.UNLOCKED_PARTY_MEMBERS, new List<string> { "PUFFER", "THEO" } },
                 { SaveKeys.COMBAT_ENCOUNTERS_COMPLETED, new List<EncounterHistory.Encounters>{ } }
             };
         }

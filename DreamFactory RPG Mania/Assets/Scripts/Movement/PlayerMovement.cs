@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void StopMoving()
     {
+        anim.SetBool("IsMoving", false);
         _currentInputValue = Vector3.zero;
     }
 }

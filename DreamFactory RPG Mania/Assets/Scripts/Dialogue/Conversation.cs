@@ -5,7 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Conversation", menuName = "Dialogue/New Conversation")]
 public class Conversation : ScriptableObject
 {
+    [Header("Conversation Settings")]
+    public string conversationId;
+
+    [Header("Conversation")]
     [NonReorderable] public List<ConversationPoint> conversationPoints;
+
+    [Header("Global Conversation Events")]
     public DialogueEvent onConversationCompleteEvent;
 }
 

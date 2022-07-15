@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Act Two-Mindy Actions Tutorial
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: 'Okay, let me tell you my powers real quick. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Hold it right there little lady. You use Fear magic?
+      I got this. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'I''ll make this quick. Awaken removes an ally from combat.
+      Freeze disables a spell cast by an enemy for four turns. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Fever takes health from an enemy over time. Hypnosis
+      makes an enemy your ally for three turns. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Finally, Panic causes a moderate amount of damage at
+      the cost of dream power. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'That''s all, gotta run! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  onConversationCompleteEvent: {fileID: 11400000, guid: ab3e285e7d90a5f4eb7226e3dfa046ac,
+    type: 2}
