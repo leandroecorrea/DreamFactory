@@ -221,10 +221,15 @@ public class CombatEntity : MonoBehaviour
     }
     public void Heal(int healAmount)
     {
-        CurrentHP = CurrentHP + healAmount > entityConfig.baseHP ? entityConfig.baseHP : CurrentHP + healAmount;
+        CurrentHP = CurrentHP + healAmount > entityConfig.baseHP ? 
+                    entityConfig.baseHP : CurrentHP + healAmount;
     }
 
-
+    public void RestoreMP(int restoreAmount)
+    {
+        CurrentMP = CurrentMP + restoreAmount > entityConfig.baseMP ? 
+                    entityConfig.baseMP : CurrentMP + restoreAmount;
+    }
 
     protected virtual void ApplyEffectsStandard(List<IEffectHandler> affectsToApply)
     {

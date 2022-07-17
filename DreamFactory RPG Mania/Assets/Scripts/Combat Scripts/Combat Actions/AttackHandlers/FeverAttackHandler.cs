@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FeverAttackHandler : BaseAttackHandler
 {
+
     protected override ActionPerformedArgs HandleActionExecution()
     {
         CombatEntity currentTarget = targets[currentTargetIndex++];
