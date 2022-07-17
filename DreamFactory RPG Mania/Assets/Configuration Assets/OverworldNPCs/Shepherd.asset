@@ -13,3 +13,7 @@ MonoBehaviour:
   m_Name: Shepherd
   m_EditorClassIdentifier: 
   characterName: Shepherd
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: b1f9b8512970daf4d811a7844888db23, type: 3}
+  - {fileID: 8300000, guid: 3ba319cdc33550c479d137612b18a47b, type: 3}
+  - {fileID: 8300000, guid: ab04b7b38a7a6de408b234854a5709b7, type: 3}

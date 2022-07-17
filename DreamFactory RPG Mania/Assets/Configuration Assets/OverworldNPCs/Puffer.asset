@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Puffer
   m_EditorClassIdentifier: 
   characterName: Puffer
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: 40b3a7b95358eb246a09df04c0f03a18, type: 3}
+  - {fileID: 8300000, guid: f38ade7f6dd9bb1488021f40447b5851, type: 3}
+  - {fileID: 8300000, guid: 6e68e9e496d734e478d8057c161f58b7, type: 3}
+  - {fileID: 8300000, guid: 022bb71e1ea7bcd48900c2799fb9be47, type: 3}
+  - {fileID: 8300000, guid: 3b1a6623788f33848b0369085f62da47, type: 3}

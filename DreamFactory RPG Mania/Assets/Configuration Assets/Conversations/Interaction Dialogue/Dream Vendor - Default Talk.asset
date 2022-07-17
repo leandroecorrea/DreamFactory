@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Dream Vendor - Default Talk
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: 2116723d5125c4940a02150bf249694a,
+      type: 2}
+    conversationPointText: Ah, welcome to the Dreamland. I'm so glad you're here!
+      These dream creatures don't have the brain capabilities for commerce.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: Hey! Are you a Dreamette under that shawl?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 2116723d5125c4940a02150bf249694a,
+      type: 2}
+    conversationPointText: What? Don't be absurd. I am a wandering Dream Merchant.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: Are you sure?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 2116723d5125c4940a02150bf249694a,
+      type: 2}
+    conversationPointText: Stop asking. Let me show you my wares.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  onConversationCompleteEvent: {fileID: 0}

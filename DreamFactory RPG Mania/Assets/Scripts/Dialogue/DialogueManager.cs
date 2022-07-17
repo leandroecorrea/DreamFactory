@@ -7,6 +7,9 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Component References")]
+    [SerializeField] private AudioSource sfxSource;
+
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI speakerText;
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -47,6 +50,7 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = targetConversationPoint.conversationPointSpeaker.characterName;
         dialogueText.text = "";
 
+        sfxSource.clip = targetConversationPoint.conversationPointSpeaker.GetRandomAudioClip();
         EventSystem.current?.SetSelectedGameObject(proceedButton);
 
         currentWritingCoroutine = StartCoroutine(WriteCurrentDialogueText());
@@ -59,6 +63,11 @@ public class DialogueManager : MonoBehaviour
 
         while (currentDialogueTextCharacterIndex < currentConversationPoint.conversationPointText.Length)
         {
+            if (sfxSource.clip && !sfxSource.isPlaying)
+            {
+                sfxSource.Play();
+            }
+
             runningDialogueString += currentConversationPoint.conversationPointText[currentDialogueTextCharacterIndex];
             dialogueText.text = runningDialogueString;
 
@@ -74,6 +83,12 @@ public class DialogueManager : MonoBehaviour
         if (currentWritingCoroutine != null)
         {
             StopCoroutine(currentWritingCoroutine);
+
+            if (sfxSource.clip != null && sfxSource.isPlaying)
+            {
+                sfxSource.Stop();
+                sfxSource.clip = null;
+            }
 
             dialogueText.text = currentConversationPoint.conversationPointText;
             currentWritingCoroutine = null;

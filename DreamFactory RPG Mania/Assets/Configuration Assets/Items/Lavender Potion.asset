@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Lavender Potion
   description: Restores dream magic
   price: 15
-  icon: {fileID: 21300000, guid: 938aae6f0c3726647bbbdfea3cd3a766, type: 3}
+  icon: {fileID: 587779194, guid: 683f7ccb92283e348a269eb68f4bbeef, type: 3}
   actionConfig: {fileID: 0}
   validForCombat: 1

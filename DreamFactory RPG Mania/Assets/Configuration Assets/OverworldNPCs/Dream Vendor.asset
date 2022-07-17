@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175b35ae9e909ec4eb2b24ec616b821a, type: 3}
+  m_Name: Dream Vendor
+  m_EditorClassIdentifier: 
+  characterName: Dream Vendor
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: 100eda8dafe79534196b41ffe21868b0, type: 3}
+  - {fileID: 8300000, guid: 3fd8faf5acdd8524db73df497536f4bd, type: 3}
+  - {fileID: 8300000, guid: c33f2b842103aa844ab0d1b78746688e, type: 3}
+  - {fileID: 8300000, guid: 7bf39dac0c8034d478514226bbb1ca14, type: 3}
+  - {fileID: 8300000, guid: 79ce87101b56e6b47b19355debe9ab71, type: 3}
