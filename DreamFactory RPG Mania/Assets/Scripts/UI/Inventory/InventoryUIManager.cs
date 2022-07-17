@@ -47,6 +47,12 @@ public class InventoryUIManager : MonoBehaviour
         var charactersViewComponent = charactersView.GetComponent<CharactersView>();
         charactersViewComponent.CharacterUpdateDelegate = SetPartyMember;
         playerParty.ForEach(x => charactersViewComponent.InitializeCardFor(x));        
+        var layout = charactersView.GetComponent<HorizontalLayoutGroup>();
+        var width = GetComponent<RectTransform>().rect.width;
+        var divisor = 3 + (playerParty.Count * 0.65);
+        var padding = width / playerParty.Count/ divisor;
+        layout.padding.right = (int)padding;
+        layout.padding.left = (int)padding;
     }
 
     public void ShowMainOptions()
