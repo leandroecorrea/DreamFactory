@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Act Three-Boss Intro (Cutscene)
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: 'Wow! I forgot how the factory looked after a while. Hey,
+      Mindy. How come you didn''t get sucked back into the dream world? '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: 'I go where I want. '
+    typingDelay: 0
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: 'Oh. Fair enough. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: 'We should get back to the other workers. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: 'Puffer! Great job, kid. The factory seems to be all right. '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
+      type: 2}
+    conversationPointText: Hahahahaha! Don't speak too soon.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: 'Who was that? '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: Oh, no. I think I know who that is.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent:
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: Woah! What just happened?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
+      type: 2}
+    conversationPointText: Your efforts were admirable. But they are ultimately fruitless.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: Let the factory go, Shepherd!
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: Shepherd? Like for those sheep running around?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: "Get out of the factory! We didn\u2019t do anything wrong!"
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
+      type: 2}
+    conversationPointText: 'That''s where you''re wrong, Dreamette. Your people kept
+      mine enslaved in these machines, at the whim of those Humans when they sleep! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
+      type: 2}
+    conversationPointText: 'Well, no longer! First I will kill you all, then I will
+      enslave your people. Then, all the Humans will see at night is pure nightmare! '
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: Not if I have anything to say about it!
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
+      type: 2}
+    conversationPointText: Do your worst!
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent:
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  onConversationCompleteEvent: {fileID: 0}

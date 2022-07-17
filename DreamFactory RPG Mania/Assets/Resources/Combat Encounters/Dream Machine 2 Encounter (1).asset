@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39ede5d564541b4d8655e34c50b73df, type: 3}
   m_Name: Dream Machine 2 Encounter (1)
   m_EditorClassIdentifier: 
-  encounter: 4
+  encounter: 5
   enemies:
   - {fileID: 11400000, guid: 56900ac211f519243902b9186d38eee2, type: 2}
   - {fileID: 11400000, guid: 56900ac211f519243902b9186d38eee2, type: 2}
   - {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
-  encounterScene: Dream Machine 1 Pocket Dimension
+  encounterScene: Dream Machine 2 Pocket Dimension
   sceneToReturnTo: 
   targetCombatSceneName: Dream Machine 2 Pocket Dimension Battle
   experienceReward: 2000
