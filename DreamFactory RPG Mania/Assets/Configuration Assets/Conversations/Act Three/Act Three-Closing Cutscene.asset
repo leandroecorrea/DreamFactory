@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Act Three-Closing Cutscene
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
+      type: 2}
+    conversationPointText: Noooo!
+    typingDelay: 0.05
+    onStartEvent: []
+    onCompleteEvent:
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: Wow! The factory is saved!
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent:
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: Thanks for the save! I thought we were goners for a second.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
+      type: 2}
+    conversationPointText: What happens next?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: Well, the boys and I have been thinking while you were
+      fighting that big scary shepherd monster.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: Now that Fred is gone, we'll need a new boss. Someone
+      who is capable and puts the factory and it's workers above themselves.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
+      type: 2}
+    conversationPointText: Wait, you mean?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: Puffer. We want you to be our boss. What do you say?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: I thought you'd never ask.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
+      type: 2}
+    conversationPointText: Alright! What's the first order of buisness?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: .............
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
+      type: 2}
+    conversationPointText: Find a new mechanic.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 563a234825a99ce40a6dead6c26c2599,
+      type: 2}
+    conversationPointText: Hahahahahahahahahaha.
+    typingDelay: 0
+    onStartEvent: []
+    onCompleteEvent:
+    - {fileID: 11400000, guid: d5f62b783764b6e4fb0e56273c4c7d13, type: 2}
+    - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
+  onConversationCompleteEvent: {fileID: 0}
