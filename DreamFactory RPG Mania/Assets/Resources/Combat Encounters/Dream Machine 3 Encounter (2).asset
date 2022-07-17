@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d39ede5d564541b4d8655e34c50b73df, type: 3}
-  m_Name: PT2-Mindy Intro
+  m_Name: Dream Machine 3 Encounter (2)
   m_EditorClassIdentifier: 
-  encounter: 0
+  encounter: 9
   enemies:
-  - {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
+  - {fileID: 11400000, guid: f635128365046fb45bb64f54f116187d, type: 2}
+  - {fileID: 11400000, guid: f635128365046fb45bb64f54f116187d, type: 2}
   - {fileID: 11400000, guid: 56900ac211f519243902b9186d38eee2, type: 2}
-  - {fileID: 11400000, guid: ea374c9ef008b1a43bf93e3383e4b99b, type: 2}
-  encounterScene: 
-  sceneToReturnTo: WestWing
-  targetCombatSceneName: PT2-Mindy Intro Battle
-  experienceReward: 0
+  encounterScene: Dream Machine 3 Pocket Dimension
+  sceneToReturnTo: 
+  targetCombatSceneName: Dream Machine 3 Pocket Dimension Battle
+  experienceReward: 2000
