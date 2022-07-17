@@ -10,7 +10,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
 {
     [Header("Refs")]
     [SerializeField] private CombatManager combatManager;
-    
+
     [Header("Player UI")]
     [SerializeField] private GameObject playerUI;
     [SerializeField] private TMP_Text informationMessage;
@@ -29,14 +29,14 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
     [SerializeField] private Camera view;
     private CombatEntity currentTarget;
     private CombatContext combatContext;
-    private CombatActionConfig currentAction;    
+    private CombatActionConfig currentAction;
 
     private void OnEnable()
     {
         combatManager.onCombatTurnStart += HandleCombatTurnStart;
         CombatEventSystem.instance.onCombatEntityDamaged += HandleCombatEntityDamageFeedback;
         CombatEventSystem.instance.onCombatFinished += HandleCombatFinished;
-    }   
+    }
 
     private void HandleCombatFinished(CombatResult result)
     {
@@ -45,7 +45,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
         informationMessage.text = $"You won!";
         PostCombatTransitionManager.instance.InitializePostCombatTransition(result, 100, CombatManager.currentStartRequest.GetSceneNameToReload());
     }
-  
+
 
     private void RemoveListeners()
     {
@@ -104,27 +104,25 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
     private void ShowActions()
     {
         playerUI.SetActive(true);
-        actionsPanel.SetActive(true);
-        var currentCharacter = combatContext.currentTurnEntity;
-        currentCharacter.entityConfig.actions.ForEach(action =>
-        {
-            var optionListElement = Instantiate(combatOptionPrefab);
-            if (optionListElement.TryGetComponent(out CombatOptionPrefab targetPrefab))
-            {
-                targetPrefab.optionName.text = action.actionName;
-
-                targetPrefab.optionButton.interactable = (combatContext.currentTurnEntity.CurrentMP >= action.requireMana);
-                if (targetPrefab.optionButton.interactable)
-                {
-                    targetPrefab.optionButton.onClick.AddListener(delegate
-                    {
-                        OnActionChosen(action);
-                    });
-                }
-            }
-            optionListElement.transform.SetParent(actionsPanel.transform, false);
-        });
+        actionsPanel.SetActive(true);        
+        AddAttackOption();
         AddItemOption();
+        AddSpellOption();
+    }
+
+    private void AddAttackOption()
+    {
+        var optionListElement = Instantiate(combatOptionPrefab);
+        var physicalAttack = combatContext.currentTurnEntity.entityConfig.actions.Where(x => x.combatActionType == CombatActionType.ATTACK).FirstOrDefault();
+        if (optionListElement.TryGetComponent(out CombatOptionPrefab targetPrefab))
+        {
+            targetPrefab.optionName.text = physicalAttack.actionName;
+            targetPrefab.optionButton.onClick.AddListener(delegate
+            {
+                OnActionChosen(physicalAttack);
+            });           
+        }
+        optionListElement.transform.SetParent(actionsPanel.transform, false);
     }
 
     private void AddItemOption()
@@ -134,6 +132,47 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
         component.optionName.text = "Item";
         component.optionButton.onClick.AddListener(OnItemOptionChosen);
         itemListElement.transform.SetParent(actionsPanel.transform, false);
+    }
+
+    private void AddSpellOption()
+    {
+        var itemListElement = Instantiate(combatOptionPrefab);
+        var component = itemListElement.GetComponent<CombatOptionPrefab>();
+        component.optionName.text = "Spell";
+        component.optionButton.onClick.AddListener(OnSpellOptionChosen);
+        itemListElement.transform.SetParent(actionsPanel.transform, false);
+    }
+    private void OnSpellOptionChosen()
+    {
+        backButton.SetActive(true);
+        CleanTargets(targetsPanel);
+        CleanCombatActions(actionsPanel);
+        actionsPanel.gameObject.SetActive(true);
+        ShowSpells();
+    }
+
+    private void ShowSpells()
+    {
+        var spells = combatContext.currentTurnEntity.entityConfig.actions.Where(x => x.combatActionType == CombatActionType.SPELL).ToList();
+        spells.ForEach(spell =>
+        {
+            var optionListElement = Instantiate(combatOptionPrefab);
+            if (optionListElement.TryGetComponent(out CombatOptionPrefab targetPrefab))
+            {
+                targetPrefab.optionName.text = spell.actionName;
+
+                targetPrefab.optionButton.interactable = (combatContext.currentTurnEntity.CurrentMP >= spell.requireMana);
+                if (targetPrefab.optionButton.interactable)
+                {
+                    targetPrefab.optionButton.onClick.AddListener(delegate
+                    {
+                        OnActionChosen(spell);
+                    });
+                }
+            }
+            optionListElement.transform.SetParent(actionsPanel.transform, false);
+        });
+
     }
 
     private void OnItemOptionChosen()
@@ -150,17 +189,20 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
         var items = InventoryManager.GetAll();
         items.ForEach(item =>
         {
-            var optionListElement = Instantiate(combatOptionPrefab);
-            if (optionListElement.TryGetComponent(out CombatOptionPrefab itemPrefab))
+            if (item.data.validForCombat)
             {
-                itemPrefab.optionName.text = $"{item.data.itemName} x{item.amount}";
-                itemPrefab.optionName.alignment = TextAlignmentOptions.Justified;
-                itemPrefab.optionButton.onClick.AddListener(delegate
+                var optionListElement = Instantiate(combatOptionPrefab);
+                if (optionListElement.TryGetComponent(out CombatOptionPrefab itemPrefab))
                 {
-                    OnActionChosen(item.data.actionConfig);
-                });
+                    itemPrefab.optionName.text = $"{item.data.itemName} x{item.amount}";
+                    itemPrefab.optionName.alignment = TextAlignmentOptions.Justified;
+                    itemPrefab.optionButton.onClick.AddListener(delegate
+                    {
+                        OnActionChosen(item.data.actionConfig);
+                    });
+                }
+                optionListElement.transform.SetParent(actionsPanel.transform, false);
             }
-            optionListElement.transform.SetParent(actionsPanel.transform, false);
         });
     }
 
@@ -173,7 +215,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
 
         var targets = action.targetStrategy
                             .GetTargets(combatContext)
-                            .Where(x=> combatManager.combatEntities.Contains(x))
+                            .Where(x => combatManager.combatEntities.Contains(x))
                             .ToList();
         ShowTargets(targets);
     }
@@ -191,13 +233,13 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
     private void ShowTargets(List<CombatEntity> enemyTargets)
     {
         actionsPanel.SetActive(false);
-        targetsPanel.gameObject.SetActive(true);        
+        targetsPanel.gameObject.SetActive(true);
         enemyTargets.ForEach(enemy =>
         {
             var targetListElement = Instantiate(targetOptionPrefab);
             if (targetListElement.TryGetComponent(out TargetOptionPrefab targetPrefab))
             {
-                targetPrefab.optionName.text = enemy.entityConfig.Name;                
+                targetPrefab.optionName.text = enemy.entityConfig.Name;
                 targetPrefab.Attach(enemy.entityConfig);
                 targetPrefab.Subscribe(this);
                 targetPrefab.optionButton.onClick.AddListener(delegate
@@ -230,13 +272,11 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
         });
     }
 
-
     private void SetCurrentDefaultTargetFor(List<CombatEntity> party)
     {
         currentTarget = party.FirstOrDefault();
         ShowTargetIndicator();
     }
-
 
     public void SwitchTarget(CombatEntityConfig enemyConfig)
     {
@@ -270,7 +310,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
         }
     }
 
-    
+
 
     private IEnumerator ShowInfo(string info)
     {
