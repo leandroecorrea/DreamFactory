@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d39ede5d564541b4d8655e34c50b73df, type: 3}
-  m_Name: Base
+  m_Name: Shepherd_Boss
   m_EditorClassIdentifier: 
+  encounter: 11
   enemies:
-  - {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
-  - {fileID: 11400000, guid: fb98fae9a2e1f764a8d446e99e205fc7, type: 2}
-  targetCombatSceneName: Combat Dev (Chris)
-  experienceReward: 100
+  - {fileID: 11400000, guid: 6adbbcaa6690d2a489c1bf40ddd914d8, type: 2}
+  encounterScene: Shepherd Boss Fight
+  sceneToReturnTo: Closing Cutscene
+  targetCombatSceneName: Shepherd Boss Fight
+  experienceReward: 2000
