@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Fred
   m_EditorClassIdentifier: 
   characterName: Fred
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: c08a2a9fa2c7a394386f37f8e69a7e6a, type: 3}
+  - {fileID: 8300000, guid: 09ee2173e6c487c4cabba528a81fee0f, type: 3}
+  - {fileID: 8300000, guid: 7eefffca11f3b03438ea0192010cd4cc, type: 3}
+  - {fileID: 8300000, guid: 5b61662ea3f0f024d8561244085d0089, type: 3}
+  - {fileID: 8300000, guid: 87c8ec0988914a44aa42bb68f31816de, type: 3}

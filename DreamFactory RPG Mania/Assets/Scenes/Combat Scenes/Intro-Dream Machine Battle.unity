@@ -290,6 +290,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 74163185}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &74163187 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3402262626521804946, guid: c88a238d713dde1469fed989da3cf8a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 74163185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &85942593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee80cd84be5aa64d984d817abb3ae95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxSource: {fileID: 74163187}
   speakerText: {fileID: 2030574509}
   dialogueText: {fileID: 595966903}
   proceedButton: {fileID: 976622730}

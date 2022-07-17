@@ -10,10 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 175b35ae9e909ec4eb2b24ec616b821a, type: 3}
-  m_Name: Shepherd
+  m_Name: All
   m_EditorClassIdentifier: 
-  characterName: Shepherd
-  characterDialogueSounds:
-  - {fileID: 8300000, guid: b1f9b8512970daf4d811a7844888db23, type: 3}
-  - {fileID: 8300000, guid: 3ba319cdc33550c479d137612b18a47b, type: 3}
-  - {fileID: 8300000, guid: ab04b7b38a7a6de408b234854a5709b7, type: 3}
+  characterName: All
