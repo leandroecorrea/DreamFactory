@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Theo
   m_EditorClassIdentifier: 
   characterName: Theo
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: 35ce009746f9ce34b880f95d9cc2d2f0, type: 3}
+  - {fileID: 8300000, guid: 266ccc5239121764a9eff59935f403fb, type: 3}
+  - {fileID: 8300000, guid: a1d18955e5e6c614ba59d605fe01ce57, type: 3}
+  - {fileID: 8300000, guid: 6f758db02d1c7f84c8947eb5c1df06ac, type: 3}
+  - {fileID: 8300000, guid: 563b78632cb08e0419db2d7e0e4c4d90, type: 3}

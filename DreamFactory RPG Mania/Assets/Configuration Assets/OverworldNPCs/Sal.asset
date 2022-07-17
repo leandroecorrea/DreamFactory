@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Sal
   m_EditorClassIdentifier: 
   characterName: Sal
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: afccb2fb8f35a9d418ec5ae0e7faf81b, type: 3}
+  - {fileID: 8300000, guid: 575ce5f0290dc3944afafc2631f3736d, type: 3}
+  - {fileID: 8300000, guid: a28aa80692244ae42b549ca5f08ccba7, type: 3}
+  - {fileID: 8300000, guid: d78c0543ab4efad408b7bdb5496a883e, type: 3}
+  - {fileID: 8300000, guid: c9786083db02b7743963311861a5361b, type: 3}

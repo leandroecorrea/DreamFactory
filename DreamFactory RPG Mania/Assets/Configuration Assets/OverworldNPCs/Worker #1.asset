@@ -13,3 +13,12 @@ MonoBehaviour:
   m_Name: Worker #1
   m_EditorClassIdentifier: 
   characterName: Worker #1
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: 96c10a0e470095e4e8ba01c2da2118c1, type: 3}
+  - {fileID: 8300000, guid: 890affffa94ab7945bed420364210c5b, type: 3}
+  - {fileID: 8300000, guid: 004e6b2f0e876fb4c81a068f405aafcc, type: 3}
+  - {fileID: 8300000, guid: 768e0ad0c32924f4babe65f95ea50333, type: 3}
+  - {fileID: 8300000, guid: 16880f3149dd12744ab2817f20c95b03, type: 3}
+  - {fileID: 8300000, guid: 15e80512a2503c0428950f64438fc273, type: 3}
+  - {fileID: 8300000, guid: 62126bf4954a25e4fa5ef48eec951214, type: 3}
+  - {fileID: 8300000, guid: 6702489ef5af28a448e421ffed9ac429, type: 3}

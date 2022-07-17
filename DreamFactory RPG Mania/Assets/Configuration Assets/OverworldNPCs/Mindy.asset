@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Mindy
   m_EditorClassIdentifier: 
   characterName: Mindy
+  characterDialogueSounds:
+  - {fileID: 8300000, guid: 712ea3f60d7541f46b831255e5cb964d, type: 3}
+  - {fileID: 8300000, guid: 421626336e1d39a42bb4903ae774db69, type: 3}

@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Sleep Capsule
   description: Restores your health and magic... But you're still hungry
   price: 100
-  icon: {fileID: 21300000, guid: 5f7fa9a7940a64e79b5a42d9f661d42c, type: 3}
+  icon: {fileID: 952518472, guid: 683f7ccb92283e348a269eb68f4bbeef, type: 3}
   actionConfig: {fileID: 0}
   validForCombat: 0

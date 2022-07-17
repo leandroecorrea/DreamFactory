@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cefee3aea146dc44db9af631665e1034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxSource: {fileID: 4766870441296676005}
   speakerText: {fileID: 4766870441296676002}
   dialogueText: {fileID: 4766870441296676003}
   proceedButton: {fileID: 4766870441296676001}
@@ -966,6 +967,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneAnim: {fileID: 1190268811}
+  animationComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1190268813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,6 +1103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneAnim: {fileID: 1690057149}
+  animationComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &1690057149
 Animator:
   serializedVersion: 4
@@ -2600,6 +2607,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneAnim: {fileID: 1957831968}
+  animationComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1957831972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2783,6 +2793,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneAnim: {fileID: 1985958142}
+  animationComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &1985958142
 Animator:
   serializedVersion: 4
@@ -3000,6 +3013,12 @@ MonoBehaviour:
 --- !u!1 &4766870441296676004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4940432445669713411, guid: 77a7e61b6ebf710479e0aa1bb896dc20,
+    type: 3}
+  m_PrefabInstance: {fileID: 4766870441296676000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4766870441296676005 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7858799750215913493, guid: 77a7e61b6ebf710479e0aa1bb896dc20,
     type: 3}
   m_PrefabInstance: {fileID: 4766870441296676000}
   m_PrefabAsset: {fileID: 0}

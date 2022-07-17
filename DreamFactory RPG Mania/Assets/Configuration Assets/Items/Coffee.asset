@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Coffee
   description: Makes damage with a shock of caffeine
   price: 10
-  icon: {fileID: 21300000, guid: 938aae6f0c3726647bbbdfea3cd3a766, type: 3}
+  icon: {fileID: -821731085, guid: 683f7ccb92283e348a269eb68f4bbeef, type: 3}
   actionConfig: {fileID: 11400000, guid: 6dcf08f8e7d18de43899f2a8f5f5df67, type: 2}
   validForCombat: 1
