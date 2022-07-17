@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c204d02d4f0cfa445a2bbaeb4e40edbe, type: 3}
   m_Name: Sleep Capsule
   m_EditorClassIdentifier: 
-  id: SLEEP CAPSULE
+  id: SLEEPCAPSULE
   itemName: Sleep Capsule
   description: Restores your health and magic... But you're still hungry
   price: 100

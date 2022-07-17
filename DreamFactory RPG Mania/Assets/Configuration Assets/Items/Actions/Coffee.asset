@@ -16,7 +16,7 @@ MonoBehaviour:
   description: Makes damage with a shock of caffeina
   requireRouting: 0
   requireMana: 0
-  baseEffectiveness: 0
+  baseEffectiveness: 20
   effectsToApply: []
   actionHandlerClassName: CoffeeItemHandler
   targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}

@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class CharactersView : MonoBehaviour
 {
     [SerializeField] private GameObject characterCardPrefab;
-    public Action<PlayerPartyMemberConfig> DelegateBehaviour;
+    public delegate void UpdateCurrentCharacter(PlayerPartyMemberConfig member, CharacterCard card);
+    public UpdateCurrentCharacter CharacterUpdateDelegate;
 
     public void InitializeCardFor(PlayerPartyMemberConfig character)
     {
@@ -15,6 +16,6 @@ public class CharactersView : MonoBehaviour
         newPrefab.transform.SetParent(transform, false);
         var card = newPrefab.GetComponent<CharacterCard>();
         card.UpdateCard(character);
-        card.GetComponent<Button>().onClick.AddListener(() => DelegateBehaviour(character));
+        card.GetComponent<Button>().onClick.AddListener(() => CharacterUpdateDelegate?.Invoke(character, card));
     }
 }

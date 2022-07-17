@@ -8,14 +8,15 @@ using UnityEngine.UI;
 public class InventoryUIManager : MonoBehaviour
 {    
     [SerializeField] private GameObject charactersView;
-    [SerializeField] private GameObject mainOptions;    
-    [SerializeField] private GameObject statsView;
+    [SerializeField] private GameObject mainOptions;        
     [SerializeField] private GameObject abilitiesOptions;
-    [SerializeField] private Button backToMain;
-    [SerializeField] private EventSystem eventSystem;       
+    [SerializeField] private Button backToMain;    
+    [SerializeField] private EventSystem eventSystem;
+    private CharacterCard _currentCard;
     private PlayerPartyMemberConfig _selectedEntity;
     private GameObject _defaultFirst;
     private List<PlayerPartyMemberConfig> _playerParty;
+    
 
     void OnEnable()
     {
@@ -24,8 +25,9 @@ public class InventoryUIManager : MonoBehaviour
         _selectedEntity = _playerParty[0];
     }
 
-    private void SetPartyMember(PlayerPartyMemberConfig playerPartyMemberConfig)
+    private void SetPartyMember(PlayerPartyMemberConfig playerPartyMemberConfig, CharacterCard currentCard)
     {
+        _currentCard = currentCard;
         _selectedEntity = playerPartyMemberConfig;
         Debug.Log(_selectedEntity.partyMemberId);
     }
@@ -43,14 +45,13 @@ public class InventoryUIManager : MonoBehaviour
     private void ShowCharacters(List<PlayerPartyMemberConfig> playerParty)
     {
         var charactersViewComponent = charactersView.GetComponent<CharactersView>();
-        charactersViewComponent.DelegateBehaviour = SetPartyMember;
+        charactersViewComponent.CharacterUpdateDelegate = SetPartyMember;
         playerParty.ForEach(x => charactersViewComponent.InitializeCardFor(x));        
     }
 
     public void ShowMainOptions()
     {
-        mainOptions.gameObject.SetActive(true);        
-        statsView.gameObject.SetActive(false);
+        mainOptions.gameObject.SetActive(true);                
         abilitiesOptions.gameObject.SetActive(false);
         charactersView.SetActive(true);
         eventSystem.SetSelectedGameObject(_defaultFirst);
@@ -59,14 +60,13 @@ public class InventoryUIManager : MonoBehaviour
 
     public void ShowAbilitiesOptions()
     {
-        mainOptions.gameObject.SetActive(false);        
-        statsView.gameObject.SetActive(false);
+        mainOptions.gameObject.SetActive(false);                
         abilitiesOptions.gameObject.SetActive(true);
         charactersView.SetActive(true);
         ShowBackButton();
         eventSystem.SetSelectedGameObject(_defaultFirst);        
         Debug.Log(abilitiesOptions.GetComponent<DetailsView>());
-        abilitiesOptions.GetComponent<DetailsView>().InitializeAbilities(_selectedEntity);       
+        abilitiesOptions.GetComponent<DetailsView>().InitializeAbilities(_selectedEntity);            
     }
 
     private void ShowBackButton()
@@ -80,26 +80,35 @@ public class InventoryUIManager : MonoBehaviour
     }
 
 
+    private void UseItem(Item item)
+    {
+        ItemOverworldHandler itemHandler = null;
+        if (item.data.actionConfig != null)
+        {
+            string typeName = item.data.actionConfig.actionHandlerClassName.Replace("Item", "Overworld");
+            Type handlerType = Type.GetType(typeName);
+            itemHandler = (ItemOverworldHandler)Activator.CreateInstance(handlerType, item);
+            itemHandler?.Handle(_selectedEntity);
+            _currentCard?.UpdateCard(_selectedEntity);
+        }
+        else if(item.data.id == "SLEEPCAPSULE")
+        {            
+            Type handlerType = Type.GetType("SleepCapsuleOverworldHandler");
+            itemHandler = (ItemOverworldHandler)Activator.CreateInstance(handlerType, item);
+            itemHandler?.Handle(_selectedEntity);
+            _currentCard?.UpdateCard(_selectedEntity);
+        }        
+    }
+
     public void ShowItems()
     {
         var items = InventoryManager.GetAll();
-        mainOptions.gameObject.SetActive(false);        
-        statsView.gameObject.SetActive(false);
+        mainOptions.gameObject.SetActive(false);                
         abilitiesOptions.gameObject.SetActive(true);
         charactersView.SetActive(true);
         ShowBackButton();
         eventSystem.SetSelectedGameObject(_defaultFirst);
         Debug.Log(abilitiesOptions.GetComponent<DetailsView>());
-        abilitiesOptions.GetComponent<DetailsView>().InitializeItems(items);        
-    }
-
-    public void ShowStats()
-    {
-        statsView.GetComponent<StatusView>().SetStats(_selectedEntity);
-        mainOptions.gameObject.SetActive(false);
-        abilitiesOptions.gameObject.SetActive(false);
-        charactersView.gameObject.SetActive(false);
-        statsView.gameObject.SetActive(true);
-        ShowBackButton();
-    }      
+        abilitiesOptions.GetComponent<DetailsView>().InitializeItems(items, UseItem);        
+    }   
 }
