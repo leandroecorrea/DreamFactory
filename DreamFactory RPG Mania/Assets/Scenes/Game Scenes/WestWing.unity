@@ -1496,17 +1496,17 @@ PrefabInstance:
     - target: {fileID: 8639305124742325397, guid: 785f8c2d7648c364f86823c906d016b5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100.03
+      value: 101.5
       objectReference: {fileID: 0}
     - target: {fileID: 8639305124742325397, guid: 785f8c2d7648c364f86823c906d016b5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.46000004
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 8639305124742325397, guid: 785f8c2d7648c364f86823c906d016b5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.7
+      value: 43.19
       objectReference: {fileID: 0}
     - target: {fileID: 8639305124742325397, guid: 785f8c2d7648c364f86823c906d016b5,
         type: 3}
@@ -2006,17 +2006,17 @@ PrefabInstance:
     - target: {fileID: 243291845895849950, guid: c31aed384fda4d542a627336b3842221,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.38
+      value: 84.8
       objectReference: {fileID: 0}
     - target: {fileID: 243291845895849950, guid: c31aed384fda4d542a627336b3842221,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.77
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 243291845895849950, guid: c31aed384fda4d542a627336b3842221,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 55.66
+      value: 55.12
       objectReference: {fileID: 0}
     - target: {fileID: 243291845895849950, guid: c31aed384fda4d542a627336b3842221,
         type: 3}
@@ -2057,6 +2057,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dream Machine Room (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610776072770149797, guid: c31aed384fda4d542a627336b3842221,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c31aed384fda4d542a627336b3842221, type: 3}
@@ -2105,17 +2110,17 @@ PrefabInstance:
     - target: {fileID: 3730228773388632824, guid: 5f9a3919759192948871214e944d0b3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.51
+      value: 52.37
       objectReference: {fileID: 0}
     - target: {fileID: 3730228773388632824, guid: 5f9a3919759192948871214e944d0b3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.46
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3730228773388632824, guid: 5f9a3919759192948871214e944d0b3d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 55.699997
+      value: 55.12
       objectReference: {fileID: 0}
     - target: {fileID: 3730228773388632824, guid: 5f9a3919759192948871214e944d0b3d,
         type: 3}
