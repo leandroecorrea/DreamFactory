@@ -43,7 +43,6 @@ public class CombatSpawner : MonoBehaviour
 
             var entity = GameObject.Instantiate(targetPrefab, playerTeamArenaOrigin, Quaternion.identity);
             entity.transform.LookAt(new Vector3(opposingArenaOrigin.x, transform.position.y, opposingArenaOrigin.z), Vector3.up);
-
             entities.Add(entity.GetComponent<CombatEntity>());
             return entities;
         }

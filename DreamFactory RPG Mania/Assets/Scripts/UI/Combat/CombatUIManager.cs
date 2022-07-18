@@ -146,7 +146,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
     {
         backButton.SetActive(true);
         CleanTargets(targetsPanel);
-        CleanCombatActions(actionsPanel);
+        CleanCombatActions(actionsPanel);        
         actionsPanel.gameObject.SetActive(true);
         ShowSpells();
     }
@@ -212,7 +212,7 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
         backButton.SetActive(true);
         CleanCombatActions(actionsPanel);
         CleanTargets(targetsPanel);
-
+        informationMessage.text = action.description;
         var targets = action.targetStrategy
                             .GetTargets(combatContext)
                             .Where(x => combatManager.combatEntities.Contains(x))
@@ -294,12 +294,12 @@ public class CombatUIManager : MonoBehaviour, ITargetUpdatable, IInformation
             targetIndicator.gameObject.SetActive(true);
             var indicatorPosition = currentTarget.transform.position;
             indicatorPosition.y += currentTarget.transform.GetComponent<CapsuleCollider>().bounds.max.y * 2;
-            targetIndicator.transform.position = indicatorPosition;
-            informationMessage.text = $"{currentTarget.entityConfig.Name} is being targeted";
+            targetIndicator.transform.position = indicatorPosition;            
         }
     }
     private void ReceiveInputFor(CombatActionConfig action)
     {
+        informationMessage.text = "";
         var currentCharacter = combatContext.currentTurnEntity;
         if (currentTarget != null)
         {

@@ -116,5 +116,14 @@ public class InventoryUIManager : MonoBehaviour
         eventSystem.SetSelectedGameObject(_defaultFirst);
         Debug.Log(abilitiesOptions.GetComponent<DetailsView>());
         abilitiesOptions.GetComponent<DetailsView>().InitializeItems(items, UseItem);        
-    }   
+    }
+
+    public void OnDisable()
+    {
+        for (int i = 0; i < charactersView.transform.childCount; i++)
+        {
+            var item = charactersView.transform.GetChild(i);
+            Destroy(item.gameObject);
+        }
+    }
 }
