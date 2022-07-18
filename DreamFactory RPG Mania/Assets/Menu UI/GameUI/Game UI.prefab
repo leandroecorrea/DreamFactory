@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 98426312993424897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1838298099878513545}
@@ -1558,7 +1558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24397a963f536bd46b6b9a456f8b8a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterCardPrefab: {fileID: 0}
+  characterCardPrefab: {fileID: 5216957925410077110, guid: 96bc19da6945d534fb557baaf22f55db,
+    type: 3}
 --- !u!1 &1437884904850862519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4586,7 +4587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0006713867, y: 56836.887}
+  m_AnchoredPosition: {x: -0.0006713867, y: 11.839844}
   m_SizeDelta: {x: 0.005737322, y: 11.841492}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4745560569381500986
@@ -7361,10 +7362,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charactersView: {fileID: 1336412376699797667}
   mainOptions: {fileID: 3981451479977483861}
-  statsView: {fileID: 0}
-  abilitiesOptions: {fileID: 0}
+  abilitiesOptions: {fileID: 5731084633707378605}
   backToMain: {fileID: 2790864873188066382}
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 3429092113190035205}
 --- !u!1 &8883531400282807379
 GameObject:
   m_ObjectHideFlags: 0
@@ -12918,6 +12918,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2161837202421818004}
     m_Modifications:
+    - target: {fileID: 6240928469468953672, guid: d0dba3f04c5e432448e76e02820810f6,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6240928469468953672, guid: d0dba3f04c5e432448e76e02820810f6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6240928469468953675, guid: d0dba3f04c5e432448e76e02820810f6,
         type: 3}
       propertyPath: m_UpdateMode
@@ -12931,7 +12941,7 @@ PrefabInstance:
     - target: {fileID: 6240928470841921321, guid: d0dba3f04c5e432448e76e02820810f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6240928470841921324, guid: d0dba3f04c5e432448e76e02820810f6,
         type: 3}
