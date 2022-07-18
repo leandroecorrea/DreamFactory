@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
+  m_Name: Conversing Worker NPCs
+  m_EditorClassIdentifier: 
+  conversationId: 
+  conversationPoints:
+  - conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
+      type: 2}
+    conversationPointText: Did you hear the rumor?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5013613c61bd4ce4c98e1270e8c327d2,
+      type: 2}
+    conversationPointText: No, what?
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
+      type: 2}
+    conversationPointText: Apparently, a Dreamette got stuck in the Dream World back
+      in the day.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5013613c61bd4ce4c98e1270e8c327d2,
+      type: 2}
+    conversationPointText: You're pulling my leg.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
+      type: 2}
+    conversationPointText: No, I swear. Some guys have seen him on the dream computers
+      trying to sell things to the Dream creatures.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  - conversationPointSpeaker: {fileID: 11400000, guid: 5013613c61bd4ce4c98e1270e8c327d2,
+      type: 2}
+    conversationPointText: Sucks for him. None of them have the brain capacity for
+      commerce.
+    typingDelay: 0.03
+    onStartEvent: []
+    onCompleteEvent: []
+  onConversationCompleteEvent: {fileID: 0}

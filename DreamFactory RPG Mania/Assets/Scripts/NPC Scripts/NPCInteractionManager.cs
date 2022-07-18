@@ -42,7 +42,11 @@ public class NPCInteractionManager : MonoBehaviour
 
     public void InitailizeInteraction()
     {
-        npcAnim.SetBool("IsTalking", true);
+        if (npcAnim != null)
+        {
+            npcAnim.SetBool("IsTalking", true);
+        }
+        
         InitializeInteractionUI();
     }
 
@@ -122,7 +126,10 @@ public class NPCInteractionManager : MonoBehaviour
 
     public void DismissInteractionUI()
     {
-        npcAnim.SetBool("IsTalking", false);
+        if (npcAnim != null)
+        {
+            npcAnim.SetBool("IsTalking", false);
+        }
 
         CleanSelectInteractionUI();
         DisableInteractionUI();
