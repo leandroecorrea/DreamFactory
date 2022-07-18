@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: SHEPPA
   Name: Shepherd of Nightmares
-  baseHP: 800
-  baseMP: 230
-  baseAttack: 30
-  baseSpeed: 19
+  baseHP: 325
+  baseMP: 150
+  baseAttack: 25
+  baseSpeed: 25
   combatEntityPrefab: {fileID: 8266104293211645919, guid: e2b80f597fa64aa4b9f1c1fc81dc402c,
     type: 3}
   actions:

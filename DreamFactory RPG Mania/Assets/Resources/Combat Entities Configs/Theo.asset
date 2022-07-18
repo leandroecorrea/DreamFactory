@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: THEO
   Name: Theo
-  baseHP: 10000
-  baseMP: 25
-  baseAttack: 5
-  baseSpeed: 5000
+  baseHP: 425
+  baseMP: 75
+  baseAttack: 7
+  baseSpeed: 20
   combatEntityPrefab: {fileID: 8450227428587258759, guid: 510767dd9e3d03f4ca76b60fa4754efa,
     type: 3}
   actions:
   - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
-  - {fileID: 11400000, guid: a60ad448b9241e14dac556a31f5f0fc2, type: 2}
-  - {fileID: 11400000, guid: f030385a7bb48774ea6622662f3dd2d1, type: 2}
+  - {fileID: 11400000, guid: 4d9531eb2dd88644e89428e74feb5060, type: 2}
+  - {fileID: 11400000, guid: 9b3e65b18d2722c47b28ac4021dc9d94, type: 2}
+  - {fileID: 11400000, guid: a9bff729f7f052d44b7d670c6eccdd7e, type: 2}
   - {fileID: 11400000, guid: 7c50a8a8f4424c84a9d1e68c6fcb92dd, type: 2}
+  - {fileID: 11400000, guid: f030385a7bb48774ea6622662f3dd2d1, type: 2}

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: SHADOW
   Name: Shadow
-  baseHP: 300
-  baseMP: 100
-  baseAttack: 19
-  baseSpeed: 10
+  baseHP: 105
+  baseMP: 75
+  baseAttack: 15
+  baseSpeed: 16
   combatEntityPrefab: {fileID: 4126551379892032179, guid: abe4a82b6d1a8c94b908ea9186353e89,
     type: 3}
   actions:

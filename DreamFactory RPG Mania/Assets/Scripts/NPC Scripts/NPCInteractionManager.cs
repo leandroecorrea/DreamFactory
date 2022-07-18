@@ -122,6 +122,15 @@ public class NPCInteractionManager : MonoBehaviour
     private void HandleNPCInteractionComplete(object sender, InteractionCompletedArgs e)
     {
         EnableSelectInteraction();
+
+        for(int i = 0; i < interactions.Count; i++)
+        {
+            Button targetInteractionButton = interactionOptionListParent.GetChild(i).GetComponent<Button>();
+            if (targetInteractionButton)
+            {
+                targetInteractionButton.interactable = interactions[i].CanExecuteInteraction();
+            }
+        }
     }
 
     public void DismissInteractionUI()

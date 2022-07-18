@@ -14,12 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: MINDY
   Name: Mindy
-  baseHP: 10000
-  baseMP: 25
-  baseAttack: 5
-  baseSpeed: 5000
+  baseHP: 350
+  baseMP: 100
+  baseAttack: 10
+  baseSpeed: 10
   combatEntityPrefab: {fileID: 3184674319563369056, guid: da8cd3083b96db8428d43a91564f42e8,
     type: 3}
   actions:
   - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
+  - {fileID: 11400000, guid: c4865ca841847b040af41b87c8e49800, type: 2}
+  - {fileID: 11400000, guid: dcc8caf4b2fff19448a14d9472271ddb, type: 2}
   - {fileID: 11400000, guid: a16aee58aa97cfa47b2b7bfd837d7eaa, type: 2}
+  - {fileID: 11400000, guid: fa29b7307c2f06048910e9b77d5a5d8c, type: 2}
