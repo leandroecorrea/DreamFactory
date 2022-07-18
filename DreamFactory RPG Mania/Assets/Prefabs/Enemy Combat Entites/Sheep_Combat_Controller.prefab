@@ -868,7 +868,6 @@ GameObject:
   - component: {fileID: 2842121846902470838}
   - component: {fileID: 6738885472311096044}
   - component: {fileID: 2994079993887075435}
-  - component: {fileID: -2301258608164475005}
   - component: {fileID: -8593833461884782820}
   - component: {fileID: 8504654174388852493}
   m_Layer: 0
@@ -975,19 +974,6 @@ MonoBehaviour:
   animator: {fileID: 2842121846902470838}
   combatAction: {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
   behaviourTreeClassName: 0
---- !u!114 &-2301258608164475005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6047257843069023445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28e8c1b8c843704458ab50e3e4bad812, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetEncounter: {fileID: 11400000, guid: 36661f388096a29428dfb3953fb3d068, type: 2}
 --- !u!114 &-8593833461884782820
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: PUFFER
   Name: Puffer
-  baseHP: 10000
-  baseMP: 25
-  baseAttack: 5
-  baseSpeed: 1
+  baseHP: 500
+  baseMP: 50
+  baseAttack: 15
+  baseSpeed: 15
   combatEntityPrefab: {fileID: 5008707017202677556, guid: 4195037550c2a51499359a1488c3139b,
     type: 3}
   actions:
   - {fileID: 11400000, guid: db4508117f6ee3a4185f363d0ce9d6dd, type: 2}
+  - {fileID: 11400000, guid: 9701e32b70ed8474a8e6d5f71bfb5d15, type: 2}
+  - {fileID: 11400000, guid: ced6d4defd022864d98a887b33aedc30, type: 2}
   - {fileID: 11400000, guid: dec20bb659ce55747aab7c5667fb332f, type: 2}
+  - {fileID: 11400000, guid: fbb94ac3b7baecf4388123d47e45acb8, type: 2}
   - {fileID: 11400000, guid: a60ad448b9241e14dac556a31f5f0fc2, type: 2}

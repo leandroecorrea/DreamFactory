@@ -12,7 +12,9 @@ public static class NewSaveGenerator
             {
                 { SaveKeys.CURRENT_STORY_POINT, StoryPointKeys.StoryKeys.INT_Sal_Controls_Intro },
                 { SaveKeys.UNLOCKED_PARTY_MEMBERS, new List<string> { "PUFFER" } },
-                { SaveKeys.COMBAT_ENCOUNTERS_COMPLETED, new List<EncounterHistory.Encounters>{ } }
+                { SaveKeys.COMBAT_ENCOUNTERS_COMPLETED, new List<EncounterHistory.Encounters>{ } },
+                { SaveKeys.CURRENT_CURRENCY, 0 },
+                { SaveKeys.COMPLETED_INTERACTIONS, new List<string>() }
             };
         }
     }

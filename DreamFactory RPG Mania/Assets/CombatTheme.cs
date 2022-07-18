@@ -11,9 +11,12 @@ public class CombatTheme : MonoBehaviour
     
     void Awake()
     {
+        MusicManager.instance.StopCurrentTrack();
+
         introToTheme.Play();
         StartCoroutine(IntroToThemeLoop());
     }
+
     private void Start()
     {
         CombatEventSystem.instance.onCombatFinished += StopAllSounds;        

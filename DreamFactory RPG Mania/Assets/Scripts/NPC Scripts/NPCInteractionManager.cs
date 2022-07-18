@@ -42,7 +42,11 @@ public class NPCInteractionManager : MonoBehaviour
 
     public void InitailizeInteraction()
     {
-        npcAnim.SetBool("IsTalking", true);
+        if (npcAnim != null)
+        {
+            npcAnim.SetBool("IsTalking", true);
+        }
+        
         InitializeInteractionUI();
     }
 
@@ -118,11 +122,23 @@ public class NPCInteractionManager : MonoBehaviour
     private void HandleNPCInteractionComplete(object sender, InteractionCompletedArgs e)
     {
         EnableSelectInteraction();
+
+        for(int i = 0; i < interactions.Count; i++)
+        {
+            Button targetInteractionButton = interactionOptionListParent.GetChild(i).GetComponent<Button>();
+            if (targetInteractionButton)
+            {
+                targetInteractionButton.interactable = interactions[i].CanExecuteInteraction();
+            }
+        }
     }
 
     public void DismissInteractionUI()
     {
-        npcAnim.SetBool("IsTalking", false);
+        if (npcAnim != null)
+        {
+            npcAnim.SetBool("IsTalking", false);
+        }
 
         CleanSelectInteractionUI();
         DisableInteractionUI();
