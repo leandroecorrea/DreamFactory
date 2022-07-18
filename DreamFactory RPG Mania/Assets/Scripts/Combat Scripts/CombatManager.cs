@@ -68,9 +68,25 @@ public class CombatManager : MonoBehaviour
     public void InitializeCombatManager(CombatStartRequest combatRequest)
     {
         var spawnedEntities = combatSpawner.SpawnParties(combatRequest);
+        ResetPartyStats(spawnedEntities);
         combatEntities = new Queue<CombatEntity>(spawnedEntities.OrderByDescending(x => x.entityConfig.baseSpeed));
         CombatEventSystem.instance.onCombatEntityKilled += HandleCombatEntityDeath;
         CombatEventSystem.instance.onItemUsedInCombat += HandleItemUsedInCombat;           
+    }
+
+    private void ResetPartyStats(List<CombatEntity> spawnedEntities)
+    {
+        var playerPartyStats = PlayerPartyManager.UnlockedPartyMembers.Select(x=> new { Id = x.partyMemberId, combatConfig = x.PartyMemberCombatConfig }).ToList();
+        spawnedEntities.ForEach(entity => {
+            playerPartyStats.ForEach(partyStats =>
+            {
+                if(entity.entityConfig.Id == partyStats.Id)
+                {
+                    entity.CurrentHP = partyStats.combatConfig.currentHP;
+                    entity.CurrentMP = partyStats.combatConfig.currentMP;                    
+                }
+            });        
+        });
     }
 
     public void InitializeTurns()
@@ -87,8 +103,6 @@ public class CombatManager : MonoBehaviour
         currentTurnEntity.onTurnComplete += HandleCurrentTurnComplete;
 
         currentTurnContext = new CombatContext();
-        //currentTurnContext.playerParty = combatEntities.Where(x => currentStartRequest.allies.Contains(x.entityConfig)).ToList();
-        //currentTurnContext.enemyParty = combatEntities.Where(x => currentStartRequest.enemies.Contains(x.entityConfig)).ToList();
 
         currentTurnContext.playerParty = combatEntities.Where(x => (x as PlayerControllableEntity) != null).ToList();
         currentTurnContext.enemyParty = combatEntities.Where(x => (x as EnemyCombatEntity) != null).ToList();
@@ -122,16 +136,32 @@ public class CombatManager : MonoBehaviour
         // Check for Player Victory
         if ((e.entityKilled as EnemyCombatEntity) != null && IsCombatTeamKilled(currentTurnContext.enemyParty))
         {
+            UpdateStatsAfterCombat();
             combatResult = CombatResult.WIN;
             isCombatFinished = true;
             EncounterHistory.SaveEncounterAsFinished(currentStartRequest.encounter);
-            //PlayerPartyManager.UnlockedPartyMembers.ForEach(x => LevelingManager.Instance.Update(ref x.Stats, currentStartRequest.experienceReward));
         }
         else if ((e.entityKilled as PlayerControllableEntity) != null && IsCombatTeamKilled(currentTurnContext.playerParty))
         {
             combatResult = CombatResult.LOSE;
             isCombatFinished = true;            
         }
+    }
+
+    private void UpdateStatsAfterCombat()
+    {
+        var playerPartyStats = PlayerPartyManager.UnlockedPartyMembers.Select(x=>x.PartyMemberCombatConfig).ToList();
+        playerPartyStats.ForEach(statToUpdate =>
+        {
+            combatEntities.ToList().ForEach(entity =>
+            {
+                if(statToUpdate.CombatEntityConfig.Id == entity.entityConfig.Id)
+                {
+                    statToUpdate.currentHP = entity.CurrentHP;
+                    statToUpdate.currentMP = entity.CurrentMP;
+                }
+            });
+        });
     }
 
     private bool IsCombatTeamKilled(List<CombatEntity> team)

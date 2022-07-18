@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 [Serializable]
-public struct PartyMemberCombatConfig
+public class PartyMemberCombatConfig
 {
     public int currentHP;
     public int currentMP;

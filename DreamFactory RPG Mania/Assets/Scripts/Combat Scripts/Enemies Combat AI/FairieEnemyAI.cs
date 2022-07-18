@@ -2,7 +2,7 @@
 
 public class FairieEnemyAI : BaseEnemyAI
 {
-    protected override string[] ActionKeys => new[] {"Anxiety", "Delirium", "Physical Attack", "REM", "Soothe"};        
+    protected override string[] ActionKeys => new[] {"Anxiety", "Delirium", "Physical Attack", "REM"};        
 
     protected override CombatActionConfig ChooseAnAction()
     {        
@@ -15,10 +15,8 @@ public class FairieEnemyAI : BaseEnemyAI
             return actions["Anxiety"];
         else if (random < 85)
             return actions["Delirium"];
-        else if (random < 95)
+        else 
             return actions["REM"];
-        else
-            return actions["Soothe"];
     }
 }
 
