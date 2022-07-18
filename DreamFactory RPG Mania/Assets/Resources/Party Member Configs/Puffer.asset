@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partyMemberId: PUFFER
   PartyMemberCombatConfig:
-    currentHP: 100
-    currentMP: 5
+    currentHP: 500
+    currentMP: 50
     EffectsID: []
     combatEffectConfigs: []
     CombatEntityConfig: {fileID: 11400000, guid: 2b2bd9e8f2e454d4395262382a7773b9,
@@ -27,6 +27,6 @@ MonoBehaviour:
     characterPortrait: {fileID: 21300000, guid: 3c4e0207e5d13554eb884b14c20d6f81,
       type: 3}
   Stats:
-    level: 11
+    level: 5
     experience: 150
-    experienceUntilNextLevel: 1500
+    experienceUntilNextLevel: 300

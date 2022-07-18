@@ -44,5 +44,6 @@ public static class EncounterHistory
     {
         EncountersFinished.Add(encounter);
         PlayerProgression.UpdatePlayerData(SaveKeys.COMBAT_ENCOUNTERS_COMPLETED, EncountersFinished);
+        PlayerProgression.SaveLoadedData();
     }
 }
