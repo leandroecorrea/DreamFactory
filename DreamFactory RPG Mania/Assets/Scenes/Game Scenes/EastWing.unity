@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -222,6 +222,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dccd15ffea360e41b28967a1d94a09d, type: 3}
+--- !u!1 &301208764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3429092113672558962, guid: 006a829f01655d54c8c262815458f964,
+    type: 3}
+  m_PrefabInstance: {fileID: 986529821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &331717792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,6 +459,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &542895783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4935504419735214169, guid: 006a829f01655d54c8c262815458f964,
+    type: 3}
+  m_PrefabInstance: {fileID: 986529821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &562640782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1696,6 +1708,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4935504419735214171, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5008382798753998171, guid: 006a829f01655d54c8c262815458f964,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1775,6 +1792,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500686871839216516, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500686871839216516, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500686871839216516, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1192377620}
+    - target: {fileID: 5500686871839216516, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500686871839216516, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerFadeOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500686871839216516, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FadeBetweenPanels, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5500686871839216516, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5656445654975210698, guid: 006a829f01655d54c8c262815458f964,
         type: 3}
@@ -2256,6 +2308,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8093711230111595872, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: Open
+      value: 
+      objectReference: {fileID: 542895783}
+    - target: {fileID: 8262077937705487333, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: Open
+      value: 
+      objectReference: {fileID: 301208764}
+    - target: {fileID: 8262077937705487333, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1779142064}
+    - target: {fileID: 8262077937705487333, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: Close
+      value: 
+      objectReference: {fileID: 542895783}
+    - target: {fileID: 8262077937705487333, guid: 006a829f01655d54c8c262815458f964,
+        type: 3}
+      propertyPath: TranstionTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8344420598697207713, guid: 006a829f01655d54c8c262815458f964,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2555,6 +2632,28 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1125263951}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1192377614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7927491325399283234, guid: 006a829f01655d54c8c262815458f964,
+    type: 3}
+  m_PrefabInstance: {fileID: 986529821}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1192377620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192377614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62fe4e78a137a174584d9f353f7c8568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1779142064}
+  TranstionTime: 0.5
+  Open: {fileID: 301208764}
+  Close: {fileID: 542895783}
 --- !u!1001 &1196498301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3041,6 +3140,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!95 &1779142064 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3429092113328043128, guid: 006a829f01655d54c8c262815458f964,
+    type: 3}
+  m_PrefabInstance: {fileID: 986529821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1783033593
 PrefabInstance:
   m_ObjectHideFlags: 0

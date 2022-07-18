@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class InventoryManager
 {
-    private static List<Item> items = ItemsProvider.Provide();
+    private static List<Item> items = new List<Item>();
     public static List<Item> GetAll() 
         => items;   
 

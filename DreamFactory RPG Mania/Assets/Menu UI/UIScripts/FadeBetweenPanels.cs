@@ -11,6 +11,7 @@ public class FadeBetweenPanels : MonoBehaviour
 
     public void TriggerFadeOpen()
     {
+        Debug.Log("fade");
         StartCoroutine(WaitTillFadedToOpen());
     }
    
