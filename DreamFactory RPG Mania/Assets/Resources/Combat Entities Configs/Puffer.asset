@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Puffer
   baseHP: 500
   baseMP: 50
-  baseAttack: 15
+  baseAttack: 24
   baseSpeed: 15
   combatEntityPrefab: {fileID: 5008707017202677556, guid: 4195037550c2a51499359a1488c3139b,
     type: 3}

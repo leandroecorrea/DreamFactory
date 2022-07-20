@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Faerie
   baseHP: 95
   baseMP: 105
-  baseAttack: 20
+  baseAttack: 30
   baseSpeed: 18
   combatEntityPrefab: {fileID: 8616404973628940178, guid: 1c3b5206ffa2bce439eb9b488551f4c2,
     type: 3}
