@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Shadow
   baseHP: 105
   baseMP: 75
-  baseAttack: 15
+  baseAttack: 25
   baseSpeed: 16
   combatEntityPrefab: {fileID: 4126551379892032179, guid: abe4a82b6d1a8c94b908ea9186353e89,
     type: 3}

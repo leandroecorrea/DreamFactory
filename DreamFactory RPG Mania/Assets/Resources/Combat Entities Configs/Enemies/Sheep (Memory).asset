@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: SHEEP_MEMORY
   Name: Sheep
-  baseHP: 45
+  baseHP: 60
   baseMP: 30
-  baseAttack: 5
+  baseAttack: 15
   baseSpeed: 12
   combatEntityPrefab: {fileID: 6047257843069023445, guid: e0005899f6a87b8478ce56fa04cfc134,
     type: 3}

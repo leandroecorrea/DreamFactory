@@ -607,7 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   afterCompletionStoryPoint: 9
   afterCompletionReloadScene: WestWing
-  afterCompletionSpawningPoint: {x: 83.215, y: -0.792, z: 60.679}
+  afterCompletionSpawningPoint: {x: 85.04, y: 0.054, z: 60.727}
 --- !u!1 &1693206849
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,6 +810,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shadow_Combat_Trigger (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7813906384691001753, guid: 25a43e8ad18f072459ccc35214b34079,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7813906384691001758, guid: 25a43e8ad18f072459ccc35214b34079,
         type: 3}
       propertyPath: m_RootOrder
@@ -1003,6 +1008,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shadow_Combat_Trigger (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813906384691001753, guid: 25a43e8ad18f072459ccc35214b34079,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7813906384691001758, guid: 25a43e8ad18f072459ccc35214b34079,
         type: 3}

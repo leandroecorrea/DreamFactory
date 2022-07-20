@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: Theo
   baseHP: 425
   baseMP: 75
-  baseAttack: 7
+  baseAttack: 15
   baseSpeed: 20
   combatEntityPrefab: {fileID: 8450227428587258759, guid: 510767dd9e3d03f4ca76b60fa4754efa,
     type: 3}

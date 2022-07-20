@@ -139,7 +139,7 @@ public class CombatManager : MonoBehaviour
             UpdateStatsAfterCombat();
             combatResult = CombatResult.WIN;
             isCombatFinished = true;
-            EncounterHistory.SaveEncounterAsFinished(currentStartRequest.encounter);
+            EncounterHistory.SaveEncounterAsFinished(currentStartRequest.encounter);            
         }
         else if ((e.entityKilled as PlayerControllableEntity) != null && IsCombatTeamKilled(currentTurnContext.playerParty))
         {
