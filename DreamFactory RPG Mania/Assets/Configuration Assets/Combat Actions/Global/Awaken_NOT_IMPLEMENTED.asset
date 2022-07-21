@@ -15,7 +15,7 @@ MonoBehaviour:
   actionName: Awaken
   description: Pulls target out of the dream realm/instantly removes them from combat
     - very low accuracy
-  requireRouting: 1
+  requireRouting: 0
   requireMana: 0
   baseEffectiveness: 0
   effectsToApply: []

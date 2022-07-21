@@ -29,7 +29,7 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: 2116723d5125c4940a02150bf249694a,
       type: 2}
-    conversationPointText: What? Don't be absurd. I am a wandering Dream Merchant.
+    conversationPointText: <i>What?</i> Don't be absurd. I am a wandering Dream Merchant.
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []

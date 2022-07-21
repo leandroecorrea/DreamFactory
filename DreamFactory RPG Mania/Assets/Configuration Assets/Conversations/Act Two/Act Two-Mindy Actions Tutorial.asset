@@ -29,22 +29,22 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
       type: 2}
-    conversationPointText: 'I''ll make this quick. Awaken removes an ally from combat.
-      Freeze disables a spell cast by an enemy for four turns. '
+    conversationPointText: 'I''ll make this quick. <b>Awaken</b> removes an ally
+      from combat. Freeze disables a spell cast by an enemy for four turns. '
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
       type: 2}
-    conversationPointText: 'Fever takes health from an enemy over time. Hypnosis
+    conversationPointText: '<b>Fever</b> takes health from an enemy over time. Hypnosis
       makes an enemy your ally for three turns. '
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
       type: 2}
-    conversationPointText: 'Finally, Panic causes a moderate amount of damage at
-      the cost of dream power. '
+    conversationPointText: 'Finally, <b>Panic</b> causes a moderate amount of damage
+      at the cost of dream power. '
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []

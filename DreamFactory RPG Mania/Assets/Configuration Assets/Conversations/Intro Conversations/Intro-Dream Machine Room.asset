@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
   m_Name: Intro-Dream Machine Room
   m_EditorClassIdentifier: 
+  conversationId: 
   conversationPoints:
   - conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
       type: 2}
@@ -23,7 +24,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: beff7c30d32336a45a0efdb63b02a430, type: 2}
   - conversationPointSpeaker: {fileID: 11400000, guid: 5013613c61bd4ce4c98e1270e8c327d2,
       type: 2}
-    conversationPointText: Nah, you're just hearing things.
+    conversationPointText: Nah, you're just hearing things...
     typingDelay: 0.03
     onStartEvent:
     - {fileID: 11400000, guid: 3cf1fc13c7322af42accf1734b08621a, type: 2}
@@ -33,7 +34,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
   - conversationPointSpeaker: {fileID: 11400000, guid: 53412de9b421aa447a622d0a8952da99,
       type: 2}
-    conversationPointText: Woah!
+    conversationPointText: <size=40><b>Woah!</b></size>
     typingDelay: 0.03
     onStartEvent:
     - {fileID: 11400000, guid: 1db79115baf961b489f793c9637abc2c, type: 2}

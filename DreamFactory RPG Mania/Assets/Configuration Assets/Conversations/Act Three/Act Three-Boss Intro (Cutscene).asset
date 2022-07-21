@@ -47,19 +47,19 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
       type: 2}
-    conversationPointText: Hahahahaha! Don't speak too soon.
+    conversationPointText: <size=35><b>Hahahahaha!</b> Don't speak too soon.</size>
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
       type: 2}
-    conversationPointText: 'Who was that? '
+    conversationPointText: 'Who was <i>that?</i> '
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: 7d3ea8f2dae75fe43a90f89bb2628475,
       type: 2}
-    conversationPointText: Oh, no. I think I know who that is.
+    conversationPointText: <b>Oh, no!</b> I think I know who that is.
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent:
@@ -67,13 +67,14 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 532925efe5b81db41bdedadff0b64a93, type: 2}
   - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
       type: 2}
-    conversationPointText: Woah! What just happened?
+    conversationPointText: <i>Whoa!</i> What just happened?
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
       type: 2}
-    conversationPointText: Your efforts were admirable. But they are ultimately fruitless.
+    conversationPointText: <size=35>Your efforts were admirable... but they are ultimately
+      fruitless.</size>
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
@@ -97,15 +98,17 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
       type: 2}
-    conversationPointText: 'That''s where you''re wrong, Dreamette. Your people kept
-      mine enslaved in these machines, at the whim of those Humans when they sleep! '
+    conversationPointText: <size=35>That's where you're wrong, Dreamette. Your people
+      kept mine enslaved in these machines, at the whim of those humans when they
+      sleep!</size>
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
       type: 2}
-    conversationPointText: 'Well, no longer! First I will kill you all, then I will
-      enslave your people. Then, all the Humans will see at night is pure nightmare! '
+    conversationPointText: <size=35>Well, no longer! First I will kill you all, then
+      I will enslave your people. Then, all the humans will see at night is pure
+      nightmare!</size>
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
@@ -117,7 +120,7 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
       type: 2}
-    conversationPointText: Do your worst!
+    conversationPointText: <size=35>Do your worst!</size>
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent:

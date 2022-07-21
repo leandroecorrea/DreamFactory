@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Sleep
   m_EditorClassIdentifier: 
   actionName: Sleep
-  description: 'Get an ally back to dreams realm '
+  description: Puts the target to sleep/returns them to active combat.
   requireRouting: 0
-  requireMana: 5
+  requireMana: 18
   baseEffectiveness: 0
   effectsToApply: []
   actionHandlerClassName: SleepAttackHandler

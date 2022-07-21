@@ -15,7 +15,7 @@ public class PhysicalAttackHandler : BaseAttackHandler
     protected override ActionPerformedArgs HandleActionExecution()
     {        
         CombatEntity currentTarget = targets[0];
-        currentTarget.TakeDamage(Damage);
+        currentTarget.TakeDamage((int)(Damage * (1f + UnityEngine.Random.Range(-0.15f, 0.15f))));
         return new ActionPerformedArgs { TargetedUnits = new CombatEntity[] { currentTarget }, ActionPerformed = this, feedbackMessage = $"{Damage}" };
     }
 }

@@ -3,6 +3,7 @@
     protected override ActionPerformedArgs HandleActionExecution()
     {
         CombatEntity targetEntity = targets[currentTargetIndex++];
+        executor.UpdateEntityMP(executor.CurrentMP - combatActionConfig.requireMana);
         var freezeHandler = targetEntity.EffectsCaused.Find(x => x.combatEffectConfig.displayName == "Freeze");
         if (freezeHandler != null)
         {

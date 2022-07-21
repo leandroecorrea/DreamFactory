@@ -16,7 +16,7 @@ MonoBehaviour:
   description: disables the last spell cast by the target for 4 turns
   requireRouting: 0
   requireMana: 5
-  baseEffectiveness: 50
+  baseEffectiveness: 0
   effectsToApply:
   - {fileID: 11400000, guid: 3b23fda29b4d8764995cd71ed85bab1b, type: 2}
   actionHandlerClassName: FreezeAttackHandler

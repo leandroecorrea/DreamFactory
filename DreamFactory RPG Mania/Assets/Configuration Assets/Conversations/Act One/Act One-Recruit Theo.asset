@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
   m_Name: Act One-Recruit Theo
   m_EditorClassIdentifier: 
+  conversationId: 
   conversationPoints:
   - conversationPointSpeaker: {fileID: 11400000, guid: 3f5d4d8dd6308b442a5a35db8da9efb3,
       type: 2}
-    conversationPointText: 'Theo? What''re you doing over here? '
+    conversationPointText: '<i>Theo?</i> What''re you doing over here? '
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
@@ -48,8 +49,8 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
       type: 2}
-    conversationPointText: 'I''ll come too. Those sheep ate my lunch! I''ll give
-      em a piece of my minds. '
+    conversationPointText: I'll come too. Those sheep ate my lunch! I'll give 'em
+      a piece of my mind.
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []

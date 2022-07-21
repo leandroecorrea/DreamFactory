@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Fever
   m_EditorClassIdentifier: 
   actionName: Fever
-  description: Do a fever attack against an enemy
+  description: Causes damage over time to the target for 4 turns. (stackable)
   requireRouting: 0
-  requireMana: 5
+  requireMana: 8
   baseEffectiveness: 0
   effectsToApply:
   - {fileID: 11400000, guid: 2c04164df08ac834d89cd51f3b28e99f, type: 2}
   actionHandlerClassName: FeverAttackHandler
   targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
   combatActionType: 1
+  IsHeal: 0
