@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coma
   m_EditorClassIdentifier: 
   displayName: Coma
-  displayIcon: {fileID: 21300000, guid: c4c548a339b4d41a590928c0c98934a7, type: 3}
+  displayIcon: {fileID: 1613316352, guid: df383a4f11dfe2d4c97efe4cfe098dbb, type: 3}
   doesExpire: 1
   roundDuration: 4
   doesStack: 0

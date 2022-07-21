@@ -22,7 +22,7 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: 5013613c61bd4ce4c98e1270e8c327d2,
       type: 2}
-    conversationPointText: No, what?
+    conversationPointText: No, <i>what?</i>
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []

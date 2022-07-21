@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: REM
   m_EditorClassIdentifier: 
   actionName: REM
-  description: heals a moderate amount of health on the target
-  requireRouting: 1
-  requireMana: 0
-  baseEffectiveness: 25
+  description: Heals a moderate amount of health on the target.
+  requireRouting: 0
+  requireMana: 10
+  baseEffectiveness: 100
   effectsToApply: []
   actionHandlerClassName: RemAttackHandler
   targetStrategy: {fileID: 11400000, guid: 850b408e02baa854a99b2c248e8f4334, type: 2}

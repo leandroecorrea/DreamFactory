@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Coma
   m_EditorClassIdentifier: 
   actionName: Coma
-  description: OP disabling attack
+  description: Disables the target for 4 turns. The caster can't perform any actions
+    next turn. (4 turn cooldown)
   requireRouting: 0
-  requireMana: 10
+  requireMana: 15
   baseEffectiveness: 0
   effectsToApply:
   - {fileID: 11400000, guid: cd1df2966886ad8409ab9ba6e52bc156, type: 2}

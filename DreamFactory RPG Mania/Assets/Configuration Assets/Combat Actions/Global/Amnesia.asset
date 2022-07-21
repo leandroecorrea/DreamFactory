@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Amnesia
   m_EditorClassIdentifier: 
   actionName: Amnesia
-  description: Causes a moderate amount of damage to the target
+  description: Causes a moderate amount of damage to the target.
   requireRouting: 0
-  requireMana: 5
-  baseEffectiveness: 50
+  requireMana: 10
+  baseEffectiveness: 70
   effectsToApply: []
   actionHandlerClassName: AmnesiaAttackHandler
   targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}

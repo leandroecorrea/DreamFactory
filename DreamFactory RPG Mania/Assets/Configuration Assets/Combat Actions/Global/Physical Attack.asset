@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5bca60f85190b46999d7c9241ba54b, type: 3}
   m_Name: Physical Attack
   m_EditorClassIdentifier: 
-  actionName: Physical Attack
-  description: Do a physical attack against an enemy
+  actionName: Attack
+  description: Melee attack against the target.
   requireRouting: 1
   requireMana: 0
   baseEffectiveness: 10
@@ -21,3 +21,4 @@ MonoBehaviour:
   actionHandlerClassName: PhysicalAttackHandler
   targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}
   combatActionType: 0
+  IsHeal: 0

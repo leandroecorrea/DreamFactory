@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20573433186f15b4b957799426d787a2, type: 3}
   m_Name: Intro-Boss's Office
   m_EditorClassIdentifier: 
+  conversationId: 
   conversationPoints:
   - conversationPointSpeaker: {fileID: 11400000, guid: 5e458aa899a1a034b8330c0a8a5e945e,
       type: 2}
-    conversationPointText: You! You're the new guy, right? I can never remember you
-      guys. Oh, well.
+    conversationPointText: <b>You!</b> You're the new guy, right? I can never remember
+      you guys. Oh, well.
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []

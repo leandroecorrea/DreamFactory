@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Soothe
   m_EditorClassIdentifier: 
   actionName: Soothe
-  description: heals the target of all status effects
+  description: Heals the target of all status effects.
   requireRouting: 0
-  requireMana: 0
-  baseEffectiveness: 100
+  requireMana: 8
+  baseEffectiveness: 0
   effectsToApply: []
   actionHandlerClassName: SootheAttackHandler
   targetStrategy: {fileID: 11400000, guid: 850b408e02baa854a99b2c248e8f4334, type: 2}
   combatActionType: 1
+  IsHeal: 0

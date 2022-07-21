@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Recall
   m_EditorClassIdentifier: 
   actionName: Recall
-  description: unfreezes any frozen spells on the target
+  description: Unfreezes any frozen spells on the target.
   requireRouting: 0
   requireMana: 5
   baseEffectiveness: 100

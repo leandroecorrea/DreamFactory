@@ -7,6 +7,7 @@ public class ComaAttackHandler : BaseAttackHandler
     protected override ActionPerformedArgs HandleActionExecution()
     {
         CombatEntity targetEntity = targets[currentTargetIndex++];
+        executor.UpdateEntityMP(executor.CurrentMP - combatActionConfig.requireMana);
         var comaEffectToList = new List<CombatEffectConfig> { combatActionConfig.effectsToApply[0] };
         var comaCooldownEffectToList = new List<CombatEffectConfig> { combatActionConfig.effectsToApply[1], combatActionConfig.effectsToApply[2] };
         ApplyEffects(comaEffectToList, targetEntity);

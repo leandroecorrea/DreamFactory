@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: Panic
   m_EditorClassIdentifier: 
   actionName: Panic
-  description: Causes a moderate amount of damage to the target at the cost of dream
-    power
+  description: Causes a moderate amount of damage to the target.
   requireRouting: 0
-  requireMana: 0
-  baseEffectiveness: 0
+  requireMana: 10
+  baseEffectiveness: 70
   effectsToApply: []
   actionHandlerClassName: PanicAttackHandler
   targetStrategy: {fileID: 11400000, guid: bc30e880cbc509d4ea780d2293cd38ec, type: 2}

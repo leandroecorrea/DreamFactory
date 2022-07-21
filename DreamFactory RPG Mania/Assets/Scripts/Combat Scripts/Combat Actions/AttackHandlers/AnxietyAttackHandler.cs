@@ -17,7 +17,8 @@ public class AnxietyAttackHandler : BaseAttackHandler
     protected override ActionPerformedArgs HandleActionExecution()
     {
         currentTarget = targets[0];
-        currentTarget.TakeDamage(Damage);
+        executor.UpdateEntityMP(executor.CurrentMP - combatActionConfig.requireMana);
+        currentTarget.TakeDamage((int)(Damage * (1f + UnityEngine.Random.Range(-0.15f, 0.15f))));
         currentTarget.onAnimationComplete += OnTargetAnimationComplete;
         HandleReturnToPositionComplete(this, EventArgs.Empty);
         return new ActionPerformedArgs { TargetedUnits = new CombatEntity[] { currentTarget }, ActionPerformed = this, feedbackMessage = $"{Damage}" };

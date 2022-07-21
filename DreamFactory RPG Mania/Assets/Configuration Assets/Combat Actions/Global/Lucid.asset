@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Lucid
   m_EditorClassIdentifier: 
   actionName: Lucid
-  description: Doubles target's attack power for two turns
+  description: Increases the target's attack power for 2 turns.
   requireRouting: 0
   requireMana: 5
-  baseEffectiveness: 100
+  baseEffectiveness: 0
   effectsToApply:
   - {fileID: 11400000, guid: 7e60fdc4b2310b042bebf6cee875c3f8, type: 2}
   actionHandlerClassName: LucidAttackHandler
   targetStrategy: {fileID: 11400000, guid: 850b408e02baa854a99b2c248e8f4334, type: 2}
   combatActionType: 1
+  IsHeal: 0

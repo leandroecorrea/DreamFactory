@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Insomnia
   m_EditorClassIdentifier: 
   actionName: Insomnia
-  description: makes the target immune to damage and status effects for 2 turns,
-    has a 2 turn cooldown
+  description: Makes the target immune to damage and status effects for 2 turns.
+    (2 turn cooldown)
   requireRouting: 0
-  requireMana: 5
-  baseEffectiveness: 100
+  requireMana: 20
+  baseEffectiveness: 0
   effectsToApply:
   - {fileID: 11400000, guid: 68c9b9a9fc3bd2846af27a9de866bfc0, type: 2}
   actionHandlerClassName: InsomniaAttackHandler
   targetStrategy: {fileID: 11400000, guid: 850b408e02baa854a99b2c248e8f4334, type: 2}
   combatActionType: 1
+  IsHeal: 0

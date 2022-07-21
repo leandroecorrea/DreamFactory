@@ -16,7 +16,7 @@ MonoBehaviour:
   conversationPoints:
   - conversationPointSpeaker: {fileID: 11400000, guid: d56315340d38a9a40a214f38f6140890,
       type: 2}
-    conversationPointText: Noooo!
+    conversationPointText: <b><size=35>Noooo!</size></b>
     typingDelay: 0.05
     onStartEvent: []
     onCompleteEvent:
@@ -58,7 +58,7 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: bfa3c61bf95f5ba4c858a4d07c0d30bb,
       type: 2}
-    conversationPointText: Wait, you mean?
+    conversationPointText: Wait, you mean...?
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
@@ -76,7 +76,7 @@ MonoBehaviour:
     onCompleteEvent: []
   - conversationPointSpeaker: {fileID: 11400000, guid: f4bdd2adbdb296148b226e7615591cf5,
       type: 2}
-    conversationPointText: Alright! What's the first order of buisness?
+    conversationPointText: Alright! What's the first order of business?
     typingDelay: 0.03
     onStartEvent: []
     onCompleteEvent: []
