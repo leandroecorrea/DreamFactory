@@ -8,12 +8,13 @@ public class PlayerInteractionManager : MonoBehaviour
     [Header("Component Refs")]
     [SerializeField] private PlayerOverworldAnimatorCtrl animControl;
     [SerializeField] private PlayerMovement movementControl;
-
+ 
     [Header("Interaction Settings")]
     [SerializeField] private LayerMask interactionLayermask;
 
     private NPCInteractionManager currentRangeInteractionManager;
 
+  
     private void OnTriggerEnter(Collider other)
     {
         if (LayerMaskUtils.IsGameObjectInLayerMask(other.gameObject, interactionLayermask))
@@ -61,4 +62,5 @@ public class PlayerInteractionManager : MonoBehaviour
         animControl.StopTalking();
         gameObject.GetComponent<PlayerInput>().ActivateInput();
     }
+
 }

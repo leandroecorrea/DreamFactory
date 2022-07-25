@@ -17,7 +17,7 @@ public class PauseGame : MonoBehaviour
     void Update()
     {
 
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && GameManager.Instance.CanPause == true)
         {
             PauseStateSwitch(GameManager.Instance.isPaused);
         }

@@ -807,6 +807,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4387239532346293009, guid: 566ae5aaef17e7a44b737965252884df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447048603984130382, guid: 566ae5aaef17e7a44b737965252884df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447048603984130382, guid: 566ae5aaef17e7a44b737965252884df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 566ae5aaef17e7a44b737965252884df, type: 3}
 --- !u!4 &4414318744102420859 stripped
